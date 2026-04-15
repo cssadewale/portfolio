@@ -14,8 +14,8 @@
   --bg-card-hover: #141d35;
   --bg-section: #080c18;
   --text-white: #FFFFFF;
-  --text-light: #E5E7EB;
-  --text-muted: #8b9bb8;
+  --text-light: #d8e2f0;  /* Brightened — was E5E7EB but appears dim on dark bg */
+  --text-muted: #9fb0c8;  /* Brightened — was 8b9bb8, too dark for body copy */
   --border: rgba(245, 166, 35, 0.15);
   --border-subtle: rgba(255,255,255,0.06);
   --glow-gold: 0 0 30px rgba(245, 166, 35, 0.25);
