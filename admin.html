@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel | Adewale Portfolio</title>
+  <!-- NO INDEX — keep this page hidden from search engines -->
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root {
+      --gold: #F5A623;
+      --gold-light: #fbbf5a;
+      --emerald: #10b981;
+      --red: #ef4444;
+      --blue: #3b82f6;
+      --bg: #07090f;
+      --bg-card: #0d1120;
+      --bg-input: #111827;
+      --border: rgba(255,255,255,0.08);
+      --border-gold: rgba(245,166,35,0.3);
+      --text: #e5e7eb;
+      --muted: #6b7280;
+      --font: 'Plus Jakarta Sans', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+      --radius: 10px;
+      --transition: all 0.25s ease;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font); min-height: 100vh; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── LOGIN GATE ── */
+    #login-gate {
+      position: fixed; inset: 0;
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 9999;
+    }
+    .login-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: 16px;
+      padding: 2.5rem;
+      width: 100%; max-width: 380px;
+      text-align: center;
+    }
+    .login-logo { font-size: 2rem; margin-bottom: 0.5rem; }
+    .login-title { font-size: 1.1rem; font-weight: 800; color: white; margin-bottom: 0.25rem; }
+    .login-sub { font-size: 0.8rem; color: var(--muted); margin-bottom: 2rem; }
+    .login-input {
+      width: 100%; background: var(--bg-input); border: 1px solid var(--border);
+      border-radius: 8px; padding: 0.75rem 1rem;
+      font-family: var(--mono); font-size: 0.9rem; color: white;
+      outline: none; margin-bottom: 1rem; text-align: center; letter-spacing: 0.1em;
+      transition: var(--transition);
+    }
+    .login-input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(245,166,35,0.1); }
+    .login-btn {
+      width: 100%; padding: 0.85rem; background: var(--gold); color: #07090f;
+      border: none; border-radius: 8px; font-family: var(--font);
+      font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: var(--transition);
+    }
+    .login-btn:hover { background: var(--gold-light); }
+    .login-error { font-size: 0.78rem; color: var(--red); margin-top: 0.75rem; display: none; }
+    .login-hint { font-family: var(--mono); font-size: 0.7rem; color: var(--muted); margin-top: 1rem; }
+
+    /* ── LAYOUT ── */
+    #app { display: none; min-height: 100vh; }
+
+    .topbar {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 0.85rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .topbar-brand { display: flex; align-items: center; gap: 0.6rem; }
+    .topbar-brand-icon { font-size: 1.2rem; }
+    .topbar-brand-name { font-size: 0.9rem; font-weight: 800; color: white; }
+    .topbar-brand-name span { color: var(--gold); }
+    .topbar-right { display: flex; align-items: center; gap: 0.75rem; }
+    .topbar-site-link {
+      font-size: 0.75rem; font-weight: 600; color: var(--muted);
+      padding: 0.4rem 0.85rem; border: 1px solid var(--border);
+      border-radius: 6px; transition: var(--transition); display: flex; align-items: center; gap: 0.4rem;
+    }
+    .topbar-site-link:hover { border-color: var(--gold); color: var(--gold); }
+    .topbar-logout {
+      font-size: 0.75rem; font-weight: 600; color: var(--red);
+      padding: 0.4rem 0.85rem; border: 1px solid rgba(239,68,68,0.25);
+      border-radius: 6px; cursor: pointer; transition: var(--transition);
+    }
+    .topbar-logout:hover { background: rgba(239,68,68,0.08); }
+
+    .admin-layout { display: grid; grid-template-columns: 220px 1fr; min-height: calc(100vh - 52px); }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      background: var(--bg-card);
+      border-right: 1px solid var(--border);
+      padding: 1.5rem 0;
+      position: sticky; top: 52px; height: calc(100vh - 52px); overflow-y: auto;
+    }
+    .sidebar-section { margin-bottom: 1.75rem; }
+    .sidebar-section-label {
+      font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--muted);
+      padding: 0 1.25rem; margin-bottom: 0.5rem;
+    }
+    .sidebar-item {
+      display: flex; align-items: center; gap: 0.65rem;
+      padding: 0.6rem 1.25rem; cursor: pointer;
+      font-size: 0.82rem; font-weight: 500; color: var(--muted);
+      transition: var(--transition); border-left: 2px solid transparent;
+    }
+    .sidebar-item:hover { color: white; background: rgba(255,255,255,0.03); }
+    .sidebar-item.active { color: var(--gold); border-left-color: var(--gold); background: rgba(245,166,35,0.05); }
+    .sidebar-item i { font-size: 0.8rem; width: 16px; }
+
+    /* ── MAIN CONTENT ── */
+    .main-content { padding: 2rem; overflow-y: auto; }
+
+    /* Panel pages */
+    .panel { display: none; }
+    .panel.active { display: block; }
+
+    .panel-title {
+      font-size: 1.3rem; font-weight: 800; color: white;
+      margin-bottom: 0.25rem; letter-spacing: -0.02em;
+    }
+    .panel-sub { font-size: 0.82rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.5; }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem;
+    }
+    .card-title {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+
+    /* ── FORM ELEMENTS ── */
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label {
+      display: block; font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 0.4rem;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%; background: var(--bg-input); border: 1px solid var(--border);
+      border-radius: 7px; padding: 0.65rem 0.9rem;
+      font-family: var(--font); font-size: 0.85rem; color: white;
+      outline: none; transition: var(--transition);
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(245,166,35,0.08); }
+    .form-group select { cursor: pointer; }
+    .form-group select option { background: #1a2035; }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-full { grid-column: 1 / -1; }
+    .form-hint { font-size: 0.68rem; color: var(--muted); margin-top: 0.3rem; }
+
+    /* ── BUTTONS ── */
+    .btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.6rem 1.25rem; border-radius: 7px; font-family: var(--font); font-size: 0.82rem; font-weight: 700; cursor: pointer; transition: var(--transition); border: none; }
+    .btn-gold { background: var(--gold); color: #07090f; }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .btn-red { background: rgba(239,68,68,0.12); color: var(--red); border: 1px solid rgba(239,68,68,0.25); }
+    .btn-red:hover { background: rgba(239,68,68,0.2); }
+    .btn-sm { padding: 0.35rem 0.75rem; font-size: 0.72rem; }
+    .btn-group { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1.25rem; }
+
+    /* ── PROJECT CARDS IN ADMIN ── */
+    .project-list { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.25rem; }
+    .project-row {
+      background: var(--bg-input); border: 1px solid var(--border);
+      border-radius: 8px; padding: 1rem 1.25rem;
+      display: flex; align-items: center; gap: 1rem;
+      transition: var(--transition);
+    }
+    .project-row:hover { border-color: var(--border-gold); }
+    .project-row-drag { color: var(--muted); cursor: grab; font-size: 0.85rem; }
+    .project-row-badge {
+      font-family: var(--mono); font-size: 0.6rem; padding: 0.15rem 0.55rem;
+      border-radius: 100px; white-space: nowrap; flex-shrink: 0;
+    }
+    .badge-live { background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); color: var(--emerald); }
+    .badge-edtech { background: rgba(245,166,35,0.1); border: 1px solid rgba(245,166,35,0.25); color: var(--gold); }
+    .badge-ml { background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.25); color: #93b4f7; }
+    .badge-nlp { background: rgba(167,139,250,0.1); border: 1px solid rgba(167,139,250,0.3); color: #c4b5fd; }
+    .project-row-name { font-size: 0.88rem; font-weight: 600; color: white; flex: 1; }
+    .project-row-cat { font-size: 0.75rem; color: var(--muted); }
+    .project-row-actions { display: flex; gap: 0.4rem; flex-shrink: 0; }
+
+    /* ── STATS ROW ── */
+    .stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; margin-bottom: 2rem; }
+    .stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; }
+    .stat-card-n { font-size: 1.8rem; font-weight: 800; color: var(--gold); line-height: 1; margin-bottom: 0.25rem; }
+    .stat-card-l { font-size: 0.72rem; color: var(--muted); font-weight: 500; }
+
+    /* ── SECTION VISIBILITY TOGGLES ── */
+    .section-toggle-list { display: flex; flex-direction: column; gap: 0.6rem; }
+    .section-toggle-row {
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--bg-input); border: 1px solid var(--border);
+      border-radius: 8px; padding: 0.85rem 1.1rem;
+    }
+    .section-toggle-info { display: flex; align-items: center; gap: 0.75rem; }
+    .section-toggle-info i { color: var(--gold); font-size: 0.8rem; width: 16px; }
+    .section-name { font-size: 0.85rem; font-weight: 600; color: white; }
+    .section-desc { font-size: 0.72rem; color: var(--muted); }
+    /* Toggle switch */
+    .toggle-wrap { display: flex; align-items: center; gap: 0.6rem; }
+    .toggle-label { font-size: 0.72rem; color: var(--muted); }
+    .toggle {
+      position: relative; width: 40px; height: 22px;
+      background: rgba(255,255,255,0.1); border-radius: 11px;
+      cursor: pointer; transition: var(--transition); flex-shrink: 0;
+    }
+    .toggle.on { background: var(--emerald); }
+    .toggle::after {
+      content: ''; position: absolute; width: 16px; height: 16px;
+      background: white; border-radius: 50%; top: 3px; left: 3px;
+      transition: var(--transition);
+    }
+    .toggle.on::after { transform: translateX(18px); }
+
+    /* ── ABOUT EDITOR ── */
+    .about-fields { display: flex; flex-direction: column; gap: 1rem; }
+
+    /* ── HERO EDITOR ── */
+    .typewriter-list { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem; }
+    .typewriter-item {
+      display: flex; align-items: center; gap: 0.5rem;
+      background: var(--bg-input); border: 1px solid var(--border);
+      border-radius: 7px; padding: 0.5rem 0.75rem;
+    }
+    .typewriter-item input {
+      flex: 1; background: transparent; border: none; outline: none;
+      font-family: var(--font); font-size: 0.85rem; color: white;
+    }
+    .typewriter-item .remove-tw { background: none; border: none; color: var(--red); cursor: pointer; font-size: 0.8rem; padding: 2px; }
+
+    /* ── CONTACT EDITOR ── */
+    .contact-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    /* ── CERTIFICATIONS ── */
+    .cert-list { display: flex; flex-direction: column; gap: 0.5rem; }
+    .cert-row {
+      display: flex; align-items: center; gap: 0.75rem;
+      background: var(--bg-input); border: 1px solid var(--border);
+      border-radius: 7px; padding: 0.65rem 0.85rem;
+    }
+    .cert-row-issuer { font-size: 0.72rem; color: var(--gold); font-family: var(--mono); min-width: 120px; }
+    .cert-row-name { font-size: 0.82rem; color: white; flex: 1; }
+    .cert-row-year { font-size: 0.7rem; color: var(--muted); font-family: var(--mono); min-width: 40px; }
+
+    /* ── SAVE TOAST ── */
+    #toast {
+      position: fixed; bottom: 2rem; right: 2rem;
+      background: var(--emerald); color: white;
+      padding: 0.75rem 1.25rem; border-radius: 8px;
+      font-size: 0.82rem; font-weight: 600;
+      display: flex; align-items: center; gap: 0.5rem;
+      opacity: 0; transform: translateY(10px);
+      transition: all 0.3s ease; z-index: 9999;
+      pointer-events: none;
+    }
+    #toast.show { opacity: 1; transform: translateY(0); }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 500; opacity: 0; pointer-events: none; transition: var(--transition);
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal {
+      background: var(--bg-card); border: 1px solid var(--border-gold);
+      border-radius: 14px; padding: 2rem; width: 100%; max-width: 560px;
+      max-height: 90vh; overflow-y: auto;
+      transform: scale(0.96); transition: var(--transition);
+    }
+    .modal-overlay.open .modal { transform: scale(1); }
+    .modal-title { font-size: 1rem; font-weight: 800; color: white; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+    .modal-close { background: none; border: none; color: var(--muted); font-size: 1rem; cursor: pointer; }
+    .modal-close:hover { color: white; }
+
+    /* ── INSTRUCTIONS PANEL ── */
+    .instructions-box {
+      background: rgba(245,166,35,0.05); border: 1px solid rgba(245,166,35,0.2);
+      border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1.5rem;
+    }
+    .instructions-box p { font-size: 0.82rem; color: var(--text); line-height: 1.7; margin-bottom: 0.5rem; }
+    .instructions-box p:last-child { margin-bottom: 0; }
+    .instructions-box strong { color: var(--gold); }
+    .code-hint { font-family: var(--mono); font-size: 0.72rem; background: rgba(0,0,0,0.4); padding: 0.15rem 0.5rem; border-radius: 4px; color: var(--emerald); }
+
+    @media(max-width:768px) {
+      .admin-layout { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      .stats-row { grid-template-columns: repeat(2,1fr); }
+      .form-grid { grid-template-columns: 1fr; }
+      .contact-fields { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════
+     LOGIN GATE
+══════════════════════════════════ -->
+<div id="login-gate">
+  <div class="login-box">
+    <div class="login-logo">🔐</div>
+    <div class="login-title">Portfolio Admin</div>
+    <div class="login-sub">Adewale Samson Adeagbo</div>
+    <input type="password" class="login-input" id="pin-input" placeholder="Enter your PIN" maxlength="20" />
+    <button class="login-btn" onclick="checkPin()">Enter Admin Panel</button>
+    <div class="login-error" id="login-error">Incorrect PIN. Try again.</div>
+    <div class="login-hint">Set your PIN in the <span class="code-hint">ADMIN_PIN</span> variable below</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     ADMIN APP
+══════════════════════════════════ -->
+<div id="app">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="topbar-brand">
+      <span class="topbar-brand-icon">⚡</span>
+      <div class="topbar-brand-name">Portfolio <span>Admin</span></div>
+    </div>
+    <div class="topbar-right">
+      <a href="index.html" target="_blank" class="topbar-site-link"><i class="fas fa-external-link-alt"></i> View Live Site</a>
+      <div class="topbar-logout" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</div>
+    </div>
+  </div>
+
+  <div class="admin-layout">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-section-label">Overview</div>
+        <div class="sidebar-item active" onclick="showPanel('dashboard')"><i class="fas fa-th-large"></i> Dashboard</div>
+        <div class="sidebar-item" onclick="showPanel('instructions')"><i class="fas fa-book"></i> How to Use</div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-label">Page Sections</div>
+        <div class="sidebar-item" onclick="showPanel('hero')"><i class="fas fa-home"></i> Hero Section</div>
+        <div class="sidebar-item" onclick="showPanel('about')"><i class="fas fa-user"></i> About / Story</div>
+        <div class="sidebar-item" onclick="showPanel('projects')"><i class="fas fa-rocket"></i> Projects</div>
+        <div class="sidebar-item" onclick="showPanel('skills')"><i class="fas fa-code"></i> Skills</div>
+        <div class="sidebar-item" onclick="showPanel('journey')"><i class="fas fa-route"></i> Journey</div>
+        <div class="sidebar-item" onclick="showPanel('certifications')"><i class="fas fa-certificate"></i> Certifications</div>
+        <div class="sidebar-item" onclick="showPanel('contact')"><i class="fas fa-envelope"></i> Contact Info</div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-label">Visibility</div>
+        <div class="sidebar-item" onclick="showPanel('visibility')"><i class="fas fa-eye"></i> Show / Hide Sections</div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-label">Export</div>
+        <div class="sidebar-item" onclick="showPanel('export')"><i class="fas fa-download"></i> Export & Deploy</div>
+      </div>
+    </div>
+
+    <!-- Main -->
+    <div class="main-content">
+
+      <!-- ══ DASHBOARD ══ -->
+      <div class="panel active" id="panel-dashboard">
+        <div class="panel-title">Dashboard</div>
+        <div class="panel-sub">Welcome back, Adewale. Here is a snapshot of your portfolio content.</div>
+
+        <div class="stats-row">
+          <div class="stat-card"><div class="stat-card-n" id="stat-projects">12</div><div class="stat-card-l">Live Projects</div></div>
+          <div class="stat-card"><div class="stat-card-n" id="stat-certs">9</div><div class="stat-card-l">Certifications</div></div>
+          <div class="stat-card"><div class="stat-card-n" id="stat-journey">9</div><div class="stat-card-l">Journey Milestones</div></div>
+          <div class="stat-card"><div class="stat-card-n" id="stat-skills">20+</div><div class="stat-card-l">Skill Badges</div></div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
+          <div class="card">
+            <div class="card-title"><i class="fas fa-bolt"></i> Quick Actions</div>
+            <div style="display:flex;flex-direction:column;gap:0.6rem;">
+              <button class="btn btn-outline" onclick="showPanel('projects')"><i class="fas fa-plus"></i> Add New Project</button>
+              <button class="btn btn-outline" onclick="showPanel('journey')"><i class="fas fa-plus"></i> Add Journey Milestone</button>
+              <button class="btn btn-outline" onclick="showPanel('certifications')"><i class="fas fa-plus"></i> Add Certification</button>
+              <button class="btn btn-outline" onclick="showPanel('about')"><i class="fas fa-edit"></i> Edit Your Story</button>
+              <button class="btn btn-gold" onclick="showPanel('export')"><i class="fas fa-download"></i> Export & Deploy</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title"><i class="fas fa-info-circle"></i> Admin Notes</div>
+            <div style="font-size:0.82rem;color:var(--muted);line-height:1.8;">
+              <p>✅ All changes are saved to your browser automatically.</p>
+              <p style="margin-top:0.5rem;">📤 Use <strong style="color:white;">Export & Deploy</strong> to download your updated <code class="code-hint">portfolio-data.json</code> file and push it to GitHub.</p>
+              <p style="margin-top:0.5rem;">🔒 This admin panel is not indexed by Google — only accessible by direct URL.</p>
+              <p style="margin-top:0.5rem;">📱 Works on your Android tablet.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ INSTRUCTIONS ══ -->
+      <div class="panel" id="panel-instructions">
+        <div class="panel-title">How to Use This Admin Panel</div>
+        <div class="panel-sub">Everything you need to know to manage your portfolio without writing code.</div>
+
+        <div class="card" style="margin-bottom:1.25rem;">
+          <div class="card-title"><i class="fas fa-play-circle"></i> The Workflow (3 Steps)</div>
+          <div style="font-size:0.85rem;color:var(--text);line-height:1.8;">
+            <p><strong style="color:var(--gold);">Step 1 — Edit</strong> — Use the panels in the sidebar to edit your projects, story, skills, certifications, journey milestones, and contact info. Everything has a form — no code needed.</p>
+            <p style="margin-top:0.75rem;"><strong style="color:var(--gold);">Step 2 — Export</strong> — When you are done editing, go to <strong>Export & Deploy</strong> and click <strong>Download portfolio-data.json</strong>. This file contains all your content.</p>
+            <p style="margin-top:0.75rem;"><strong style="color:var(--gold);">Step 3 — Deploy</strong> — Upload the downloaded <code class="code-hint">portfolio-data.json</code> file to your GitHub repo (cssadewale/portfolio). Cloudflare Pages will auto-deploy in under 60 seconds.</p>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom:1.25rem;">
+          <div class="card-title"><i class="fas fa-lock"></i> Changing Your PIN</div>
+          <div style="font-size:0.85rem;color:var(--text);line-height:1.8;">
+            <p>Open <code class="code-hint">admin.html</code> in a text editor. Find the line that says <code class="code-hint">const ADMIN_PIN = 'hmg2026'</code> near the bottom of the file. Change <code class="code-hint">hmg2026</code> to any password you want. Save and re-upload to GitHub.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title"><i class="fas fa-question-circle"></i> Frequently Asked Questions</div>
+          <div style="font-size:0.85rem;color:var(--text);line-height:1.9;">
+            <p><strong style="color:white;">Will my changes appear immediately?</strong><br />Yes — once you upload the new portfolio-data.json to GitHub and Cloudflare Pages redeploys (30–60 seconds), your changes are live.</p>
+            <p style="margin-top:1rem;"><strong style="color:white;">What if I close the browser?</strong><br />Your edits are saved in your browser's local storage automatically as you type. They will still be there when you come back — on the same device and browser.</p>
+            <p style="margin-top:1rem;"><strong style="color:white;">Can I add a completely new section?</strong><br />Yes — go to any panel, add content, then use Export. The portfolio pages automatically read from portfolio-data.json on load.</p>
+            <p style="margin-top:1rem;"><strong style="color:white;">How do I hide a section without deleting it?</strong><br />Go to <strong>Show / Hide Sections</strong> in the sidebar and toggle the section off. It will be hidden on the live site but your content is preserved.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ HERO EDITOR ══ -->
+      <div class="panel" id="panel-hero">
+        <div class="panel-title">Hero Section</div>
+        <div class="panel-sub">Edit the first thing every recruiter and visitor sees.</div>
+        <div class="card">
+          <div class="card-title"><i class="fas fa-user-circle"></i> Identity & Headlines</div>
+          <div class="form-grid">
+            <div class="form-group form-full">
+              <label>Full Name</label>
+              <input type="text" id="hero-name" value="Adewale Samson Adeagbo" />
+            </div>
+            <div class="form-group form-full">
+              <label>Hero Statement (the one powerful line under your name)</label>
+              <input type="text" id="hero-statement" value="I build data-driven tools for Nigerian classrooms — from scratch, with free tools, on an Android tablet." />
+            </div>
+            <div class="form-group form-full">
+              <label>Availability Badge Text</label>
+              <input type="text" id="hero-badge" value="Available for opportunities" />
+            </div>
+            <div class="form-group form-full">
+              <label>Live Project Badge (bottom of photo)</label>
+              <input type="text" id="hero-livebadge" value="CBT Pro — Live with Students" />
+            </div>
+          </div>
+
+          <div class="card-title" style="margin-top:1.5rem;"><i class="fas fa-keyboard"></i> Typewriter Titles</div>
+          <div class="typewriter-list" id="typewriter-list"></div>
+          <button class="btn btn-outline btn-sm" onclick="addTypewriterItem()"><i class="fas fa-plus"></i> Add Title</button>
+
+          <div class="btn-group">
+            <button class="btn btn-gold" onclick="saveHero()"><i class="fas fa-save"></i> Save Hero</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ ABOUT EDITOR ══ -->
+      <div class="panel" id="panel-about">
+        <div class="panel-title">About / Your Story</div>
+        <div class="panel-sub">Your story is your greatest differentiator. Keep it honest and human.</div>
+        <div class="card">
+          <div class="card-title"><i class="fas fa-pen"></i> The Three Chapters</div>
+          <div class="about-fields">
+            <div class="form-group">
+              <label>Chapter 1 — The Educator (paragraph)</label>
+              <textarea id="about-p1" rows="5">For over 15 years, I stood in Nigerian secondary school classrooms teaching Mathematics, Further Mathematics, Physics, and Chemistry — from JSS1 all the way to SSS3. Teaching gave me something no university course can: the ability to read a room, break down complexity, and understand exactly why someone is not understanding something. That instinct lives in everything I build today.</textarea>
+            </div>
+            <div class="form-group">
+              <label>Chapter 2 — The Builder (paragraph)</label>
+              <textarea id="about-p2" rows="5">The day I decided to stop complaining about broken tools and start building replacements changed everything. CBT Pro was born not in a co-working space with fast Wi-Fi — but on an Android tablet, between lesson periods, with zero budget and one clear goal: give my students a better exam experience. Today that platform is live and used by real students. The constraint is not the obstacle. The constraint is the brief.</textarea>
+            </div>
+            <div class="form-group">
+              <label>Chapter 3 — The Data Scientist & AI-Augmented Builder (paragraph)</label>
+              <textarea id="about-p3" rows="5">My formal tech journey began with the 3MTT programme in 2025, where I studied Data Science. But it was the spark that changed everything — my problem-solving instincts, inquisitiveness, and curiosity accelerated sharply. I deployed 12 projects across ML, NLP, EdTech, and data analysis. More importantly, I discovered something about myself: as an AI-Augmented Solutions Developer, I can operate seamlessly in any technical field — using AI as a force multiplier — not just data science.</textarea>
+            </div>
+            <div class="form-group">
+              <label>Pull Quote (the big styled quote)</label>
+              <textarea id="about-quote" rows="3">Data science taught me that if you can think through a problem clearly, you can find a path to a solution — even in unfamiliar territory.</textarea>
+            </div>
+          </div>
+
+          <div class="card-title" style="margin-top:1.5rem;"><i class="fas fa-chart-bar"></i> Stats Strip</div>
+          <div class="form-grid form-grid-3">
+            <div class="form-group"><label>Stat 1 Number</label><input type="text" id="stat1-n" value="15+" /></div>
+            <div class="form-group"><label>Stat 1 Label</label><input type="text" id="stat1-l" value="Years Teaching" /></div>
+            <div class="form-group"></div>
+            <div class="form-group"><label>Stat 2 Number</label><input type="text" id="stat2-n" value="12" /></div>
+            <div class="form-group"><label>Stat 2 Label</label><input type="text" id="stat2-l" value="Projects Deployed" /></div>
+            <div class="form-group"></div>
+            <div class="form-group"><label>Stat 3 Number</label><input type="text" id="stat3-n" value="1" /></div>
+            <div class="form-group"><label>Stat 3 Label</label><input type="text" id="stat3-l" value="Live EdTech Platform" /></div>
+            <div class="form-group"></div>
+            <div class="form-group"><label>Stat 4 Number</label><input type="text" id="stat4-n" value="500+" /></div>
+            <div class="form-group"><label>Stat 4 Label</label><input type="text" id="stat4-l" value="Students Reached" /></div>
+            <div class="form-group"></div>
+          </div>
+
+          <div class="btn-group">
+            <button class="btn btn-gold" onclick="saveAbout()"><i class="fas fa-save"></i> Save About</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ PROJECTS EDITOR ══ -->
+      <div class="panel" id="panel-projects">
+        <div class="panel-title">Projects</div>
+        <div class="panel-sub">All 12 live projects. Edit URLs, descriptions, metrics. Add or remove projects.</div>
+
+        <div class="card" style="margin-bottom:1.25rem;">
+          <div class="card-title"><i class="fas fa-list"></i> All Projects <span style="margin-left:auto;font-family:var(--mono);font-size:0.65rem;color:var(--muted);font-weight:400;" id="project-count-label">12 projects</span></div>
+          <div class="project-list" id="project-list"></div>
+          <div class="btn-group">
+            <button class="btn btn-gold" onclick="openAddProjectModal()"><i class="fas fa-plus"></i> Add New Project</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ SKILLS EDITOR ══ -->
+      <div class="panel" id="panel-skills">
+        <div class="panel-title">Skills & Tools</div>
+        <div class="panel-sub">Edit skill groups and individual badges.</div>
+        <div class="card">
+          <div class="card-title"><i class="fas fa-code"></i> Skill Groups</div>
+          <div id="skills-editor"></div>
+          <div class="btn-group">
+            <button class="btn btn-gold" onclick="saveSkills()"><i class="fas fa-save"></i> Save Skills</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ JOURNEY EDITOR ══ -->
+      <div class="panel" id="panel-journey">
+        <div class="panel-title">Learning Journey</div>
+        <div class="panel-sub">Add, edit, or remove milestones on your timeline.</div>
+        <div class="card">
+          <div class="card-title"><i class="fas fa-route"></i> Milestones <span style="margin-left:auto;font-family:var(--mono);font-size:0.65rem;color:var(--muted);font-weight:400;" id="milestone-count-label"></span></div>
+          <div id="journey-list"></div>
+          <div class="btn-group">
+            <button class="btn btn-gold" onclick="openAddMilestoneModal()"><i class="fas fa-plus"></i> Add Milestone</button>
+            <button class="btn btn-outline" onclick="saveJourney()"><i class="fas fa-save"></i> Save Order</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ CERTIFICATIONS EDITOR ══ -->
+      <div class="panel" id="panel-certifications">
+        <div class="panel-title">Certifications</div>
+        <div class="panel-sub">Your verified learning history. Add or remove certifications.</div>
+        <div class="card">
+          <div class="card-title"><i class="fas fa-certificate"></i> Certifications</div>
+          <div class="cert-list" id="cert-list"></div>
+          <div class="btn-group">
+            <button class="btn btn-gold" onclick="openAddCertModal()"><i class="fas fa-plus"></i> Add Certification</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ CONTACT EDITOR ══ -->
+      <div class="panel" id="panel-contact">
+        <div class="panel-title">Contact Information</div>
+        <div class="panel-sub">Update any contact detail here — it updates everywhere on the site.</div>
+        <div class="card">
+          <div class="card-title"><i class="fas fa-address-card"></i> Contact Details</div>
+          <div class="contact-fields">
+            <div class="form-group"><label>WhatsApp Number</label><input type="text" id="c-wa" value="+2348100866322" /></div>
+            <div class="form-group"><label>Email Address</label><input type="text" id="c-email" value="buildingmyictcareer@gmail.com" /></div>
+            <div class="form-group"><label>LinkedIn URL</label><input type="text" id="c-li" value="https://linkedin.com/in/adewalesamsonadeagbo" /></div>
+            <div class="form-group"><label>GitHub URL</label><input type="text" id="c-gh" value="https://github.com/cssadewale" /></div>
+            <div class="form-group"><label>YouTube URL</label><input type="text" id="c-yt" value="https://youtube.com/@hmgconcepts" /></div>
+            <div class="form-group"><label>X / Twitter URL</label><input type="text" id="c-x" value="https://x.com/cssadewale" /></div>
+            <div class="form-group"><label>CV (Google Drive PDF Link)</label><input type="text" id="c-cv" value="https://drive.google.com/your-cv-link" /></div>
+            <div class="form-group"><label>Formspree Form ID</label><input type="text" id="c-formspree" placeholder="e.g. xyzabcde" /><div class="form-hint">Get this from formspree.io after creating a free form</div></div>
+          </div>
+          <div class="btn-group">
+            <button class="btn btn-gold" onclick="saveContact()"><i class="fas fa-save"></i> Save Contact Info</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ VISIBILITY ══ -->
+      <div class="panel" id="panel-visibility">
+        <div class="panel-title">Show / Hide Sections</div>
+        <div class="panel-sub">Toggle any section off to hide it on the live site. Your content is preserved — just not shown.</div>
+        <div class="card">
+          <div class="section-toggle-list" id="visibility-list"></div>
+          <div class="btn-group">
+            <button class="btn btn-gold" onclick="saveVisibility()"><i class="fas fa-save"></i> Save Visibility</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ EXPORT ══ -->
+      <div class="panel" id="panel-export">
+        <div class="panel-title">Export & Deploy</div>
+        <div class="panel-sub">Download your content file and push it to GitHub to go live.</div>
+
+        <div class="instructions-box">
+          <p><strong>How it works:</strong> All your edits are stored as a <code class="code-hint">portfolio-data.json</code> file. Your live portfolio pages read this file on load and render your content dynamically. No code editing needed — ever.</p>
+          <p style="margin-top:0.5rem;"><strong>Deploy steps:</strong> Download the file below → Go to github.com/cssadewale/portfolio → Upload (replace) the file → Cloudflare Pages redeploys in ~30 seconds.</p>
+        </div>
+
+        <div class="card" style="margin-bottom:1.25rem;">
+          <div class="card-title"><i class="fas fa-file-code"></i> portfolio-data.json</div>
+          <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1.25rem;line-height:1.6;">This file contains all your projects, story, skills, certifications, journey milestones, and contact info. Download it and push to GitHub.</p>
+          <button class="btn btn-gold" onclick="downloadJSON()"><i class="fas fa-download"></i> Download portfolio-data.json</button>
+        </div>
+
+        <div class="card">
+          <div class="card-title"><i class="fab fa-github"></i> GitHub Upload Steps (on Android)</div>
+          <div style="font-size:0.82rem;color:var(--text);line-height:2;">
+            <p>1. Go to <strong style="color:var(--gold);">github.com/cssadewale/portfolio</strong> in your browser</p>
+            <p>2. Tap <strong style="color:white;">Add file → Upload files</strong></p>
+            <p>3. Select the <code class="code-hint">portfolio-data.json</code> file you just downloaded</p>
+            <p>4. Scroll down and tap <strong style="color:white;">Commit changes</strong></p>
+            <p>5. Wait 30–60 seconds — Cloudflare Pages auto-deploys</p>
+            <p>6. Visit your live site to confirm changes ✅</p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /main-content -->
+  </div><!-- /admin-layout -->
+</div><!-- /app -->
+
+<!-- ══ TOAST ══ -->
+<div id="toast"><i class="fas fa-check-circle"></i> <span id="toast-msg">Saved successfully</span></div>
+
+<!-- ══ PROJECT MODAL ══ -->
+<div class="modal-overlay" id="project-modal">
+  <div class="modal">
+    <div class="modal-title">
+      <span id="project-modal-title">Add New Project</span>
+      <button class="modal-close" onclick="closeModal('project-modal')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="form-group"><label>Project Name</label><input type="text" id="pm-name" placeholder="e.g. Student At-Risk Predictor" /></div>
+    <div class="form-grid">
+      <div class="form-group"><label>Category Tag</label><input type="text" id="pm-cat" placeholder="e.g. EdTech · ML" /></div>
+      <div class="form-group">
+        <label>Type</label>
+        <select id="pm-type">
+          <option value="ml">Machine Learning</option>
+          <option value="edtech">EdTech</option>
+          <option value="nlp">NLP</option>
+          <option value="analytics">Data Analytics</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group"><label>One-line Problem Statement</label><input type="text" id="pm-problem" placeholder="What problem does this solve?" /></div>
+    <div class="form-group"><label>Key Metric / Model Info</label><input type="text" id="pm-metric" placeholder="e.g. Random Forest · SHAP · 7,014 records" /></div>
+    <div class="form-group"><label>GitHub URL</label><input type="text" id="pm-github" placeholder="https://github.com/cssadewale/..." /></div>
+    <div class="form-group"><label>Live App URL (Streamlit / GitHub Pages)</label><input type="text" id="pm-live" placeholder="https://..." /></div>
+    <div class="form-group"><label>Tech Stack (comma-separated)</label><input type="text" id="pm-stack" placeholder="Python, Scikit-learn, SHAP, Streamlit" /></div>
+    <div class="form-group">
+      <label>Status</label>
+      <select id="pm-status">
+        <option value="live">Live / Deployed</option>
+        <option value="progress">In Progress</option>
+      </select>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-gold" onclick="saveProject()"><i class="fas fa-save"></i> Save Project</button>
+      <button class="btn btn-outline" onclick="closeModal('project-modal')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MILESTONE MODAL ══ -->
+<div class="modal-overlay" id="milestone-modal">
+  <div class="modal">
+    <div class="modal-title">
+      <span>Add Journey Milestone</span>
+      <button class="modal-close" onclick="closeModal('milestone-modal')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="form-group"><label>Date / Period</label><input type="text" id="mm-date" placeholder="e.g. April 2026" /></div>
+    <div class="form-group"><label>Title</label><input type="text" id="mm-title" placeholder="e.g. SkillBuild Hub Ambassador" /></div>
+    <div class="form-group"><label>Organisation</label><input type="text" id="mm-org" placeholder="e.g. IBM SkillsBuild" /></div>
+    <div class="form-group"><label>Description</label><textarea id="mm-desc" placeholder="What did this mean for your journey?"></textarea></div>
+    <div class="form-group">
+      <label>Tag</label>
+      <select id="mm-tag">
+        <option value="live">Current / Active</option>
+        <option value="cert">Certification</option>
+        <option value="milestone">Milestone</option>
+        <option value="edu">Education</option>
+        <option value="work">Work / Founded</option>
+      </select>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-gold" onclick="saveMilestone()"><i class="fas fa-save"></i> Save Milestone</button>
+      <button class="btn btn-outline" onclick="closeModal('milestone-modal')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CERT MODAL ══ -->
+<div class="modal-overlay" id="cert-modal">
+  <div class="modal">
+    <div class="modal-title">
+      <span>Add Certification</span>
+      <button class="modal-close" onclick="closeModal('cert-modal')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="form-group"><label>Issuing Body</label><input type="text" id="cm-issuer" placeholder="e.g. DSN × Microsoft" /></div>
+    <div class="form-group"><label>Certification Name</label><input type="text" id="cm-name" placeholder="e.g. Elevate AI Developers Programme (AI-900)" /></div>
+    <div class="form-group"><label>Year</label><input type="text" id="cm-year" placeholder="e.g. 2026" /></div>
+    <div class="form-group"><label>Verify URL (optional)</label><input type="text" id="cm-url" placeholder="https://..." /></div>
+    <div class="btn-group">
+      <button class="btn btn-gold" onclick="saveCert()"><i class="fas fa-save"></i> Save Certification</button>
+      <button class="btn btn-outline" onclick="closeModal('cert-modal')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ════════════════════════════════════
+   CONFIGURATION — CHANGE YOUR PIN HERE
+════════════════════════════════════ */
+const ADMIN_PIN = 'hmg2026';
+
+/* ════════════════════════════════════
+   DEFAULT DATA — reflects all 12 live projects
+════════════════════════════════════ */
+const DEFAULT_DATA = {
+  hero: {
+    name: 'Adewale Samson Adeagbo',
+    statement: 'I build data-driven tools for Nigerian classrooms — from scratch, with free tools, on an Android tablet.',
+    badge: 'Available for opportunities',
+    liveBadge: 'CBT Pro — Live with Students',
+    typewriter: ['Data Scientist', 'AI-Augmented Solutions Developer', 'Educator (15+ Years)', 'EdTech Builder', 'Founder, HMG Concepts']
+  },
+  about: {
+    p1: 'For over 15 years, I stood in Nigerian secondary school classrooms teaching Mathematics, Further Mathematics, Physics, and Chemistry — from JSS1 all the way to SSS3. Teaching gave me something no university course can: the ability to read a room, break down complexity, and understand exactly why someone is not understanding something. That instinct lives in everything I build today.',
+    p2: 'The day I decided to stop complaining about broken tools and start building replacements changed everything. CBT Pro was born not in a co-working space with fast Wi-Fi — but on an Android tablet, between lesson periods, with zero budget and one clear goal: give my students a better exam experience. Today that platform is live and used by real students. The constraint is not the obstacle. The constraint is the brief.',
+    p3: 'My formal tech journey began with the 3MTT programme in 2025 — Data Science track. It was the spark that lit everything. My problem-solving instincts, inquisitiveness, and curiosity accelerated sharply. I deployed 12 projects across ML, NLP, EdTech, and analytics. More than that, I discovered my deepest edge: as an AI-Augmented Solutions Developer, I can operate seamlessly in any technical domain — using AI as a force multiplier to build in unfamiliar territory as confidently as in my core field.',
+    quote: 'Data science taught me that if you can think through a problem clearly, you can find a path to a solution — even in unfamiliar territory.',
+    stats: [
+      { n: '15+', l: 'Years Teaching' },
+      { n: '12', l: 'Projects Deployed' },
+      { n: '1', l: 'Live EdTech Platform' },
+      { n: '500+', l: 'Students Reached' }
+    ]
+  },
+  projects: [
+    { name: 'CBT System (CBT Pro)', cat: 'EdTech · Full-Stack Web', type: 'edtech', problem: 'Nigerian teachers needed a free, reliable digital exam tool — paper CBT was slow, error-prone, and expensive.', metric: 'CSV upload · timed exams · anti-cheat · certificates · analytics', github: 'https://github.com/cssadewale/cbt-system', live: 'https://cssadewale.github.io/cbt-system/student.html', stack: ['HTML5','CSS3','Vanilla JS','Supabase','GitHub Pages'], status: 'live' },
+    { name: 'Insurance Claim Prediction', cat: 'Binary Classification · Insurance', type: 'ml', problem: 'Predict fraudulent or high-cost insurance claims before processing — smarter risk decisions.', metric: 'Random Forest · SMOTE · SHAP · 7,014 records', github: 'https://github.com/cssadewale/insurance-claim-prediction', live: 'https://adewale-insurance-claim-prediction.streamlit.app/', stack: ['Python','Scikit-learn','SHAP','SMOTE','Streamlit'], status: 'live' },
+    { name: 'Yakub Staff Promotion Prediction', cat: 'Binary Classification · HR Analytics', type: 'ml', problem: 'Flag high-potential staff objectively — removing bias from HR promotion reviews.', metric: 'Binary Classification · HR Tech · Yakub Trading Group', github: 'https://github.com/cssadewale/yakub-promotion-prediction', live: 'https://yakub-promotion-prediction.streamlit.app/', stack: ['Python','Pandas','Scikit-learn','Streamlit'], status: 'live' },
+    { name: 'Bank Customer Churn Prediction', cat: 'Binary Classification · Banking', type: 'ml', problem: 'Identify customers at risk of leaving before they do — enabling proactive retention campaigns.', metric: 'Binary Classification · Customer Analytics', github: 'https://github.com/cssadewale/bank-customer-churn-prediction', live: 'https://adewale-bank-customer-churn-prediction.streamlit.app/', stack: ['Python','Pandas','Scikit-learn','Streamlit'], status: 'live' },
+    { name: 'Income Level Prediction', cat: 'Binary Classification · FinTech', type: 'ml', problem: 'Predict income bracket for financial inclusion and credit scoring — especially for underbanked populations.', metric: 'Binary Classification · Financial Inclusion', github: 'https://github.com/cssadewale/income-level-prediction', live: 'https://adewale-income-level-prediction.streamlit.app/', stack: ['Python','Pandas','Scikit-learn','Streamlit'], status: 'live' },
+    { name: 'Fake News Detector — TruthLens', cat: 'NLP · Text Classification', type: 'nlp', problem: 'Detect misinformation in news articles automatically — because not every Nigerian student can fact-check at speed.', metric: 'NLP · TruthLens Institute · Text Classification', github: 'https://github.com/cssadewale/fake-news-detector', live: 'https://adewale-fake-news-detector.streamlit.app/', stack: ['Python','NLP','Scikit-learn','Streamlit'], status: 'live' },
+    { name: 'SwiftChain Delivery Delay Prediction', cat: 'Multi-class Classification · Logistics', type: 'ml', problem: 'Predict delivery delay category before dispatch — preventing logistics revenue loss before it happens.', metric: 'Gradient Boosting · Multi-class · SwiftChain', github: 'https://github.com/cssadewale/swiftchain-delivery-prediction', live: 'https://adewale-swiftchain-delivery-prediction.streamlit.app/', stack: ['Python','Gradient Boosting','Scikit-learn','Streamlit'], status: 'live' },
+    { name: 'Employee Burnout Rate Predictor', cat: 'Classification · Workplace Wellbeing', type: 'ml', problem: 'Identify employees at risk of burnout before productivity collapses — early warning for organisations.', metric: 'Classification · Mental Health · HR Tech', github: 'https://github.com/cssadewale/burnout-prediction', live: 'https://adewale-burnout-prediction.streamlit.app/', stack: ['Python','Pandas','Scikit-learn','Streamlit'], status: 'live' },
+    { name: 'Student Study Plan Generator', cat: 'EdTech · Rule-Based AI', type: 'edtech', problem: 'Generate personalised revision schedules based on weak areas and available study time.', metric: 'Rule-Based AI · EdTech · WAEC Prep', github: 'https://github.com/cssadewale/student-study-plan-generator', live: 'https://student-study-plan-generator.streamlit.app/', stack: ['Python','Streamlit','Pandas'], status: 'live' },
+    { name: 'Student At-Risk Predictor', cat: 'EdTech · Binary Classification', type: 'edtech', problem: 'Identify students likely to fail before exam season — so teachers can intervene early.', metric: 'Random Forest · SHAP · EdTech', github: 'https://github.com/cssadewale/student-at-risk-predictor', live: 'https://student-at-risk-predictor.streamlit.app/', stack: ['Python','Scikit-learn','SHAP','Streamlit'], status: 'live' },
+    { name: 'Student Performance Tracker', cat: 'EdTech · Data Analytics', type: 'edtech', problem: 'Track and visualise student performance over time — giving teachers a real data picture.', metric: 'Data Analytics · Visualisation · EdTech', github: 'https://github.com/cssadewale/student-performance-tracker', live: 'https://adewale-student-performance-tracker.streamlit.app/', stack: ['Python','Pandas','Streamlit'], status: 'live' },
+    { name: 'CBT Question Bank Manager', cat: 'EdTech · Full-Stack Tool', type: 'edtech', problem: 'Build, organise, and reuse CBT question sets across subjects and years — no more lost question banks.', metric: 'Streamlit · SQLite · EdTech', github: 'https://github.com/cssadewale/cbt-question-bank', live: 'https://adewale-cbt-question-bank.streamlit.app/', stack: ['Python','Streamlit','SQLite'], status: 'live' }
+  ],
+  skills: [
+    { group: 'Data Science & Machine Learning', icon: 'fas fa-brain', items: ['Python','Pandas','NumPy','Scikit-learn','SHAP','Matplotlib','Seaborn','Imbalanced-learn','Streamlit'] },
+    { group: 'NLP & Text Analytics', icon: 'fas fa-language', items: ['NLP','Text Classification','Feature Extraction','TF-IDF','Fake News Detection'] },
+    { group: 'Data & Business Intelligence', icon: 'fas fa-chart-bar', items: ['SQL','Power BI','Tableau','Google Sheets (Advanced)','Excel (Advanced)'] },
+    { group: 'Web & EdTech', icon: 'fas fa-code', items: ['HTML5','CSS3','Vanilla JavaScript','Supabase','GitHub Pages','Cloudflare Pages'] },
+    { group: 'Tools & Workflow', icon: 'fas fa-tools', items: ['Git','GitHub','Jupyter Notebook','Google Colab','VS Code'] },
+    { group: 'Currently Learning', icon: 'fas fa-graduation-cap', items: ['Deep Learning','WorldQuant University Applied DS','AI-900 (Microsoft Azure)','DSN × Google DeepTech'] }
+  ],
+  certifications: [
+    { issuer: 'IBM SkillsBuild', name: 'SkillBuild Hub Ambassador — Cohort 4', year: '2026', url: '' },
+    { issuer: 'DSN × Microsoft', name: 'Elevate AI Developers Programme (AI-900)', year: '2026', url: '' },
+    { issuer: 'DSN × Google', name: 'DeepTech_Ready — DSML Track, Cohort 3', year: '2026', url: '' },
+    { issuer: 'IBM SkillsBuild', name: 'Multiple AI, Cloud & Data Completions', year: '2025–2026', url: '' },
+    { issuer: 'DataCamp', name: 'Python Data Fundamentals', year: '2025', url: '' },
+    { issuer: '3MTT Programme', name: 'Digital Skills — Data Science Track', year: '2025', url: '' },
+    { issuer: 'Digital Skills Nigeria', name: 'AI Fluency Certification', year: '2025', url: '' },
+    { issuer: 'Open Visualization Academy', name: 'Generative AI in Data Analysis', year: '2025', url: '' },
+    { issuer: 'CareerEX / Access Bank Youthrive', name: 'Career Readiness & Digital Economy', year: '2025', url: '' }
+  ],
+  journey: [
+    { date: 'April 2026', title: 'SkillBuild Hub Ambassador — Cohort 4', org: 'IBM SkillsBuild', desc: 'Selected as an IBM SkillsBuild community ambassador to champion digital skills and AI literacy across Nigerian communities.', tag: 'live' },
+    { date: '2026', title: 'DSN × Microsoft Elevate AI Developers Programme (AI-900)', org: 'Data Scientists Network × Microsoft Azure', desc: 'Deep dive into Azure AI fundamentals — ML concepts, computer vision, NLP, and conversational AI.', tag: 'cert' },
+    { date: '2026', title: 'DSN × Google DeepTech_Ready — DSML Track, Cohort 3', org: 'Data Scientists Network × Google', desc: 'Intensive applied data science and ML programme built with Google — hands-on, industry-grade.', tag: 'cert' },
+    { date: '2024 – Ongoing', title: 'WorldQuant University — Applied Data Science Lab', org: 'WorldQuant University (WQU)', desc: 'One of the world\'s most rigorous free data science programmes — project-based, real datasets, real standards.', tag: 'live' },
+    { date: '2025', title: '12 Projects Deployed — ML, NLP, EdTech & Analytics', org: 'Independent · Streamlit Cloud · GitHub', desc: 'Deployed 12 real-world projects across insurance, logistics, banking, HR, EdTech, NLP, and data analytics.', tag: 'milestone' },
+    { date: '2025', title: 'Formal Tech Journey Begins — 3MTT Data Science', org: '3MTT Programme', desc: 'The spark that started everything. 3MTT accelerated my problem-solving instincts and gave me the technical foundation to address classroom problems through data science.', tag: 'milestone' },
+    { date: '2024', title: 'CBT Pro — First Live Exam With Real Students', org: 'HMG Technologies', desc: 'A full CBT exam platform built on an Android tablet, zero budget — used with real students for the first time.', tag: 'milestone' },
+    { date: '2023', title: 'B.Sc.(Ed) Computer Science Education — LASU', org: 'Lagos State University', desc: 'Went back to university after a decade in teaching — specifically to develop the tech skills needed to solve classroom problems. The degree that bridged pedagogy and technology.', tag: 'edu' },
+    { date: '2015', title: 'Founded HMG Concepts', org: 'Founder & CEO', desc: 'From tutoring to organisation. HMG Academy, HMG Technologies, HMG Media — built from a classroom problem.', tag: 'work' },
+    { date: '2009 / 2010', title: 'First Classroom — Where Everything Began', org: 'Nigerian Secondary School', desc: 'Walking into a Nigerian secondary school classroom for the first time as a teacher. 15+ years later, still teaching. Still building.', tag: 'milestone' }
+  ],
+  contact: {
+    wa: '+2348100866322', email: 'buildingmyictcareer@gmail.com',
+    li: 'https://linkedin.com/in/adewalesamsonadeagbo',
+    gh: 'https://github.com/cssadewale', yt: 'https://youtube.com/@hmgconcepts',
+    x: 'https://x.com/cssadewale', cv: 'https://drive.google.com/your-cv-link', formspree: ''
+  },
+  visibility: {
+    hero: true, about: true, skills: true, projects: true,
+    journey: true, youtube: true, certifications: true,
+    testimonials: true, contact: true
+  }
+};
+
+/* ════════════════════════════════════
+   STATE
+════════════════════════════════════ */
+let data = JSON.parse(localStorage.getItem('portfolio_data') || 'null') || JSON.parse(JSON.stringify(DEFAULT_DATA));
+let editingProjectIndex = -1;
+
+/* ════════════════════════════════════
+   LOGIN
+════════════════════════════════════ */
+function checkPin() {
+  const val = document.getElementById('pin-input').value;
+  if (val === ADMIN_PIN) {
+    document.getElementById('login-gate').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    initAdmin();
+  } else {
+    document.getElementById('login-error').style.display = 'block';
+    document.getElementById('pin-input').value = '';
+  }
+}
+document.getElementById('pin-input').addEventListener('keydown', e => { if(e.key === 'Enter') checkPin(); });
+function logout() { document.getElementById('app').style.display = 'none'; document.getElementById('login-gate').style.display = 'flex'; document.getElementById('pin-input').value = ''; }
+
+/* ════════════════════════════════════
+   NAVIGATION
+════════════════════════════════════ */
+function showPanel(id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  document.querySelectorAll('.sidebar-item').forEach(i => { if(i.getAttribute('onclick')?.includes(id)) i.classList.add('active'); });
+  renderPanel(id);
+}
+
+/* ════════════════════════════════════
+   RENDER PANELS
+════════════════════════════════════ */
+function renderPanel(id) {
+  if (id === 'hero') renderHero();
+  if (id === 'about') renderAbout();
+  if (id === 'projects') renderProjects();
+  if (id === 'skills') renderSkills();
+  if (id === 'journey') renderJourney();
+  if (id === 'certifications') renderCerts();
+  if (id === 'contact') renderContact();
+  if (id === 'visibility') renderVisibility();
+}
+
+function renderHero() {
+  document.getElementById('hero-name').value = data.hero.name;
+  document.getElementById('hero-statement').value = data.hero.statement;
+  document.getElementById('hero-badge').value = data.hero.badge;
+  document.getElementById('hero-livebadge').value = data.hero.liveBadge;
+  const list = document.getElementById('typewriter-list');
+  list.innerHTML = data.hero.typewriter.map((t,i) => `
+    <div class="typewriter-item">
+      <input type="text" value="${t}" onchange="data.hero.typewriter[${i}]=this.value" />
+      <button class="remove-tw" onclick="data.hero.typewriter.splice(${i},1);renderHero()"><i class="fas fa-times"></i></button>
+    </div>`).join('');
+}
+
+function addTypewriterItem() {
+  data.hero.typewriter.push('New Title');
+  renderHero();
+}
+
+function saveHero() {
+  data.hero.name = document.getElementById('hero-name').value;
+  data.hero.statement = document.getElementById('hero-statement').value;
+  data.hero.badge = document.getElementById('hero-badge').value;
+  data.hero.liveBadge = document.getElementById('hero-livebadge').value;
+  persist(); toast('Hero section saved');
+}
+
+function renderAbout() {
+  document.getElementById('about-p1').value = data.about.p1;
+  document.getElementById('about-p2').value = data.about.p2;
+  document.getElementById('about-p3').value = data.about.p3;
+  document.getElementById('about-quote').value = data.about.quote;
+  if(data.about.stats && data.about.stats.length >= 4) {
+    document.getElementById('stat1-n').value = data.about.stats[0].n;
+    document.getElementById('stat1-l').value = data.about.stats[0].l;
+    document.getElementById('stat2-n').value = data.about.stats[1].n;
+    document.getElementById('stat2-l').value = data.about.stats[1].l;
+    document.getElementById('stat3-n').value = data.about.stats[2].n;
+    document.getElementById('stat3-l').value = data.about.stats[2].l;
+    document.getElementById('stat4-n').value = data.about.stats[3].n;
+    document.getElementById('stat4-l').value = data.about.stats[3].l;
+  }
+}
+
+function saveAbout() {
+  data.about.p1 = document.getElementById('about-p1').value;
+  data.about.p2 = document.getElementById('about-p2').value;
+  data.about.p3 = document.getElementById('about-p3').value;
+  data.about.quote = document.getElementById('about-quote').value;
+  data.about.stats = [
+    { n: document.getElementById('stat1-n').value, l: document.getElementById('stat1-l').value },
+    { n: document.getElementById('stat2-n').value, l: document.getElementById('stat2-l').value },
+    { n: document.getElementById('stat3-n').value, l: document.getElementById('stat3-l').value },
+    { n: document.getElementById('stat4-n').value, l: document.getElementById('stat4-l').value }
+  ];
+  persist(); toast('About section saved');
+}
+
+function renderProjects() {
+  const list = document.getElementById('project-list');
+  document.getElementById('project-count-label').textContent = data.projects.length + ' projects';
+  list.innerHTML = data.projects.map((p,i) => {
+    const badge = p.type === 'edtech' ? 'badge-edtech' : p.type === 'nlp' ? 'badge-nlp' : 'badge-ml';
+    const lbl = p.type === 'edtech' ? 'EdTech' : p.type === 'nlp' ? 'NLP' : 'ML';
+    return `<div class="project-row">
+      <span class="project-row-drag"><i class="fas fa-grip-vertical"></i></span>
+      <span class="project-row-badge badge-live">Live</span>
+      <span class="project-row-badge ${badge}">${lbl}</span>
+      <div style="flex:1;min-width:0;">
+        <div class="project-row-name">${p.name}</div>
+        <div class="project-row-cat">${p.cat}</div>
+      </div>
+      <div class="project-row-actions">
+        <button class="btn btn-outline btn-sm" onclick="editProject(${i})"><i class="fas fa-edit"></i></button>
+        <button class="btn btn-red btn-sm" onclick="deleteProject(${i})"><i class="fas fa-trash"></i></button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderSkills() {
+  const el = document.getElementById('skills-editor');
+  el.innerHTML = data.skills.map((g,gi) => `
+    <div style="margin-bottom:1.25rem;background:var(--bg-input);border:1px solid var(--border);border-radius:8px;padding:1rem;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+        <input type="text" value="${g.group}" style="background:transparent;border:none;outline:none;font-family:var(--font);font-size:0.88rem;font-weight:700;color:var(--gold);flex:1;" onchange="data.skills[${gi}].group=this.value" />
+        <button class="btn btn-red btn-sm" onclick="data.skills.splice(${gi},1);renderSkills()"><i class="fas fa-trash"></i></button>
+      </div>
+      <input type="text" value="${g.items.join(', ')}" style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:0.55rem 0.75rem;font-family:var(--font);font-size:0.82rem;color:var(--text);outline:none;" onchange="data.skills[${gi}].items=this.value.split(',').map(s=>s.trim()).filter(Boolean)" placeholder="Comma-separated skills..." />
+    </div>`).join('');
+}
+
+function saveSkills() { persist(); toast('Skills saved'); }
+
+function renderJourney() {
+  const list = document.getElementById('journey-list');
+  document.getElementById('milestone-count-label').textContent = data.journey.length + ' milestones';
+  list.innerHTML = data.journey.map((m,i) => `
+    <div class="project-row" style="margin-bottom:0.5rem;">
+      <div style="flex:1;min-width:0;">
+        <div class="project-row-name">${m.title}</div>
+        <div class="project-row-cat">${m.date} · ${m.org}</div>
+      </div>
+      <div class="project-row-actions">
+        <button class="btn btn-red btn-sm" onclick="deleteMilestone(${i})"><i class="fas fa-trash"></i></button>
+      </div>
+    </div>`).join('');
+}
+
+function saveJourney() { persist(); toast('Journey saved'); }
+
+function renderCerts() {
+  const list = document.getElementById('cert-list');
+  list.innerHTML = data.certifications.map((c,i) => `
+    <div class="cert-row">
+      <div class="cert-row-issuer">${c.issuer}</div>
+      <div class="cert-row-name">${c.name}</div>
+      <div class="cert-row-year">${c.year}</div>
+      <button class="btn btn-red btn-sm" onclick="deleteCert(${i})"><i class="fas fa-trash"></i></button>
+    </div>`).join('');
+}
+
+function renderContact() {
+  const c = data.contact;
+  document.getElementById('c-wa').value = c.wa;
+  document.getElementById('c-email').value = c.email;
+  document.getElementById('c-li').value = c.li;
+  document.getElementById('c-gh').value = c.gh;
+  document.getElementById('c-yt').value = c.yt;
+  document.getElementById('c-x').value = c.x;
+  document.getElementById('c-cv').value = c.cv;
+  document.getElementById('c-formspree').value = c.formspree || '';
+}
+
+function saveContact() {
+  data.contact = {
+    wa: document.getElementById('c-wa').value,
+    email: document.getElementById('c-email').value,
+    li: document.getElementById('c-li').value,
+    gh: document.getElementById('c-gh').value,
+    yt: document.getElementById('c-yt').value,
+    x: document.getElementById('c-x').value,
+    cv: document.getElementById('c-cv').value,
+    formspree: document.getElementById('c-formspree').value
+  };
+  persist(); toast('Contact info saved');
+}
+
+function renderVisibility() {
+  const sections = [
+    { key:'hero', icon:'fas fa-home', name:'Hero Section', desc:'Your name, typewriter, statement and photo' },
+    { key:'about', icon:'fas fa-user', name:'About / Story', desc:'The three-chapter story and stats' },
+    { key:'skills', icon:'fas fa-code', name:'Skills', desc:'Skill badge groups' },
+    { key:'projects', icon:'fas fa-rocket', name:'Projects', desc:'All 12 project cards' },
+    { key:'journey', icon:'fas fa-route', name:'Learning Journey', desc:'Timeline of milestones' },
+    { key:'youtube', icon:'fab fa-youtube', name:'YouTube Section', desc:'Channel banner and video cards' },
+    { key:'certifications', icon:'fas fa-certificate', name:'Certifications', desc:'Certification grid' },
+    { key:'testimonials', icon:'fas fa-quote-left', name:'Testimonials', desc:'Testimonial placeholder / cards' },
+    { key:'contact', icon:'fas fa-envelope', name:'Contact', desc:'Contact cards and form' }
+  ];
+  document.getElementById('visibility-list').innerHTML = sections.map(s => `
+    <div class="section-toggle-row">
+      <div class="section-toggle-info">
+        <i class="${s.icon}"></i>
+        <div><div class="section-name">${s.name}</div><div class="section-desc">${s.desc}</div></div>
+      </div>
+      <div class="toggle-wrap">
+        <span class="toggle-label">${data.visibility[s.key] ? 'Visible' : 'Hidden'}</span>
+        <div class="toggle ${data.visibility[s.key] ? 'on' : ''}" onclick="toggleSection('${s.key}', this)"></div>
+      </div>
+    </div>`).join('');
+}
+
+function toggleSection(key, el) {
+  data.visibility[key] = !data.visibility[key];
+  el.classList.toggle('on');
+  el.previousElementSibling.textContent = data.visibility[key] ? 'Visible' : 'Hidden';
+}
+function saveVisibility() { persist(); toast('Visibility settings saved'); }
+
+/* ════════════════════════════════════
+   MODALS
+════════════════════════════════════ */
+function openAddProjectModal() {
+  editingProjectIndex = -1;
+  document.getElementById('project-modal-title').textContent = 'Add New Project';
+  ['pm-name','pm-cat','pm-problem','pm-metric','pm-github','pm-live','pm-stack'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('pm-type').value = 'ml';
+  document.getElementById('pm-status').value = 'live';
+  document.getElementById('project-modal').classList.add('open');
+}
+function editProject(i) {
+  editingProjectIndex = i;
+  const p = data.projects[i];
+  document.getElementById('project-modal-title').textContent = 'Edit Project';
+  document.getElementById('pm-name').value = p.name;
+  document.getElementById('pm-cat').value = p.cat;
+  document.getElementById('pm-type').value = p.type;
+  document.getElementById('pm-problem').value = p.problem;
+  document.getElementById('pm-metric').value = p.metric;
+  document.getElementById('pm-github').value = p.github;
+  document.getElementById('pm-live').value = p.live;
+  document.getElementById('pm-stack').value = p.stack.join(', ');
+  document.getElementById('pm-status').value = p.status;
+  document.getElementById('project-modal').classList.add('open');
+}
+function saveProject() {
+  const p = {
+    name: document.getElementById('pm-name').value,
+    cat: document.getElementById('pm-cat').value,
+    type: document.getElementById('pm-type').value,
+    problem: document.getElementById('pm-problem').value,
+    metric: document.getElementById('pm-metric').value,
+    github: document.getElementById('pm-github').value,
+    live: document.getElementById('pm-live').value,
+    stack: document.getElementById('pm-stack').value.split(',').map(s => s.trim()).filter(Boolean),
+    status: document.getElementById('pm-status').value
+  };
+  if(!p.name) return;
+  if(editingProjectIndex >= 0) data.projects[editingProjectIndex] = p;
+  else data.projects.push(p);
+  persist(); closeModal('project-modal'); renderProjects(); toast('Project saved');
+}
+function deleteProject(i) {
+  if(!confirm(`Delete "${data.projects[i].name}"?`)) return;
+  data.projects.splice(i, 1); persist(); renderProjects(); toast('Project deleted');
+}
+
+function openAddMilestoneModal() { document.getElementById('milestone-modal').classList.add('open'); }
+function saveMilestone() {
+  const m = {
+    date: document.getElementById('mm-date').value,
+    title: document.getElementById('mm-title').value,
+    org: document.getElementById('mm-org').value,
+    desc: document.getElementById('mm-desc').value,
+    tag: document.getElementById('mm-tag').value
+  };
+  if(!m.title) return;
+  data.journey.unshift(m);
+  persist(); closeModal('milestone-modal'); renderJourney(); toast('Milestone added');
+}
+function deleteMilestone(i) {
+  if(!confirm('Delete this milestone?')) return;
+  data.journey.splice(i,1); persist(); renderJourney(); toast('Milestone deleted');
+}
+
+function openAddCertModal() { document.getElementById('cert-modal').classList.add('open'); }
+function saveCert() {
+  const c = {
+    issuer: document.getElementById('cm-issuer').value,
+    name: document.getElementById('cm-name').value,
+    year: document.getElementById('cm-year').value,
+    url: document.getElementById('cm-url').value
+  };
+  if(!c.name) return;
+  data.certifications.push(c);
+  persist(); closeModal('cert-modal'); renderCerts(); toast('Certification added');
+}
+function deleteCert(i) {
+  if(!confirm('Delete this certification?')) return;
+  data.certifications.splice(i,1); persist(); renderCerts(); toast('Certification deleted');
+}
+
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+document.querySelectorAll('.modal-overlay').forEach(m => m.addEventListener('click', e => { if(e.target === m) m.classList.remove('open'); }));
+
+/* ════════════════════════════════════
+   EXPORT
+════════════════════════════════════ */
+function downloadJSON() {
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = 'portfolio-data.json'; a.click();
+  URL.revokeObjectURL(url);
+  toast('portfolio-data.json downloaded');
+}
+
+/* ════════════════════════════════════
+   PERSISTENCE
+════════════════════════════════════ */
+function persist() { localStorage.setItem('portfolio_data', JSON.stringify(data)); }
+
+/* ════════════════════════════════════
+   TOAST
+════════════════════════════════════ */
+function toast(msg) {
+  const t = document.getElementById('toast');
+  document.getElementById('toast-msg').textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+/* ════════════════════════════════════
+   INIT
+════════════════════════════════════ */
+function initAdmin() {
+  renderPanel('dashboard');
+  document.getElementById('stat-projects').textContent = data.projects.length;
+  document.getElementById('stat-certs').textContent = data.certifications.length;
+  document.getElementById('stat-journey').textContent = data.journey.length;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV | Adewale Samson Adeagbo — Data Scientist, AI-Augmented Solutions Developer & Educator</title>
+  <meta name="description" content="Online CV of Adewale Samson Adeagbo — Data Scientist, Educator, and Founder of HMG Concepts. Available for data science roles, EdTech projects, and collaborations." />
+  <link rel="canonical" href="https://adewalesamsonadeagbo.pages.dev/cv" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="shared.css" />
+
+  <style>
+    .cv-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    /* ── Sticky sidebar ── */
+    .cv-sidebar {
+      position: sticky;
+      top: 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .cv-photo {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, var(--royal-blue), var(--bg-card));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem; color: var(--royal-blue-light);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      position: relative;
+    }
+    /* Replace with: <img src="assets/adewale-headshot.webp" alt="Adewale Samson Adeagbo" /> */
+
+    .cv-download-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      font-family: var(--font-head);
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 0.9rem;
+      background: var(--gold);
+      color: var(--bg-dark);
+      border-radius: var(--radius);
+      transition: var(--transition);
+      border: 2px solid var(--gold);
+    }
+    .cv-download-btn:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: var(--glow-gold); }
+
+    .cv-contact-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .cv-contact-item { display:flex; align-items:flex-start; gap:0.65rem; }
+    .cv-contact-item i { color:var(--gold); font-size:0.75rem; width:14px; margin-top:3px; flex-shrink:0; }
+    .cv-contact-item a, .cv-contact-item span { font-family:var(--font-head); font-size:0.78rem; color:var(--text-muted); line-height:1.4; transition:var(--transition); }
+    .cv-contact-item a:hover { color:var(--gold); }
+
+    .cv-skills-sidebar {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+    }
+    .cv-skills-sidebar h4 { font-family:var(--font-head); font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); margin-bottom:0.85rem; }
+    .cv-skill-tags { display:flex; flex-wrap:wrap; gap:0.35rem; }
+    .cv-skill-tag { font-family:var(--font-mono); font-size:0.62rem; padding:0.2rem 0.5rem; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:4px; color:var(--text-muted); }
+
+    /* ── Main CV body ── */
+    .cv-main { display: flex; flex-direction: column; gap: 0; }
+
+    /* CV section */
+    .cv-section {
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .cv-section:last-child { border-bottom: none; }
+
+    .cv-section-head {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
+    }
+    .cv-section-head i { color:var(--gold); font-size:0.9rem; }
+    .cv-section-head h2 { font-family:var(--font-head); font-size:0.78rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); }
+    .cv-section-head::after { content:''; flex:1; height:1px; background:var(--border); }
+
+    /* Profile statement */
+    .cv-profile-text {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      line-height: 1.9;
+      max-width: 700px;
+    }
+    .cv-profile-text strong { color:var(--gold); font-weight:600; }
+
+    /* Experience entries */
+    .cv-entry {
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .cv-entry:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .cv-entry-top { display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; flex-wrap:wrap; margin-bottom:0.3rem; }
+    .cv-entry-title { font-family:var(--font-head); font-size:0.95rem; font-weight:700; color:var(--text-white); }
+    .cv-entry-period { font-family:var(--font-mono); font-size:0.68rem; color:var(--gold); white-space:nowrap; padding:0.18rem 0.55rem; background:rgba(245,166,35,0.08); border:1px solid rgba(245,166,35,0.2); border-radius:4px; }
+    .cv-entry-org { font-family:var(--font-head); font-size:0.82rem; color:var(--text-muted); margin-bottom:0.75rem; }
+    .cv-entry-bullets { list-style:none; display:flex; flex-direction:column; gap:0.45rem; }
+    .cv-entry-bullets li { font-size:0.85rem; color:var(--text-muted); line-height:1.6; display:flex; align-items:flex-start; gap:0.65rem; }
+    .cv-entry-bullets li::before { content:'▸'; color:var(--gold); font-size:0.7rem; margin-top:3px; flex-shrink:0; }
+    .cv-entry-bullets li strong { color:var(--text-light); font-weight:600; }
+    .cv-entry-stack { display:flex; flex-wrap:wrap; gap:0.3rem; margin-top:0.75rem; }
+
+    /* Education entries */
+    .edu-entry {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem 1.5rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .edu-entry:last-child { border-bottom:none; margin-bottom:0; }
+    .edu-icon { width:42px; height:42px; border-radius:10px; background:rgba(245,166,35,0.08); border:1px solid rgba(245,166,35,0.2); display:flex; align-items:center; justify-content:center; color:var(--gold); font-size:1rem; flex-shrink:0; }
+    .edu-title { font-family:var(--font-head); font-size:0.9rem; font-weight:700; color:var(--text-white); margin-bottom:0.15rem; }
+    .edu-org { font-family:var(--font-head); font-size:0.8rem; color:var(--text-muted); margin-bottom:0.25rem; }
+    .edu-year { font-family:var(--font-mono); font-size:0.65rem; color:var(--gold); }
+
+    /* Certs grid */
+    .certs-cv-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 0.75rem;
+    }
+    .cert-cv-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.1rem;
+      transition: var(--transition);
+    }
+    .cert-cv-card:hover { border-color:rgba(245,166,35,0.3); }
+    .cert-cv-issuer { font-family:var(--font-mono); font-size:0.6rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold); margin-bottom:0.25rem; }
+    .cert-cv-name { font-family:var(--font-head); font-size:0.8rem; font-weight:600; color:var(--text-white); line-height:1.3; margin-bottom:0.15rem; }
+    .cert-cv-year { font-family:var(--font-mono); font-size:0.62rem; color:var(--text-muted); }
+
+    /* Print styles */
+    @media print {
+      nav, footer, .cv-download-btn { display:none !important; }
+      .cv-layout { grid-template-columns:1fr; }
+      .cv-sidebar { position:static; }
+      body { background:white; color:black; }
+    }
+
+    @media(max-width:900px) {
+      .cv-layout { grid-template-columns:1fr; }
+      .cv-sidebar { position:static; }
+      .certs-cv-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Adewale <span>Adeagbo</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="journey.html">Journey</a></li>
+    <li><a href="cv.html" class="active">CV</a></li>
+  </ul>
+  <a href="https://drive.google.com/your-cv-link" target="_blank" class="nav-cta"><i class="fas fa-download"></i> Download CV</a>
+  <div class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="index.html" onclick="closeMobileNav()">Home</a>
+  <a href="about.html" onclick="closeMobileNav()">About</a>
+  <a href="projects.html" onclick="closeMobileNav()">Projects</a>
+  <a href="journey.html" onclick="closeMobileNav()">Journey</a>
+  <a href="cv.html" onclick="closeMobileNav()">CV</a>
+  <a href="https://drive.google.com/your-cv-link" target="_blank">Download PDF CV ↗</a>
+</div>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="page-hero-label">Curriculum Vitae</div>
+    <div class="divider"></div>
+    <h1 class="page-hero-title">Adewale Samson Adeagbo</h1>
+    <p class="page-hero-sub">Data Scientist · AI-Augmented Solutions Developer · Educator (15+ Years) · Founder, HMG Concepts · Lagos / Ogun State, Nigeria</p>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="cv-layout">
+
+      <!-- SIDEBAR -->
+      <div class="cv-sidebar fade-up">
+        <!-- Photo placeholder — replace with actual img tag -->
+        <div class="cv-photo"><i class="fas fa-user"></i></div>
+
+        <!-- Download button -->
+        <a href="https://drive.google.com/your-cv-link" target="_blank" class="cv-download-btn">
+          <i class="fas fa-file-arrow-down"></i> Download PDF CV
+        </a>
+
+        <!-- Contact -->
+        <div class="cv-contact-card">
+          <div class="cv-contact-item">
+            <i class="fab fa-whatsapp"></i>
+            <a href="https://wa.me/2348100866322" target="_blank">+234 810 086 6322</a>
+          </div>
+          <div class="cv-contact-item">
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:buildingmyictcareer@gmail.com">buildingmyictcareer@gmail.com</a>
+          </div>
+          <div class="cv-contact-item">
+            <i class="fab fa-linkedin-in"></i>
+            <a href="https://linkedin.com/in/adewalesamsonadeagbo" target="_blank">adewalesamsonadeagbo</a>
+          </div>
+          <div class="cv-contact-item">
+            <i class="fab fa-github"></i>
+            <a href="https://github.com/cssadewale" target="_blank">cssadewale</a>
+          </div>
+          <div class="cv-contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Lagos / Ogun State, Nigeria</span>
+          </div>
+          <div class="cv-contact-item">
+            <i class="fas fa-globe"></i>
+            <a href="https://adewalesamsonadeagbo.pages.dev" target="_blank">Portfolio Website</a>
+          </div>
+        </div>
+
+        <!-- Core skills -->
+        <div class="cv-skills-sidebar">
+          <h4>Core Skills</h4>
+          <div class="cv-skill-tags">
+            <span class="cv-skill-tag">Python</span>
+            <span class="cv-skill-tag">Scikit-learn</span>
+            <span class="cv-skill-tag">Pandas</span>
+            <span class="cv-skill-tag">NumPy</span>
+            <span class="cv-skill-tag">SHAP</span>
+            <span class="cv-skill-tag">Streamlit</span>
+            <span class="cv-skill-tag">SQL</span>
+            <span class="cv-skill-tag">Power BI</span>
+            <span class="cv-skill-tag">Tableau</span>
+            <span class="cv-skill-tag">HTML5</span>
+            <span class="cv-skill-tag">CSS3</span>
+            <span class="cv-skill-tag">JavaScript</span>
+            <span class="cv-skill-tag">Supabase</span>
+            <span class="cv-skill-tag">Git / GitHub</span>
+            <span class="cv-skill-tag">Jupyter</span>
+            <span class="cv-skill-tag">Google Colab</span>
+          </div>
+        </div>
+
+        <div class="cv-skills-sidebar">
+          <h4>Currently Learning</h4>
+          <div class="cv-skill-tags">
+            <span class="cv-skill-tag" style="color:var(--emerald);border-color:rgba(16,185,129,0.25);">Deep Learning</span>
+            <span class="cv-skill-tag" style="color:var(--emerald);border-color:rgba(16,185,129,0.25);">Azure AI (AI-900)</span>
+            <span class="cv-skill-tag" style="color:var(--emerald);border-color:rgba(16,185,129,0.25);">WQU Applied DS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAIN CV BODY -->
+      <div class="cv-main fade-up fade-up-delay-1">
+
+        <!-- Profile -->
+        <div class="cv-section">
+          <div class="cv-section-head"><i class="fas fa-user-tie"></i><h2>Professional Profile</h2></div>
+          <p class="cv-profile-text">
+            Nigerian <strong>Data Scientist, AI-Augmented Solutions Developer, and Educator</strong> with over 15 years of secondary school teaching experience across Mathematics, Further Mathematics, Physics, and Chemistry. Founder of <strong>HMG Concepts</strong> and builder of <strong>CBT Pro</strong> — a live EdTech exam platform used by real students, built on an Android tablet with zero budget. My formal tech journey began with the <strong>3MTT programme in 2025</strong> — the spark that accelerated my problem-solving instincts into 12 deployed projects across ML, NLP, EdTech, and analytics. I completed rigorous programmes with WorldQuant University, DSN × Google, DSN × Microsoft, and IBM SkillsBuild. As an <strong>AI-Augmented Solutions Developer</strong>, I use AI as a force multiplier to operate confidently across any technical domain — not just data science. Available for data science roles, EdTech collaborations, and school technology partnerships.
+          </p>
+        </div>
+
+        <!-- Experience -->
+        <div class="cv-section">
+          <div class="cv-section-head"><i class="fas fa-briefcase"></i><h2>Experience</h2></div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-top">
+              <div class="cv-entry-title">Founder & Lead Data Scientist / EdTech Builder</div>
+              <span class="cv-entry-period">2015 – Present</span>
+            </div>
+            <div class="cv-entry-org">HMG Concepts (His Marvellous Grace Educational Consult) · Lagos / Ogun State</div>
+            <ul class="cv-entry-bullets">
+              <li>Founded and scaled a multi-subsidiary educational organisation: HMG Academy (exam prep), HMG Technologies (EdTech), and HMG Media (YouTube / content).</li>
+              <li><strong>Built CBT Pro</strong> — a full-stack Computer Based Test platform — from scratch on an Android tablet; zero budget, now live with real students.</li>
+              <li>Deployed <strong>12 live projects</strong> on Streamlit Cloud and GitHub Pages covering ML, NLP, EdTech, HR analytics, logistics, banking, and FinTech.</li>
+              <li>Runs a YouTube channel (youtube.com/@hmgconcepts) with tutorials, project walkthroughs, and WAEC exam prep — <strong>500+ students reached</strong>.</li>
+              <li>Operates as an <strong>AI-Augmented Solutions Developer</strong> — using AI tools to build seamlessly across data science, web, and product domains.</li>
+            </ul>
+            <div class="cv-entry-stack">
+              <span class="stack-badge">Python</span><span class="stack-badge">Scikit-learn</span><span class="stack-badge">Streamlit</span><span class="stack-badge">HTML/CSS/JS</span><span class="stack-badge">Supabase</span><span class="stack-badge">SHAP</span>
+            </div>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-top">
+              <div class="cv-entry-title">Secondary School Teacher</div>
+              <span class="cv-entry-period">2013 – Present</span>
+            </div>
+            <div class="cv-entry-org">Nigerian Secondary Schools · Lagos / Ogun State</div>
+            <ul class="cv-entry-bullets">
+              <li>Taught <strong>Mathematics, Further Mathematics, Physics, and Chemistry</strong> across JSS1 to SSS3 for over <strong>15 years</strong>.</li>
+              <li>Prepared hundreds of students for <strong>WAEC and NECO</strong> examinations — developed deep understanding of curriculum, exam patterns, and student failure modes.</li>
+              <li>Identified systemic gaps in Nigerian CBT infrastructure that directly led to building CBT Pro.</li>
+              <li>Maintained student performance tracking using <strong>Google Sheets</strong> and basic data analysis to guide intervention decisions.</li>
+            </ul>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-top">
+              <div class="cv-entry-title">SkillBuild Hub Ambassador</div>
+              <span class="cv-entry-period">April 2026 – Present</span>
+            </div>
+            <div class="cv-entry-org">IBM SkillsBuild · Cohort 4</div>
+            <ul class="cv-entry-bullets">
+              <li>Selected as a community ambassador to champion digital skills, AI literacy, and technology access across Nigerian communities.</li>
+              <li>Represents IBM SkillsBuild in educational and professional community contexts.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Projects -->
+        <div class="cv-section">
+          <div class="cv-section-head"><i class="fas fa-rocket"></i><h2>Key Projects</h2></div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-top">
+              <div class="cv-entry-title">CBT Pro — EdTech Exam Platform</div>
+              <span class="cv-entry-period">2024 · LIVE</span>
+            </div>
+            <div class="cv-entry-org"><a href="https://cssadewale.github.io/cbt-system/student.html" target="_blank" style="color:var(--gold);">cssadewale.github.io/cbt-system</a></div>
+            <ul class="cv-entry-bullets">
+              <li>Full-stack web exam platform — CSV upload, timed sessions, scientific calculator, anti-cheat detection, teacher dashboard, analytics, certificate generation, WhatsApp sharing.</li>
+              <li>Built entirely on an Android tablet. Zero budget. Zero external frameworks. Live with real students.</li>
+            </ul>
+            <div class="cv-entry-stack"><span class="stack-badge">HTML5</span><span class="stack-badge">CSS3</span><span class="stack-badge">Vanilla JS</span><span class="stack-badge">Supabase</span><span class="stack-badge">GitHub Pages</span></div>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-top">
+              <div class="cv-entry-title">Insurance Claim Prediction</div>
+              <span class="cv-entry-period">Live · Streamlit</span>
+            </div>
+            <div class="cv-entry-org"><a href="https://adewale-insurance-claim-prediction.streamlit.app/" target="_blank" style="color:var(--gold);">adewale-insurance-claim-prediction.streamlit.app</a></div>
+            <ul class="cv-entry-bullets">
+              <li>Random Forest with GridSearchCV, SMOTE for class imbalance, SHAP for explainability. Binary classification. 7,014 records.</li>
+            </ul>
+            <div class="cv-entry-stack"><span class="stack-badge">Python</span><span class="stack-badge">Scikit-learn</span><span class="stack-badge">SHAP</span><span class="stack-badge">SMOTE</span><span class="stack-badge">Streamlit</span></div>
+          </div>
+
+          <div class="cv-entry" style="margin-bottom:0;padding-bottom:0;border-bottom:none;">
+            <div class="cv-entry-title" style="margin-bottom:0.75rem;">All 12 Live Projects</div>
+            <ul class="cv-entry-bullets">
+              <li><strong>Yakub Staff Promotion Prediction</strong> — HR analytics · <a href="https://yakub-promotion-prediction.streamlit.app/" target="_blank" style="color:var(--gold);">Live App</a></li>
+              <li><strong>Bank Customer Churn Prediction</strong> — Banking analytics · <a href="https://adewale-bank-customer-churn-prediction.streamlit.app/" target="_blank" style="color:var(--gold);">Live App</a></li>
+              <li><strong>Income Level Prediction</strong> — Financial inclusion · <a href="https://adewale-income-level-prediction.streamlit.app/" target="_blank" style="color:var(--gold);">Live App</a></li>
+              <li><strong>Fake News Detector — TruthLens</strong> — NLP text classification · <a href="https://adewale-fake-news-detector.streamlit.app/" target="_blank" style="color:var(--gold);">Live App</a></li>
+              <li><strong>SwiftChain Delivery Delay Prediction</strong> — Multi-class · Gradient Boosting · <a href="https://adewale-swiftchain-delivery-prediction.streamlit.app/" target="_blank" style="color:var(--gold);">Live App</a></li>
+              <li><strong>Employee Burnout Rate Predictor</strong> — Workplace wellbeing · <a href="https://adewale-burnout-prediction.streamlit.app/" target="_blank" style="color:var(--gold);">Live App</a></li>
+              <li><strong>Student Study Plan Generator</strong> — EdTech · Rule-based AI · <a href="https://student-study-plan-generator.streamlit.app/" target="_blank" style="color:var(--gold);">Live App</a></li>
+              <li><strong>Student At-Risk Predictor</strong> — EdTech · Random Forest · SHAP · <a href="https://student-at-risk-predictor.streamlit.app/" target="_blank" style="color:var(--gold);">Live App</a></li>
+              <li><strong>Student Performance Tracker</strong> — EdTech · Data analytics · <a href="https://adewale-student-performance-tracker.streamlit.app/" target="_blank" style="color:var(--gold);">Live App</a></li>
+              <li><strong>CBT Question Bank Manager</strong> — EdTech · Streamlit + SQLite · <a href="https://adewale-cbt-question-bank.streamlit.app/" target="_blank" style="color:var(--gold);">Live App</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="cv-section">
+          <div class="cv-section-head"><i class="fas fa-graduation-cap"></i><h2>Education</h2></div>
+
+          <div class="edu-entry">
+            <div class="edu-icon"><i class="fas fa-university"></i></div>
+            <div>
+              <div class="edu-title">B.Sc.(Ed) Computer Science Education</div>
+              <div class="edu-org">Lagos State University (LASU)</div>
+              <div class="edu-year">2023 · Completed</div>
+            </div>
+          </div>
+
+          <div class="edu-entry">
+            <div class="edu-icon"><i class="fas fa-globe"></i></div>
+            <div>
+              <div class="edu-title">Applied Data Science Lab</div>
+              <div class="edu-org">WorldQuant University (WQU)</div>
+              <div class="edu-year">2024 – Ongoing</div>
+            </div>
+          </div>
+
+          <div class="edu-entry">
+            <div class="edu-icon"><i class="fas fa-robot"></i></div>
+            <div>
+              <div class="edu-title">DSN × Microsoft Elevate AI Developers Programme (AI-900)</div>
+              <div class="edu-org">Data Scientists Network × Microsoft Azure</div>
+              <div class="edu-year">2026</div>
+            </div>
+          </div>
+
+          <div class="edu-entry" style="border-bottom:none;margin-bottom:0;">
+            <div class="edu-icon"><i class="fab fa-google"></i></div>
+            <div>
+              <div class="edu-title">DSN × Google DeepTech_Ready — DSML Track, Cohort 3</div>
+              <div class="edu-org">Data Scientists Network × Google</div>
+              <div class="edu-year">2026</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Certifications -->
+        <div class="cv-section">
+          <div class="cv-section-head"><i class="fas fa-certificate"></i><h2>Certifications</h2></div>
+          <div class="certs-cv-grid">
+            <div class="cert-cv-card">
+              <div class="cert-cv-issuer">IBM SkillsBuild</div>
+              <div class="cert-cv-name">SkillBuild Hub Ambassador · Cohort 4</div>
+              <div class="cert-cv-year">2026</div>
+            </div>
+            <div class="cert-cv-card">
+              <div class="cert-cv-issuer">DataCamp</div>
+              <div class="cert-cv-name">Python Data Fundamentals</div>
+              <div class="cert-cv-year">2025</div>
+            </div>
+            <div class="cert-cv-card">
+              <div class="cert-cv-issuer">3MTT Programme</div>
+              <div class="cert-cv-name">Digital Skills — Data Science Track</div>
+              <div class="cert-cv-year">2025</div>
+            </div>
+            <div class="cert-cv-card">
+              <div class="cert-cv-issuer">Digital Skills Nigeria</div>
+              <div class="cert-cv-name">AI Fluency Certification</div>
+              <div class="cert-cv-year">2025</div>
+            </div>
+            <div class="cert-cv-card">
+              <div class="cert-cv-issuer">Open Visualization Academy</div>
+              <div class="cert-cv-name">Generative AI in Data Analysis</div>
+              <div class="cert-cv-year">2025</div>
+            </div>
+            <div class="cert-cv-card">
+              <div class="cert-cv-issuer">CareerEX / Access Bank Youthrive</div>
+              <div class="cert-cv-name">Career Readiness & Digital Economy</div>
+              <div class="cert-cv-year">2025</div>
+            </div>
+            <div class="cert-cv-card">
+              <div class="cert-cv-issuer">Digital Skillup Africa · ST@40</div>
+              <div class="cert-cv-name">Technology for Africa — Skills Track</div>
+              <div class="cert-cv-year">2024–2025</div>
+            </div>
+            <div class="cert-cv-card">
+              <div class="cert-cv-issuer">IBM SkillsBuild</div>
+              <div class="cert-cv-name">Multiple AI, Cloud & Data Completions</div>
+              <div class="cert-cv-year">2025–2026</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Availability -->
+        <div class="cv-section">
+          <div class="cv-section-head"><i class="fas fa-handshake"></i><h2>Availability & Interests</h2></div>
+          <ul class="cv-entry-bullets">
+            <li>Open to <strong>remote data science roles</strong> — full-time, contract, and freelance</li>
+            <li>Available for <strong>EdTech product collaborations</strong> with schools, NGOs, and education companies</li>
+            <li>Interested in <strong>school technology partnerships</strong> to deploy or adapt CBT Pro</li>
+            <li>Open to <strong>data science consulting</strong> for businesses across insurance, logistics, HR, and financial services</li>
+            <li>Available for <strong>workshops and training</strong> — data science for educators, Python for beginners, digital skills</li>
+          </ul>
+        </div>
+
+      </div><!-- /cv-main -->
+    </div><!-- /cv-layout -->
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">Adewale <span>Adeagbo</span></div>
+        <div class="footer-slogan">"Learning Deliberately. Teaching Authentically."</div>
+        <div class="footer-socials">
+          <a href="https://linkedin.com/in/adewalesamsonadeagbo" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://github.com/cssadewale" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+          <a href="https://x.com/cssadewale" target="_blank" class="social-icon"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://youtube.com/@hmgconcepts" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="journey.html">Journey</a></li>
+          <li><a href="cv.html">CV</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li><a href="https://wa.me/2348100866322" target="_blank">WhatsApp ↗</a></li>
+          <li><a href="mailto:buildingmyictcareer@gmail.com">Email ↗</a></li>
+          <li><a href="https://drive.google.com/your-cv-link" target="_blank">Download PDF CV ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Adewale Samson Adeagbo | HMG Concepts</div>
+      <div class="footer-built">Built with <span>HTML · CSS · JavaScript</span> — hosted free on Cloudflare Pages</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => document.getElementById('navbar').classList.toggle('scrolled', scrollY > 50));
+  function closeMobileNav() { document.getElementById('nav-mobile').classList.remove('open'); }
+  document.getElementById('hamburger').addEventListener('click', () => document.getElementById('nav-mobile').classList.toggle('open'));
+  const obs = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.08 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
