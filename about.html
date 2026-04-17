@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Adewale Samson Adeagbo — Data Scientist & 15+ Year STEM Educator, Lagos</title>
+  <meta name="description" content="The full story of Adewale Samson Adeagbo — 15+ years teaching from Nursery to Secondary School, AI-Augmented Solutions Developer, founder of HMG Concepts, builder of CBT Pro. Lagos, Nigeria." />
+  <link rel="canonical" href="https://cssadewale.pages.dev/about" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .chapter p{font-size:1rem;color:#dce8f8;line-height:1.92;margin-bottom:1.4rem;max-width:680px}
+    .chapter p strong{color:#F5A623;font-weight:700}
+    .chapter p em{color:#fff;font-style:italic}
+    .profile-block{display:grid;grid-template-columns:300px 1fr;gap:4rem;align-items:start;margin-bottom:5rem}
+    .profile-photo-frame{position:sticky;top:100px}
+    .profile-photo{width:100%;aspect-ratio:3/4;border-radius:var(--radius-lg);background:linear-gradient(160deg,#1B3A6B 0%,#0f1628 100%);display:flex;align-items:center;justify-content:center;border:1px solid var(--border);overflow:hidden;position:relative}
+    .profile-photo-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.5rem}
+    .profile-photo-inner i{font-size:4.5rem;color:#2451a0}
+    .profile-photo-inner span{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;color:#9db2cc}
+    .profile-quick{margin-top:1.25rem;background:#0f1628;border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;display:flex;flex-direction:column;gap:0.75rem}
+    .profile-quick-item{display:flex;align-items:flex-start;gap:0.75rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.82rem}
+    .profile-quick-item i{color:#F5A623;width:16px;flex-shrink:0;font-size:0.75rem;margin-top:2px}
+    .profile-quick-item span{color:#9db2cc;min-width:65px}
+    .profile-quick-item strong{color:#dce8f8;font-weight:600}
+    .chapter{margin-bottom:4rem}
+    .chapter-number{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:#F5A623;margin-bottom:0.5rem}
+    .chapter-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:800;color:#fff;letter-spacing:-0.03em;line-height:1.2;margin-bottom:1.5rem}
+    .chapter-divider{width:100%;height:1px;background:var(--border);margin:4rem 0}
+    .pullquote{background:linear-gradient(135deg,rgba(27,58,107,0.25),rgba(16,185,129,0.05));border-left:4px solid #F5A623;border-radius:0 var(--radius) var(--radius) 0;padding:1.5rem 2rem;margin:2rem 0;max-width:640px;position:relative}
+    .pullquote::before{content:'"';position:absolute;top:-0.75rem;left:1rem;font-size:4.5rem;color:#F5A623;opacity:0.2;font-family:Georgia,serif;line-height:1}
+    .pullquote p{font-family:'Lora',serif;font-style:italic;font-size:1.05rem;color:#fff;line-height:1.75;margin-bottom:0!important;max-width:100%!important}
+    .stats-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin:2.5rem 0 3rem}
+    .stat-item{background:#0f1628;border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 0.75rem;text-align:center;transition:all 0.3s ease}
+    .stat-item:hover{border-color:#F5A623;transform:translateY(-3px)}
+    .stat-number{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.6rem;font-weight:800;color:#F5A623;line-height:1;margin-bottom:0.3rem}
+    .stat-label{font-family:'Plus Jakarta Sans',sans-serif;font-size:0.68rem;font-weight:500;color:#9db2cc;line-height:1.3}
+    .teaching-table{background:#0f1628;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin:2rem 0}
+    .teaching-table-head{display:grid;grid-template-columns:1fr 1.5fr 1.2fr 0.8fr;padding:0.75rem 1.5rem;background:rgba(245,166,35,0.06);border-bottom:1px solid var(--border)}
+    .teaching-table-head span{font-family:'Plus Jakarta Sans',sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#F5A623}
+    .teaching-row{display:grid;grid-template-columns:1fr 1.5fr 1.2fr 0.8fr;padding:1rem 1.5rem;border-bottom:1px solid rgba(255,255,255,0.04);align-items:start;transition:all 0.3s ease}
+    .teaching-row:last-child{border-bottom:none}
+    .teaching-row:hover{background:rgba(255,255,255,0.02)}
+    .teaching-row .period{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:#F5A623}
+    .teaching-row .role{font-family:'Plus Jakarta Sans',sans-serif;font-size:0.85rem;font-weight:600;color:#dce8f8;line-height:1.4}
+    .teaching-row .role-sub{font-size:0.72rem;color:#9db2cc;font-family:'Plus Jakarta Sans',sans-serif}
+    .teaching-row .subjects{font-family:'Plus Jakarta Sans',sans-serif;font-size:0.78rem;color:#c6d8f0;line-height:1.5}
+    .teaching-row .level{font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:#9db2cc}
+    .origin-highlight{background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(27,58,107,0.15));border:1px solid rgba(16,185,129,0.2);border-radius:var(--radius-lg);padding:2rem 2.5rem;margin:2rem 0;position:relative;overflow:hidden}
+    .origin-highlight::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#10b981,#F5A623)}
+    .origin-highlight-label{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#10b981;margin-bottom:0.75rem}
+    .origin-highlight p{font-size:0.95rem;color:#dce8f8;line-height:1.85;margin-bottom:0;max-width:100%}
+    .origin-highlight p strong{color:#F5A623}
+    .philosophy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin:2.5rem 0}
+    .philosophy-card{background:#0f1628;border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.75rem;transition:all 0.3s ease;position:relative;overflow:hidden}
+    .philosophy-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:#F5A623;opacity:0;transition:all 0.3s ease}
+    .philosophy-card:hover{border-color:rgba(245,166,35,0.3);transform:translateY(-3px)} .philosophy-card:hover::before{opacity:1}
+    .philosophy-card-icon{font-size:1.5rem;margin-bottom:1rem}
+    .philosophy-card-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;font-weight:700;color:#fff;margin-bottom:0.5rem}
+    .philosophy-card-text{font-size:0.83rem;color:#9db2cc;line-height:1.7}
+    .hmg-block{background:linear-gradient(135deg,rgba(27,58,107,0.25),rgba(16,185,129,0.05));border:1px solid var(--border);border-radius:var(--radius-lg);padding:2.5rem;position:relative;overflow:hidden}
+    .hmg-block::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#F5A623,#10b981,#2451a0)}
+    .hmg-block p{font-size:0.95rem;color:#c6d8f0;line-height:1.8;margin-bottom:1.5rem}
+    .hmg-block p strong{color:#F5A623}
+    .hmg-subsidiaries{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1.5rem}
+    .hmg-sub{background:#0f1628;border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;transition:all 0.3s ease}
+    .hmg-sub:hover{border-color:rgba(245,166,35,0.3);transform:translateY(-2px)}
+    .hmg-sub-icon{font-size:1.4rem;margin-bottom:0.6rem}
+    .hmg-sub-name{font-family:'Plus Jakarta Sans',sans-serif;font-size:0.88rem;font-weight:700;color:#F5A623;margin-bottom:0.4rem}
+    .hmg-sub-desc{font-family:'Plus Jakarta Sans',sans-serif;font-size:0.78rem;color:#9db2cc;line-height:1.5}
+    .exam-scope{margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:0.5rem}
+    .exam-badge{font-family:'JetBrains Mono',monospace;font-size:0.65rem;padding:0.3rem 0.7rem;background:rgba(245,166,35,0.08);border:1px solid rgba(245,166,35,0.25);border-radius:4px;color:#f0c060}
+    .about-cta{display:flex;gap:1rem;margin-top:3rem;flex-wrap:wrap}
+    @media(max-width:900px){
+      .profile-block{grid-template-columns:1fr}.profile-photo-frame{position:static}
+      .profile-photo{aspect-ratio:16/9;max-height:300px}.stats-strip{grid-template-columns:repeat(3,1fr)}
+      .philosophy-grid{grid-template-columns:1fr}.hmg-subsidiaries{grid-template-columns:1fr}
+      .teaching-table-head,.teaching-row{grid-template-columns:1fr 1fr}
+      .teaching-table-head span:nth-child(3),.teaching-table-head span:nth-child(4){display:none}
+      .teaching-row .level,.teaching-row .subjects{display:none}
+    }
+    @media(max-width:600px){.stats-strip{grid-template-columns:repeat(2,1fr)}}
+    .btn-primary{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.88rem;padding:0.85rem 1.85rem;background:#F5A623;color:#0a0e1a;border-radius:8px;transition:all 0.3s ease;border:2px solid #F5A623;cursor:pointer;display:inline-flex;align-items:center;gap:0.5rem}
+    .btn-primary:hover{background:#fbbf5a;transform:translateY(-2px)}
+    .btn-secondary{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.88rem;padding:0.85rem 1.85rem;background:transparent;color:#fff;border-radius:8px;transition:all 0.3s ease;border:2px solid rgba(255,255,255,0.22);cursor:pointer;display:inline-flex;align-items:center;gap:0.5rem}
+    .btn-secondary:hover{border-color:#F5A623;color:#F5A623;transform:translateY(-2px)}
+  </style>
+</head>
+<body>
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Adewale <span>Adeagbo</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="journey.html">Journey</a></li>
+    <li><a href="cv.html">CV</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <a href="cv.html" class="nav-cta"><i class="fas fa-file-alt"></i> View CV</a>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="index.html" onclick="closeMobileNav()">Home</a>
+  <a href="about.html" onclick="closeMobileNav()">About</a>
+  <a href="projects.html" onclick="closeMobileNav()">Projects</a>
+  <a href="journey.html" onclick="closeMobileNav()">Journey</a>
+  <a href="cv.html" onclick="closeMobileNav()">CV</a>
+  <a href="index.html#contact" onclick="closeMobileNav()">Contact</a>
+</div>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="page-hero-label">The Full Story</div>
+    <div class="divider"></div>
+    <h1 class="page-hero-title">About Adewale</h1>
+    <p class="page-hero-sub">Not a biography. A story about a classroom that never let go, an Android tablet that became a development machine, a degree earned as an adult, and what happens when a 15-year educator finally finds the technical tools to solve the problems he has been watching for 15 years.</p>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="profile-block">
+      <div class="profile-photo-frame fade-up">
+        <!-- Replace with: <img src="assets/adewale-about.webp" alt="Adewale Samson Adeagbo" style="width:100%;border-radius:var(--radius-lg);" /> -->
+        <div class="profile-photo">
+          <div class="profile-photo-inner">
+            <i class="fas fa-user"></i>
+            <span>PHOTO COMING SOON</span>
+          </div>
+        </div>
+        <div class="profile-quick">
+          <div class="profile-quick-item"><i class="fas fa-map-marker-alt"></i><span>Based in</span><strong>Lagos / Ogun State, Nigeria</strong></div>
+          <div class="profile-quick-item"><i class="fas fa-briefcase"></i><span>Role</span><strong>Data Scientist &amp; AI-Augmented Solutions Developer</strong></div>
+          <div class="profile-quick-item"><i class="fas fa-chalkboard-teacher"></i><span>Teaching</span><strong>15+ Years · Nursery to Secondary</strong></div>
+          <div class="profile-quick-item"><i class="fas fa-building"></i><span>Founder</span><strong>HMG Concepts (est. 2015)</strong></div>
+          <div class="profile-quick-item"><i class="fas fa-graduation-cap"></i><span>Degree</span><strong>B.Sc.(Ed) CS Education, LASU 2023</strong></div>
+          <div class="profile-quick-item"><i class="fas fa-envelope"></i><span>Email</span><strong>hmgconcepts@gmail.com</strong></div>
+          <div class="profile-quick-item"><i class="fab fa-whatsapp"></i><span>WhatsApp</span><strong>+2348100866322</strong></div>
+          <div class="profile-quick-item"><i class="fab fa-github"></i><span>GitHub</span><strong>github.com/cssadewale</strong></div>
+        </div>
+      </div>
+
+      <div class="fade-up fade-up-delay-1">
+        <div class="stats-strip">
+          <div class="stat-item"><div class="stat-number">15+</div><div class="stat-label">Years Teaching All Levels</div></div>
+          <div class="stat-item"><div class="stat-number">12</div><div class="stat-label">Projects Deployed</div></div>
+          <div class="stat-item"><div class="stat-number">7</div><div class="stat-label">Industries Served</div></div>
+          <div class="stat-item"><div class="stat-number">&#8358;0</div><div class="stat-label">CBT Pro Budget</div></div>
+          <div class="stat-item"><div class="stat-number">2009</div><div class="stat-label">First Classroom</div></div>
+        </div>
+
+        <!-- Chapter 1 -->
+        <div class="chapter">
+          <div class="chapter-number">Chapter 01</div>
+          <h2 class="chapter-title">The Educator: Fifteen Years Across Every Level</h2>
+          <p>My teaching career began before I had a formal degree to show for it &mdash; and that matters. I started standing in front of Nigerian classrooms in <strong>2009</strong>, and I have not stopped. Not when things got hard. Not when the pay did not match the effort. Not when the tools were broken and the resources were thin. I kept showing up because I genuinely believed &mdash; and still believe &mdash; that what happens inside a classroom is one of the most important things that can happen in any young person's life.</p>
+          <p>I have taught across <strong>every level of Nigerian education</strong>. I started with young children in <strong>Nursery school</strong>, moved into <strong>Primary school</strong> where I watched foundations being built (or not built), and I am currently based in <strong>Secondary school</strong> teaching JSS1 through SSS3. Across that journey I have taught <strong>Mathematics, Further Mathematics, Physics, Chemistry, and Computer Science</strong> at institutions including His Marvellous Grace, Fredaks Group of Schools, Anchor Heights, Dave Model School, Lifeline, De Glorious College, Ennycharles, Chrisville, Angel High School, God of Seed Academy, and others across Lagos and Ogun State. I have also tutored individually through Tuteria, Gate Academy, DoLessons, and Prepclass.</p>
+          <p>Fifteen years of teaching gave me something that no data science bootcamp, no online course, and no university programme can replicate: <em>the ability to know when someone does not understand something, even when they think they do</em>. That skill &mdash; watching for the gap between surface knowledge and real comprehension &mdash; is directly present in every model I build and every notebook I document today.</p>
+          <div class="pullquote">
+            <p>"Teaching taught me that the hardest part of any problem is rarely the solution. It is understanding the problem clearly enough to know what kind of solution is even possible."</p>
+          </div>
+        </div>
+
+        <!-- Teaching table -->
+        <div class="chapter">
+          <div class="chapter-number">Teaching Record</div>
+          <h2 class="chapter-title">Schools, Subjects &amp; Levels</h2>
+          <div class="teaching-table">
+            <div class="teaching-table-head">
+              <span>Period</span><span>School / Setting</span><span>Subjects</span><span>Level</span>
+            </div>
+            <div class="teaching-row">
+              <div class="period">2023 &ndash; Present</div>
+              <div class="role">Science &amp; Maths Teacher<div class="role-sub">God of Seed Academy</div></div>
+              <div class="subjects">Mathematics, Physics, Chemistry, Further Maths</div>
+              <div class="level">JSS&ndash;SSS</div>
+            </div>
+            <div class="teaching-row">
+              <div class="period">2023 &ndash; 2025</div>
+              <div class="role">Science Teacher<div class="role-sub">Dave Model School</div></div>
+              <div class="subjects">Mathematics, Further Mathematics, Chemistry</div>
+              <div class="level">SSS1&ndash;SSS3</div>
+            </div>
+            <div class="teaching-row">
+              <div class="period">2019 &ndash; 2022</div>
+              <div class="role">Science Teacher<div class="role-sub">Fredaks Group of Schools</div></div>
+              <div class="subjects">Mathematics, Further Mathematics, Physics, Chemistry</div>
+              <div class="level">JSS1&ndash;SSS3</div>
+            </div>
+            <div class="teaching-row">
+              <div class="period">2015 &ndash; 2019</div>
+              <div class="role">Head Teacher / Principal<div class="role-sub">High Favour School</div></div>
+              <div class="subjects">Mathematics, Science, Administration</div>
+              <div class="level">All Levels</div>
+            </div>
+            <div class="teaching-row">
+              <div class="period">2010 &ndash; 2013</div>
+              <div class="role">Science Teacher<div class="role-sub">Marie Group of Schools</div></div>
+              <div class="subjects">Mathematics, Physics, Chemistry</div>
+              <div class="level">SSS1&ndash;SSS3</div>
+            </div>
+            <div class="teaching-row">
+              <div class="period">2009 &ndash; 2010</div>
+              <div class="role">First Classroom<div class="role-sub">Chrisville Schools</div></div>
+              <div class="subjects">Mathematics, Basic Science</div>
+              <div class="level">JSS</div>
+            </div>
+          </div>
+          <p style="font-size:0.82rem;color:#9db2cc;margin-top:0.75rem">Also tutors individually via: Tuteria &middot; Prepclass &middot; Gate Academy &middot; DoLessons</p>
+        </div>
+
+        <div class="chapter-divider"></div>
+
+        <!-- Chapter 2 -->
+        <div class="chapter">
+          <div class="chapter-number">Chapter 02</div>
+          <h2 class="chapter-title">The Dream That Came Before the Code</h2>
+          <p>Long before I ever opened a Jupyter notebook, I had a clear and specific ambition: to use technology to solve the problems I was watching every day inside Nigerian schools. The reliance on paper. The manual marking. The zero data on whether students actually understood anything versus simply memorising answers for the following morning. These were solvable problems. I could see the solutions clearly. I just did not have the technical tools to build them.</p>
+          <div class="origin-highlight">
+            <div class="origin-highlight-label">The Turning Point</div>
+            <p>That ambition is <strong>exactly why I went back to university as an adult</strong> &mdash; to study <strong>Computer Science Education at Lagos State University</strong>. I graduated in 2023. The degree gave me structure and formal understanding. But the practical, problem-solving capability I had been searching for arrived in <strong>2025 through the 3MTT programme.</strong></p>
+          </div>
+          <p>Something unlocked during 3MTT. The inquisitiveness I had always had, the ability to observe a problem clearly from every angle, the willingness to break a concept down to its smallest parts &mdash; these were skills I had been using in classrooms for 15 years. 3MTT gave them a technical language. And within months, I had not just learned data science. I had deployed it.</p>
+          <p>The first major build was <strong>CBT Pro</strong>. This is important to say correctly: I did not build CBT Pro because I learned HTML, CSS, and JavaScript. I built it because <strong>as a data scientist, I think clearly and observe problems systematically &mdash; and I leveraged AI to operate competently in an unfamiliar technical field.</strong> This is exactly what it means to be an AI-Augmented Solutions Developer. The tool is not the skill. The clarity of thought is the skill. AI is the leverage. Together, they make you capable in any domain you choose to enter.</p>
+          <p>The same method built this portfolio website, the HMG Concepts website, and every web tool I have shipped. No laptop required. An Android tablet, Acode editor, clear thinking, and AI collaboration. That is the working method.</p>
+          <div class="pullquote">
+            <p>"The constraint is not the obstacle. The constraint is the brief. I did not wait to become a web developer. I used what I understood about thinking clearly, leveraged AI, and built the tool my students needed."</p>
+          </div>
+        </div>
+
+        <div class="chapter-divider"></div>
+
+        <!-- Chapter 3 -->
+        <div class="chapter">
+          <div class="chapter-number">Chapter 03</div>
+          <h2 class="chapter-title">The AI-Augmented Solutions Developer</h2>
+          <p>I am not a web developer who picked up data science. I am not a data scientist who happens to teach. I am a <strong>data scientist and educator who uses clear thinking and AI leverage to operate confidently across any technical domain</strong> &mdash; building solutions that go beyond what a single discipline would produce.</p>
+          <p>Between active learning programmes, teaching, and building, I have deployed <strong>12 projects across 7 industries</strong> &mdash; ML models in insurance, banking, HR analytics, logistics, and financial inclusion; an NLP fake news detector; and three live EdTech tools for Nigerian teachers. I am currently enrolled in <strong>three active learning programmes simultaneously</strong>: DeepTech_Ready (DSN &times; 3MTT &times; Google.org, DSML Track, Cohort 3), WorldQuant University Applied Data Science Lab, and Kodecamp Cohort 6 ML Core Track. I am also an <strong>IBM SkillsBuild Hub Ambassador (Cohort 4).</strong></p>
+          <p>The EdTech projects are not aspirational. They are live and being used: Student At-Risk Predictor, Student Performance Tracker, CBT Question Bank Manager, and CBT Pro. All of them built for the same classrooms I have been standing in since 2009. The data science and the teaching are not two separate careers. They have always been the same work, finally given the right tools.</p>
+          <div class="pullquote">
+            <p>"Data science taught me that if you can think through a problem clearly, you can find a path to a solution &mdash; even in territory you have never entered before."</p>
+          </div>
+        </div>
+
+        <div class="chapter-divider"></div>
+
+        <!-- Philosophy -->
+        <div class="chapter fade-up">
+          <div class="chapter-number">How I Work</div>
+          <h2 class="chapter-title">Work Philosophy &amp; Values</h2>
+          <div class="philosophy-grid">
+            <div class="philosophy-card">
+              <div class="philosophy-card-icon">🧩</div>
+              <div class="philosophy-card-title">Problem First, Always</div>
+              <div class="philosophy-card-text">I never start with a technology. I start with a problem. If the problem is not clearly understood, no solution will be genuinely useful. Fifteen years of teaching this instinct into myself.</div>
+            </div>
+            <div class="philosophy-card">
+              <div class="philosophy-card-icon">🔧</div>
+              <div class="philosophy-card-title">Constraints Are the Brief</div>
+              <div class="philosophy-card-text">CBT Pro was built with no laptop, no web dev training, and zero budget. The constraint forced better decisions. I now see constraints as the brief, not the barrier.</div>
+            </div>
+            <div class="philosophy-card">
+              <div class="philosophy-card-icon">📖</div>
+              <div class="philosophy-card-title">Learning Deliberately</div>
+              <div class="philosophy-card-text">Not collecting certificates. Learning with clear direction &mdash; understanding why each skill connects to the next, and being honest about what I do not yet know.</div>
+            </div>
+            <div class="philosophy-card">
+              <div class="philosophy-card-icon">🌍</div>
+              <div class="philosophy-card-title">Built for Nigerian Realities</div>
+              <div class="philosophy-card-text">Everything I build is designed for Nigerian realities first &mdash; slow connections, low-end devices, real classroom constraints. The tools must work for the people who actually need them.</div>
+            </div>
+            <div class="philosophy-card">
+              <div class="philosophy-card-icon">🔍</div>
+              <div class="philosophy-card-title">Explainability Matters</div>
+              <div class="philosophy-card-text">A model nobody can understand is not useful in a classroom or a boardroom. I use SHAP and clear documentation because the people making decisions need to trust what the data shows them.</div>
+            </div>
+            <div class="philosophy-card">
+              <div class="philosophy-card-icon">🤝</div>
+              <div class="philosophy-card-title">Teaching Authentically</div>
+              <div class="philosophy-card-text">Whether teaching algebra to a JSS3 student or explaining a machine learning model publicly, I do not perform expertise. I share the actual thinking &mdash; including the mistakes and the breakthroughs.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chapter-divider"></div>
+
+        <!-- HMG -->
+        <div class="chapter fade-up">
+          <div class="chapter-number">The Organisation</div>
+          <h2 class="chapter-title">HMG Concepts &mdash; His Marvellous Grace Educational Consult</h2>
+          <div class="hmg-block">
+            <p>Founded in 2015, HMG Concepts began as a one-person tutoring service and has grown into a multi-subsidiary educational organisation. The name reflects a genuine conviction that I carry with honesty: every breakthrough I have experienced &mdash; in the classroom and in technology &mdash; has arrived as a result of grace I did not engineer on my own. I just kept showing up and doing the work.</p>
+            <div class="hmg-subsidiaries">
+              <div class="hmg-sub">
+                <div class="hmg-sub-icon">🎓</div>
+                <div class="hmg-sub-name">HMG Academy</div>
+                <div class="hmg-sub-desc">A <strong>strictly virtual EdTech platform</strong> offering expert-led lessons across all subjects through a team of experienced teachers. Covers the full Nigerian curriculum and supports students for all major local and international examinations.</div>
+                <div class="exam-scope">
+                  <span class="exam-badge">WAEC</span><span class="exam-badge">NECO</span><span class="exam-badge">GCE</span>
+                  <span class="exam-badge">BECE</span><span class="exam-badge">UTME</span><span class="exam-badge">Post-UTME</span>
+                  <span class="exam-badge">IGCSE</span><span class="exam-badge">IELTS</span><span class="exam-badge">JUPEB</span><span class="exam-badge">SAT</span>
+                </div>
+              </div>
+              <div class="hmg-sub">
+                <div class="hmg-sub-icon">💻</div>
+                <div class="hmg-sub-name">HMG Technologies</div>
+                <div class="hmg-sub-desc">The tech and software arm of HMG Concepts &mdash; home to CBT Pro, the student analytics tools, and all future digital products built for Nigerian education and beyond. Where classroom problems become deployed solutions.</div>
+              </div>
+              <div class="hmg-sub">
+                <div class="hmg-sub-icon">📹</div>
+                <div class="hmg-sub-name">HMG Media</div>
+                <div class="hmg-sub-desc">YouTube channel, tutorials, educational content, and public storytelling for students, teachers, and learners across Nigeria and the African continent. The classroom, opened to everyone who needs it.</div>
+              </div>
+              <div class="hmg-sub">
+                <div class="hmg-sub-icon">🏢</div>
+                <div class="hmg-sub-name">HMG Concepts (Parent Brand)</div>
+                <div class="hmg-sub-desc">The parent brand bringing education, technology, and data science together under one mission: to solve real problems in the Nigerian education system with tools that actually work for real people in real classrooms.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-cta fade-up">
+          <a href="projects.html" class="btn-primary"><i class="fas fa-rocket"></i> See My Projects</a>
+          <a href="journey.html" class="btn-secondary"><i class="fas fa-route"></i> View Learning Journey</a>
+          <a href="cv.html" class="btn-secondary"><i class="fas fa-file-alt"></i> View / Download CV</a>
+          <a href="index.html#contact" class="btn-secondary"><i class="fas fa-paper-plane"></i> Get in Touch</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">Adewale <span>Adeagbo</span></div>
+        <div class="footer-slogan">"Learning Deliberately. Building Authentically."</div>
+        <div class="footer-socials">
+          <a href="https://linkedin.com/in/adewalesamsonadeagbo" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://github.com/cssadewale" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+          <a href="https://x.com/cssadewale" target="_blank" class="social-icon"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://youtube.com/@hmgconcepts" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
+          <a href="https://instagram.com/cssadewale" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Navigate</h4><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="projects.html">Projects</a></li><li><a href="journey.html">Journey</a></li><li><a href="cv.html">CV</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul class="footer-links"><li><a href="https://wa.me/2348100866322" target="_blank">WhatsApp &#8599;</a></li><li><a href="mailto:hmgconcepts@gmail.com">Email &#8599;</a></li><li><a href="https://cssadewale.github.io/cbt-system/teacher.html" target="_blank">CBT Pro &#8599;</a></li><li><a href="https://hmgconcepts.business.site" target="_blank">HMG Concepts &#8599;</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 Adewale Samson Adeagbo | HMG Concepts. All rights reserved.</div>
+      <div class="footer-built">Built with <span>HTML &middot; CSS &middot; JavaScript &middot; AI Collaboration</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',scrollY>50));
+  const hamburger=document.getElementById('hamburger'),mobileNav=document.getElementById('nav-mobile');
+  hamburger.addEventListener('click',function(e){e.stopPropagation();const o=mobileNav.classList.toggle('open');hamburger.classList.toggle('open',o);hamburger.setAttribute('aria-expanded',String(o));document.body.style.overflow=o?'hidden':'';});
+  document.addEventListener('click',e=>{if(mobileNav.classList.contains('open')&&!mobileNav.contains(e.target)&&!hamburger.contains(e.target))closeMobileNav();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMobileNav();});
+  function closeMobileNav(){mobileNav.classList.remove('open');hamburger.classList.remove('open');hamburger.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:0.08});
+  document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+</script>
+<script src="portfolio-loader.js"></script>
+</body>
+</html>
