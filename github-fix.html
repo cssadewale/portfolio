@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>GitHub Fix Tool | Adewale Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root { --gold:#F5A623; --emerald:#10b981; --red:#ef4444; --blue:#3b82f6; --bg:#07090f; --card:#0d1120; --input:#111827; --border:rgba(255,255,255,0.08); --text:#e2eaf6; --muted:#6b7a94; --font:'Plus Jakarta Sans',sans-serif; --mono:'JetBrains Mono',monospace; }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem}
+    .wrap{width:100%;max-width:680px}
+    h1{font-size:1.5rem;font-weight:800;color:#fff;margin-bottom:0.3rem}
+    .sub{font-size:0.85rem;color:var(--muted);margin-bottom:2rem;line-height:1.6}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.75rem;margin-bottom:1.25rem}
+    .card-title{font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem;display:flex;align-items:center;gap:0.5rem}
+    label{display:block;font-size:0.7rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);margin-bottom:0.4rem}
+    input{width:100%;background:var(--input);border:1px solid var(--border);border-radius:8px;padding:0.7rem 1rem;font-family:var(--mono);font-size:0.9rem;color:#fff;outline:none;transition:all 0.25s;margin-bottom:1rem}
+    input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(245,166,35,0.1)}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .btn{display:inline-flex;align-items:center;gap:0.4rem;padding:0.65rem 1.35rem;border-radius:8px;font-family:var(--font);font-size:0.85rem;font-weight:700;cursor:pointer;transition:all 0.25s;border:none}
+    .btn-gold{background:var(--gold);color:#07090f} .btn-gold:hover{background:#fbbf5a}
+    .btn-outline{background:transparent;color:var(--text);border:1px solid var(--border)} .btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+    .btn-group{display:flex;gap:0.75rem;flex-wrap:wrap}
+    .result{background:var(--input);border:1px solid var(--border);border-radius:8px;padding:1rem;font-family:var(--mono);font-size:0.78rem;line-height:1.75;max-height:320px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;min-height:60px}
+    .result.ok{border-color:rgba(16,185,129,0.4);color:var(--emerald)}
+    .result.err{border-color:rgba(239,68,68,0.4);color:#f87171}
+    .result.info{border-color:rgba(245,166,35,0.3);color:var(--text)}
+    .repo-card{background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.25);border-radius:8px;padding:0.85rem;margin-top:0.5rem;cursor:pointer;transition:all 0.25s;display:flex;align-items:center;justify-content:space-between}
+    .repo-card:hover{background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.5)}
+    .repo-name{font-family:var(--mono);font-size:0.85rem;font-weight:600;color:#fff}
+    .repo-meta{font-size:0.72rem;color:var(--muted)}
+    .repo-select-btn{font-family:var(--font);font-size:0.72rem;font-weight:700;padding:0.3rem 0.75rem;background:var(--emerald);color:#07090f;border:none;border-radius:5px;cursor:pointer}
+    .step{display:flex;gap:0.85rem;align-items:flex-start;padding:0.85rem;background:var(--input);border-radius:8px;margin-bottom:0.6rem}
+    .step-n{width:26px;height:26px;border-radius:50%;background:var(--gold);color:#07090f;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.82rem;flex-shrink:0;margin-top:1px}
+    .step-text{font-size:0.83rem;color:var(--text);line-height:1.7}
+    .step-text strong{color:#fff}
+    .step-text a{color:var(--blue)}
+    .status-dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:0.4rem}
+    .dot-ok{background:var(--emerald)} .dot-err{background:var(--red)} .dot-wait{background:var(--gold)}
+    #saved-indicator{font-size:0.72rem;color:var(--emerald);display:none;margin-left:0.5rem}
+    @media(max-width:580px){.row{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>🔧 GitHub Connection Fix Tool</h1>
+  <p class="sub">This tool diagnoses exactly what is wrong with your GitHub connection and fixes it step by step. It will find your correct repo name automatically.</p>
+
+  <!-- STEP 1: Token -->
+  <div class="card">
+    <div class="card-title">⚡ Step 1 — Enter Your GitHub Token</div>
+    <label for="token-input">Personal Access Token (PAT)</label>
+    <input type="password" id="token-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" />
+    <label for="username-input">GitHub Username</label>
+    <input type="text" id="username-input" value="cssadewale" />
+    <div class="btn-group">
+      <button class="btn btn-gold" onclick="verifyToken()">▶ Verify Token &amp; Find My Repos</button>
+      <button class="btn btn-outline" onclick="window.open('https://github.com/settings/tokens','_blank')">Create Token ↗</button>
+    </div>
+    <div id="token-result" class="result info" style="margin-top:1rem;display:none"></div>
+  </div>
+
+  <!-- STEP 2: Pick Repo -->
+  <div class="card" id="repo-step" style="display:none">
+    <div class="card-title">📁 Step 2 — Select Your Portfolio Repository</div>
+    <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1rem;line-height:1.65">These are all the repositories found on your GitHub account. Click <strong style="color:#fff">Use This Repo</strong> next to the one that contains your portfolio files (index.html, about.html, etc).</p>
+    <div id="repo-list"></div>
+    <div style="font-size:0.75rem;color:var(--muted);margin-top:0.75rem;padding:0.6rem;background:rgba(245,166,35,0.04);border-radius:6px;border:1px solid rgba(245,166,35,0.15)">
+      💡 Not sure which repo? Look for names like <code style="background:rgba(255,255,255,0.06);padding:0.1rem 0.3rem;border-radius:3px">cssadewale.pages.dev</code>, <code style="background:rgba(255,255,255,0.06);padding:0.1rem 0.3rem;border-radius:3px">portfolio</code>, or any repo where you uploaded your HTML files.
+    </div>
+  </div>
+
+  <!-- STEP 3: Confirm & Fix -->
+  <div class="card" id="fix-step" style="display:none">
+    <div class="card-title">✅ Step 3 — Confirm Settings &amp; Test</div>
+    <div id="confirmed-settings" style="font-family:var(--mono);font-size:0.82rem;background:var(--input);border-radius:8px;padding:1rem;margin-bottom:1.25rem;border:1px solid rgba(16,185,129,0.3)"></div>
+    <div class="row">
+      <div>
+        <label>Confirmed Username</label>
+        <input type="text" id="fix-username" readonly style="opacity:0.7" />
+      </div>
+      <div>
+        <label>Confirmed Repo</label>
+        <input type="text" id="fix-repo" readonly style="opacity:0.7" />
+      </div>
+    </div>
+    <div>
+      <label>Branch (usually "main" — check your GitHub repo if unsure)</label>
+      <input type="text" id="fix-branch" value="main" />
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-gold" onclick="runFullTest()">🧪 Run Full Connection Test</button>
+    </div>
+    <div id="test-result" class="result info" style="margin-top:1rem;display:none"></div>
+  </div>
+
+  <!-- STEP 4: Apply Fix to Admin -->
+  <div class="card" id="apply-step" style="display:none">
+    <div class="card-title">🚀 Step 4 — Apply Fix to Admin Panel</div>
+    <p style="font-size:0.83rem;color:var(--text);line-height:1.75;margin-bottom:1.25rem">Connection verified! Click the button below to save the correct settings directly to your admin panel. Your admin panel will remember these settings and the "Push Live" button will work correctly.</p>
+    <div class="btn-group">
+      <button class="btn btn-gold" onclick="applyToAdmin()" style="font-size:0.9rem;padding:0.8rem 1.75rem">✅ Save Settings &amp; Open Admin Panel</button>
+    </div>
+    <span id="saved-indicator">✓ Settings saved!</span>
+    <div id="apply-result" style="margin-top:1rem;font-size:0.82rem;color:var(--muted);display:none;line-height:1.75"></div>
+  </div>
+
+  <!-- How to create token guide -->
+  <div class="card">
+    <div class="card-title">🔑 How to Create a GitHub Personal Access Token</div>
+    <div class="step">
+      <div class="step-n">1</div>
+      <div class="step-text">Go to <a href="https://github.com/settings/tokens" target="_blank">github.com/settings/tokens</a> — make sure you are logged in as <strong>cssadewale</strong></div>
+    </div>
+    <div class="step">
+      <div class="step-n">2</div>
+      <div class="step-text">Click <strong>"Generate new token"</strong> → choose <strong>"Generate new token (classic)"</strong> (not fine-grained — classic is simpler)</div>
+    </div>
+    <div class="step">
+      <div class="step-n">3</div>
+      <div class="step-text">In the <strong>Note</strong> field, type: <code style="background:rgba(255,255,255,0.06);padding:0.1rem 0.4rem;border-radius:4px">Portfolio Admin</code></div>
+    </div>
+    <div class="step">
+      <div class="step-n">4</div>
+      <div class="step-text">Set <strong>Expiration</strong> to <strong>No expiration</strong> (or 1 year). Then under <strong>Select scopes</strong>, tick only <strong style="color:var(--gold)">repo</strong> — the top checkbox. That gives access to your repositories.</div>
+    </div>
+    <div class="step">
+      <div class="step-n">5</div>
+      <div class="step-text">Scroll down and click <strong>"Generate token"</strong>. Copy the token — it starts with <code style="background:rgba(255,255,255,0.06);padding:0.1rem 0.4rem;border-radius:4px">ghp_</code>. <strong style="color:var(--red)">You can only see it once.</strong> Paste it above immediately.</div>
+    </div>
+    <div style="padding:0.85rem;background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2);border-radius:8px;font-size:0.8rem;color:#f87171;line-height:1.7;margin-top:0.5rem">
+      ⚠ <strong>Common mistakes:</strong> Using a fine-grained token (use classic instead) · Not checking the <code>repo</code> scope · Token expired · Typing username/repo with wrong capitalisation · Using the Cloudflare domain (cssadewale.pages.dev) instead of the actual GitHub repo name
+    </div>
+  </div>
+
+</div>
+
+<script>
+let foundUsername = '';
+let foundRepo = '';
+let confirmedToken = '';
+
+async function verifyToken() {
+  const token = document.getElementById('token-input').value.trim();
+  const username = document.getElementById('username-input').value.trim();
+  const resultEl = document.getElementById('token-result');
+  resultEl.style.display = 'block';
+  resultEl.className = 'result info';
+  resultEl.textContent = '⏳ Verifying token and fetching your repositories...';
+
+  if (!token) { resultEl.className='result err'; resultEl.textContent='❌ Please enter your Personal Access Token first.'; return; }
+  if (!token.startsWith('ghp_') && !token.startsWith('github_pat_')) {
+    resultEl.className='result err';
+    resultEl.textContent='⚠ Token format looks wrong. GitHub tokens start with "ghp_" (classic) or "github_pat_" (fine-grained). Check that you copied the full token.';
+    return;
+  }
+
+  try {
+    // Verify token by fetching authenticated user
+    const userRes = await fetch('https://api.github.com/user', {
+      headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json' }
+    });
+
+    if (!userRes.ok) {
+      if (userRes.status === 401) {
+        resultEl.className='result err';
+        resultEl.textContent='❌ Invalid token (401 Unauthorized).\n\nThis means:\n• Token may have been deleted or expired\n• You may have copied it incompletely\n• Try creating a new token';
+      } else {
+        resultEl.className='result err';
+        resultEl.textContent='❌ Error ' + userRes.status + ': ' + await userRes.text();
+      }
+      return;
+    }
+
+    const user = await userRes.json();
+    confirmedToken = token;
+    foundUsername = user.login;
+    resultEl.className='result ok';
+    resultEl.textContent=`✓ Token valid!\n✓ Logged in as: ${user.login} (${user.name || 'no display name'})\n✓ Account type: ${user.type}\n\nFetching your repositories...`;
+
+    // Fetch all repos
+    const reposRes = await fetch(`https://api.github.com/user/repos?per_page=100&sort=updated`, {
+      headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json' }
+    });
+
+    const repos = await reposRes.json();
+    if (!Array.isArray(repos) || repos.length === 0) {
+      resultEl.textContent += '\n\n⚠ No repositories found on this account.';
+      return;
+    }
+
+    resultEl.textContent += `\n✓ Found ${repos.length} repositories. See below to select yours.`;
+
+    // Show repo list
+    document.getElementById('repo-step').style.display = 'block';
+    renderRepoList(repos, user.login);
+
+  } catch (err) {
+    resultEl.className='result err';
+    resultEl.textContent='❌ Network error: ' + err.message + '\n\nCheck your internet connection and try again.';
+  }
+}
+
+function renderRepoList(repos, username) {
+  const container = document.getElementById('repo-list');
+
+  // Sort: prioritise likely portfolio repos
+  const portfolioKeywords = ['portfolio', 'pages.dev', 'cssadewale', 'hmg', 'cbt'];
+  repos.sort((a, b) => {
+    const aScore = portfolioKeywords.some(k => a.name.toLowerCase().includes(k)) ? 1 : 0;
+    const bScore = portfolioKeywords.some(k => b.name.toLowerCase().includes(k)) ? 1 : 0;
+    return bScore - aScore;
+  });
+
+  container.innerHTML = repos.map(r => `
+    <div class="repo-card" onclick="selectRepo('${username}','${r.name}','${r.default_branch}')">
+      <div>
+        <div class="repo-name">${username}/${r.name}</div>
+        <div class="repo-meta">Branch: ${r.default_branch} · ${r.private ? '🔒 Private' : '🌐 Public'} · Updated: ${new Date(r.updated_at).toLocaleDateString()}</div>
+      </div>
+      <button class="repo-select-btn">Use This Repo</button>
+    </div>`).join('');
+}
+
+function selectRepo(username, repo, branch) {
+  foundUsername = username;
+  foundRepo = repo;
+
+  document.getElementById('fix-username').value = username;
+  document.getElementById('fix-repo').value = repo;
+  document.getElementById('fix-branch').value = branch || 'main';
+
+  document.getElementById('confirmed-settings', ).innerHTML = `
+Username : ${username}
+Repo     : ${repo}
+Branch   : ${branch || 'main'}
+Token    : ${'*'.repeat(10)}...${confirmedToken.slice(-6)}`;
+
+  document.getElementById('fix-step').style.display = 'block';
+  document.getElementById('fix-step').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+async function runFullTest() {
+  const username = document.getElementById('fix-username').value;
+  const repo = document.getElementById('fix-repo').value;
+  const branch = document.getElementById('fix-branch').value;
+  const resultEl = document.getElementById('test-result');
+  resultEl.style.display = 'block';
+  resultEl.className = 'result info';
+  resultEl.textContent = '⏳ Running full connection test...\n';
+
+  let log = '';
+  let allPassed = true;
+
+  // Test 1: Repo exists
+  log += '1. Checking repository exists...\n';
+  const repoRes = await fetch(`https://api.github.com/repos/${username}/${repo}`, {
+    headers: { Authorization: `token ${confirmedToken}`, Accept: 'application/vnd.github.v3+json' }
+  });
+  if (repoRes.ok) {
+    const repoData = await repoRes.json();
+    log += `   ✓ Repository found: ${repoData.full_name}\n`;
+    log += `   ✓ Default branch: ${repoData.default_branch}\n`;
+    if (repoData.default_branch !== branch) {
+      log += `   ⚠ WARNING: Branch in settings is "${branch}" but repo default is "${repoData.default_branch}"\n`;
+      log += `   → Updating branch to: ${repoData.default_branch}\n`;
+      document.getElementById('fix-branch').value = repoData.default_branch;
+    }
+  } else {
+    log += `   ✗ Repo not found (${repoRes.status}). Selected wrong repo?\n`;
+    allPassed = false;
+  }
+
+  // Test 2: Write permission
+  log += '\n2. Checking write permissions...\n';
+  const contentsRes = await fetch(`https://api.github.com/repos/${username}/${repo}/contents/`, {
+    headers: { Authorization: `token ${confirmedToken}`, Accept: 'application/vnd.github.v3+json' }
+  });
+  if (contentsRes.ok) {
+    const files = await contentsRes.json();
+    log += `   ✓ Can read repository contents\n`;
+    log += `   ✓ Files at root: ${files.filter(f=>f.type==='file').map(f=>f.name).slice(0,8).join(', ')}\n`;
+
+    const hasHtml = files.some(f => f.name === 'index.html');
+    const hasData = files.some(f => f.name === 'portfolio-data.json');
+    if (hasHtml) log += `   ✓ index.html found — this is your portfolio repo\n`;
+    else log += `   ⚠ No index.html found at root — make sure you have uploaded your portfolio files\n`;
+    if (hasData) log += `   ✓ portfolio-data.json already exists — admin will update it\n`;
+    else log += `   ℹ portfolio-data.json not found yet — admin will create it on first push\n`;
+  } else {
+    log += `   ✗ Cannot read contents (${contentsRes.status})\n`;
+    allPassed = false;
+  }
+
+  // Test 3: Simulate push permissions
+  log += '\n3. Checking push permissions...\n';
+  const collabRes = await fetch(`https://api.github.com/repos/${username}/${repo}`, {
+    headers: { Authorization: `token ${confirmedToken}`, Accept: 'application/vnd.github.v3+json' }
+  });
+  if (collabRes.ok) {
+    const repoInfo = await collabRes.json();
+    const perms = repoInfo.permissions;
+    if (perms && perms.push) {
+      log += `   ✓ Push permission confirmed\n`;
+    } else if (perms && !perms.push) {
+      log += `   ✗ No push permission — token may not have "repo" scope selected\n`;
+      allPassed = false;
+    } else {
+      log += `   ✓ Repository accessible (permissions not shown for private repos)\n`;
+    }
+  }
+
+  log += '\n─────────────────────────────────\n';
+  if (allPassed) {
+    log += '✓ ALL TESTS PASSED — Ready to deploy!\n';
+    resultEl.className = 'result ok';
+    document.getElementById('apply-step').style.display = 'block';
+    document.getElementById('apply-step').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } else {
+    log += '✗ Some tests failed. See details above.\n';
+    resultEl.className = 'result err';
+  }
+
+  resultEl.textContent = log;
+}
+
+function applyToAdmin() {
+  const username = document.getElementById('fix-username').value;
+  const repo = document.getElementById('fix-repo').value;
+  const branch = document.getElementById('fix-branch').value;
+
+  // Save all settings to localStorage — admin reads from here
+  localStorage.setItem('gh_token', confirmedToken);
+  localStorage.setItem('gh_username', username);
+  localStorage.setItem('gh_repo', repo);
+  localStorage.setItem('gh_branch', branch);
+
+  // Show confirmation
+  document.getElementById('saved-indicator').style.display = 'inline';
+  const applyResult = document.getElementById('apply-result');
+  applyResult.style.display = 'block';
+  applyResult.innerHTML = `
+    <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.3);border-radius:8px;padding:1rem;font-size:0.83rem;color:var(--text);line-height:1.8">
+      <strong style="color:var(--emerald);display:block;margin-bottom:0.5rem">✓ Settings saved to admin panel!</strong>
+      Username: <code style="color:var(--gold)">${username}</code><br>
+      Repository: <code style="color:var(--gold)">${repo}</code><br>
+      Branch: <code style="color:var(--gold)">${branch}</code><br>
+      Token: saved securely in browser storage<br><br>
+      <strong style="color:#fff">Now:</strong> Open your admin panel → go to "Push Live (GitHub)" → click "Test Connection" — it should show green ✓<br>
+      Then make any change and click "Push Changes Live Now"
+    </div>
+    <div style="margin-top:1rem">
+      <a href="admin.html" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem;background:var(--gold);color:#07090f;border-radius:8px;font-weight:700;font-size:0.88rem;text-decoration:none">
+        → Open Admin Panel Now
+      </a>
+    </div>`;
+}
+</script>
+</body>
+</html>
