@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1200" />
+  <meta name="robots" content="noindex" />
+  <title>OG Image Generator | Adewale Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { width:1200px; height:630px; overflow:hidden; background:#0a0e1a; font-family:'Plus Jakarta Sans',sans-serif; }
+    .card {
+      width:1200px; height:630px;
+      background: linear-gradient(135deg, #0f1628 0%, #0a0e1a 50%, #080c18 100%);
+      position:relative; overflow:hidden;
+      display:flex; align-items:center; padding:60px 80px;
+    }
+    /* Background glow effects */
+    .glow1 { position:absolute; width:500px; height:500px; border-radius:50%; background:radial-gradient(circle, rgba(27,58,107,0.35) 0%, transparent 70%); top:-100px; left:-100px; }
+    .glow2 { position:absolute; width:400px; height:400px; border-radius:50%; background:radial-gradient(circle, rgba(16,185,129,0.12) 0%, transparent 70%); bottom:-80px; right:100px; }
+    .glow3 { position:absolute; width:600px; height:300px; border-radius:50%; background:radial-gradient(circle, rgba(245,166,35,0.06) 0%, transparent 70%); top:200px; right:-100px; }
+    /* Grid lines */
+    .grid { position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px); background-size:60px 60px; }
+    /* Left accent bar */
+    .accent-bar { position:absolute; left:0; top:0; bottom:0; width:5px; background:linear-gradient(to bottom, #F5A623, #10b981); }
+    /* Content */
+    .content { position:relative; z-index:2; flex:1; }
+    .eyebrow { font-size:14px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#10b981; margin-bottom:20px; display:flex; align-items:center; gap:8px; }
+    .eyebrow::before { content:''; width:6px; height:6px; border-radius:50%; background:#10b981; }
+    .name { font-size:52px; font-weight:800; color:#fff; line-height:1.05; letter-spacing:-0.03em; margin-bottom:16px; }
+    .name .gold { color:#F5A623; }
+    .title { font-size:20px; font-weight:600; color:#9db2cc; margin-bottom:32px; line-height:1.4; }
+    .title .highlight { color:#dce8f8; }
+    .stats { display:flex; gap:40px; margin-bottom:32px; }
+    .stat { }
+    .stat-n { font-size:32px; font-weight:800; color:#F5A623; line-height:1; }
+    .stat-l { font-size:13px; color:#9db2cc; margin-top:3px; font-weight:500; }
+    .tags { display:flex; gap:10px; flex-wrap:wrap; }
+    .tag { font-size:13px; font-weight:600; padding:6px 14px; border-radius:6px; border:1px solid; }
+    .tag.blue { background:rgba(27,58,107,0.4); border-color:rgba(36,81,160,0.4); color:#93c5fd; }
+    .tag.green { background:rgba(16,185,129,0.1); border-color:rgba(16,185,129,0.3); color:#10b981; }
+    .tag.gold { background:rgba(245,166,35,0.1); border-color:rgba(245,166,35,0.3); color:#F5A623; }
+    /* Right side */
+    .right { position:relative; z-index:2; display:flex; flex-direction:column; align-items:flex-end; gap:20px; min-width:280px; }
+    .domain { font-size:15px; color:#9db2cc; font-weight:600; letter-spacing:0.03em; }
+    .avatar { width:150px; height:150px; border-radius:50%; background:linear-gradient(135deg,#1B3A6B,#0a0e1a); border:3px solid rgba(245,166,35,0.5); display:flex; align-items:center; justify-content:center; }
+    .avatar-icon { font-size:60px; color:#2451a0; }
+    .badge { background:#0f1628; border:1px solid rgba(245,166,35,0.3); border-radius:10px; padding:10px 16px; font-size:13px; font-weight:600; color:#fff; display:flex; align-items:center; gap:8px; }
+    .badge-dot { width:8px; height:8px; border-radius:50%; background:#10b981; }
+    /* Bottom bar */
+    .bottom-bar { position:absolute; bottom:0; left:0; right:0; height:3px; background:linear-gradient(90deg, #F5A623, #10b981, #1B3A6B); }
+  </style>
+</head>
+<body>
+<div class="card">
+  <div class="glow1"></div>
+  <div class="glow2"></div>
+  <div class="glow3"></div>
+  <div class="grid"></div>
+  <div class="accent-bar"></div>
+
+  <div class="content">
+    <div class="eyebrow">Lagos, Nigeria · Open to Opportunities</div>
+    <div class="name">Adewale Samson<br><span class="gold">Adeagbo</span></div>
+    <div class="title">
+      <span class="highlight">Data Scientist</span> &nbsp;·&nbsp;
+      <span class="highlight">STEM Educator (15+ Years)</span><br>
+      AI-Augmented Solutions Developer
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="stat-n">15+</div><div class="stat-l">Years Teaching</div></div>
+      <div class="stat"><div class="stat-n">12</div><div class="stat-l">Live Projects</div></div>
+      <div class="stat"><div class="stat-n">7</div><div class="stat-l">Industries</div></div>
+      <div class="stat"><div class="stat-n">₦0</div><div class="stat-l">CBT Pro Budget</div></div>
+    </div>
+    <div class="tags">
+      <span class="tag blue">Machine Learning</span>
+      <span class="tag green">CBT Pro · Live</span>
+      <span class="tag gold">HMG Concepts</span>
+      <span class="tag blue">NLP · EdTech</span>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="domain">cssadewale.pages.dev</div>
+    <div class="avatar">
+      <!-- Replace with actual photo when available -->
+      <div class="avatar-icon">👤</div>
+    </div>
+    <div class="badge">
+      <div class="badge-dot"></div>
+      CBT Pro — Live with Students
+    </div>
+  </div>
+
+  <div class="bottom-bar"></div>
+</div>
+
+<div style="background:#0a0e1a;padding:20px 40px;font-family:'Plus Jakarta Sans',sans-serif">
+  <p style="color:#F5A623;font-weight:700;font-size:14px;margin-bottom:8px">📸 HOW TO CREATE YOUR og-image.png:</p>
+  <ol style="color:#9db2cc;font-size:13px;line-height:2">
+    <li>Open this page in Chrome browser</li>
+    <li>Press F12 (DevTools) → click the device icon (top left) → set width: 1200, height: 630</li>
+    <li>Take a screenshot of the card above (the dark card — not this instructions section)</li>
+    <li>Save it as <strong style="color:#fff">og-image.png</strong></li>
+    <li>Upload og-image.png to the root of your GitHub repo alongside index.html</li>
+    <li>Test your OG image at: <a href="https://opengraph.xyz" style="color:#3b82f6" target="_blank">opengraph.xyz</a></li>
+  </ol>
+  <p style="color:#6b7a94;font-size:12px;margin-top:12px">Alternatively: take a screenshot of your homepage at 1200x630 and save it as og-image.png</p>
+</div>
+</body>
+</html>
