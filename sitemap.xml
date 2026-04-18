@@ -1,45 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-
-  <!-- HOMEPAGE — Highest priority. This is the main entry point. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://cssadewale.pages.dev/</loc>
     <lastmod>2026-04-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-
-  <!-- ABOUT — Rich personal story. High value for branded searches. -->
   <url>
     <loc>https://cssadewale.pages.dev/about.html</loc>
     <lastmod>2026-04-18</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
-
-  <!-- PROJECTS — 12 deployed projects. High value for technical searches. -->
   <url>
     <loc>https://cssadewale.pages.dev/projects.html</loc>
     <lastmod>2026-04-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- JOURNEY — Career timeline. Good for recruiter searches. -->
   <url>
     <loc>https://cssadewale.pages.dev/journey.html</loc>
     <lastmod>2026-04-18</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
-
-  <!-- CV — Resume page. Critical for job opportunity searches. -->
   <url>
     <loc>https://cssadewale.pages.dev/cv.html</loc>
     <lastmod>2026-04-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
 </urlset>
