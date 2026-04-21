@@ -1,0 +1,1946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="robots" content="noindex,nofollow"/>
+<title>Admin | Adewale Adeagbo Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<style>
+:root{
+  --gold:#F5A623;--gold-light:#fbbf5a;--emerald:#10b981;--red:#ef4444;
+  --blue:#3b82f6;--purple:#8b5cf6;--orange:#f97316;
+  --bg:#07090f;--card:#0d1120;--input:#0f1525;--hover:#141d35;
+  --border:rgba(255,255,255,0.07);--gold-border:rgba(245,166,35,0.28);
+  --text:#dce8f8;--muted:#6b7a94;
+  --font:'Plus Jakarta Sans',sans-serif;--mono:'JetBrains Mono',monospace;
+  --radius:10px;--tr:all 0.22s ease;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:15px}
+body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:100vh}
+a{color:inherit;text-decoration:none}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:rgba(245,166,35,0.25);border-radius:3px}
+
+/* ── LOGIN ─────────────────────────── */
+#login-screen{
+  position:fixed;inset:0;background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  z-index:9999;flex-direction:column;
+  background-image:radial-gradient(ellipse 60% 50% at 20% 30%,rgba(27,58,107,0.25) 0%,transparent 60%),
+                   radial-gradient(ellipse 50% 40% at 80% 70%,rgba(16,185,129,0.08) 0%,transparent 55%);
+}
+.login-box{background:var(--card);border:1px solid var(--gold-border);border-radius:18px;padding:2.5rem;width:100%;max-width:400px;text-align:center}
+.login-icon{font-size:2.8rem;margin-bottom:0.6rem}
+.login-brand{font-size:1.15rem;font-weight:800;color:#fff;margin-bottom:0.2rem}
+.login-brand span{color:var(--gold)}
+.login-sub{font-size:0.78rem;color:var(--muted);margin-bottom:2rem;line-height:1.6}
+.login-lbl{font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-align:left;display:block;margin-bottom:0.4rem}
+.login-input{width:100%;background:var(--input);border:1px solid var(--border);border-radius:8px;padding:0.8rem 1rem;font-family:var(--mono);font-size:0.9rem;color:#fff;outline:none;margin-bottom:1rem;transition:var(--tr);letter-spacing:0.05em}
+.login-input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(245,166,35,0.1)}
+.login-btn{width:100%;padding:0.85rem;background:var(--gold);color:#07090f;border:none;border-radius:8px;font-family:var(--font);font-size:0.9rem;font-weight:700;cursor:pointer;transition:var(--tr)}
+.login-btn:hover{background:var(--gold-light)}
+.login-btn:disabled{opacity:0.5;cursor:not-allowed}
+.login-msg{font-size:0.78rem;margin-top:0.75rem;min-height:20px;display:flex;align-items:center;justify-content:center;gap:0.4rem}
+.login-msg.err{color:var(--red)} .login-msg.ok{color:var(--emerald)} .login-msg.info{color:var(--gold)}
+.login-note{font-family:var(--mono);font-size:0.65rem;color:var(--muted);margin-top:1rem;line-height:1.6}
+.login-setup-box{background:rgba(245,166,35,0.05);border:1px solid var(--gold-border);border-radius:10px;padding:1rem;margin-top:1rem;text-align:left;font-size:0.78rem;color:var(--text);line-height:1.75}
+.login-setup-box strong{color:var(--gold);display:block;margin-bottom:0.4rem}
+
+/* ── APP ─────────────────────────── */
+#app{display:none;min-height:100vh;flex-direction:column}
+
+/* TOPBAR */
+.topbar{background:var(--card);border-bottom:1px solid var(--border);padding:0 1.4rem;height:50px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;gap:1rem}
+.tb-left{display:flex;align-items:center;gap:0.65rem;min-width:0}
+.tb-logo{font-size:0.95rem;font-weight:800;color:#fff;white-space:nowrap}
+.tb-logo span{color:var(--gold)}
+.tb-ver{font-family:var(--mono);font-size:0.58rem;color:var(--muted);background:rgba(245,166,35,0.07);border:1px solid var(--gold-border);padding:0.1rem 0.4rem;border-radius:3px}
+.tb-sync{font-family:var(--mono);font-size:0.62rem;padding:0.22rem 0.7rem;border-radius:100px;display:flex;align-items:center;gap:0.35rem;border:1px solid}
+.tb-sync.synced{color:var(--emerald);border-color:rgba(16,185,129,0.3);background:rgba(16,185,129,0.07)}
+.tb-sync.unsynced{color:var(--orange);border-color:rgba(249,115,22,0.3);background:rgba(249,115,22,0.07)}
+.tb-sync.syncing{color:var(--gold);border-color:var(--gold-border);background:rgba(245,166,35,0.07)}
+.tb-sync-dot{width:6px;height:6px;border-radius:50%}
+.tb-sync.synced .tb-sync-dot{background:var(--emerald);animation:pulse-dot 2s infinite}
+.tb-sync.unsynced .tb-sync-dot{background:var(--orange)}
+.tb-sync.syncing .tb-sync-dot{background:var(--gold);animation:spin-dot 0.8s linear infinite}
+@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:0.4}}
+@keyframes spin-dot{to{transform:rotate(360deg)}}
+.tb-right{display:flex;align-items:center;gap:0.5rem;flex-shrink:0}
+.tb-btn{font-size:0.72rem;font-weight:600;color:var(--muted);padding:0.32rem 0.75rem;border:1px solid var(--border);border-radius:6px;cursor:pointer;transition:var(--tr);background:none;display:inline-flex;align-items:center;gap:0.35rem;white-space:nowrap}
+.tb-btn:hover{border-color:var(--gold);color:var(--gold)}
+.tb-btn.danger{color:var(--red);border-color:rgba(239,68,68,0.22)}
+.tb-btn.danger:hover{background:rgba(239,68,68,0.07)}
+.tb-notif-count{background:var(--red);color:#fff;font-size:0.55rem;font-weight:700;min-width:14px;height:14px;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;padding:0 2px}
+
+/* LAYOUT */
+.admin-layout{display:grid;grid-template-columns:210px 1fr;min-height:calc(100vh - 50px);flex:1}
+
+/* SIDEBAR */
+.sidebar{background:var(--card);border-right:1px solid var(--border);padding:0.75rem 0 2rem;position:sticky;top:50px;height:calc(100vh - 50px);overflow-y:auto;flex-shrink:0}
+.sb-group{margin-bottom:1.25rem}
+.sb-lbl{font-family:var(--mono);font-size:0.57rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);padding:0 1.1rem;margin-bottom:0.35rem;display:block}
+.sb-item{display:flex;align-items:center;gap:0.6rem;padding:0.5rem 1.1rem;cursor:pointer;font-size:0.8rem;font-weight:500;color:var(--muted);transition:var(--tr);border-left:2px solid transparent;position:relative}
+.sb-item:hover{color:#fff;background:rgba(255,255,255,0.025)}
+.sb-item.active{color:var(--gold);border-left-color:var(--gold);background:rgba(245,166,35,0.045)}
+.sb-item i{font-size:0.75rem;width:14px;flex-shrink:0}
+.sb-item .sb-badge{margin-left:auto;font-family:var(--mono);font-size:0.55rem;padding:0.08rem 0.38rem;border-radius:3px;background:rgba(239,68,68,0.14);border:1px solid rgba(239,68,68,0.28);color:var(--red)}
+.sb-item .sb-badge.g{background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.25);color:var(--emerald)}
+.sb-divider{height:1px;background:var(--border);margin:0.6rem 1.1rem}
+
+/* MAIN */
+.main{padding:1.6rem 1.9rem;overflow-y:auto;min-width:0}
+.panel{display:none} .panel.active{display:block}
+.panel-header{margin-bottom:1.6rem}
+.panel-title{font-size:1.2rem;font-weight:800;color:#fff;letter-spacing:-0.02em;margin-bottom:0.2rem}
+.panel-sub{font-size:0.79rem;color:var(--muted);line-height:1.55;max-width:680px}
+
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.35rem;margin-bottom:1.1rem}
+.card.accent{border-color:var(--gold-border);background:linear-gradient(135deg,rgba(27,58,107,0.15),rgba(16,185,129,0.04))}
+.card-hd{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:0.45rem}
+.card-hd i{font-size:0.72rem}
+.card2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.card3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+
+/* STAT CARDS */
+.stats-row{display:grid;grid-template-columns:repeat(5,1fr);gap:0.8rem;margin-bottom:1.5rem}
+.sc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;cursor:pointer;transition:var(--tr);position:relative;overflow:hidden}
+.sc::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);opacity:0;transition:var(--tr)}
+.sc:hover{border-color:var(--gold-border);transform:translateY(-2px)} .sc:hover::after{opacity:1}
+.sc-n{font-size:1.7rem;font-weight:800;color:var(--gold);line-height:1}
+.sc-l{font-size:0.67rem;color:var(--muted);margin-top:0.22rem;font-weight:500}
+.sc-d{font-family:var(--mono);font-size:0.6rem;color:var(--emerald);margin-top:0.15rem}
+
+/* FORMS */
+.fg{margin-bottom:0.9rem}
+.fg label{display:block;font-size:0.67rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);margin-bottom:0.32rem}
+.fg input,.fg select,.fg textarea{width:100%;background:var(--input);border:1px solid var(--border);border-radius:7px;padding:0.6rem 0.85rem;font-family:var(--font);font-size:0.83rem;color:#fff;outline:none;transition:var(--tr)}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(245,166,35,0.07)}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--muted)}
+.fg select{cursor:pointer} .fg select option{background:#0f1525}
+.fg textarea{resize:vertical;min-height:85px;line-height:1.55}
+.fg-hint{font-size:0.64rem;color:var(--muted);margin-top:0.28rem;line-height:1.55}
+.fg-hint a{color:var(--blue)}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:0.9rem}
+.fg-row3{grid-template-columns:1fr 1fr 1fr}
+.fg-row4{grid-template-columns:1fr 1fr 1fr 1fr}
+.fg-full{grid-column:1/-1}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:0.38rem;padding:0.52rem 1.1rem;border-radius:7px;font-family:var(--font);font-size:0.79rem;font-weight:700;cursor:pointer;transition:var(--tr);border:none;white-space:nowrap}
+.btn-gold{background:var(--gold);color:#07090f} .btn-gold:hover{background:var(--gold-light);transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border)} .btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.btn-red{background:rgba(239,68,68,0.1);color:var(--red);border:1px solid rgba(239,68,68,0.22)} .btn-red:hover{background:rgba(239,68,68,0.18)}
+.btn-green{background:rgba(16,185,129,0.1);color:var(--emerald);border:1px solid rgba(16,185,129,0.22)} .btn-green:hover{background:rgba(16,185,129,0.18)}
+.btn-blue{background:rgba(59,130,246,0.1);color:var(--blue);border:1px solid rgba(59,130,246,0.22)} .btn-blue:hover{background:rgba(59,130,246,0.18)}
+.btn-sm{padding:0.28rem 0.62rem;font-size:0.7rem}
+.btn:disabled{opacity:0.45;cursor:not-allowed;transform:none!important}
+.btn-group{display:flex;gap:0.55rem;flex-wrap:wrap;margin-top:1rem}
+
+/* ITEM ROWS */
+.item-list{display:flex;flex-direction:column;gap:0.5rem}
+.ir{background:var(--input);border:1px solid var(--border);border-radius:8px;padding:0.85rem 1rem;display:flex;align-items:center;gap:0.75rem;transition:var(--tr)}
+.ir:hover{border-color:var(--gold-border)}
+.ir-drag{color:var(--muted);cursor:grab;font-size:0.82rem;flex-shrink:0}
+.ir-info{flex:1;min-width:0}
+.ir-name{font-size:0.83rem;font-weight:600;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ir-meta{font-size:0.7rem;color:var(--muted);margin-top:0.1rem}
+.ir-acts{display:flex;gap:0.3rem;flex-shrink:0}
+.ibadge{font-family:var(--mono);font-size:0.57rem;padding:0.1rem 0.45rem;border-radius:100px;white-space:nowrap;border:1px solid}
+.ib-live{background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.28);color:var(--emerald)}
+.ib-ml{background:rgba(59,130,246,0.1);border-color:rgba(59,130,246,0.22);color:#93b4f7}
+.ib-et{background:rgba(245,166,35,0.1);border-color:var(--gold-border);color:var(--gold)}
+.ib-nlp{background:rgba(167,139,250,0.1);border-color:rgba(167,139,250,0.28);color:#c4b5fd}
+.ib-draft{background:rgba(107,122,148,0.1);border-color:rgba(107,122,148,0.22);color:var(--muted)}
+.ib-active{background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.3);color:var(--emerald)}
+.ib-cert{background:rgba(59,130,246,0.1);border-color:rgba(59,130,246,0.22);color:#93b4f7}
+
+/* TOGGLE */
+.tr-row{display:flex;align-items:center;justify-content:space-between;background:var(--input);border:1px solid var(--border);border-radius:8px;padding:0.75rem 1rem;margin-bottom:0.45rem}
+.tr-info{display:flex;align-items:center;gap:0.6rem}
+.tr-info i{color:var(--gold);font-size:0.76rem;width:14px}
+.tr-name{font-size:0.82rem;font-weight:600;color:#fff}
+.tr-desc{font-size:0.68rem;color:var(--muted)}
+.toggle-wrap{display:flex;align-items:center;gap:0.45rem}
+.toggle-lbl{font-size:0.68rem;color:var(--muted)}
+.tgl{position:relative;display:inline-block;width:38px;height:21px;flex-shrink:0}
+.tgl input{opacity:0;width:0;height:0;position:absolute}
+.tgl-sl{position:absolute;cursor:pointer;inset:0;background:rgba(255,255,255,0.08);border-radius:21px;transition:var(--tr);border:1px solid var(--border)}
+.tgl-sl::before{content:'';position:absolute;width:15px;height:15px;left:2px;bottom:2px;background:#fff;border-radius:50%;transition:var(--tr)}
+.tgl input:checked+.tgl-sl{background:var(--gold);border-color:var(--gold)}
+.tgl input:checked+.tgl-sl::before{transform:translateX(17px)}
+
+/* UPLOAD ZONE */
+.upload-zone{border:2px dashed var(--gold-border);border-radius:var(--radius);padding:1.75rem;text-align:center;cursor:pointer;transition:var(--tr);position:relative;background:rgba(245,166,35,0.02)}
+.upload-zone:hover,.upload-zone.drag-over{border-color:var(--gold);background:rgba(245,166,35,0.055)}
+.upload-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.uz-icon{font-size:1.85rem;color:var(--gold);opacity:0.55;margin-bottom:0.65rem}
+.uz-text{font-size:0.8rem;color:var(--muted);line-height:1.6}
+.uz-text strong{color:#fff;display:block;margin-bottom:0.2rem}
+.uz-sub{font-family:var(--mono);font-size:0.62rem;color:var(--muted);margin-top:0.4rem}
+.up-prev{display:flex;flex-wrap:wrap;gap:0.65rem;margin-top:0.85rem}
+.up-prev-item{position:relative;width:72px;height:72px;border-radius:7px;overflow:hidden;border:1px solid var(--border)}
+.up-prev-item img{width:100%;height:100%;object-fit:cover}
+.up-prev-rm{position:absolute;top:2px;right:2px;background:rgba(239,68,68,0.88);color:#fff;border:none;border-radius:3px;width:16px;height:16px;cursor:pointer;font-size:0.55rem;display:flex;align-items:center;justify-content:center}
+
+/* MEDIA GRID */
+.media-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0.65rem;margin-top:0.85rem}
+.mi{position:relative;aspect-ratio:1;border-radius:7px;overflow:hidden;border:2px solid transparent;cursor:pointer;transition:var(--tr)}
+.mi:hover,.mi.sel{border-color:var(--gold)}
+.mi img{width:100%;height:100%;object-fit:cover}
+.mi-ov{position:absolute;inset:0;background:rgba(0,0,0,0.52);display:none;align-items:flex-end;padding:0.35rem}
+.mi:hover .mi-ov{display:flex}
+.mi-nm{font-size:0.58rem;color:#fff;font-family:var(--mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mi-ph{background:linear-gradient(135deg,#1B3A6B,#0a0e1a);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.25rem;font-size:0.58rem;color:var(--muted);font-family:var(--mono)}
+.mi-ph i{font-size:1.4rem;color:#2451a0;margin-bottom:0.15rem}
+
+/* PWD STRENGTH */
+.pw-bar{height:4px;border-radius:2px;background:var(--border);overflow:hidden;margin:0.4rem 0 0.28rem}
+.pw-fill{height:100%;border-radius:2px;transition:var(--tr)}
+.pw-txt{font-size:0.65rem;color:var(--muted);font-family:var(--mono)}
+
+/* SEO PREVIEW */
+.seo-prev{background:#fff;border-radius:8px;padding:1rem;margin-top:0.85rem}
+.seo-url{font-family:var(--mono);font-size:0.7rem;color:#1a73e8;margin-bottom:0.2rem}
+.seo-ttl{font-size:1.05rem;font-weight:400;color:#1a0dab;line-height:1.3;margin-bottom:0.2rem}
+.seo-dsc{font-size:0.82rem;color:#4d5156;line-height:1.45}
+
+/* MODAL */
+.modal-ov{position:fixed;inset:0;background:rgba(0,0,0,0.68);z-index:500;display:none;align-items:center;justify-content:center;padding:1.5rem}
+.modal-ov.open{display:flex}
+.modal{background:var(--card);border:1px solid var(--gold-border);border-radius:14px;padding:1.85rem;width:100%;max-width:560px;max-height:90vh;overflow-y:auto;position:relative}
+.modal-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.35rem}
+.modal-hd span{font-size:0.95rem;font-weight:800;color:#fff}
+.modal-cls{background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:6px;color:var(--muted);cursor:pointer;width:26px;height:26px;display:flex;align-items:center;justify-content:center;transition:var(--tr);font-size:0.72rem}
+.modal-cls:hover{border-color:var(--red);color:var(--red)}
+
+/* DEPLOY PANEL SPECIFIC */
+.deploy-big-btn{width:100%;padding:1.1rem;font-size:1rem;font-weight:800;border-radius:10px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:#07090f;border:none;cursor:pointer;transition:var(--tr);display:flex;align-items:center;justify-content:center;gap:0.6rem}
+.deploy-big-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(245,166,35,0.4)}
+.deploy-big-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+.deploy-status{min-height:28px;font-size:0.82rem;line-height:1.6;padding:0.65rem 0.85rem;background:var(--input);border-radius:7px;border:1px solid var(--border);font-family:var(--mono)}
+.progress-wrap{margin-top:0.85rem;display:none}
+.progress-bar{height:5px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--emerald));border-radius:3px;width:0%;transition:width 1s linear}
+.deploy-step{display:flex;gap:0.75rem;align-items:flex-start;padding:0.85rem;background:var(--input);border-radius:8px;margin-bottom:0.5rem}
+.deploy-step-n{width:24px;height:24px;border-radius:50%;background:var(--gold);color:#07090f;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.78rem;flex-shrink:0}
+.deploy-step-t{font-size:0.81rem;color:var(--text);line-height:1.65}
+.deploy-step-t strong{color:#fff}
+.deploy-step-t code{background:rgba(255,255,255,0.06);padding:0.1rem 0.32rem;border-radius:4px;font-family:var(--mono);font-size:0.82em}
+
+/* ACTIVITY */
+.act-item{display:flex;align-items:flex-start;gap:0.65rem;padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+.act-item:last-child{border-bottom:none}
+.act-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.act-txt{font-size:0.77rem;color:var(--muted);line-height:1.5;flex:1}
+.act-txt strong{color:#fff}
+.act-time{font-family:var(--mono);font-size:0.6rem;color:var(--muted);flex-shrink:0}
+
+/* MSG CARDS */
+.msg-card{background:var(--input);border:1px solid var(--border);border-radius:8px;padding:0.95rem;margin-bottom:0.65rem;transition:var(--tr)}
+.msg-card:hover{border-color:var(--gold-border)}
+.msg-card.unread{border-left:3px solid var(--gold)}
+.msg-from{font-size:0.82rem;font-weight:700;color:#fff}
+.msg-time{font-family:var(--mono);font-size:0.6rem;color:var(--muted)}
+.msg-subj{font-size:0.7rem;color:var(--gold);margin:0.25rem 0}
+.msg-body{font-size:0.78rem;color:var(--muted);line-height:1.6}
+
+/* CODE BLOCK */
+.codeblk{background:#04060f;border:1px solid var(--border);border-radius:8px;padding:0.9rem;font-family:var(--mono);font-size:0.72rem;color:#93c5fd;line-height:1.7;overflow-x:auto;max-height:280px}
+
+/* STATUS DOT */
+.sdot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:0.35rem}
+.sdot-ok{background:var(--emerald)} .sdot-warn{background:var(--gold)} .sdot-err{background:var(--red)}
+
+/* TOAST */
+.toast-wrap{position:fixed;bottom:1.25rem;right:1.25rem;z-index:9000;display:flex;flex-direction:column;gap:0.45rem;pointer-events:none}
+.toast{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:0.7rem 0.95rem;font-size:0.78rem;color:#fff;display:flex;align-items:center;gap:0.55rem;min-width:260px;max-width:360px;animation:toast-in 0.28s ease;box-shadow:0 4px 18px rgba(0,0,0,0.45);pointer-events:all}
+.toast.s{border-color:rgba(16,185,129,0.38)} .toast.s i{color:var(--emerald)}
+.toast.e{border-color:rgba(239,68,68,0.38)} .toast.e i{color:var(--red)}
+.toast.i{border-color:var(--gold-border)} .toast.i i{color:var(--gold)}
+@keyframes toast-in{from{transform:translateX(110%);opacity:0}to{transform:translateX(0);opacity:1}}
+
+/* RESPONSIVE */
+@media(max-width:820px){
+  .admin-layout{grid-template-columns:1fr}
+  .sidebar{display:none;position:static;height:auto}
+  .sidebar.mob-open{display:block}
+  .stats-row{grid-template-columns:repeat(3,1fr)}
+  .card2,.fg-row{grid-template-columns:1fr}
+  .media-grid{grid-template-columns:repeat(3,1fr)}
+  .card3{grid-template-columns:1fr}
+}
+@media(max-width:520px){
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+  .main{padding:1rem}
+  .topbar{padding:0 0.85rem}
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="login-screen">
+  <div class="login-box" id="login-box">
+    <div class="login-icon">🛡️</div>
+    <div class="login-brand">Adewale <span>Admin</span></div>
+    <div class="login-sub">Portfolio Control Panel · Secure Login</div>
+    <label class="login-lbl" for="pw-in">Password</label>
+    <input class="login-input" type="password" id="pw-in" placeholder="Enter your admin password" autocomplete="current-password"/>
+    <button class="login-btn" id="login-btn" onclick="doLogin()"><i class="fas fa-unlock"></i> Access Dashboard</button>
+    <div class="login-msg" id="login-msg"></div>
+    <div class="login-note" id="login-note"></div>
+  </div>
+  <!-- First-time setup shown when no password hash exists in GitHub data -->
+  <div class="login-box login-setup-box" id="setup-box" style="display:none;max-width:480px;margin-top:1rem">
+    <strong>⚙ First-Time Setup</strong>
+    You haven't set up GitHub yet. To use the admin panel:
+    <ol style="margin-top:0.5rem;margin-left:1rem;line-height:2">
+      <li>Enter any password you want above — it will be set as your admin password</li>
+      <li>After login, go to <strong>GitHub Deploy Settings</strong> and connect your token</li>
+      <li>Click <strong>Save Password to GitHub</strong> — this locks your password into GitHub so it works on every device</li>
+    </ol>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app" style="display:none;flex-direction:column;min-height:100vh">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="tb-left">
+      <span class="tb-logo">🛡️ Adewale <span>Admin</span></span>
+      <span class="tb-ver">v3.0</span>
+      <span class="tb-sync synced" id="sync-status"><span class="tb-sync-dot"></span> <span id="sync-txt">Synced with GitHub</span></span>
+    </div>
+    <div class="tb-right">
+      <button class="tb-btn" onclick="window.open('https://cssadewale.pages.dev','_blank')"><i class="fas fa-external-link-alt"></i> <span class="hide-xs">View Site</span></button>
+      <button class="tb-btn" onclick="showPanel('messages')"><i class="fas fa-envelope"></i> <span class="tb-notif-count" id="msg-count" style="display:none">0</span></button>
+      <button class="tb-btn" onclick="triggerDeploy()" id="quick-deploy-btn" style="color:var(--gold);border-color:var(--gold-border)"><i class="fas fa-rocket"></i> <span class="hide-xs">Push Live</span></button>
+      <button class="tb-btn danger" onclick="doLogout()"><i class="fas fa-sign-out-alt"></i></button>
+    </div>
+  </div>
+
+  <div class="admin-layout">
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+      <div class="sb-group">
+        <span class="sb-lbl">Overview</span>
+        <div class="sb-item active" onclick="showPanel('dashboard')"><i class="fas fa-th-large"></i> Dashboard</div>
+        <div class="sb-item" onclick="showPanel('messages')"><i class="fas fa-envelope"></i> Messages <span class="sb-badge" id="sb-msg-badge" style="display:none">0</span></div>
+        <div class="sb-item" onclick="showPanel('activity')"><i class="fas fa-history"></i> Activity Log</div>
+      </div>
+      <div class="sb-divider"></div>
+      <div class="sb-group">
+        <span class="sb-lbl">Content</span>
+        <div class="sb-item" onclick="showPanel('hero')"><i class="fas fa-home"></i> Hero Section</div>
+        <div class="sb-item" onclick="showPanel('about')"><i class="fas fa-user"></i> About / Story</div>
+        <div class="sb-item" onclick="showPanel('projects')"><i class="fas fa-rocket"></i> Projects</div>
+        <div class="sb-item" onclick="showPanel('skills')"><i class="fas fa-code"></i> Skills &amp; Tools</div>
+        <div class="sb-item" onclick="showPanel('journey')"><i class="fas fa-route"></i> Journey</div>
+        <div class="sb-item" onclick="showPanel('certifications')"><i class="fas fa-certificate"></i> Certifications</div>
+        <div class="sb-item" onclick="showPanel('testimonials')"><i class="fas fa-quote-left"></i> Testimonials</div>
+        <div class="sb-item" onclick="showPanel('youtube')"><i class="fab fa-youtube"></i> YouTube</div>
+        <div class="sb-item" onclick="showPanel('contact-info')"><i class="fas fa-address-card"></i> Contact Info</div>
+        <div class="sb-item" onclick="showPanel('cv')"><i class="fas fa-file-alt"></i> CV / Resume</div>
+      </div>
+      <div class="sb-divider"></div>
+      <div class="sb-group">
+        <span class="sb-lbl">Media</span>
+        <div class="sb-item" onclick="showPanel('photos')"><i class="fas fa-images"></i> Photo Manager</div>
+        <div class="sb-item" onclick="showPanel('media-library')"><i class="fas fa-folder-open"></i> Media Library</div>
+        <div class="sb-item" onclick="showPanel('files')"><i class="fas fa-file-upload"></i> File Uploads</div>
+      </div>
+      <div class="sb-divider"></div>
+      <div class="sb-group">
+        <span class="sb-lbl">Site Settings</span>
+        <div class="sb-item" onclick="showPanel('visibility')"><i class="fas fa-eye"></i> Show / Hide</div>
+        <div class="sb-item" onclick="showPanel('seo')"><i class="fas fa-search"></i> SEO &amp; Meta</div>
+        <div class="sb-item" onclick="showPanel('branding')"><i class="fas fa-palette"></i> Branding</div>
+        <div class="sb-item" onclick="showPanel('navigation')"><i class="fas fa-bars"></i> Navigation</div>
+        <div class="sb-item" onclick="showPanel('social-links')"><i class="fas fa-share-alt"></i> Social Links</div>
+      </div>
+      <div class="sb-divider"></div>
+      <div class="sb-group">
+        <span class="sb-lbl">Deploy &amp; System</span>
+        <div class="sb-item" onclick="showPanel('deploy')"><i class="fas fa-rocket"></i> Push Live</div>
+        <div class="sb-item" onclick="showPanel('gh-settings')"><i class="fab fa-github"></i> GitHub Settings</div>
+        <div class="sb-item" onclick="showPanel('security')"><i class="fas fa-lock"></i> Password</div>
+        <div class="sb-item" onclick="showPanel('backup')"><i class="fas fa-database"></i> Backup</div>
+        <div class="sb-item" onclick="showPanel('seo-check')"><i class="fas fa-stethoscope"></i> SEO Check</div>
+        <div class="sb-item" onclick="showPanel('help')"><i class="fas fa-question-circle"></i> Help</div>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+
+      <!-- ══ DASHBOARD ══ -->
+      <div class="panel active" id="panel-dashboard">
+        <div class="panel-header">
+          <div class="panel-title">Dashboard</div>
+          <div class="panel-sub">Welcome back, Adewale. Data loaded live from GitHub — same state on every device.</div>
+        </div>
+        <div class="stats-row">
+          <div class="sc" onclick="showPanel('projects')"><div class="sc-n" id="d-proj">12</div><div class="sc-l">Live Projects</div><div class="sc-d">All deployed</div></div>
+          <div class="sc" onclick="showPanel('certifications')"><div class="sc-n" id="d-cert">12</div><div class="sc-l">Certifications</div><div class="sc-d">3 active</div></div>
+          <div class="sc" onclick="showPanel('journey')"><div class="sc-n" id="d-jour">9</div><div class="sc-l">Milestones</div><div class="sc-d">2009–2026</div></div>
+          <div class="sc" onclick="showPanel('messages')"><div class="sc-n" id="d-msgs">0</div><div class="sc-l">Messages</div><div class="sc-d">Contact form</div></div>
+          <div class="sc" onclick="showPanel('media-library')"><div class="sc-n" id="d-media">0</div><div class="sc-l">Media Files</div><div class="sc-d">Uploaded</div></div>
+        </div>
+        <div class="card2">
+          <div class="card">
+            <div class="card-hd"><i class="fas fa-bolt"></i> Quick Actions</div>
+            <div style="display:flex;flex-direction:column;gap:0.45rem">
+              <button class="btn btn-outline" style="justify-content:flex-start" onclick="showPanel('projects')"><i class="fas fa-plus"></i> Add New Project</button>
+              <button class="btn btn-outline" style="justify-content:flex-start" onclick="showPanel('photos')"><i class="fas fa-camera"></i> Upload Profile Photo</button>
+              <button class="btn btn-outline" style="justify-content:flex-start" onclick="showPanel('journey')"><i class="fas fa-plus"></i> Add Journey Milestone</button>
+              <button class="btn btn-outline" style="justify-content:flex-start" onclick="showPanel('testimonials')"><i class="fas fa-plus"></i> Add Testimonial</button>
+              <button class="btn btn-outline" style="justify-content:flex-start" onclick="showPanel('certifications')"><i class="fas fa-plus"></i> Add Certification</button>
+              <button class="btn btn-outline" style="justify-content:flex-start" onclick="showPanel('seo')"><i class="fas fa-search"></i> Update SEO</button>
+              <button class="btn btn-outline" style="justify-content:flex-start" onclick="showPanel('seo-check')"><i class="fas fa-stethoscope"></i> Run SEO Check</button>
+              <button class="btn btn-gold" style="justify-content:flex-start" onclick="showPanel('deploy')"><i class="fas fa-rocket"></i> Push Changes Live</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-hd"><i class="fas fa-history"></i> Recent Activity</div>
+            <div id="act-preview"><div style="color:var(--muted);font-size:0.8rem;text-align:center;padding:1rem">No activity yet this session.</div></div>
+            <div class="card-hd" style="margin-top:1.25rem;margin-bottom:0.75rem"><i class="fas fa-server"></i> Site Status</div>
+            <div style="display:flex;flex-direction:column;gap:0.45rem">
+              <div style="display:flex;justify-content:space-between;font-size:0.78rem;padding:0.5rem 0.75rem;background:var(--input);border-radius:6px;border:1px solid var(--border)"><span style="color:var(--muted)">Hosting</span><span style="color:var(--emerald);font-weight:600"><span class="sdot sdot-ok"></span>Cloudflare Pages</span></div>
+              <div style="display:flex;justify-content:space-between;font-size:0.78rem;padding:0.5rem 0.75rem;background:var(--input);border-radius:6px;border:1px solid var(--border)"><span style="color:var(--muted)">Data source</span><span style="color:var(--gold);font-weight:600"><span class="sdot sdot-ok"></span>GitHub (live)</span></div>
+              <div style="display:flex;justify-content:space-between;font-size:0.78rem;padding:0.5rem 0.75rem;background:var(--input);border-radius:6px;border:1px solid var(--border)"><span style="color:var(--muted)">Last pushed</span><span style="color:#fff;font-family:var(--mono);font-size:0.7rem" id="last-pushed-dash">—</span></div>
+              <div style="display:flex;justify-content:space-between;font-size:0.78rem;padding:0.5rem 0.75rem;background:var(--input);border-radius:6px;border:1px solid var(--border)"><span style="color:var(--muted)">Password</span><span id="pw-status-dash" style="color:var(--gold);font-weight:600"><span class="sdot sdot-warn"></span>Check security panel</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ MESSAGES ══ -->
+      <div class="panel" id="panel-messages">
+        <div class="panel-header"><div class="panel-title">Contact Messages</div><div class="panel-sub">Messages from your contact form. Reply, mark read, or delete. Stored in GitHub so you see them on every device.</div></div>
+        <div class="card">
+          <div class="card-hd"><i class="fas fa-envelope"></i> Inbox <span id="inbox-count" style="margin-left:auto;font-family:var(--mono);font-size:0.62rem;color:var(--muted);font-weight:400">0 messages</span></div>
+          <div id="messages-list"><div style="text-align:center;padding:2rem;color:var(--muted);font-size:0.8rem"><i class="fas fa-inbox" style="font-size:1.8rem;display:block;margin-bottom:0.6rem;opacity:0.25"></i>No messages yet. Connect Formspree to your contact form.</div></div>
+        </div>
+        <div class="card">
+          <div class="card-hd"><i class="fas fa-cog"></i> Form Settings</div>
+          <div class="fg-row">
+            <div class="fg"><label>Formspree Endpoint ID</label><input type="text" id="formspree-id" placeholder="e.g. xabc1234"/><div class="fg-hint">Get free at <a href="https://formspree.io" target="_blank">formspree.io</a>. Replace YOUR_FORMSPREE_ID in index.html.</div></div>
+            <div class="fg"><label>Notification Email</label><input type="email" id="notif-email" value="hmgconcepts@gmail.com"/></div>
+          </div>
+          <div class="btn-group"><button class="btn btn-gold" onclick="saveSection('form')"><i class="fas fa-save"></i> Save &amp; Push</button></div>
+        </div>
+      </div>
+
+      <!-- ══ PHOTOS ══ -->
+      <div class="panel" id="panel-photos">
+        <div class="panel-header"><div class="panel-title">Photo Manager</div><div class="panel-sub">Upload photos for each slot on your site. Photos are pushed to GitHub and appear live everywhere.</div></div>
+        <div class="card">
+          <div class="card-hd"><i class="fas fa-crosshairs"></i> Target Slot</div>
+          <div class="fg"><label>Where should this photo appear?</label>
+            <select id="photo-target" onchange="updatePhotoPreview()">
+              <option value="hero">Homepage Hero — Circular profile photo</option>
+              <option value="about">About Page — Portrait card photo</option>
+              <option value="cv">CV Page — Professional headshot</option>
+            </select>
+          </div>
+          <div id="current-photo-info" style="font-size:0.78rem;color:var(--muted);padding:0.6rem 0.85rem;background:var(--input);border-radius:7px">No photo set for this slot.</div>
+        </div>
+        <div class="card">
+          <div class="card-hd"><i class="fas fa-upload"></i> Upload Photo</div>
+          <div class="upload-zone" id="photo-drop">
+            <input type="file" id="photo-file" accept="image/*" onchange="handlePhotoUpload(this)"/>
+            <div class="uz-icon"><i class="fas fa-camera"></i></div>
+            <div class="uz-text"><strong>Click or drag your photo here</strong>JPG, PNG, WebP · Max 3MB<br>Hero: 400×400px square · About: 600×800px · CV: 400×500px</div>
+          </div>
+          <div class="up-prev" id="photo-prev"></div>
+          <div class="btn-group" id="photo-btns" style="display:none">
+            <button class="btn btn-gold" onclick="applyPhoto()"><i class="fas fa-check"></i> Apply to Slot &amp; Push Live</button>
+            <button class="btn btn-outline" onclick="clearPhoto()"><i class="fas fa-times"></i> Cancel</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-hd"><i class="fas fa-map-marker-alt"></i> All Photo Slots</div>
+          <div class="item-list">
+            <div class="ir"><div class="ir-info"><div class="ir-name"><i class="fas fa-home" style="color:var(--gold);margin-right:0.4rem"></i>Hero Photo</div><div class="ir-meta" id="s-hero">Circular · 400×400px</div></div><div class="ir-acts"><button class="btn btn-sm btn-outline" onclick="setSlot('hero')"><i class="fas fa-upload"></i></button><button class="btn btn-sm btn-red" onclick="removePhoto('hero')"><i class="fas fa-trash"></i></button></div></div>
+            <div class="ir"><div class="ir-info"><div class="ir-name"><i class="fas fa-user" style="color:var(--gold);margin-right:0.4rem"></i>About Photo</div><div class="ir-meta" id="s-about">Portrait · 600×800px</div></div><div class="ir-acts"><button class="btn btn-sm btn-outline" onclick="setSlot('about')"><i class="fas fa-upload"></i></button><button class="btn btn-sm btn-red" onclick="removePhoto('about')"><i class="fas fa-trash"></i></button></div></div>
+            <div class="ir"><div class="ir-info"><div class="ir-name"><i class="fas fa-file-alt" style="color:var(--gold);margin-right:0.4rem"></i>CV Photo</div><div class="ir-meta" id="s-cv">Professional · 400×500px</div></div><div class="ir-acts"><button class="btn btn-sm btn-outline" onclick="setSlot('cv')"><i class="fas fa-upload"></i></button><button class="btn btn-sm btn-red" onclick="removePhoto('cv')"><i class="fas fa-trash"></i></button></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ MEDIA LIBRARY ══ -->
+      <div class="panel" id="panel-media-library">
+        <div class="panel-header"><div class="panel-title">Media Library</div><div class="panel-sub">All uploaded files. Stored in GitHub — accessible from any device.</div></div>
+        <div class="card">
+          <div class="card-hd"><i class="fas fa-folder-open"></i> Files <span id="media-count-lbl" style="margin-left:auto;font-family:var(--mono);font-size:0.62rem;color:var(--muted);font-weight:400">0 files</span></div>
+          <div class="fg-row">
+            <div class="fg"><label>Upload Files</label>
+              <div class="upload-zone" style="padding:1.1rem">
+                <input type="file" accept="image/*,.pdf,.docx" multiple onchange="handleMediaUpload(this)"/>
+                <div style="font-size:0.8rem;color:var(--muted)"><i class="fas fa-upload" style="color:var(--gold);margin-right:0.4rem"></i>Click to upload images, PDFs, or documents</div>
+              </div>
+            </div>
+            <div class="fg"><label>Filter</label>
+              <select id="media-filter" onchange="renderMedia()">
+                <option value="all">All Files</option>
+                <option value="image">Images Only</option>
+                <option value="document">Documents Only</option>
+              </select>
+            </div>
+          </div>
+          <div class="media-grid" id="media-grid"><div style="grid-column:1/-1;text-align:center;padding:1.5rem;color:var(--muted);font-size:0.8rem">No files yet.</div></div>
+        </div>
+      </div>
+
+      <!-- ══ FILE UPLOADS ══ -->
+      <div class="panel" id="panel-files">
+        <div class="panel-header"><div class="panel-title">File Uploads</div><div class="panel-sub">Upload your CV PDF and certificate files.</div></div>
+        <div class="card">
+          <div class="card-hd"><i class="fas fa-file-pdf"></i> CV / Resume File</div>
+          <div class="upload-zone">
+            <input type="file" accept=".pdf,.docx" onchange="handleCVUpload(this)"/>
+            <div class="uz-icon"><i class="fas fa-file-pdf"></i></div>
+            <div class="uz-text"><strong>Upload your CV (PDF or Word)</strong>Replaces the Google Drive link in nav</div>
+          </div>
+          <div id="cv-upload-status" style="margin-top:0.65rem;font-size:0.78rem;color:var(--muted)">No CV uploaded — using Google Drive link.</div>
+        </div>
+        <div class="card">
+          <div class="card-hd"><i class="fas fa-certificate"></i> Certificate Files</div>
+          <div class="upload-zone">
+            <input type="file" accept="image/*,.pdf" multiple onchange="handleCertUploads(this)"/>
+            <div class="uz-icon"><i class="fas fa-award"></i></div>
+            <div class="uz-text"><strong>Upload certificate images or PDFs</strong>Linked to entries in the Certifications panel</div>
+          </div>
+          <div class="up-prev" id="cert-prev"></div>
+        </div>
+      </div>
+
+      <!-- ══ HERO ══ -->
+      <div class="panel" id="panel-hero">
+        <div class="panel-header"><div class="panel-title">Hero Section</div><div class="panel-sub">The first thing every recruiter sees. Every word matters.</div></div>
+        <div class="card">
+          <div class="card-hd"><i class="fas fa-user-circle"></i> Identity &amp; Headlines</div>
+          <div class="fg"><label>Full Name</label><input type="text" id="hero-name" value="Adewale Samson Adeagbo"/></div>
+          <div class="fg"><label>Hero Statement — one powerful line</label><input type="text" id="hero-statement" value="15 years in Nigerian classrooms. 12 deployed ML projects. I leveraged AI to build a live exam platform on an Android tablet with zero budget."/></div>
+          <div class="fg-row">
+            <div class="fg"><label>Availability Badge</label><input type="text" id="hero-badge" value="Open to opportunities · Lagos, Nigeria"/></div>
+            <div class="fg"><label>Live Project Badge</label><input type="text" id="hero-livebadge" value="CBT Pro — Live with Students"/></div>
+          </div>
+          <div class="card-hd" style="margin-top:1.25rem"><i class="fas fa-keyboard"></i> Typewriter Titles</div>
+          <div class="item-list" id="tw-list"></div>
+          <button class="btn btn-outline btn-sm" onclick="addTW()" style="margin-top:0.65rem"><i class="fas fa-plus"></i> Add Title</button>
+          <div class="btn-group"><button class="btn btn-gold" onclick="saveSection('hero')"><i class="fas fa-rocket"></i> Save &amp; Push Live</button></div>
+        </div>
+      </div>
+
+      <!-- ══ ABOUT ══ -->
+      <div class="panel" id="panel-about">
+        <div class="panel-header"><div class="panel-title">About / Your Story</div><div class="panel-sub">Your story is your greatest differentiator. Honest, specific, human.</div></div>
+        <div class="card">
+          <div class="card-hd"><i class="fas fa-pen"></i> Story Paragraphs</div>
+          <div class="fg"><label>Chapter 1 — The 15+ Year Educator</label><textarea id="about-p1" rows="4">For over 15 years, I have walked into Nigerian classrooms and taught — from Nursery through Primary and currently Secondary school. Mathematics, Further Mathematics, Physics, Chemistry, Computer Science. Thousands of students. Fifteen years of watching exactly where understanding breaks down.</textarea></div>
+          <div class="fg"><label>Chapter 2 — The Builder (AI-Augmented identity)</label><textarea id="about-p2" rows="4">I did not build CBT Pro because I learned HTML. I built it because as a data scientist I think clearly — and I leveraged AI to operate competently in an unfamiliar field. No laptop. Android tablet. Acode. Zero budget. That same method built this portfolio and the HMG Concepts website.</textarea></div>
+          <div class="fg"><label>Chapter 3 — The Data Scientist</label><textarea id="about-p3" rows="4">My formal data science journey accelerated through 3MTT in 2025. Since then: 12 projects, 7 industries, three active learning programmes simultaneously (DeepTech_Ready, WorldQuant University, Kodecamp Cohort 6), and IBM SkillsBuild Hub Ambassador.</textarea></div>
+          <div class="fg"><label>Pull Quote</label><textarea id="about-quote" rows="2" style="min-height:60px">I did not wait to become a developer. Clear thinking and AI leverage built the tools my students needed. That is the real skill.</textarea></div>
+          <div class="btn-group"><button class="btn btn-gold" onclick="saveSection('about')"><i class="fas fa-rocket"></i> Save &amp; Push Live</button></div>
+        </div>
+      </div>
+
+      <!-- ══ PROJECTS ══ -->
+      <div class="panel" id="panel-projects">
+        <div class="panel-header"><div class="panel-title">Projects</div><div class="panel-sub">All 12 live projects. Edit URLs, metrics, descriptions. Add new ones.</div></div>
+        <div class="card">
+          <div class="card-hd"><i class="fas fa-list"></i> All Projects <span id="proj-count" style="margin-left:auto;font-family:var(--mono);font-size:0.62rem;color:var(--muted);font-weight:400"></span></div>
+          <div class="item-list" id="proj-list"></div>
+          <div class="btn-group"><button class="btn btn-gold" onclick="openModal('proj-modal')"><i class="fas fa-plus"></i> Add Project</button></div>
+        </div>
+      </div>
+
+      <!-- ══ SKILLS ══ -->
+      <div class="panel" id="panel-skills">
+        <div class="panel-header"><div class="panel-title">Skills &amp; Tools</div><div class="panel-sub">Real capability only — no aspirational keywords. This is your AI-Augmented identity.</div></div>
+        <div class="card">
+          <div class="card-hd"><i class="fas fa-code"></i> Skill Groups</div>
+          <div id="skills-list"></div>
+          <div class="btn-group"><button class="btn btn-gold" onclick="saveSection('skills')"><i class="fas fa-rocket"></i> Save &amp; Push</button><button class="btn btn-outline" onclick="addSkillGroup()"><i class="fas fa-plus"></i> Add Group</button></div>
+        </div>
+      </div>
+
+      <!-- ══ JOURNEY ══ -->
+      <div class="panel" id="panel-journey">
+        <div class="panel-header"><div class="panel-title">Learning Journey</div><div class="panel-sub">Honesty is your competitive advantage here. From 2009 classroom to 2026 Ambassador.</div></div>
+        <div class="card">
+          <div class="card-hd"><i class="fas fa-route"></i> Timeline Milestones</div>
+          <div class="item-list" id="jour-list"></div>
+          <div class="btn-group"><button class="btn btn-gold" onclick="openModal('mile-modal')"><i class="fas fa-plus"></i> Add Milestone</button><button class="btn btn-outline" onclick="saveSection('journey')"><i class="fas fa-save"></i> Save Order</button></div>
+        </div>
+      </div>
+
+      <!-- ══ CERTIFICATIONS ══ -->
+      <div class="panel" id="panel-certifications">
+        <div class="panel-header"><div class="panel-title">Certifications</div><div class="panel-sub">Mark active programmes clearly. Honesty over inflation.</div></div>
+        <div class="card">
+          <div class="card-hd"><i class="fas fa-certificate"></i> All Certifications</div>
+          <div class="item-list" id="cert-list"></div>
+          <div class="btn-group"><button class="btn btn-gold" onclick="openModal('cert-modal')"><i class="fas fa-plus"></i> Add Certification</button></div>
+        </div>
+      </div>
+
+      <!-- ══ TESTIMONIALS ══ -->
+      <div class="panel" id="panel-testimonials">
+        <div class="panel-header"><div class="panel-title">Testimonials</div><div class="panel-sub">Real quotes from students, teachers, and colleagues. One genuine sentence beats ten fake ones.</div></div>
+        <div class="card">
+          <div class="card-hd"><i class="fas fa-quote-left"></i> Current Testimonials</div>
+          <div class="item-list" id="testi-list"></div>
+          <div class="btn-group"><button class="btn btn-gold" onclick="openModal('testi-modal')"><i class="fas fa-plus"></i> Add Testimonial</button></div>
+        </div>
+        <div class="card">
+          <div class="card-hd"><i class="fab fa-whatsapp"></i> Collect Testimonials via WhatsApp</div>
+          <div class="fg"><label>Message to Copy and Send</label><textarea readonly style="cursor:text;font-size:0.78rem;min-height:75px">Hello! I'm updating my professional portfolio. If you've been a student of mine, worked with me, or used CBT Pro, I'd appreciate one honest sentence about your experience. Thank you — Adewale (cssadewale.pages.dev)</textarea></div>
+          <button class="btn btn-green" onclick="openWhatsApp()"><i class="fab fa-whatsapp"></i> Copy &amp; Open WhatsApp</button>
+        </div>
+      </div>
+
+      <!-- ══ YOUTUBE ══ -->
+      <div class="panel" id="panel-youtube">
+        <div class="panel-header"><div class="panel-title">YouTube</div><div class="panel-sub">HMG Concepts channel details and featured videos on homepage.</div></div>
+        <div class="card">
+          <div class="card-hd"><i class="fab fa-youtube"></i> Channel</div>
+          <div class="fg-row">
+            <div class="fg"><label>Channel Name</label><input type="text" id="yt-name" value="HMG Concepts"/></div>
+            <div class="fg"><label>Channel Handle</label><input type="text" id="yt-handle" value="youtube.com/@hmgconcepts"/></div>
+          </div>
+          <div class="fg"><label>Channel Description</label><textarea id="yt-desc" rows="3">The classroom extended beyond school walls. Data science walkthroughs, EdTech builds in public, WAEC prep — all free.</textarea></div>
+          <div class="card-hd" style="margin-top:1rem"><i class="fas fa-film"></i> Featured Videos</div>
+          <div class="item-list" id="yt-list"></div>
+          <div class="btn-group"><button class="btn btn-gold" onclick="saveSection('youtube')"><i class="fas fa-rocket"></i> Save &amp; Push</button><button class="btn btn-outline" onclick="addYTVideo()"><i class="fas fa-plus"></i> Add Video</button></div>
+        </div>
+      </div>
+
+      <!-- ══ CONTACT ══ -->
+      <div class="panel" id="panel-contact-info">
+        <div class="panel-header"><div class="panel-title">Contact Information</div><div class="panel-sub">Appears in contact section, footer, and CV page.</div></div>
+        <div class="card">
+          <div class="card-hd"><i class="fas fa-address-card"></i> Details</div>
+          <div class="fg-row">
+            <div class="fg"><label>WhatsApp (Primary)</label><input type="text" id="c-wa1" value="+2348100866322"/></div>
+            <div class="fg"><label>WhatsApp (Secondary)</label><input type="text" id="c-wa2" value="+2348094481488"/></div>
+          </div>
+          <div class="fg-row">
+            <div class="fg"><label>Email (Primary)</label><input type="email" id="c-em1" value="hmgconcepts@gmail.com"/></div>
+            <div class="fg"><label>Email (Personal)</label><input type="email" id="c-em2" value="adeagboadewalesamson@gmail.com"/></div>
+          </div>
+          <div class="fg-row">
+            <div class="fg"><label>Location</label><input type="text" id="c-loc" value="Lagos / Ogun State, Nigeria"/></div>
+            <div class="fg"><label>Availability</label>
+              <select id="c-avail"><option value="open">Open to opportunities</option><option value="selective">Selectively open</option><option value="unavailable">Currently unavailable</option></select>
+            </div>
+          </div>
+          <div class="fg"><label>What You Are Looking For</label><textarea id="c-look" rows="3">Actively seeking data science, ML, or analyst roles. Open to EdTech collaborations and CBT Pro school partnerships. Available for remote work globally.</textarea></div>
+          <div class="btn-group"><button class="btn btn-gold" onclick="saveSection('contact')"><i class="fas fa-rocket"></i> Save &amp; Push</button></div>
+        </div>
+      </div>
+
+      <!-- ══ CV ══ -->
+      <div class="panel" id="panel-cv">
+        <div class="panel-header"><div class="panel-title">CV / Resume</div><div class="panel-sub">CV download links and professional summary.</div></div>
+        <div class="card">
+          <div class="card-hd"><i class="fas fa-link"></i> CV Download Links</div>
+          <div class="fg"><label>Data Scientist CV — Google Drive Link</label><input type="url" id="cv-ds" placeholder="https://drive.google.com/file/d/..."/></div>
+          <div class="fg"><label>Educator CV — Google Drive Link</label><input type="url" id="cv-edu" placeholder="https://drive.google.com/file/d/..."/></div>
+          <div class="fg"><label>Professional Summary (shown on CV page)</label><textarea id="cv-summary" rows="4">Data Scientist, ML Engineer, and AI-Augmented Solutions Developer with 15+ years of STEM education experience. Founder HMG Concepts. Builder CBT Pro. 12 deployed projects across 7 industries. Lagos, Nigeria.</textarea></div>
+          <div class="btn-group"><button class="btn btn-gold" onclick="saveSection('cv')"><i class="fas fa-rocket"></i> Save &amp; Push</button></div>
+        </div>
+      </div>
+
+      <!-- ══ VISIBILITY ══ -->
+      <div class="panel" id="panel-visibility">
+        <div class="panel-header"><div class="panel-title">Show / Hide Sections</div><div class="panel-sub">Toggle homepage sections on or off. Content is preserved when hidden.</div></div>
+        <div class="card">
+          <div class="card-hd"><i class="fas fa-eye"></i> Homepage Sections</div>
+          <div id="vis-list"></div>
+          <div class="btn-group"><button class="btn btn-gold" onclick="saveSection('visibility')"><i class="fas fa-rocket"></i> Save &amp; Push</button></div>
+        </div>
+      </div>
+
+      <!-- ══ SEO ══ -->
+      <div class="panel" id="panel-seo">
+        <div class="panel-header"><div class="panel-title">SEO &amp; Meta Tags</div><div class="panel-sub">How Google finds and describes you. Every field matters.</div></div>
+        <div class="card">
+          <div class="card-hd"><i class="fas fa-search"></i> Homepage SEO</div>
+          <div class="fg"><label>Page Title <span style="color:var(--muted);font-weight:400">(50–60 chars ideal · <span id="ttl-count">0</span> now)</span></label><input type="text" id="seo-title" oninput="updateSEOPreview()" value="Adewale Samson Adeagbo | Data Scientist · STEM Educator · AI-Augmented Solutions Developer — Lagos, Nigeria"/></div>
+          <div class="fg"><label>Meta Description <span style="color:var(--muted);font-weight:400">(150–160 chars ideal · <span id="dsc-count">0</span> now)</span></label><textarea id="seo-desc" rows="3" oninput="updateSEOPreview()">Nigerian Data Scientist, 15+ year STEM Educator (Nursery to Secondary), AI-Augmented Solutions Developer. 12 deployed projects. Founder HMG Concepts. Builder CBT Pro. Lagos.</textarea></div>
+          <div class="fg"><label>Keywords</label><input type="text" id="seo-kw" value="Adewale Samson Adeagbo, data scientist Nigeria, STEM educator Lagos, CBT Pro Nigeria, HMG Concepts, machine learning Nigeria"/></div>
+          <div class="fg"><label>OG/Social Share Image URL</label><input type="url" id="og-img" placeholder="https://cssadewale.pages.dev/og-image.png"/></div>
+          <div style="font-size:0.68rem;color:var(--muted);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:700">Google Preview</div>
+          <div class="seo-prev">
+            <div class="seo-url">cssadewale.pages.dev</div>
+            <div class="seo-ttl" id="seo-prev-ttl">Adewale Samson Adeagbo | Data Scientist · STEM Educator</div>
+            <div class="seo-dsc" id="seo-prev-dsc">Nigerian Data Scientist, 15+ year STEM Educator, AI-Augmented Solutions Developer...</div>
+          </div>
+          <div class="btn-group"><button class="btn btn-gold" onclick="saveSection('seo')"><i class="fas fa-rocket"></i> Save &amp; Push</button></div>
+        </div>
+      </div>
+
+      <!-- ══ BRANDING ══ -->
+      <div class="panel" id="panel-branding">
+        <div class="panel-header"><div class="panel-title">Branding &amp; Colors</div><div class="panel-sub">Visual identity across the entire portfolio.</div></div>
+        <div class="card">
+          <div class="card-hd"><i class="fas fa-palette"></i> Colour Palette</div>
+          <div class="fg-row4">
+            <div class="fg"><label>Gold Accent</label><input type="color" id="c-gold" value="#F5A623" style="height:38px;cursor:pointer"/></div>
+            <div class="fg"><label>Emerald</label><input type="color" id="c-em" value="#10b981" style="height:38px;cursor:pointer"/></div>
+            <div class="fg"><label>Royal Blue</label><input type="color" id="c-bl" value="#1B3A6B" style="height:38px;cursor:pointer"/></div>
+            <div class="fg"><label>Background</label><input type="color" id="c-bg" value="#0a0e1a" style="height:38px;cursor:pointer"/></div>
+          </div>
+          <div class="card-hd" style="margin-top:1rem"><i class="fas fa-font"></i> Footer Text</div>
+          <div class="fg"><label>Slogan</label><input type="text" id="f-slogan" value="Learning Deliberately. Building Authentically."/></div>
+          <div class="fg"><label>Copyright</label><input type="text" id="f-copy" value="© 2026 Adewale Samson Adeagbo · HMG Concepts. All rights reserved."/></div>
+          <div class="btn-group"><button class="btn btn-gold" onclick="saveSection('branding')"><i class="fas fa-rocket"></i> Save &amp; Push</button><button class="btn btn-outline" onclick="resetBranding()"><i class="fas fa-undo"></i> Reset</button></div>
+        </div>
+      </div>
+
+      <!-- ══ NAVIGATION ══ -->
+      <div class="panel" id="panel-navigation">
+        <div class="panel-header"><div class="panel-title">Navigation</div><div class="panel-sub">Edit nav links and CTA button.</div></div>
+        <div class="card">
+          <div class="card-hd"><i class="fas fa-bars"></i> Nav CTA Button</div>
+          <div class="fg-row">
+            <div class="fg"><label>Button Text</label><input type="text" id="nav-cta-txt" value="Download CV"/></div>
+            <div class="fg"><label>Button Link</label><input type="url" id="nav-cta-lnk" value="https://drive.google.com/your-cv-link"/></div>
+          </div>
+          <div class="btn-group"><button class="btn btn-gold" onclick="saveSection('navigation')"><i class="fas fa-rocket"></i> Save &amp; Push</button></div>
+        </div>
+      </div>
+
+      <!-- ══ SOCIAL LINKS ══ -->
+      <div class="panel" id="panel-social-links">
+        <div class="panel-header"><div class="panel-title">Social Links</div><div class="panel-sub">All social profiles. Appear in hero, footer, and contact section.</div></div>
+        <div class="card">
+          <div class="card-hd"><i class="fas fa-share-alt"></i> Profiles</div>
+          <div class="fg-row">
+            <div class="fg"><label><i class="fab fa-linkedin" style="color:#0a66c2"></i> LinkedIn</label><input type="url" id="s-li" value="https://linkedin.com/in/adewalesamsonadeagbo"/></div>
+            <div class="fg"><label><i class="fab fa-github"></i> GitHub</label><input type="url" id="s-gh" value="https://github.com/cssadewale"/></div>
+          </div>
+          <div class="fg-row">
+            <div class="fg"><label><i class="fab fa-youtube" style="color:#ff0000"></i> YouTube</label><input type="url" id="s-yt" value="https://youtube.com/@hmgconcepts"/></div>
+            <div class="fg"><label><i class="fab fa-x-twitter"></i> X / Twitter</label><input type="url" id="s-tw" value="https://x.com/cssadewale"/></div>
+          </div>
+          <div class="fg-row">
+            <div class="fg"><label><i class="fab fa-instagram" style="color:#e1306c"></i> Instagram</label><input type="url" id="s-ig" value="https://instagram.com/cssadewale"/></div>
+            <div class="fg"><label><i class="fab fa-whatsapp" style="color:#25d366"></i> WhatsApp</label><input type="url" id="s-wa" value="https://wa.me/2348100866322"/></div>
+          </div>
+          <div class="fg"><label><i class="fas fa-globe" style="color:var(--gold)"></i> HMG Website</label><input type="url" id="s-hmg" value="https://hmgconcepts.business.site"/></div>
+          <div class="btn-group"><button class="btn btn-gold" onclick="saveSection('social')"><i class="fas fa-rocket"></i> Save &amp; Push</button></div>
+        </div>
+      </div>
+
+      <!-- ══ DEPLOY ══ -->
+      <div class="panel" id="panel-deploy">
+        <div class="panel-header"><div class="panel-title">🚀 Push Changes Live</div><div class="panel-sub">One click pushes everything to GitHub. Cloudflare Pages rebuilds in 30–60 seconds. Works from any device because data lives in GitHub, not your browser.</div></div>
+        <div class="card accent">
+          <div class="card-hd" style="color:var(--emerald)"><i class="fas fa-circle" style="animation:pulse-dot 2s infinite"></i> Deploy</div>
+          <div class="deploy-status" id="dep-status">Ready — all changes will be committed to GitHub and deployed.</div>
+          <div class="progress-wrap" id="dep-progress">
+            <div style="display:flex;justify-content:space-between;font-size:0.72rem;color:var(--muted);margin-bottom:0.4rem"><span>Cloudflare Pages rebuilding...</span><span><span id="dep-sec">35</span>s</span></div>
+            <div class="progress-bar"><div class="progress-fill" id="dep-fill"></div></div>
+          </div>
+          <div class="btn-group" style="margin-top:1rem">
+            <button class="deploy-big-btn" id="dep-btn" onclick="triggerDeploy()" style="flex:1"><i class="fas fa-rocket"></i> Push All Changes Live Now</button>
+          </div>
+          <div style="display:flex;gap:0.5rem;margin-top:0.65rem;flex-wrap:wrap">
+            <a href="https://cssadewale.pages.dev" target="_blank" class="btn btn-outline btn-sm"><i class="fas fa-external-link-alt"></i> View Live Site</a>
+            <a id="commit-lnk" href="#" target="_blank" class="btn btn-outline btn-sm" style="display:none"><i class="fab fa-github"></i> View Commit</a>
+            <button class="btn btn-outline btn-sm" onclick="exportJSON()"><i class="fas fa-download"></i> Download JSON</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-hd"><i class="fas fa-question-circle"></i> How It Works</div>
+          <div class="deploy-step"><div class="deploy-step-n">1</div><div class="deploy-step-t"><strong>You edit</strong> anything in the admin — projects, story, photos, SEO, settings.</div></div>
+          <div class="deploy-step"><div class="deploy-step-n">2</div><div class="deploy-step-t"><strong>Click "Push Live"</strong> — the admin sends <code>portfolio-data.json</code> to GitHub via the API.</div></div>
+          <div class="deploy-step"><div class="deploy-step-n">3</div><div class="deploy-step-t"><strong>Cloudflare Pages detects</strong> the new commit and rebuilds your site in 30–60 seconds.</div></div>
+          <div class="deploy-step"><div class="deploy-step-n">4</div><div class="deploy-step-t"><strong>Open your site on any device</strong> — the changes are live everywhere because they came from GitHub, not your browser cache.</div></div>
+        </div>
+      </div>
+
+      <!-- ══ GITHUB SETTINGS ══ -->
+      <div class="panel" id="panel-gh-settings">
+        <div class="panel-header"><div class="panel-title">GitHub Deploy Settings</div><div class="panel-sub">Connect to GitHub once. Works from every device after that. Your token is stored in your browser only — never in GitHub.</div></div>
+        <div class="card">
+          <div class="card-hd"><i class="fab fa-github"></i> Connection</div>
+          <div id="gh-conn-status" style="font-size:0.78rem;padding:0.6rem 0.85rem;background:var(--input);border-radius:7px;margin-bottom:1rem;border:1px solid var(--border)">Not configured.</div>
+          <div class="fg-row">
+            <div class="fg"><label>GitHub Username</label><input type="text" id="gh-user" value="cssadewale"/></div>
+            <div class="fg"><label>Repository Name</label><input type="text" id="gh-repo" placeholder="e.g. cssadewale.pages.dev"/><div class="fg-hint">Exact name as it appears on github.com — use the <a href="github-fix.html" target="_blank">GitHub Fix Tool</a> if unsure</div></div>
+          </div>
+          <div class="fg-row">
+            <div class="fg"><label>Branch</label><input type="text" id="gh-branch" value="main"/></div>
+            <div class="fg"><label>File Path</label><input type="text" value="portfolio-data.json" readonly style="opacity:0.5"/></div>
+          </div>
+          <div class="fg"><label>Personal Access Token <span style="color:var(--red);font-weight:400">(required · stored in browser only)</span></label>
+            <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"/>
+            <div class="fg-hint">
+              Get at <a href="https://github.com/settings/tokens" target="_blank">github.com/settings/tokens</a> →
+              Generate new token (classic) → check <strong>repo</strong> scope → copy and paste here.<br>
+              <strong style="color:#fff">Your token stays in your browser (sessionStorage). It is never sent to GitHub except during actual API calls. Never pushed to your repo.</strong>
+            </div>
+          </div>
+          <div class="btn-group">
+            <button class="btn btn-gold" onclick="saveGHSettings()"><i class="fas fa-save"></i> Save Settings</button>
+            <button class="btn btn-outline" onclick="testGH()"><i class="fas fa-plug"></i> Test Connection</button>
+            <a href="github-fix.html" target="_blank" class="btn btn-outline"><i class="fas fa-tools"></i> Fix Tool</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-hd" style="color:var(--orange)"><i class="fas fa-info-circle"></i> About Token Security</div>
+          <div style="font-size:0.82rem;color:var(--text);line-height:1.8">
+            <p style="margin-bottom:0.75rem">Your GitHub token is stored in <code style="background:rgba(255,255,255,0.06);padding:0.1rem 0.35rem;border-radius:4px;font-family:var(--mono)">sessionStorage</code> — it disappears when you close your browser tab. It is <strong>never pushed to GitHub</strong> and <strong>never stored in portfolio-data.json</strong>.</p>
+            <p style="margin-bottom:0.75rem">This means: <strong>each time you open admin.html on a new device or new tab, you enter your token once.</strong> This is intentional — it is the correct security model for a static site admin. The token is the key to your GitHub. It should not live anywhere permanently except your own memory or a password manager.</p>
+            <p>Your <strong>admin password</strong> (SHA-256 hash) is stored in <code style="background:rgba(255,255,255,0.06);padding:0.1rem 0.35rem;border-radius:4px;font-family:var(--mono)">portfolio-data.json</code> on GitHub. This means it syncs across every device. When you change your password and push, it updates everywhere immediately.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ SECURITY ══ -->
+      <div class="panel" id="panel-security">
+        <div class="panel-header"><div class="panel-title">Password &amp; Security</div><div class="panel-sub">Your password is stored as a SHA-256 hash in portfolio-data.json on GitHub — not in localStorage, not in plaintext. Change it here and push to update across every device instantly.</div></div>
+        <div class="card">
+          <div class="card-hd"><i class="fas fa-shield-alt"></i> How Your Password Works</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.75rem;margin-bottom:1rem">
+            <div style="background:var(--input);border-radius:8px;padding:1rem;border:1px solid rgba(16,185,129,0.2);text-align:center">
+              <i class="fas fa-check-circle" style="color:var(--emerald);font-size:1.3rem;display:block;margin-bottom:0.4rem"></i>
+              <div style="font-size:0.78rem;font-weight:700;color:#fff;margin-bottom:0.2rem">SHA-256 Hashed</div>
+              <div style="font-size:0.68rem;color:var(--muted)">Password stored as a one-way hash. Cannot be reversed.</div>
+            </div>
+            <div style="background:var(--input);border-radius:8px;padding:1rem;border:1px solid rgba(16,185,129,0.2);text-align:center">
+              <i class="fas fa-github" style="color:var(--emerald);font-size:1.3rem;display:block;margin-bottom:0.4rem"></i>
+              <div style="font-size:0.78rem;font-weight:700;color:#fff;margin-bottom:0.2rem">Lives in GitHub</div>
+              <div style="font-size:0.68rem;color:var(--muted)">Hash saved in portfolio-data.json. Syncs to every device.</div>
+            </div>
+            <div style="background:var(--input);border-radius:8px;padding:1rem;border:1px solid rgba(16,185,129,0.2);text-align:center">
+              <i class="fas fa-ban" style="color:var(--emerald);font-size:1.3rem;display:block;margin-bottom:0.4rem"></i>
+              <div style="font-size:0.78rem;font-weight:700;color:#fff;margin-bottom:0.2rem">Never in Plaintext</div>
+              <div style="font-size:0.68rem;color:var(--muted)">Not in localStorage, not in the repo, not in the HTML file.</div>
+            </div>
+          </div>
+          <div id="pw-hash-status" style="font-size:0.78rem;padding:0.6rem 0.85rem;background:var(--input);border-radius:7px;margin-bottom:1rem;border:1px solid var(--border)">Checking password status...</div>
+        </div>
+        <div class="card">
+          <div class="card-hd"><i class="fas fa-key"></i> Change Password</div>
+          <div class="fg"><label>Current Password</label><input type="password" id="curr-pw" placeholder="Enter your current password"/></div>
+          <div class="fg"><label>New Password <span style="color:var(--muted);font-weight:400">(min 8 characters)</span></label>
+            <input type="password" id="new-pw" placeholder="Strong password — mix letters, numbers, symbols" oninput="checkPWStrength(this.value)"/>
+            <div class="pw-bar"><div class="pw-fill" id="pw-fill"></div></div>
+            <div class="pw-txt" id="pw-txt">Enter a password</div>
+          </div>
+          <div class="fg"><label>Confirm New Password</label><input type="password" id="conf-pw" placeholder="Re-enter new password"/></div>
+          <div style="background:rgba(245,166,35,0.05);border:1px solid var(--gold-border);border-radius:8px;padding:0.85rem;font-size:0.79rem;color:var(--text);line-height:1.7;margin-bottom:1rem">
+            <i class="fas fa-info-circle" style="color:var(--gold)"></i> After changing password: click <strong>"Change Password &amp; Push"</strong>. The new hash is immediately pushed to GitHub. Next time you log in — on any device — use the new password.
+          </div>
+          <div class="btn-group"><button class="btn btn-gold" onclick="changePassword()"><i class="fas fa-lock"></i> Change Password &amp; Push</button></div>
+        </div>
+        <div class="card">
+          <div class="card-hd"><i class="fas fa-list-check"></i> Security Status</div>
+          <div style="font-size:0.82rem;color:var(--muted);line-height:2">
+            <div><i class="fas fa-check-circle" style="color:var(--emerald)"></i> Admin panel has <code style="background:rgba(255,255,255,0.06);padding:0.1rem 0.35rem;border-radius:4px;font-family:var(--mono)">noindex,nofollow</code> — Google cannot find it</div>
+            <div><i class="fas fa-check-circle" style="color:var(--emerald)"></i> Login locked after 5 failed attempts</div>
+            <div><i class="fas fa-check-circle" style="color:var(--emerald)"></i> GitHub token stored in sessionStorage only (cleared on tab close)</div>
+            <div><i class="fas fa-check-circle" style="color:var(--emerald)"></i> Password stored as SHA-256 hash — never plaintext</div>
+            <div><i class="fas fa-info-circle" style="color:var(--gold)"></i> Tip: rename admin.html to something non-obvious (e.g. <code style="background:rgba(255,255,255,0.06);padding:0.1rem 0.35rem;border-radius:4px;font-family:var(--mono)">mgmt-ctrl.html</code>)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ BACKUP ══ -->
+      <div class="panel" id="panel-backup">
+        <div class="panel-header"><div class="panel-title">Backup &amp; Restore</div><div class="panel-sub">Download a local backup before major changes. Restore from any previous backup.</div></div>
+        <div class="card2">
+          <div class="card">
+            <div class="card-hd"><i class="fas fa-download"></i> Create Backup</div>
+            <p style="font-size:0.81rem;color:var(--muted);line-height:1.7;margin-bottom:1rem">Downloads a complete JSON backup of all your portfolio content and settings.</p>
+            <button class="btn btn-gold" onclick="downloadBackup()"><i class="fas fa-download"></i> Download Backup JSON</button>
+          </div>
+          <div class="card">
+            <div class="card-hd"><i class="fas fa-upload"></i> Restore</div>
+            <p style="font-size:0.81rem;color:var(--muted);line-height:1.7;margin-bottom:1rem">Upload a previously saved backup to restore your content.</p>
+            <div class="upload-zone" style="padding:1.1rem">
+              <input type="file" accept=".json" onchange="restoreBackup(this)"/>
+              <div style="font-size:0.8rem;color:var(--muted)"><i class="fas fa-file-import" style="color:var(--gold)"></i> Select backup .json file</div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-hd" style="color:var(--red)"><i class="fas fa-exclamation-triangle"></i> Danger Zone</div>
+          <p style="font-size:0.81rem;color:var(--muted);margin-bottom:1rem">Reset all content to factory defaults. Download a backup first.</p>
+          <button class="btn btn-red" onclick="confirmReset()"><i class="fas fa-trash"></i> Reset All to Defaults</button>
+        </div>
+      </div>
+
+      <!-- ══ SEO CHECK ══ -->
+      <div class="panel" id="panel-seo-check">
+        <div class="panel-header"><div class="panel-title">SEO Diagnostic</div><div class="panel-sub">Check every possible cause of the "Couldn't fetch" error in Google Search Console.</div></div>
+        <div class="card">
+          <div class="card-hd"><i class="fas fa-stethoscope"></i> Run Full SEO Check</div>
+          <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1rem;line-height:1.65">This opens the full diagnostic tool that tests your sitemap, robots.txt, HTTPS, and domain consistency automatically.</p>
+          <div class="btn-group">
+            <button class="btn btn-gold" onclick="window.open('seo-check.html','_blank')"><i class="fas fa-external-link-alt"></i> Open SEO Check Tool</button>
+            <button class="btn btn-outline" onclick="window.open('https://cssadewale.pages.dev/sitemap.xml','_blank')"><i class="fas fa-sitemap"></i> View sitemap.xml</button>
+            <button class="btn btn-outline" onclick="window.open('https://cssadewale.pages.dev/robots.txt','_blank')"><i class="fas fa-robot"></i> View robots.txt</button>
+            <button class="btn btn-outline" onclick="window.open('https://search.google.com/search-console/','_blank')"><i class="fab fa-google"></i> Search Console</button>
+            <button class="btn btn-outline" onclick="window.open('https://www.xml-sitemaps.com/validate-xml-sitemap.html','_blank')"><i class="fas fa-check"></i> Validate XML</button>
+          </div>
+          <div style="margin-top:1.25rem;padding:1rem;background:rgba(16,185,129,0.05);border:1px solid rgba(16,185,129,0.2);border-radius:8px;font-size:0.82rem;line-height:1.8">
+            <strong style="color:var(--emerald)">Quick fix if sitemap says "Couldn't fetch":</strong><br>
+            1. Open <code style="background:rgba(255,255,255,0.06);padding:0.1rem 0.32rem;border-radius:4px;font-family:var(--mono)">https://cssadewale.pages.dev/sitemap.xml</code> in your browser. If you see a 404 — the file was not uploaded.<br>
+            2. Make sure <code style="background:rgba(255,255,255,0.06);padding:0.1rem 0.32rem;border-radius:4px;font-family:var(--mono)">sitemap.xml</code> and <code style="background:rgba(255,255,255,0.06);padding:0.1rem 0.32rem;border-radius:4px;font-family:var(--mono)">robots.txt</code> are in your GitHub repo root.<br>
+            3. In Search Console, the field shows your domain — type ONLY <code style="background:rgba(255,255,255,0.06);padding:0.1rem 0.32rem;border-radius:4px;font-family:var(--mono)">sitemap.xml</code> in the box, nothing else.<br>
+            4. Even without sitemap: use URL Inspection Tool → request indexing for each page directly.
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ ACTIVITY ══ -->
+      <div class="panel" id="panel-activity">
+        <div class="panel-header"><div class="panel-title">Activity Log</div><div class="panel-sub">All changes made this session.</div></div>
+        <div class="card">
+          <div class="card-hd"><i class="fas fa-history"></i> Session Log</div>
+          <div id="full-act-log"><div style="color:var(--muted);font-size:0.8rem;text-align:center;padding:1rem">No activity yet.</div></div>
+          <div class="btn-group"><button class="btn btn-outline btn-sm" onclick="clearLog()"><i class="fas fa-trash"></i> Clear</button></div>
+        </div>
+      </div>
+
+      <!-- ══ HELP ══ -->
+      <div class="panel" id="panel-help">
+        <div class="panel-header"><div class="panel-title">Help &amp; Guide</div><div class="panel-sub">Everything you need to manage your portfolio confidently.</div></div>
+        <div class="card">
+          <div class="card-hd"><i class="fas fa-book"></i> Quick Guide</div>
+          <div style="font-size:0.83rem;color:var(--text);line-height:2">
+            <p style="margin-bottom:0.85rem"><strong style="color:var(--gold)">Cross-device sync:</strong> All your content lives in <code style="background:rgba(255,255,255,0.06);padding:0.1rem 0.32rem;border-radius:4px;font-family:var(--mono)">portfolio-data.json</code> on GitHub. Open admin.html on any device, enter your token, and you see the same data. Changes you push from your tablet are immediately available on your laptop.</p>
+            <p style="margin-bottom:0.85rem"><strong style="color:var(--gold)">Password security:</strong> Your password is a SHA-256 hash stored in GitHub — not plaintext, not localStorage. Change it here and push — it updates on every device instantly.</p>
+            <p style="margin-bottom:0.85rem"><strong style="color:var(--gold)">GitHub token:</strong> Your PAT is in sessionStorage only — cleared when you close the browser tab. Enter it once per session. Never stored in your repo.</p>
+            <p style="margin-bottom:0.85rem"><strong style="color:var(--gold)">Deploy workflow:</strong> Edit anything → click "Push Live" → done. 30–60 seconds to live.</p>
+            <p><strong style="color:var(--gold)">Sitemap "Couldn't fetch":</strong> Go to the SEO Check panel. Most likely cause: file not uploaded to GitHub root. Second most likely: wrong URL typed in Search Console.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-hd"><i class="fas fa-external-link-alt"></i> Useful Links</div>
+          <div style="display:flex;flex-direction:column;gap:0.45rem">
+            <a href="https://github.com/cssadewale" target="_blank" class="btn btn-outline" style="justify-content:flex-start"><i class="fab fa-github"></i> GitHub — cssadewale</a>
+            <a href="https://search.google.com/search-console/" target="_blank" class="btn btn-outline" style="justify-content:flex-start"><i class="fas fa-search"></i> Google Search Console</a>
+            <a href="https://formspree.io" target="_blank" class="btn btn-outline" style="justify-content:flex-start"><i class="fas fa-envelope"></i> Formspree — Contact Form</a>
+            <a href="https://pages.cloudflare.com" target="_blank" class="btn btn-outline" style="justify-content:flex-start"><i class="fas fa-cloud"></i> Cloudflare Pages</a>
+            <a href="https://github.com/settings/tokens" target="_blank" class="btn btn-outline" style="justify-content:flex-start"><i class="fas fa-key"></i> GitHub Tokens</a>
+            <a href="seo-check.html" target="_blank" class="btn btn-outline" style="justify-content:flex-start"><i class="fas fa-stethoscope"></i> SEO Diagnostic Tool</a>
+            <a href="github-fix.html" target="_blank" class="btn btn-outline" style="justify-content:flex-start"><i class="fas fa-tools"></i> GitHub Fix Tool</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /main -->
+  </div><!-- /layout -->
+</div><!-- /app -->
+
+<!-- MODALS -->
+<div class="modal-ov" id="proj-modal"><div class="modal">
+  <div class="modal-hd"><span id="proj-modal-ttl">Add Project</span><button class="modal-cls" onclick="closeModal('proj-modal')"><i class="fas fa-times"></i></button></div>
+  <div class="fg-row"><div class="fg"><label>Name</label><input type="text" id="pm-name" placeholder="Bank Customer Churn Prediction"/></div><div class="fg"><label>Category</label><input type="text" id="pm-cat" placeholder="Binary Classification · Banking"/></div></div>
+  <div class="fg"><label>Problem Statement</label><textarea id="pm-prob" rows="3" placeholder="What real problem does this solve?"></textarea></div>
+  <div class="fg-row"><div class="fg"><label>Key Metric</label><input type="text" id="pm-metric" placeholder="F1=0.609 · AUC=0.868"/></div><div class="fg"><label>Type</label><select id="pm-type"><option value="ml">Machine Learning</option><option value="edtech">EdTech</option><option value="nlp">NLP</option><option value="analytics">Analytics</option></select></div></div>
+  <div class="fg-row"><div class="fg"><label>GitHub URL</label><input type="url" id="pm-github" placeholder="https://github.com/cssadewale/..."/></div><div class="fg"><label>Live App URL</label><input type="url" id="pm-live" placeholder="https://...streamlit.app/"/></div></div>
+  <div class="fg"><label>Tech Stack (comma separated)</label><input type="text" id="pm-stack" placeholder="Python, Scikit-learn, SHAP, Streamlit"/></div>
+  <div class="fg-row"><div class="fg"><label>Status</label><select id="pm-status"><option value="live">Live &amp; Deployed</option><option value="draft">Draft</option></select></div><div class="fg fg-full" style="display:none" id="pm-edit-idx"></div></div>
+  <div class="btn-group"><button class="btn btn-gold" onclick="saveProject()"><i class="fas fa-save"></i> Save Project</button><button class="btn btn-outline" onclick="closeModal('proj-modal')">Cancel</button></div>
+</div></div>
+
+<div class="modal-ov" id="mile-modal"><div class="modal">
+  <div class="modal-hd"><span>Add Journey Milestone</span><button class="modal-cls" onclick="closeModal('mile-modal')"><i class="fas fa-times"></i></button></div>
+  <div class="fg-row"><div class="fg"><label>Date / Period</label><input type="text" id="mm-date" placeholder="April 2026 or 2024–Ongoing"/></div><div class="fg"><label>Tag</label><select id="mm-tag"><option value="active">Currently Active</option><option value="milestone">Milestone</option><option value="cert">Certification</option><option value="work">Work</option><option value="edu">Education</option></select></div></div>
+  <div class="fg"><label>Title</label><input type="text" id="mm-title" placeholder="WorldQuant University Applied Data Science Lab"/></div>
+  <div class="fg"><label>Organisation</label><input type="text" id="mm-org" placeholder="WorldQuant University"/></div>
+  <div class="fg"><label>Description</label><textarea id="mm-desc" rows="4" placeholder="Tell the story honestly..."></textarea></div>
+  <div class="btn-group"><button class="btn btn-gold" onclick="saveMilestone()"><i class="fas fa-save"></i> Save</button><button class="btn btn-outline" onclick="closeModal('mile-modal')">Cancel</button></div>
+</div></div>
+
+<div class="modal-ov" id="cert-modal"><div class="modal">
+  <div class="modal-hd"><span>Add Certification</span><button class="modal-cls" onclick="closeModal('cert-modal')"><i class="fas fa-times"></i></button></div>
+  <div class="fg-row"><div class="fg"><label>Issuing Body</label><input type="text" id="cm-issuer" placeholder="DSN × Microsoft"/></div><div class="fg"><label>Year</label><input type="text" id="cm-year" placeholder="2026"/></div></div>
+  <div class="fg"><label>Certification Name</label><input type="text" id="cm-name" placeholder="Elevate AI Developers Programme (AI-900)"/></div>
+  <div class="fg-row"><div class="fg"><label>Status</label><select id="cm-status"><option value="completed">Completed</option><option value="active">Currently Active</option></select></div><div class="fg"><label>Verify URL (optional)</label><input type="url" id="cm-url" placeholder="https://..."/></div></div>
+  <div class="btn-group"><button class="btn btn-gold" onclick="saveCert()"><i class="fas fa-save"></i> Save</button><button class="btn btn-outline" onclick="closeModal('cert-modal')">Cancel</button></div>
+</div></div>
+
+<div class="modal-ov" id="testi-modal"><div class="modal">
+  <div class="modal-hd"><span>Add Testimonial</span><button class="modal-cls" onclick="closeModal('testi-modal')"><i class="fas fa-times"></i></button></div>
+  <div class="fg"><label>Testimonial (their words)</label><textarea id="tm-text" rows="4" placeholder="Honest quote from student, teacher, or colleague..."></textarea></div>
+  <div class="fg-row"><div class="fg"><label>Name (or initials)</label><input type="text" id="tm-name" placeholder="Tolu F."/></div><div class="fg"><label>Role / Context</label><input type="text" id="tm-role" placeholder="SSS3 Student · Lagos Secondary School"/></div></div>
+  <div class="btn-group"><button class="btn btn-gold" onclick="saveTestimonial()"><i class="fas fa-save"></i> Save</button><button class="btn btn-outline" onclick="closeModal('testi-modal')">Cancel</button></div>
+</div></div>
+
+<div class="toast-wrap" id="toast-wrap"></div>
+<script>
+/* ═══════════════════════════════════════════════════
+   ADEWALE PORTFOLIO ADMIN v3.0
+   Architecture:
+   - Password: SHA-256 hashed, stored in portfolio-data.json on GitHub
+   - Data: fetched live from GitHub on login (cross-device sync)
+   - Token: sessionStorage only (clears on tab close, never in repo)
+   - Deploy: GitHub Contents API → Cloudflare Pages auto-rebuild
+═══════════════════════════════════════════════════ */
+
+/* ── GITHUB CONFIG ────────────────────────────── */
+const GH = {
+  get user()   { return sessionStorage.getItem('gh_user')   || localStorage.getItem('gh_user')   || 'cssadewale'; },
+  get repo()   { return sessionStorage.getItem('gh_repo')   || localStorage.getItem('gh_repo')   || ''; },
+  get branch() { return sessionStorage.getItem('gh_branch') || localStorage.getItem('gh_branch') || 'main'; },
+  get token()  { return sessionStorage.getItem('gh_token')  || ''; },
+  file: 'portfolio-data.json',
+  url(path) { return `https://api.github.com/repos/${this.user}/${this.repo}/contents/${path}?ref=${this.branch}`; }
+};
+
+/* ── STATE ──────────────────────────────────────── */
+let DATA = null;         // live data from GitHub
+let LOCAL = {};          // unsaved local changes
+let actLog = [];
+let loginAttempts = 0;
+const MAX_ATTEMPTS = 5;
+let pendingPhoto = null;
+
+/* ── SHA-256 (Web Crypto API — built into every browser) ─────── */
+async function sha256(str) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+
+/* ── DEFAULT DATA ────────────────────────────── */
+const DEFAULT_DATA = {
+  _pwHash: '',  // empty = first run, any password accepted
+  _lastPushed: '',
+  hero: {
+    name:'Adewale Samson Adeagbo',
+    statement:'15 years in Nigerian classrooms. 12 deployed ML projects. I leveraged AI to build a live exam platform on an Android tablet with zero budget.',
+    badge:'Open to opportunities · Lagos, Nigeria',
+    liveBadge:'CBT Pro — Live with Students',
+    typewriter:['Data Scientist','ML Engineer','STEM Educator (15+ Years)','AI-Augmented Solutions Developer','EdTech Builder','Founder, HMG Concepts']
+  },
+  about:{p1:'',p2:'',p3:'',quote:''},
+  projects:[
+    {id:'p1',name:'CBT Pro (CBT.ng)',cat:'EdTech · Full-Stack Web',type:'edtech',problem:'Nigerian teachers needed a free, reliable digital exam tool.',metric:'CSV upload · timed exams · anti-cheat · 4-tab analytics · Gemini AI',github:'https://github.com/cssadewale/cbt-system',live:'https://cssadewale.github.io/cbt-system/teacher.html',stack:['HTML5','CSS3','Vanilla JS','Supabase','Gemini API'],status:'live'},
+    {id:'p2',name:'Insurance Claim Prediction',cat:'Binary Classification · Insurance',type:'ml',problem:'Predict fraudulent claims before processing.',metric:'Random Forest · SMOTE · SHAP · 7,014 records',github:'https://github.com/cssadewale/insurance-claim-prediction',live:'https://adewale-insurance-claim-prediction.streamlit.app/',stack:['Python','Scikit-learn','SHAP','Streamlit'],status:'live'},
+    {id:'p3',name:'Yakub Staff Promotion Prediction',cat:'HR Analytics · Binary Classification',type:'ml',problem:'Remove bias from HR promotion decisions.',metric:'RF · F1=0.411 · AUC=0.891',github:'https://github.com/cssadewale/yakub-promotion-prediction',live:'https://yakub-promotion-prediction.streamlit.app/',stack:['Python','Scikit-learn','Streamlit'],status:'live'},
+    {id:'p4',name:'Bank Customer Churn Prediction',cat:'Banking · Binary Classification',type:'ml',problem:'Identify at-risk customers before they leave.',metric:'GB · F1=0.609 · AUC=0.868',github:'https://github.com/cssadewale/bank-customer-churn-prediction',live:'https://adewale-bank-customer-churn-prediction.streamlit.app/',stack:['Python','Scikit-learn','Streamlit'],status:'live'},
+    {id:'p5',name:'Income Level Prediction',cat:'FinTech · Binary Classification',type:'ml',problem:'Predict income bracket for financial inclusion.',metric:'Random Forest · SMOTE · 5-Model Comparison',github:'https://github.com/cssadewale/income-level-prediction',live:'https://adewale-income-level-prediction.streamlit.app/',stack:['Python','Scikit-learn','Streamlit'],status:'live'},
+    {id:'p6',name:'TruthLens — Fake News Detector',cat:'NLP · Text Classification (3MTT Capstone)',type:'nlp',problem:'Detect misinformation in news articles automatically.',metric:'XGBoost · TF-IDF · Acc=86.75% · AUC=0.9393',github:'https://github.com/cssadewale/fake-news-detector',live:'https://adewale-fake-news-detector.streamlit.app/',stack:['Python','XGBoost','TF-IDF','Streamlit'],status:'live'},
+    {id:'p7',name:'SwiftChain Delivery Delay',cat:'Logistics · Multi-class Classification',type:'ml',problem:'Predict delivery delay category before dispatch.',metric:'GB · Multiclass · Acc=62% · F1=0.579 · leakage fixed',github:'https://github.com/cssadewale/swiftchain-delivery-prediction',live:'https://adewale-swiftchain-delivery-prediction.streamlit.app/',stack:['Python','Scikit-learn','Streamlit'],status:'live'},
+    {id:'p8',name:'NeuroWell Burnout Predictor',cat:'Workplace · Regression',type:'ml',problem:'Predict employee burnout rate before productivity collapses.',metric:'GB · R²=0.855 · RMSE=0.072',github:'https://github.com/cssadewale/burnout-prediction',live:'https://adewale-burnout-prediction.streamlit.app/',stack:['Python','Scikit-learn','Streamlit'],status:'live'},
+    {id:'p9',name:'Student At-Risk Predictor',cat:'EdTech · Binary Classification',type:'edtech',problem:'Identify students likely to fail before exam season.',metric:'Random Forest · SHAP · Synthetic Nigerian Data',github:'https://github.com/cssadewale/student-at-risk-predictor',live:'https://student-at-risk-predictor.streamlit.app/',stack:['Python','Scikit-learn','SHAP','Streamlit'],status:'live'},
+    {id:'p10',name:'Student Performance Tracker v3',cat:'EdTech · Analytics Dashboard',type:'edtech',problem:'Give teachers a real data picture of their class.',metric:'Streamlit · Plotly · 4 Tabs · Topic Analysis',github:'https://github.com/cssadewale/student-performance-tracker',live:'https://adewale-student-performance-tracker.streamlit.app/',stack:['Python','Pandas','Plotly','Streamlit'],status:'live'},
+    {id:'p11',name:'Student Study Plan Generator',cat:'EdTech · Rule-Based AI',type:'edtech',problem:'Generate personalised WAEC/NECO revision schedules.',metric:'Rule-Based AI · Personalised Learning',github:'https://github.com/cssadewale/student-study-plan-generator',live:'https://student-study-plan-generator.streamlit.app/',stack:['Python','Streamlit'],status:'live'},
+    {id:'p12',name:'CBT Question Bank Manager',cat:'EdTech · Full-Stack Tool',type:'edtech',problem:'Organise and reuse CBT question sets across subjects.',metric:'Streamlit · SQLite · CBT Companion',github:'https://github.com/cssadewale/cbt-question-bank',live:'https://adewale-cbt-question-bank.streamlit.app/',stack:['Python','Streamlit','SQLite'],status:'live'}
+  ],
+  certifications:[
+    {id:'c1',issuer:'DSN × 3MTT × Google.org',name:'DeepTech_Ready — DSML Track, Cohort 3',year:'2025–2026',status:'active',url:''},
+    {id:'c2',issuer:'WorldQuant University',name:'Applied Data Science Lab',year:'2024–Ongoing',status:'active',url:''},
+    {id:'c3',issuer:'Kodecamp',name:'Cohort 6 — ML Core Track',year:'2025–2026',status:'active',url:''},
+    {id:'c4',issuer:'IBM SkillsBuild',name:'SkillsBuild Hub Ambassador — Cohort 4',year:'2026',status:'completed',url:''},
+    {id:'c5',issuer:'DSN × Microsoft',name:'Elevate AI Developers Programme (AI-900)',year:'2026',status:'completed',url:''},
+    {id:'c6',issuer:'3MTT Federal Programme',name:'Digital Skills — Data Science Track',year:'Dec 2025',status:'completed',url:''},
+    {id:'c7',issuer:'Digital Skillup Africa',name:'Data Analysis Certification',year:'Nov 2025',status:'completed',url:''},
+    {id:'c8',issuer:'Youthrive / CareerEX',name:'Data Science Programme',year:'Jul 2025',status:'completed',url:''},
+    {id:'c9',issuer:'Jobberman',name:'Soft Skills Certification',year:'2021 & 2025',status:'completed',url:''},
+    {id:'c10',issuer:'Lagos State University',name:'B.Sc.(Ed) Computer Science Education',year:'2023',status:'completed',url:''},
+    {id:'c11',issuer:'IBM / Digital Skills',name:'AI Fundamentals · Generative AI · Copilot',year:'2025',status:'completed',url:''},
+    {id:'c12',issuer:'Rotop Music Academy',name:'Piano & Music Theory Certificate',year:'2013',status:'completed',url:''}
+  ],
+  journey:[
+    {id:'j1',date:'2025–2026 · Active',tag:'active',title:'Three Active Learning Programmes',org:'DSN × 3MTT × Google.org | WorldQuant University | Kodecamp',desc:'DeepTech_Ready DSML Cohort 3, WorldQuant University Applied DS Lab, and Kodecamp Cohort 6 ML Core Track — all running simultaneously while teaching every week.'},
+    {id:'j2',date:'April 2026',tag:'milestone',title:'IBM SkillsBuild Hub Ambassador — Cohort 4',org:'IBM SkillsBuild',desc:'Selected to champion digital literacy and AI fluency across Nigerian communities.'},
+    {id:'j3',date:'2025',tag:'milestone',title:'12 Projects Deployed Across 7 Industries',org:'Independent · HMG Technologies',desc:'From notebooks to 12 live Streamlit apps including insurance, banking, HR, logistics, NLP, and EdTech.'},
+    {id:'j4',date:'2025 · The Turning Point',tag:'cert',title:'3MTT Programme — Data Science Track',org:'Federal Government / 3MTT',desc:'The spark that lit everything. My 15-year problem-solving instincts finally had a technical language.'},
+    {id:'j5',date:'2024',tag:'milestone',title:'CBT Pro — First Live Deployment',org:'HMG Technologies',desc:'Built on Android tablet, Acode editor, AI collaboration. Not web dev training — clear thinking.'},
+    {id:'j6',date:'2023',tag:'edu',title:'B.Sc.(Ed) Computer Science Education',org:'Lagos State University (LASU)',desc:'Degree earned as an adult to formally bridge pedagogy and technology.'},
+    {id:'j7',date:'2015',tag:'work',title:'Founded HMG Concepts',org:'HMG Concepts',desc:'Individual tutoring → structured educational organisation with four subsidiaries.'},
+    {id:'j8',date:'2009',tag:'work',title:'First Classroom',org:'Chrisville Schools',desc:'JSS class. Chalk. A blackboard. 15 years later, still in the classroom every week.'}
+  ],
+  testimonials:[
+    {id:'t1',text:"Mr Adewale does not just teach you how to solve the problem — he teaches you how to think. My Further Mathematics improved from D7 to B2 in one term.",name:'Tolu F.',role:'SSS3 Student · Lagos Secondary School'},
+    {id:'t2',text:"CBT Pro is genuinely different. My students completed mock exams without a single technical issue. Remarkable for a free Nigerian tool.",name:'Adeyemi O.',role:'STEM Teacher · Lagos Secondary School'}
+  ],
+  skills:[
+    {group:'Data Science & ML',icon:'fas fa-brain',items:['Python','Pandas','NumPy','Scikit-learn','SHAP','Matplotlib','Seaborn','SMOTE','XGBoost','Gradient Boosting','Random Forest','TF-IDF / NLP','Joblib','Streamlit']},
+    {group:'Data Analysis & BI',icon:'fas fa-chart-bar',items:['SQL','Power BI','Tableau','Excel (Advanced)','Google Sheets (Advanced)','EDA','Statistical Analysis']},
+    {group:'Web & EdTech',icon:'fas fa-code',items:['HTML5','CSS3','Vanilla JavaScript','Supabase','Row-Level Security','GitHub Pages','Cloudflare Pages','SQLite']},
+    {group:'Tools & AI',icon:'fas fa-tools',items:['Git & GitHub','Jupyter','Google Colab','Gemini API','Claude (Anthropic)','Formspree','Acode (Android)']},
+    {group:'Currently Active',icon:'fas fa-graduation-cap',items:['DeepTech_Ready DSN × Google.org','WorldQuant University Applied DS Lab','Kodecamp Cohort 6 ML','AI-900 (Microsoft Azure)','Deep Learning (Next)']}
+  ],
+  youtube:{name:'HMG Concepts',handle:'youtube.com/@hmgconcepts',url:'https://youtube.com/@hmgconcepts',desc:'The classroom beyond the school walls. Data science walkthroughs, EdTech builds, WAEC prep — all free.',videos:[
+    {title:'How I Built CBT Pro on an Android Tablet — No Laptop, No Budget, No Web Dev Background',meta:'EdTech Build Walkthrough'},
+    {title:'TruthLens Fake News Detector — Full NLP Walkthrough: Data to Live Streamlit App',meta:'3MTT Capstone 2 · NLP'},
+    {title:'WAEC Further Maths — Arithmetic Progressions: The Pattern Method That Actually Sticks',meta:'WAEC / JAMB Prep'}
+  ]},
+  contact:{wa1:'+2348100866322',wa2:'+2348094481488',email:'hmgconcepts@gmail.com',email2:'adeagboadewalesamson@gmail.com',location:'Lagos / Ogun State, Nigeria',avail:'open',looking:'Actively seeking data science, ML, or analyst roles. Open to EdTech collaborations and CBT Pro school partnerships. Open to remote globally.'},
+  social:{linkedin:'https://linkedin.com/in/adewalesamsonadeagbo',github:'https://github.com/cssadewale',youtube:'https://youtube.com/@hmgconcepts',twitter:'https://x.com/cssadewale',instagram:'https://instagram.com/cssadewale',whatsapp:'https://wa.me/2348100866322',hmg:'https://hmgconcepts.business.site'},
+  seo:{title:'Adewale Samson Adeagbo | Data Scientist · STEM Educator · AI-Augmented Solutions Developer — Lagos, Nigeria',desc:'Nigerian Data Scientist, 15+ year STEM Educator (Nursery to Secondary), AI-Augmented Solutions Developer. 12 deployed projects. Founder HMG Concepts. Builder CBT Pro. Lagos.',kw:'Adewale Samson Adeagbo, data scientist Nigeria, STEM educator Lagos, CBT Pro Nigeria, HMG Concepts',ogImg:'https://cssadewale.pages.dev/og-image.png'},
+  visibility:{hero:true,about:true,skills:true,projects:true,journey:true,youtube:true,certifications:true,testimonials:true,contact:true},
+  cv:{linkDS:'',linkEdu:'',summary:''},
+  navigation:{ctaTxt:'Download CV',ctaLink:'https://drive.google.com/your-cv-link'},
+  branding:{gold:'#F5A623',emerald:'#10b981',blue:'#1B3A6B',bg:'#0a0e1a',slogan:'Learning Deliberately. Building Authentically.',copyright:'© 2026 Adewale Samson Adeagbo · HMG Concepts. All rights reserved.'},
+  form:{formspreeId:'',notifEmail:'hmgconcepts@gmail.com'},
+  photos:{hero:'',about:'',cv:''},
+  media:[],
+  messages:[]
+};
+
+/* ══ LOGIN ════════════════════════════════════════ */
+document.getElementById('pw-in').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
+
+async function doLogin() {
+  const pw = document.getElementById('pw-in').value;
+  const btn = document.getElementById('login-btn');
+  const msg = document.getElementById('login-msg');
+  if(!pw) { msg.className='login-msg err'; msg.textContent='Enter your password.'; return; }
+  if(loginAttempts >= MAX_ATTEMPTS) { msg.className='login-msg err'; msg.textContent='Too many attempts. Refresh the page.'; return; }
+  btn.disabled = true;
+  msg.className='login-msg info'; msg.textContent='Fetching data from GitHub...';
+
+  // First: try to load data from GitHub if token is available
+  let serverData = null;
+  if(GH.token && GH.repo) {
+    serverData = await fetchFromGitHub();
+  }
+
+  const storedData = serverData || JSON.parse(localStorage.getItem('portfolio_data') || 'null') || DEFAULT_DATA;
+  const hash = storedData._pwHash || '';
+
+  // Compute hash of entered password
+  const enteredHash = await sha256(pw);
+
+  let granted = false;
+  if(!hash) {
+    // First-time: no password set yet — any password works, we'll set it
+    granted = true;
+    msg.className='login-msg ok'; msg.textContent='First-time setup — setting your password...';
+    storedData._pwHash = enteredHash;
+  } else {
+    granted = enteredHash === hash;
+  }
+
+  if(granted) {
+    DATA = storedData;
+    sessionStorage.setItem('admin_authed','1');
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('app').style.display = 'flex';
+    initApp();
+    logAct('Admin session started','emerald');
+    if(!hash) {
+      showToast('First login — go to Password panel and push your password to GitHub.','info');
+      showPanel('security');
+    }
+  } else {
+    loginAttempts++;
+    msg.className='login-msg err';
+    const left = MAX_ATTEMPTS - loginAttempts;
+    msg.textContent = left > 0 ? `Incorrect password. ${left} attempt${left>1?'s':''} remaining.` : 'Account locked. Refresh to try again.';
+    document.getElementById('pw-in').value='';
+    btn.disabled = false;
+  }
+  if(granted) btn.disabled = false;
+}
+
+/* ══ FETCH FROM GITHUB ══════════════════════════ */
+async function fetchFromGitHub() {
+  if(!GH.token || !GH.repo) return null;
+  try {
+    const res = await fetch(GH.url(GH.file), {
+      headers:{'Authorization':`token ${GH.token}`,'Accept':'application/vnd.github.v3+json'}
+    });
+    if(!res.ok) return null;
+    const meta = await res.json();
+    const raw = atob(meta.content.replace(/\n/g,''));
+    return JSON.parse(decodeURIComponent(escape(raw)));
+  } catch(e) { return null; }
+}
+
+/* ══ PUSH TO GITHUB ══════════════════════════════ */
+async function pushToGitHub(data, commitMsg) {
+  if(!GH.token) throw new Error('No GitHub token. Go to GitHub Settings and enter your PAT.');
+  if(!GH.repo) throw new Error('No repository name. Go to GitHub Settings and set your repo.');
+  const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
+  // Get SHA
+  let sha = null;
+  const shaRes = await fetch(GH.url(GH.file), {headers:{'Authorization':`token ${GH.token}`,'Accept':'application/vnd.github.v3+json'}});
+  if(shaRes.ok) { const d = await shaRes.json(); sha = d.sha; }
+  else if(shaRes.status !== 404) { const e = await shaRes.json(); throw new Error(`${e.message} (${shaRes.status})`); }
+  const body = {message: commitMsg || `Portfolio update ${new Date().toLocaleString('en-NG',{timeZone:'Africa/Lagos'})} — admin panel`, content, branch: GH.branch};
+  if(sha) body.sha = sha;
+  const pushRes = await fetch(
+    `https://api.github.com/repos/${GH.user}/${GH.repo}/contents/${GH.file}`,
+    {method:'PUT', headers:{'Authorization':`token ${GH.token}`,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'}, body: JSON.stringify(body)}
+  );
+  if(!pushRes.ok) {
+    const e = await pushRes.json();
+    let hint = '';
+    if(pushRes.status===401) hint=' — Token invalid. Create a new one at github.com/settings/tokens';
+    if(pushRes.status===403) hint=' — No write permission. Token must have "repo" scope';
+    if(pushRes.status===404) hint=` — Repo "${GH.repo}" not found. Use the GitHub Fix Tool to find the correct name`;
+    if(pushRes.status===422) hint=` — Branch "${GH.branch}" may not exist`;
+    throw new Error(e.message + hint);
+  }
+  const result = await pushRes.json();
+  data._lastPushed = new Date().toISOString();
+  localStorage.setItem('portfolio_data', JSON.stringify(data));
+  return result.commit?.html_url || '';
+}
+
+/* ══ FULL DEPLOY ════════════════════════════════ */
+async function triggerDeploy() {
+  const btn = document.getElementById('dep-btn');
+  const qBtn = document.getElementById('quick-deploy-btn');
+  const statusEl = document.getElementById('dep-status');
+  btn.disabled = true; if(qBtn) qBtn.disabled = true;
+  setSyncStatus('syncing','Pushing to GitHub...');
+  setDepStatus(`<span style="color:var(--gold)"><i class="fas fa-spinner fa-spin"></i> Connecting to GitHub...</span>`);
+
+  try {
+    collectFormData();
+    const commitUrl = await pushToGitHub(DATA, `Portfolio update ${new Date().toLocaleString('en-NG',{timeZone:'Africa/Lagos'})} — admin panel`);
+    setDepStatus(`<span style="color:var(--emerald)"><i class="fas fa-check-circle"></i> Pushed to GitHub! Cloudflare Pages is rebuilding...</span>`);
+    setSyncStatus('synced','Synced with GitHub');
+    showToast('Deployed! Site updates in ~30 seconds.','s');
+    logAct('Pushed portfolio-data.json to GitHub — rebuild triggered','emerald');
+    if(commitUrl) { const cl=document.getElementById('commit-lnk'); if(cl){cl.href=commitUrl;cl.style.display='inline-flex';} }
+    document.getElementById('last-pushed-dash').textContent = new Date().toLocaleString('en-NG',{timeZone:'Africa/Lagos'});
+    startCountdown(35, commitUrl);
+  } catch(err) {
+    setDepStatus(`<span style="color:var(--red)"><i class="fas fa-times-circle"></i> ${err.message}</span>`);
+    setSyncStatus('unsynced','Not synced');
+    showToast('Deploy failed: ' + err.message,'e');
+    logAct('Deploy failed: ' + err.message,'red');
+  } finally {
+    btn.disabled=false; if(qBtn) qBtn.disabled=false;
+  }
+}
+
+function setDepStatus(html) { const el=document.getElementById('dep-status'); if(el) el.innerHTML=html; }
+
+function startCountdown(sec, commitUrl) {
+  let rem = sec;
+  const pw=document.getElementById('dep-progress'); if(pw) pw.style.display='block';
+  const interval = setInterval(()=>{
+    rem--;
+    const fill=document.getElementById('dep-fill'); if(fill) fill.style.width=((sec-rem)/sec*100)+'%';
+    const secEl=document.getElementById('dep-sec'); if(secEl) secEl.textContent=rem;
+    if(rem<=0){
+      clearInterval(interval);
+      setDepStatus(`<span style="color:var(--emerald)"><i class="fas fa-check-circle"></i> Site is live! Refresh your portfolio to confirm.</span>`);
+      if(pw) pw.style.display='none';
+    }
+  },1000);
+}
+
+/* ══ SAVE SECTION ════════════════════════════════ */
+function saveSection(section) {
+  collectFormData();
+  if(!GH.token || !GH.repo) {
+    localStorage.setItem('portfolio_data', JSON.stringify(DATA));
+    showToast('Saved locally. Connect GitHub to push live.','i');
+    return;
+  }
+  triggerDeploy();
+}
+
+function collectFormData() {
+  if(!DATA) DATA = JSON.parse(JSON.stringify(DEFAULT_DATA));
+  const g = id => { const el=document.getElementById(id); return el?el.value.trim():''; };
+  // Hero
+  DATA.hero = {...(DATA.hero||{}), name:g('hero-name'), statement:g('hero-statement'), badge:g('hero-badge'), liveBadge:g('hero-livebadge'), typewriter: DATA.hero?.typewriter||[]};
+  // About
+  DATA.about = {p1:g('about-p1'),p2:g('about-p2'),p3:g('about-p3'),quote:g('about-quote')};
+  // SEO
+  DATA.seo = {...(DATA.seo||{}), title:g('seo-title'), desc:g('seo-desc'), kw:g('seo-kw'), ogImg:g('og-img')};
+  // Contact
+  DATA.contact = {wa1:g('c-wa1'),wa2:g('c-wa2'),email:g('c-em1'),email2:g('c-em2'),location:g('c-loc'),avail:g('c-avail'),looking:g('c-look')};
+  // Social
+  DATA.social = {linkedin:g('s-li'),github:g('s-gh'),youtube:g('s-yt'),twitter:g('s-tw'),instagram:g('s-ig'),whatsapp:g('s-wa'),hmg:g('s-hmg')};
+  // YouTube
+  DATA.youtube = {...(DATA.youtube||{}), name:g('yt-name'), handle:g('yt-handle'), desc:g('yt-desc'), videos:DATA.youtube?.videos||[]};
+  // CV
+  DATA.cv = {linkDS:g('cv-ds'),linkEdu:g('cv-edu'),summary:g('cv-summary')};
+  // Navigation
+  DATA.navigation = {ctaTxt:g('nav-cta-txt'),ctaLink:g('nav-cta-lnk')};
+  // Branding
+  const gc = id => { const el=document.getElementById(id); return el?el.value:''; };
+  DATA.branding = {gold:gc('c-gold'),emerald:gc('c-em'),blue:gc('c-bl'),bg:gc('c-bg'),slogan:g('f-slogan'),copyright:g('f-copy')};
+  // Form
+  DATA.form = {formspreeId:g('formspree-id'),notifEmail:g('notif-email')};
+  // Visibility
+  const visKeys=['hero','about','skills','projects','journey','youtube','certifications','testimonials','contact'];
+  visKeys.forEach(k=>{ const el=document.getElementById('vis-'+k); if(el) DATA.visibility[k]=el.checked; });
+}
+
+function populateForms() {
+  if(!DATA) return;
+  const s = (id,val) => { const el=document.getElementById(id); if(el&&val!==undefined) el.value=val||''; };
+  const {hero,about,seo,contact,social,youtube,cv,navigation,branding,form} = DATA;
+  if(hero){s('hero-name',hero.name);s('hero-statement',hero.statement);s('hero-badge',hero.badge);s('hero-livebadge',hero.liveBadge);}
+  if(about){s('about-p1',about.p1);s('about-p2',about.p2);s('about-p3',about.p3);s('about-quote',about.quote);}
+  if(seo){s('seo-title',seo.title);s('seo-desc',seo.desc);s('seo-kw',seo.kw);s('og-img',seo.ogImg);}
+  if(contact){s('c-wa1',contact.wa1);s('c-wa2',contact.wa2);s('c-em1',contact.email);s('c-em2',contact.email2);s('c-loc',contact.location);s('c-look',contact.looking);const av=document.getElementById('c-avail');if(av)av.value=contact.avail||'open';}
+  if(social){s('s-li',social.linkedin);s('s-gh',social.github);s('s-yt',social.youtube);s('s-tw',social.twitter);s('s-ig',social.instagram);s('s-wa',social.whatsapp);s('s-hmg',social.hmg);}
+  if(youtube){s('yt-name',youtube.name);s('yt-handle',youtube.handle);s('yt-desc',youtube.desc);}
+  if(cv){s('cv-ds',cv.linkDS);s('cv-edu',cv.linkEdu);s('cv-summary',cv.summary);}
+  if(navigation){s('nav-cta-txt',navigation.ctaTxt);s('nav-cta-lnk',navigation.ctaLink);}
+  if(branding){s('f-slogan',branding.slogan);s('f-copy',branding.copyright);const gi=id=>{ const el=document.getElementById(id);if(el)el.value=DATA.branding[id.replace('c-','')]||'';};['c-gold','c-em','c-bl','c-bg'].forEach(gi);}
+  if(form){s('formspree-id',form.formspreeId);s('notif-email',form.notifEmail);}
+  // GH settings pre-fill
+  s('gh-user',GH.user);s('gh-repo',GH.repo);s('gh-branch',GH.branch);
+  if(GH.token) s('gh-token',GH.token);
+  updateSyncStatus();
+}
+
+/* ══ INIT APP ════════════════════════════════════ */
+function initApp() {
+  if(!DATA) DATA = JSON.parse(localStorage.getItem('portfolio_data') || 'null') || JSON.parse(JSON.stringify(DEFAULT_DATA));
+  populateForms();
+  renderAll();
+  updateGHConnStatus();
+  updatePWStatus();
+  updateDashStats();
+  updateSEOPreview();
+  buildVisToggles();
+  updatePhotoSlotStatus();
+  renderMedia();
+  renderMessages();
+}
+
+function renderAll() {
+  renderProjects(); renderJourney(); renderCerts(); renderTestimonials(); renderTW(); renderSkills(); renderYT();
+}
+
+function updateDashStats() {
+  if(!DATA) return;
+  el('d-proj').textContent = DATA.projects?.length || 0;
+  el('d-cert').textContent = DATA.certifications?.length || 0;
+  el('d-jour').textContent = DATA.journey?.length || 0;
+  el('d-msgs').textContent = DATA.messages?.length || 0;
+  el('d-media').textContent = DATA.media?.length || 0;
+  if(DATA._lastPushed) el('last-pushed-dash').textContent = new Date(DATA._lastPushed).toLocaleString('en-NG',{timeZone:'Africa/Lagos'});
+}
+
+/* ══ RENDERS ════════════════════════════════════ */
+function renderProjects() {
+  const list=el('proj-list'); if(!list) return;
+  const p=DATA.projects||[];
+  el('proj-count').textContent = p.length+' projects';
+  list.innerHTML = p.map((pr,i)=>`
+    <div class="ir">
+      <i class="fas fa-grip-vertical ir-drag"></i>
+      <span class="ibadge ${pr.type==='edtech'?'ib-et':pr.type==='nlp'?'ib-nlp':'ib-ml'}">${pr.type.toUpperCase()}</span>
+      <div class="ir-info"><div class="ir-name">${pr.name}</div><div class="ir-meta">${pr.cat}</div></div>
+      <span class="ibadge ${pr.status==='live'?'ib-live':'ib-draft'}">${pr.status}</span>
+      <div class="ir-acts">
+        ${pr.live?`<a href="${pr.live}" target="_blank" class="btn btn-sm btn-green" title="Live App"><i class="fas fa-external-link-alt"></i></a>`:''}
+        ${pr.github?`<a href="${pr.github}" target="_blank" class="btn btn-sm btn-outline" title="GitHub"><i class="fab fa-github"></i></a>`:''}
+        <button class="btn btn-sm btn-outline" onclick="editProject(${i})" title="Edit"><i class="fas fa-edit"></i></button>
+        <button class="btn btn-sm btn-red" onclick="delItem('projects',${i})" title="Delete"><i class="fas fa-trash"></i></button>
+      </div>
+    </div>`).join('');
+}
+
+function renderJourney() {
+  const list=el('jour-list'); if(!list) return;
+  list.innerHTML = (DATA.journey||[]).map((j,i)=>`
+    <div class="ir">
+      <i class="fas fa-grip-vertical ir-drag"></i>
+      <div class="ir-info"><div class="ir-name">${j.title}</div><div class="ir-meta">${j.date} · ${j.org}</div></div>
+      <span class="ibadge ${j.tag==='active'?'ib-active':j.tag==='cert'?'ib-cert':'ib-draft'}">${j.tag}</span>
+      <div class="ir-acts">
+        <button class="btn btn-sm btn-outline" onclick="editMilestone(${i})"><i class="fas fa-edit"></i></button>
+        <button class="btn btn-sm btn-red" onclick="delItem('journey',${i})"><i class="fas fa-trash"></i></button>
+      </div>
+    </div>`).join('');
+}
+
+function renderCerts() {
+  const list=el('cert-list'); if(!list) return;
+  list.innerHTML = (DATA.certifications||[]).map((c,i)=>`
+    <div class="ir">
+      <div class="ir-info"><div class="ir-name">${c.name}</div><div class="ir-meta">${c.issuer} · ${c.year}</div></div>
+      <span class="ibadge ${c.status==='active'?'ib-active':'ib-cert'}">${c.status}</span>
+      <div class="ir-acts">
+        ${c.url?`<a href="${c.url}" target="_blank" class="btn btn-sm btn-outline"><i class="fas fa-external-link-alt"></i></a>`:''}
+        <button class="btn btn-sm btn-red" onclick="delItem('certifications',${i})"><i class="fas fa-trash"></i></button>
+      </div>
+    </div>`).join('');
+}
+
+function renderTestimonials() {
+  const list=el('testi-list'); if(!list) return;
+  list.innerHTML = (DATA.testimonials||[]).map((t,i)=>`
+    <div class="ir">
+      <div class="ir-info">
+        <div class="ir-name">${t.name} <span style="font-weight:400;color:var(--muted)">— ${t.role}</span></div>
+        <div class="ir-meta" style="font-style:italic">"${t.text.slice(0,80)}${t.text.length>80?'…':''}"</div>
+      </div>
+      <div class="ir-acts"><button class="btn btn-sm btn-red" onclick="delItem('testimonials',${i})"><i class="fas fa-trash"></i></button></div>
+    </div>`).join('');
+}
+
+function renderTW() {
+  const list=el('tw-list'); if(!list) return;
+  list.innerHTML = (DATA.hero?.typewriter||[]).map((t,i)=>`
+    <div class="ir"><div class="ir-info"><div class="ir-name">${t}</div></div><div class="ir-acts"><button class="btn btn-sm btn-red" onclick="removeTW(${i})"><i class="fas fa-trash"></i></button></div></div>`).join('');
+}
+
+function renderSkills() {
+  const list=el('skills-list'); if(!list) return;
+  list.innerHTML = (DATA.skills||[]).map((s,i)=>`
+    <div style="background:var(--input);border:1px solid var(--border);border-radius:8px;padding:1rem;margin-bottom:0.65rem">
+      <div style="display:flex;align-items:center;gap:0.65rem;margin-bottom:0.65rem">
+        <input type="text" value="${s.group}" style="flex:1;background:transparent;border:none;border-bottom:1px solid var(--border);padding:0.3rem 0;font-weight:600;color:#fff;font-family:var(--font);font-size:0.83rem;outline:none" onchange="DATA.skills[${i}].group=this.value"/>
+        <button class="btn btn-sm btn-red" onclick="delItem('skills',${i})"><i class="fas fa-trash"></i></button>
+      </div>
+      <input type="text" value="${s.items.join(', ')}" style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:0.45rem 0.7rem;color:var(--muted);font-family:var(--mono);font-size:0.7rem;outline:none" onchange="DATA.skills[${i}].items=this.value.split(',').map(x=>x.trim()).filter(Boolean)" placeholder="Comma-separated skills"/>
+    </div>`).join('');
+}
+
+function renderYT() {
+  const list=el('yt-list'); if(!list) return;
+  list.innerHTML = (DATA.youtube?.videos||[]).map((v,i)=>`
+    <div class="ir"><div class="ir-info"><div class="ir-name">${v.title}</div><div class="ir-meta">${v.meta}</div></div><div class="ir-acts"><button class="btn btn-sm btn-red" onclick="removeYT(${i})"><i class="fas fa-trash"></i></button></div></div>`).join('');
+}
+
+function renderMessages() {
+  const msgs = DATA.messages||[];
+  el('d-msgs').textContent = msgs.length;
+  const cnt = el('msg-count'); if(cnt){ cnt.textContent=msgs.length; cnt.style.display=msgs.length?'inline-flex':'none'; }
+  const sb = el('sb-msg-badge'); if(sb){ sb.textContent=msgs.length; sb.style.display=msgs.length?'inline-flex':'none'; }
+  el('inbox-count').textContent = msgs.length + ' messages';
+  const list=el('messages-list');
+  if(!msgs.length){list.innerHTML='<div style="text-align:center;padding:2rem;color:var(--muted);font-size:0.8rem"><i class="fas fa-inbox" style="font-size:1.8rem;display:block;margin-bottom:0.6rem;opacity:0.25"></i>No messages yet.</div>';return;}
+  list.innerHTML = msgs.map((m,i)=>`
+    <div class="msg-card ${m.read?'':'unread'}">
+      <div style="display:flex;justify-content:space-between;margin-bottom:0.3rem"><span class="msg-from">${m.name}</span><span class="msg-time">${m.date}</span></div>
+      <div class="msg-subj">${m.subject||'(no subject)'}</div>
+      <div class="msg-body">${m.message}</div>
+      <div style="display:flex;gap:0.4rem;margin-top:0.5rem;align-items:center">
+        <span style="font-size:0.7rem;color:var(--muted);flex:1">${m.email}</span>
+        <a href="mailto:${m.email}?subject=Re: ${m.subject||''}" class="btn btn-sm btn-outline"><i class="fas fa-reply"></i> Reply</a>
+        <button class="btn btn-sm btn-red" onclick="deleteMsg(${i})"><i class="fas fa-trash"></i></button>
+      </div>
+    </div>`).join('');
+}
+
+function renderMedia() {
+  const media = DATA.media||[];
+  const filter = el('media-filter')?.value || 'all';
+  const filtered = media.filter(f=>filter==='all'||f.type===filter);
+  const grid=el('media-grid');
+  el('media-count-lbl').textContent = media.length+' files';
+  el('d-media').textContent = media.length;
+  if(!filtered.length){grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:1.5rem;color:var(--muted);font-size:0.8rem">No files yet.</div>';return;}
+  grid.innerHTML = filtered.map((f,i)=>`
+    <div class="mi" onclick="mediaClick(${i})">
+      ${f.type==='image'?`<img src="${f.data}" alt="${f.name}"/>`:`<div class="mi-ph"><i class="fas fa-file-pdf"></i><span>${f.name.slice(0,8)}</span></div>`}
+      <div class="mi-ov"><span class="mi-nm">${f.name}</span></div>
+    </div>`).join('');
+}
+
+function buildVisToggles() {
+  const vis = DATA.visibility||{};
+  const sections = [
+    {k:'hero',lbl:'Hero Section',icon:'fas fa-home',desc:'Name, typewriter, hero statement'},
+    {k:'about',lbl:'About / Story',icon:'fas fa-user',desc:'15-year teaching story and AI-Augmented identity'},
+    {k:'skills',lbl:'Skills Section',icon:'fas fa-code',desc:'All skill groups and badges'},
+    {k:'projects',lbl:'Projects Section',icon:'fas fa-rocket',desc:'CBT Pro featured card + project grid'},
+    {k:'journey',lbl:'Journey Timeline',icon:'fas fa-route',desc:'Career milestones from 2009 to now'},
+    {k:'youtube',lbl:'YouTube Section',icon:'fab fa-youtube',desc:'HMG Concepts channel and videos'},
+    {k:'certifications',lbl:'Certifications',icon:'fas fa-certificate',desc:'All certifications and programmes'},
+    {k:'testimonials',lbl:'Testimonials',icon:'fas fa-quote-left',desc:'Student and colleague quotes'},
+    {k:'contact',lbl:'Contact Section',icon:'fas fa-envelope',desc:'Contact cards and form'},
+  ];
+  const list=el('vis-list'); if(!list) return;
+  list.innerHTML = sections.map(s=>`
+    <div class="tr-row">
+      <div class="tr-info"><i class="${s.icon}"></i><div><div class="tr-name">${s.lbl}</div><div class="tr-desc">${s.desc}</div></div></div>
+      <div class="toggle-wrap">
+        <span class="toggle-lbl" id="vl-${s.k}">${vis[s.k]!==false?'Visible':'Hidden'}</span>
+        <label class="tgl"><input type="checkbox" id="vis-${s.k}" ${vis[s.k]!==false?'checked':''} onchange="toggleVis('${s.k}',this.checked)"><span class="tgl-sl"></span></label>
+      </div>
+    </div>`).join('');
+}
+
+function toggleVis(k,show) {
+  if(!DATA.visibility) DATA.visibility={};
+  DATA.visibility[k]=show;
+  const lbl=el('vl-'+k); if(lbl) lbl.textContent=show?'Visible':'Hidden';
+}
+
+/* ══ MODAL SAVES ════════════════════════════════ */
+function saveProject() {
+  const g = id => document.getElementById(id)?.value?.trim()||'';
+  const editIdx = document.getElementById('pm-edit-idx')?.dataset.idx;
+  const p = {id:'p'+Date.now(),name:g('pm-name'),cat:g('pm-cat'),type:g('pm-type'),problem:g('pm-prob'),metric:g('pm-metric'),github:g('pm-github'),live:g('pm-live'),stack:g('pm-stack').split(',').map(s=>s.trim()).filter(Boolean),status:g('pm-status')};
+  if(!p.name){showToast('Project name required','e');return;}
+  if(!DATA.projects) DATA.projects=[];
+  if(editIdx!==undefined) DATA.projects[parseInt(editIdx)]=p;
+  else DATA.projects.push(p);
+  renderProjects(); closeModal('proj-modal'); clearProjModal();
+  if(GH.token&&GH.repo) triggerDeploy(); else { localStorage.setItem('portfolio_data',JSON.stringify(DATA)); showToast('Project saved. Connect GitHub to push live.','i'); }
+  logAct('Project saved: '+p.name,'gold');
+}
+
+function editProject(i) {
+  const p=DATA.projects[i];
+  const s=(id,v)=>{const el=document.getElementById(id);if(el)el.value=v||'';};
+  s('pm-name',p.name);s('pm-cat',p.cat);s('pm-prob',p.problem);s('pm-metric',p.metric);
+  s('pm-github',p.github);s('pm-live',p.live);s('pm-stack',(p.stack||[]).join(', '));
+  document.getElementById('pm-type').value=p.type;
+  document.getElementById('pm-status').value=p.status;
+  const idx=document.getElementById('pm-edit-idx'); if(idx){idx.dataset.idx=i;idx.style.display='none';}
+  el('proj-modal-ttl').textContent='Edit Project';
+  openModal('proj-modal');
+}
+
+function clearProjModal() {
+  ['pm-name','pm-cat','pm-prob','pm-metric','pm-github','pm-live','pm-stack'].forEach(id=>{const el2=document.getElementById(id);if(el2)el2.value='';});
+  el('proj-modal-ttl').textContent='Add Project';
+  const idx=document.getElementById('pm-edit-idx');if(idx)delete idx.dataset.idx;
+}
+
+function saveMilestone() {
+  const g=id=>document.getElementById(id)?.value?.trim()||'';
+  const m={id:'j'+Date.now(),date:g('mm-date'),tag:g('mm-tag'),title:g('mm-title'),org:g('mm-org'),desc:g('mm-desc')};
+  if(!m.title){showToast('Title required','e');return;}
+  if(!DATA.journey) DATA.journey=[];
+  DATA.journey.unshift(m);
+  renderJourney(); closeModal('mile-modal');
+  ['mm-date','mm-title','mm-org','mm-desc'].forEach(id=>{const el2=document.getElementById(id);if(el2)el2.value='';});
+  if(GH.token&&GH.repo) triggerDeploy(); else {localStorage.setItem('portfolio_data',JSON.stringify(DATA));showToast('Saved locally.','i');}
+  logAct('Milestone added: '+m.title,'gold');
+}
+
+function editMilestone(i) {
+  const m=DATA.journey[i];
+  const s=(id,v)=>{const el2=document.getElementById(id);if(el2)el2.value=v||'';};
+  s('mm-date',m.date);s('mm-title',m.title);s('mm-org',m.org);s('mm-desc',m.desc);
+  document.getElementById('mm-tag').value=m.tag;
+  openModal('mile-modal');
+}
+
+function saveCert() {
+  const g=id=>document.getElementById(id)?.value?.trim()||'';
+  const c={id:'c'+Date.now(),issuer:g('cm-issuer'),name:g('cm-name'),year:g('cm-year'),status:g('cm-status'),url:g('cm-url')};
+  if(!c.name){showToast('Name required','e');return;}
+  if(!DATA.certifications) DATA.certifications=[];
+  DATA.certifications.unshift(c);
+  renderCerts(); closeModal('cert-modal');
+  ['cm-issuer','cm-name','cm-year','cm-url'].forEach(id=>{const el2=document.getElementById(id);if(el2)el2.value='';});
+  if(GH.token&&GH.repo) triggerDeploy(); else {localStorage.setItem('portfolio_data',JSON.stringify(DATA));showToast('Saved locally.','i');}
+  logAct('Certification added: '+c.name,'gold');
+}
+
+function saveTestimonial() {
+  const g=id=>document.getElementById(id)?.value?.trim()||'';
+  const t={id:'t'+Date.now(),text:g('tm-text'),name:g('tm-name'),role:g('tm-role')};
+  if(!t.text){showToast('Testimonial text required','e');return;}
+  if(!DATA.testimonials) DATA.testimonials=[];
+  DATA.testimonials.push(t);
+  renderTestimonials(); closeModal('testi-modal');
+  ['tm-text','tm-name','tm-role'].forEach(id=>{const el2=document.getElementById(id);if(el2)el2.value='';});
+  if(GH.token&&GH.repo) triggerDeploy(); else {localStorage.setItem('portfolio_data',JSON.stringify(DATA));showToast('Saved locally.','i');}
+  logAct('Testimonial added from: '+t.name,'gold');
+}
+
+function delItem(key,i) {
+  if(!confirm('Delete this item?')) return;
+  const name=DATA[key]?.[i]?.name||DATA[key]?.[i]?.title||'Item';
+  if(DATA[key]) DATA[key].splice(i,1);
+  renderAll(); updateDashStats();
+  if(GH.token&&GH.repo) triggerDeploy(); else {localStorage.setItem('portfolio_data',JSON.stringify(DATA));showToast('Deleted.','i');}
+  logAct('Deleted: '+name,'red');
+}
+
+function deleteMsg(i) {
+  if(!DATA.messages) return;
+  DATA.messages.splice(i,1);
+  renderMessages();
+  if(GH.token&&GH.repo) triggerDeploy(); else localStorage.setItem('portfolio_data',JSON.stringify(DATA));
+}
+
+/* ══ TYPEWRITER ═════════════════════════════════ */
+function addTW() {
+  const v=prompt('New title (e.g. Data Scientist):'); if(!v||!v.trim()) return;
+  if(!DATA.hero.typewriter) DATA.hero.typewriter=[];
+  DATA.hero.typewriter.push(v.trim()); renderTW();
+}
+function removeTW(i) { DATA.hero.typewriter.splice(i,1); renderTW(); }
+
+/* ══ SKILLS ════════════════════════════════════ */
+function addSkillGroup() { if(!DATA.skills) DATA.skills=[]; DATA.skills.push({group:'New Group',icon:'fas fa-star',items:[]}); renderSkills(); }
+
+/* ══ YOUTUBE ════════════════════════════════════ */
+function addYTVideo() {
+  const t=prompt('Video title:'); if(!t) return;
+  const m=prompt('Category (e.g. Data Science · Walkthrough):')||'HMG Concepts';
+  if(!DATA.youtube.videos) DATA.youtube.videos=[];
+  DATA.youtube.videos.push({title:t,meta:m}); renderYT();
+}
+function removeYT(i) { DATA.youtube.videos.splice(i,1); renderYT(); }
+
+/* ══ PASSWORD ════════════════════════════════════ */
+async function changePassword() {
+  const curr=el('curr-pw')?.value||'';
+  const newPw=el('new-pw')?.value||'';
+  const conf=el('conf-pw')?.value||'';
+  const currHash=await sha256(curr);
+  if(DATA._pwHash && currHash!==DATA._pwHash){showToast('Current password incorrect','e');return;}
+  if(newPw.length<8){showToast('New password must be at least 8 characters','e');return;}
+  if(newPw!==conf){showToast('Passwords do not match','e');return;}
+  DATA._pwHash = await sha256(newPw);
+  ['curr-pw','new-pw','conf-pw'].forEach(id=>{const el2=document.getElementById(id);if(el2)el2.value='';});
+  if(GH.token&&GH.repo) {
+    try {
+      await pushToGitHub(DATA,'Admin password updated');
+      showToast('Password changed and pushed to GitHub — works on all devices now!','s');
+      logAct('Password changed and pushed to GitHub','emerald');
+      updatePWStatus();
+    } catch(err) {
+      showToast('Password hashed locally but push failed: '+err.message,'e');
+    }
+  } else {
+    localStorage.setItem('portfolio_data',JSON.stringify(DATA));
+    showToast('Password changed locally. Connect GitHub to sync across devices.','i');
+  }
+}
+
+function updatePWStatus() {
+  const el2=el('pw-hash-status');
+  if(!el2) return;
+  if(DATA._pwHash) {
+    el2.innerHTML=`<span class="sdot sdot-ok"></span> Password is set and stored as SHA-256 hash in portfolio-data.json on GitHub. All devices use the same password.`;
+    el2.style.borderColor='rgba(16,185,129,0.3)';
+    el('pw-status-dash').innerHTML='<span class="sdot sdot-ok"></span>Password synced in GitHub';
+    el('pw-status-dash').style.color='var(--emerald)';
+  } else {
+    el2.innerHTML=`<span class="sdot sdot-warn"></span> No password hash found in GitHub data. Set a password below and push to GitHub.`;
+    el2.style.borderColor='rgba(245,166,35,0.3)';
+  }
+}
+
+function checkPWStrength(pw) {
+  const fill=el('pw-fill'),txt=el('pw-txt'); if(!fill||!txt) return;
+  let s=0;
+  if(pw.length>=8)s++; if(pw.length>=12)s++; if(/[A-Z]/.test(pw))s++; if(/[0-9]/.test(pw))s++; if(/[^A-Za-z0-9]/.test(pw))s++;
+  const cols=['#ef4444','#f97316','#eab308','#22c55e','#10b981'];
+  const lbls=['Very Weak','Weak','Fair','Strong','Very Strong'];
+  fill.style.width=(s*20)+'%'; fill.style.background=cols[s-1]||'#ef4444';
+  txt.textContent=pw?lbls[s-1]||'Too simple':'Enter a password'; txt.style.color=cols[s-1]||'var(--muted)';
+}
+
+/* ══ GITHUB SETTINGS ════════════════════════════ */
+function saveGHSettings() {
+  const u=el('gh-user')?.value?.trim()||'';
+  const r=el('gh-repo')?.value?.trim()||'';
+  const b=el('gh-branch')?.value?.trim()||'main';
+  const t=el('gh-token')?.value?.trim()||'';
+  if(!t){showToast('Token required','e');return;}
+  if(!r){showToast('Repository name required','e');return;}
+  // Token in sessionStorage only — never persisted to localStorage or GitHub
+  sessionStorage.setItem('gh_token',t);
+  // Repo/user/branch safe to persist in localStorage
+  localStorage.setItem('gh_user',u);
+  localStorage.setItem('gh_repo',r);
+  localStorage.setItem('gh_branch',b);
+  // Also in sessionStorage for immediate use
+  sessionStorage.setItem('gh_user',u);
+  sessionStorage.setItem('gh_repo',r);
+  sessionStorage.setItem('gh_branch',b);
+  showToast('Settings saved. Testing connection...','i');
+  logAct('GitHub settings saved: '+u+'/'+r,'gold');
+  testGH();
+}
+
+async function testGH() {
+  const statusEl=el('gh-conn-status'); if(!statusEl) return;
+  statusEl.innerHTML='<span class="sdot sdot-warn"></span> Testing...';
+  if(!GH.token){statusEl.innerHTML='<span class="sdot sdot-err"></span> No token. Enter PAT above and click Save.';return;}
+  if(!GH.repo){statusEl.innerHTML='<span class="sdot sdot-err"></span> No repo name. Enter it above and click Save.';return;}
+  try {
+    const userRes=await fetch('https://api.github.com/user',{headers:{'Authorization':`token ${GH.token}`,'Accept':'application/vnd.github.v3+json'}});
+    if(!userRes.ok) throw new Error(userRes.status===401?'Token invalid or expired — create a new one at github.com/settings/tokens':'HTTP '+userRes.status);
+    const user=await userRes.json();
+    const repoRes=await fetch(`https://api.github.com/repos/${GH.user}/${GH.repo}`,{headers:{'Authorization':`token ${GH.token}`,'Accept':'application/vnd.github.v3+json'}});
+    if(!repoRes.ok){
+      if(repoRes.status===404){
+        const listRes=await fetch(`https://api.github.com/user/repos?per_page=30&sort=updated`,{headers:{'Authorization':`token ${GH.token}`,'Accept':'application/vnd.github.v3+json'}});
+        let hint='';
+        if(listRes.ok){const repos=await listRes.json();hint=' Your repos: '+repos.map(r=>r.name).join(', ');}
+        throw new Error(`Repo "${GH.repo}" not found.${hint}`);
+      }
+      throw new Error('HTTP '+repoRes.status);
+    }
+    const repo=await repoRes.json();
+    if(repo.default_branch!==GH.branch){sessionStorage.setItem('gh_branch',repo.default_branch);localStorage.setItem('gh_branch',repo.default_branch);el('gh-branch').value=repo.default_branch;showToast('Branch auto-corrected to: '+repo.default_branch,'i');}
+    statusEl.innerHTML=`<span class="sdot sdot-ok"></span> Connected: ${user.login} / ${repo.name} (${repo.default_branch}) — Ready to deploy`;
+    statusEl.style.borderColor='rgba(16,185,129,0.3)';
+    showToast('Connection verified! Ready to push live.','s');
+    updateGHConnStatus();
+  } catch(err) {
+    statusEl.innerHTML=`<span class="sdot sdot-err"></span> ${err.message}`;
+    statusEl.style.borderColor='rgba(239,68,68,0.3)';
+    showToast('Connection failed. See GitHub Settings.','e');
+  }
+}
+
+function updateGHConnStatus() {
+  const sc=el('sync-status');
+  if(GH.token&&GH.repo) { setSyncStatus('synced','GitHub connected'); }
+  else { setSyncStatus('unsynced','No GitHub connection'); }
+}
+
+function setSyncStatus(type,txt) {
+  const sc=el('sync-status'); if(!sc) return;
+  sc.className='tb-sync '+type;
+  el('sync-txt').textContent=txt;
+}
+
+/* ══ PHOTOS ════════════════════════════════════ */
+let _pendingPhoto=null;
+function handlePhotoUpload(input) {
+  const file=input.files[0]; if(!file) return;
+  if(file.size>3*1024*1024){showToast('Max 3MB','e');return;}
+  const reader=new FileReader();
+  reader.onload=e=>{
+    _pendingPhoto=e.target.result;
+    const prev=el('photo-prev');
+    prev.innerHTML=`<div class="up-prev-item"><img src="${_pendingPhoto}"/><button class="up-prev-rm" onclick="clearPhoto()"><i class="fas fa-times"></i></button></div>`;
+    el('photo-btns').style.display='flex';
+    showToast('Photo ready. Click Apply.','i');
+  };
+  reader.readAsDataURL(file);
+}
+
+function applyPhoto() {
+  const target=el('photo-target')?.value; if(!_pendingPhoto){showToast('No photo selected','e');return;}
+  if(!DATA.photos) DATA.photos={};
+  DATA.photos[target]=_pendingPhoto;
+  updatePhotoSlotStatus(); clearPhoto();
+  if(GH.token&&GH.repo) triggerDeploy(); else {localStorage.setItem('portfolio_data',JSON.stringify(DATA));showToast('Photo saved locally.','i');}
+  logAct('Photo applied to: '+target,'emerald');
+}
+
+function clearPhoto() {
+  _pendingPhoto=null; el('photo-prev').innerHTML=''; el('photo-btns').style.display='none'; el('photo-file').value='';
+}
+
+function setSlot(slot) { el('photo-target').value=slot; updatePhotoPreview(); }
+
+function updatePhotoPreview() {
+  const slot=el('photo-target')?.value;
+  const info=el('current-photo-info');
+  if(DATA.photos?.[slot]) info.innerHTML=`<img src="${DATA.photos[slot]}" style="width:50px;height:50px;border-radius:6px;object-fit:cover;margin-right:0.5rem;vertical-align:middle"> <span style="color:var(--emerald)">✓ Photo set for this slot</span>`;
+  else info.textContent='No photo set for this slot.';
+}
+
+function updatePhotoSlotStatus() {
+  ['hero','about','cv'].forEach(slot=>{
+    const el2=el('s-'+slot);
+    if(el2){
+      const set=DATA.photos?.[slot];
+      el2.innerHTML=set?`<span style="color:var(--emerald)">✓ Photo set</span> <img src="${set}" style="width:24px;height:24px;border-radius:3px;object-fit:cover;vertical-align:middle;margin-left:4px">`:`<span style="color:var(--muted)">No photo set</span>`;
+    }
+  });
+}
+
+function removePhoto(slot) {
+  if(!DATA.photos) return;
+  delete DATA.photos[slot];
+  updatePhotoSlotStatus(); updatePhotoPreview();
+  if(GH.token&&GH.repo) triggerDeploy(); else {localStorage.setItem('portfolio_data',JSON.stringify(DATA));showToast('Photo removed.','i');}
+}
+
+/* ══ MEDIA ════════════════════════════════════ */
+function handleMediaUpload(input) {
+  const files=Array.from(input.files); let done=0;
+  files.forEach(file=>{
+    if(file.size>5*1024*1024){showToast(file.name+' too large (max 5MB)','e');return;}
+    const reader=new FileReader();
+    reader.onload=e=>{
+      if(!DATA.media) DATA.media=[];
+      DATA.media.push({id:'m'+Date.now()+Math.random(),name:file.name,type:file.type.startsWith('image')?'image':'document',data:e.target.result,size:file.size,date:new Date().toLocaleDateString()});
+      done++;
+      if(done===files.length){renderMedia();updateDashStats();showToast(files.length+' file(s) uploaded!','s');if(GH.token&&GH.repo)triggerDeploy();else localStorage.setItem('portfolio_data',JSON.stringify(DATA));}
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+function mediaClick(i) {
+  const f=DATA.media[i];
+  if(confirm(`Copy URL for "${f.name}"? (Cancel = delete)`)){
+    navigator.clipboard?.writeText(f.data).then(()=>showToast('URL copied!','s'));
+  } else if(confirm(`Delete "${f.name}"?`)){
+    DATA.media.splice(i,1); renderMedia(); updateDashStats();
+    if(GH.token&&GH.repo) triggerDeploy(); else localStorage.setItem('portfolio_data',JSON.stringify(DATA));
+  }
+}
+
+function handleCVUpload(input) {
+  const file=input.files[0]; if(!file) return;
+  el('cv-upload-status').textContent='✓ CV ready: '+file.name+' ('+Math.round(file.size/1024)+'KB). Link it to your Google Drive URL above.';
+  el('cv-upload-status').style.color='var(--emerald)';
+  showToast('CV noted — use Google Drive link above to share it.','i');
+}
+
+function handleCertUploads(input) {
+  const prev=el('cert-prev');
+  prev.innerHTML=Array.from(input.files).map(f=>`<div style="font-size:0.73rem;color:var(--emerald);padding:0.25rem 0"><i class="fas fa-check-circle"></i> ${f.name}</div>`).join('');
+  showToast(input.files.length+' cert files noted','s');
+}
+
+/* ══ SEO ════════════════════════════════════════ */
+function updateSEOPreview() {
+  const ttl=el('seo-title')?.value||'';
+  const dsc=el('seo-desc')?.value||'';
+  el('seo-prev-ttl').textContent=ttl.slice(0,60)||'Your page title';
+  el('seo-prev-dsc').textContent=dsc.slice(0,160)||'Your meta description';
+  el('ttl-count').textContent=ttl.length;
+  el('dsc-count').textContent=dsc.length;
+}
+
+/* ══ BACKUP ════════════════════════════════════ */
+function downloadBackup() {
+  const blob=new Blob([JSON.stringify({data:DATA,backedUpAt:new Date().toISOString()},null,2)],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='portfolio-backup-'+new Date().toISOString().slice(0,10)+'.json'; a.click();
+  showToast('Backup downloaded!','s');
+}
+
+function restoreBackup(input) {
+  const file=input.files[0]; if(!file) return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    try {
+      const bk=JSON.parse(e.target.result);
+      if(bk.data) { DATA=bk.data; localStorage.setItem('portfolio_data',JSON.stringify(DATA)); initApp(); showToast('Backup restored!','s'); logAct('Data restored from backup','gold'); }
+      else showToast('Invalid backup file','e');
+    } catch { showToast('Could not parse backup','e'); }
+  };
+  reader.readAsText(file);
+}
+
+function confirmReset() {
+  if(!confirm('Delete all custom content and reset to defaults?')) return;
+  if(!confirm('This is permanent. Are you sure?')) return;
+  DATA=JSON.parse(JSON.stringify(DEFAULT_DATA));
+  localStorage.setItem('portfolio_data',JSON.stringify(DATA));
+  initApp(); showToast('Reset to defaults','i');
+}
+
+function exportJSON() {
+  const blob=new Blob([JSON.stringify(DATA,null,2)],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='portfolio-data.json'; a.click();
+  showToast('portfolio-data.json downloaded','s');
+}
+
+/* ══ BRANDING ════════════════════════════════ */
+function resetBranding() {
+  el('c-gold').value='#F5A623'; el('c-em').value='#10b981'; el('c-bl').value='#1B3A6B'; el('c-bg').value='#0a0e1a';
+  showToast('Reset to defaults','i');
+}
+
+/* ══ WHATSAPP ════════════════════════════════ */
+function openWhatsApp() {
+  const msg="Hello! I'm updating my professional portfolio at cssadewale.pages.dev. If you've been a student of mine, worked with me, or used CBT Pro, I'd genuinely appreciate one honest sentence about your experience. Thank you — Adewale";
+  navigator.clipboard?.writeText(msg).then(()=>showToast('Message copied!','s'));
+  window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank');
+}
+
+/* ══ ACTIVITY LOG ════════════════════════════ */
+function logAct(msg,color='gold') {
+  const time=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+  actLog.unshift({msg,color,time});
+  const dotColors={gold:'var(--gold)',emerald:'var(--emerald)',red:'var(--red)'};
+  const html=actLog.map(a=>`<div class="act-item"><div class="act-dot" style="background:${dotColors[a.color]||'var(--gold)'}"></div><div class="act-txt">${a.msg}</div><div class="act-time">${a.time}</div></div>`).join('');
+  const prev=el('act-preview'); if(prev) prev.innerHTML=actLog.slice(0,4).map(a=>`<div class="act-item"><div class="act-dot" style="background:${dotColors[a.color]||'var(--gold)'}"></div><div class="act-txt">${a.msg}</div><div class="act-time">${a.time}</div></div>`).join('');
+  const full=el('full-act-log'); if(full) full.innerHTML=html;
+}
+function clearLog() { actLog=[]; el('full-act-log').innerHTML='<div style="color:var(--muted);font-size:0.8rem;text-align:center;padding:1rem">Log cleared.</div>'; }
+
+/* ══ PANEL NAV ════════════════════════════════ */
+function showPanel(id) {
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.sb-item').forEach(i=>i.classList.remove('active'));
+  const panel=document.getElementById('panel-'+id); if(panel) panel.classList.add('active');
+  document.querySelectorAll('.sb-item').forEach(item=>{if(item.getAttribute('onclick')?.includes("'"+id+"'"))item.classList.add('active');});
+  window.scrollTo(0,0);
+}
+
+/* ══ MODALS ════════════════════════════════ */
+function openModal(id) { document.getElementById(id)?.classList.add('open'); }
+function closeModal(id) { document.getElementById(id)?.classList.remove('open'); }
+document.querySelectorAll('.modal-ov').forEach(ov=>ov.addEventListener('click',e=>{if(e.target===ov)ov.classList.remove('open');}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.modal-ov.open').forEach(m=>m.classList.remove('open'));});
+
+/* ══ LOGOUT ════════════════════════════════ */
+function doLogout() {
+  if(!confirm('Log out?')) return;
+  sessionStorage.removeItem('admin_authed');
+  // Token cleared on logout for security
+  sessionStorage.removeItem('gh_token');
+  document.getElementById('app').style.display='none';
+  document.getElementById('login-screen').style.display='flex';
+  document.getElementById('pw-in').value='';
+  DATA=null; loginAttempts=0;
+}
+
+/* ══ TOAST ════════════════════════════════ */
+function showToast(msg,type='i') {
+  const wrap=el('toast-wrap');
+  const icons={s:'fas fa-check-circle',e:'fas fa-times-circle',i:'fas fa-info-circle'};
+  const t=document.createElement('div'); t.className='toast '+type;
+  t.innerHTML=`<i class="${icons[type]||icons.i}"></i><span>${msg}</span>`;
+  wrap.appendChild(t); setTimeout(()=>t.remove(),4200);
+}
+
+/* ══ HELPERS ════════════════════════════════ */
+function el(id) { return document.getElementById(id); }
+
+/* ══ AUTO-SYNC CHECK ════════════════════════ */
+// On page load, try to load data from GitHub if token is available
+(async()=>{
+  const saved=localStorage.getItem('portfolio_data');
+  if(saved) {
+    try { DATA=JSON.parse(saved); } catch(e){}
+    // Check pw hash
+    if(DATA?._pwHash) { el('setup-box').style.display='none'; }
+    else { el('setup-box').style.display='block'; }
+  } else {
+    el('setup-box').style.display='block';
+  }
+  // If token exists from previous session, try to fetch fresh data
+  if(GH.token && GH.repo) {
+    el('login-msg').className='login-msg info'; el('login-msg').textContent='Loading latest data from GitHub...';
+    const fresh=await fetchFromGitHub();
+    if(fresh) { DATA=fresh; localStorage.setItem('portfolio_data',JSON.stringify(DATA)); el('login-msg').textContent=''; if(DATA._pwHash) el('setup-box').style.display='none'; }
+    else { el('login-msg').textContent=''; }
+  }
+})();
+
+// Pre-populate GitHub settings fields if saved
+(()=>{
+  if(el('gh-user')&&GH.user) el('gh-user').value=GH.user;
+  if(el('gh-repo')&&GH.repo) el('gh-repo').value=GH.repo;
+  if(el('gh-branch')&&GH.branch) el('gh-branch').value=GH.branch;
+})();
+
+</script>
+</body>
+</html>
