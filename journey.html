@@ -3,449 +3,500 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- ═══ SEO & SOCIAL META ═══ -->
-  <meta name="description" content="The complete career and learning journey of Adewale Samson Adeagbo — 15+ years teaching, B.Sc.(Ed) LASU 2023, 3MTT 2025, WorldQuant University, DSN × Google DeepTech_Ready, Kodecamp ML, IBM SkillsBuild Ambassador." />
-  <meta name="keywords" content="Adewale Adeagbo journey, 3MTT data science Nigeria, WorldQuant University Nigeria, DSN Google DeepTech Ready, Kodecamp cohort 6, IBM SkillsBuild Nigeria, STEM teacher data scientist transition, HMG Concepts history" />
-  <meta name="author" content="Adewale Samson Adeagbo" />
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-  <meta name="language" content="English" />
-  <meta name="geo.region" content="NG-LA" />
-  <meta name="geo.placename" content="Lagos, Nigeria" />
-  <link rel="canonical" href="https://cssadewale.pages.dev/journey.html" />
-
-  <!-- Open Graph (Facebook, LinkedIn, WhatsApp previews) -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Learning Journey | Adewale Samson Adeagbo" />
-  <meta property="og:description" content="From a 2009 JSS classroom to 12 deployed ML projects. The honest timeline — with the failures, pivots, and deliberate choices." />
-  <meta property="og:url" content="https://cssadewale.pages.dev/journey.html" />
-  <meta property="og:site_name" content="Adewale Samson Adeagbo — Portfolio" />
-  <meta property="og:locale" content="en_NG" />
-  <meta property="og:image" content="https://cssadewale.pages.dev/og-image.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Adewale Samson Adeagbo — Nigerian Data Scientist & STEM Educator" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@cssadewale" />
-  <meta name="twitter:creator" content="@cssadewale" />
-  <meta name="twitter:title" content="Learning Journey | Adewale Adeagbo" />
-  <meta name="twitter:description" content="2009 first classroom → 2023 LASU degree → 2025 3MTT spark → 12 live projects. The full honest road." />
-  <meta name="twitter:image" content="https://cssadewale.pages.dev/og-image.png" />
   <title>Learning Journey | Adewale Samson Adeagbo — From 2009 Classroom to 12 Deployed Projects</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="shared.css" />
+  <meta name="description" content="The full learning journey of Adewale Samson Adeagbo — from first classroom in 2009 to 12 deployed ML & EdTech projects, 3 active programmes, and a three-builder identity. Lagos, Nigeria." />
   <style>
-    .journey-layout{display:grid;grid-template-columns:240px 1fr;gap:4rem;align-items:start}
-    .era-nav{position:sticky;top:100px}
-    .era-nav-title{font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1rem}
-    .era-list{list-style:none;display:flex;flex-direction:column;gap:0.25rem}
-    .era-item{display:flex;align-items:center;gap:0.75rem;padding:0.6rem 0.9rem;border-radius:var(--radius);cursor:pointer;transition:var(--transition);border:1px solid transparent}
-    .era-item:hover{background:var(--bg-card);border-color:var(--border)}
-    .era-item.active{background:rgba(245,166,35,0.08);border-color:rgba(245,166,35,0.3)}
-    .era-dot{width:8px;height:8px;border-radius:50%;background:var(--text-muted);flex-shrink:0;transition:var(--transition)}
-    .era-item.active .era-dot{background:var(--gold);box-shadow:0 0 8px rgba(245,166,35,0.5)}
-    .era-label{font-family:var(--font-head);font-size:0.82rem;font-weight:500;color:var(--text-muted);transition:var(--transition)}
-    .era-item.active .era-label,.era-item:hover .era-label{color:var(--text-white)}
-    .era-year{font-family:var(--font-mono);font-size:0.65rem;color:var(--text-muted);margin-left:auto}
-    .sidebar-stats{margin-top:2rem;display:flex;flex-direction:column;gap:0.75rem}
-    .sidebar-stat{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;display:flex;align-items:center;gap:0.75rem}
-    .sidebar-stat-n{font-family:var(--font-head);font-size:1.4rem;font-weight:800;color:var(--gold);min-width:50px}
-    .sidebar-stat-l{font-family:var(--font-head);font-size:0.72rem;color:var(--text-muted);line-height:1.3}
-
-    /* Timeline */
-    .timeline{position:relative}
-    .timeline::before{content:'';position:absolute;left:17px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--gold) 0%,var(--emerald) 40%,var(--royal-blue-light) 75%,transparent 100%)}
-    .era-group{margin-bottom:3.5rem}
-    .era-group-label{font-family:var(--font-head);font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.5rem;margin-left:54px;display:flex;align-items:center;gap:0.75rem}
-    .era-group-label::after{content:'';flex:1;height:1px;background:var(--border)}
-    .timeline-item{display:flex;gap:1.75rem;margin-bottom:1.5rem;position:relative}
-    .timeline-dot{width:36px;height:36px;min-width:36px;border-radius:50%;border:2px solid var(--gold);background:var(--bg-dark);display:flex;align-items:center;justify-content:center;z-index:1;transition:var(--transition);cursor:default}
-    .timeline-dot i{font-size:0.75rem;color:var(--gold);transition:var(--transition)}
-    .timeline-item:hover .timeline-dot{background:var(--gold);box-shadow:0 0 20px rgba(245,166,35,0.4)}
-    .timeline-item:hover .timeline-dot i{color:#080c18}
-    .timeline-dot.emerald{border-color:var(--emerald)} .timeline-dot.emerald i{color:var(--emerald)}
-    .timeline-item:hover .timeline-dot.emerald{background:var(--emerald)}
-    .timeline-dot.blue{border-color:var(--royal-blue-light)} .timeline-dot.blue i{color:var(--royal-blue-light)}
-    .timeline-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem 1.75rem;flex:1;transition:var(--transition);position:relative;overflow:hidden}
-    .timeline-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--gold);opacity:0;transition:var(--transition)}
-    .timeline-item:hover .timeline-card{border-color:rgba(245,166,35,0.25)}
-    .timeline-item:hover .timeline-card::before{opacity:1}
-    .timeline-card.featured-card{background:linear-gradient(135deg,rgba(27,58,107,0.2),rgba(16,185,129,0.04));border-color:rgba(245,166,35,0.25)}
-    .timeline-card.featured-card::before{opacity:1;background:linear-gradient(to bottom,var(--gold),var(--emerald))}
-    .tcard-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:0.5rem;flex-wrap:wrap}
-    .tcard-date{font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.1em;color:var(--gold);white-space:nowrap}
-    .tcard-tag{font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.18rem 0.55rem;border-radius:100px}
-    .tag-live{background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.3);color:var(--emerald)}
-    .tag-edu{background:rgba(245,166,35,0.1);border:1px solid rgba(245,166,35,0.25);color:var(--gold)}
-    .tag-cert{background:rgba(27,58,107,0.25);border:1px solid rgba(36,81,160,0.4);color:#93b4f7}
-    .tag-milestone{background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.3);color:#c4b5fd}
-    .tag-work{background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.2);color:#fbbf24}
-    .tcard-title{font-family:var(--font-head);font-size:1rem;font-weight:700;color:var(--text-white);margin-bottom:0.35rem;line-height:1.3}
-    .tcard-org{font-family:var(--font-head);font-size:0.78rem;font-weight:500;color:var(--text-muted);margin-bottom:0.65rem}
-    .tcard-desc{font-size:0.85rem;color:var(--text-muted);line-height:1.72}
-    .tcard-desc strong{color:var(--text-light);font-weight:600}
-    .tcard-skills{display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:0.85rem}
-    .tcard-skill{font-family:var(--font-mono);font-size:0.62rem;padding:0.18rem 0.55rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:4px;color:var(--text-muted)}
-
-    /* Growth bars */
-    .growth-section{margin-top:5rem;padding-top:3rem;border-top:1px solid var(--border)}
-    .growth-bars{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
-    .growth-row{display:flex;align-items:center;gap:1rem}
-    .growth-label{font-family:var(--font-head);font-size:0.78rem;font-weight:500;color:var(--text-muted);min-width:160px}
-    .growth-track{flex:1;height:8px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden}
-    .growth-fill{height:100%;border-radius:4px;transform:scaleX(0);transform-origin:left;transition:transform 1.2s cubic-bezier(0.4,0,0.2,1)}
-    .growth-fill.animated{transform:scaleX(1)}
-    .growth-pct{font-family:var(--font-mono);font-size:0.68rem;color:var(--text-muted);min-width:35px;text-align:right}
-
-    /* What's next */
-    .next-section{margin-top:3.5rem;background:linear-gradient(135deg,rgba(27,58,107,0.2),rgba(16,185,129,0.05));border:1px solid var(--border);border-radius:var(--radius-lg);padding:2.5rem}
-    .next-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem}
-    .next-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;transition:var(--transition)}
-    .next-card:hover{border-color:rgba(245,166,35,0.3);transform:translateY(-2px)}
-    .next-card-icon{font-size:1.25rem;margin-bottom:0.5rem}
-    .next-card-title{font-family:var(--font-head);font-size:0.85rem;font-weight:700;color:var(--text-white);margin-bottom:0.35rem}
-    .next-card-desc{font-size:0.78rem;color:var(--text-muted);line-height:1.6}
-
-    @media(max-width:900px){.journey-layout{grid-template-columns:1fr}.era-nav{position:static}.next-grid{grid-template-columns:1fr}}
-  </style>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfilePage",
-    "url": "https://cssadewale.pages.dev/journey.html",
-    "name": "Learning Journey — Adewale Samson Adeagbo",
-    "description": "Complete career and learning timeline of Adewale Samson Adeagbo from 2009 to 2026.",
-    "mainEntity": {
-      "@type": "Person",
-      "name": "Adewale Samson Adeagbo",
-      "url": "https://cssadewale.pages.dev/"
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:#0a0a0f; --bg2:#111118; --bg3:#16161f; --border:#1e1e2e;
+      --accent:#7c6af7; --accent2:#a78bfa; --green:#22c55e; --amber:#f59e0b;
+      --faith:#38bdf8; --text:#e2e2f0; --muted:#888899; --card:#13131c;
+      --radius:12px; --radius-lg:20px; --ff:'Segoe UI',system-ui,sans-serif;
     }
-  }
-  </script>
+    html { scroll-behavior: smooth; }
+    body { background:var(--bg); color:var(--text); font-family:var(--ff); line-height:1.7; overflow-x:hidden; }
+    a { color:inherit; text-decoration:none; }
+
+    nav {
+      position:fixed; top:0; left:0; right:0; z-index:100;
+      background:rgba(10,10,15,.92); backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--border); padding:0 2rem;
+      display:flex; align-items:center; justify-content:space-between; height:60px;
+    }
+    .nav-logo { font-weight:700; font-size:1rem; color:var(--accent2); }
+    .nav-links { display:flex; gap:1.4rem; flex-wrap:wrap; }
+    .nav-links a { font-size:.83rem; color:var(--muted); transition:color .2s; }
+    .nav-links a:hover, .nav-links a.active { color:var(--text); }
+    .nav-cta { background:var(--accent); color:#fff; padding:.38rem 1rem; border-radius:6px; font-size:.82rem; font-weight:600; }
+
+    .page-hero { padding:120px 2rem 4rem; background:var(--bg2); border-bottom:1px solid var(--border); }
+    .page-hero-inner { max-width:1100px; margin:0 auto; }
+    .page-label { font-size:.75rem; font-weight:700; color:var(--accent2); letter-spacing:.1em; text-transform:uppercase; margin-bottom:.6rem; }
+    .page-title { font-size:clamp(2rem,5vw,3rem); font-weight:800; margin-bottom:1rem; }
+    .page-title em { font-style:normal; color:var(--accent2); }
+    .page-sub { font-size:1rem; color:var(--muted); max-width:650px; line-height:1.75; margin-bottom:2rem; }
+
+    /* jump nav */
+    .jump-nav { display:flex; gap:.6rem; flex-wrap:wrap; }
+    .jump-btn { font-size:.75rem; padding:.32rem .85rem; border-radius:50px; border:1px solid var(--border); color:var(--muted); background:transparent; transition:all .2s; text-decoration:none; }
+    .jump-btn:hover { border-color:var(--accent2); color:var(--accent2); }
+
+    /* stats */
+    .stats-row { display:flex; gap:1.5rem; flex-wrap:wrap; margin-top:2rem; }
+    .stat-pill { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:.5rem 1.1rem; display:flex; align-items:center; gap:.6rem; }
+    .stat-num { font-size:1.4rem; font-weight:900; color:var(--accent2); }
+    .stat-lbl { font-size:.73rem; color:var(--muted); }
+
+    /* timeline */
+    .timeline-body { max-width:1100px; margin:0 auto; padding:4rem 2rem; display:grid; grid-template-columns:240px 1fr; gap:0; }
+    .timeline-sidebar { position:sticky; top:80px; align-self:start; }
+    .ts-title { font-size:.72rem; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; margin-bottom:1rem; }
+    .ts-era { display:flex; flex-direction:column; gap:.4rem; }
+    .ts-link { font-size:.8rem; color:var(--muted); padding:.35rem .8rem; border-radius:6px; transition:background .2s, color .2s; border-left:2px solid transparent; }
+    .ts-link:hover { color:var(--accent2); background:rgba(124,106,247,.07); border-color:var(--accent2); }
+    .ts-link.active { color:var(--accent2); border-color:var(--accent2); background:rgba(124,106,247,.1); font-weight:600; }
+
+    /* timeline items */
+    .timeline-main { border-left:2px solid var(--border); padding-left:3rem; position:relative; }
+    .tl-era-label {
+      font-size:.72rem; font-weight:700; color:var(--accent2); text-transform:uppercase;
+      letter-spacing:.1em; margin-bottom:1.5rem; margin-top:3rem; padding:.3rem 1rem;
+      background:rgba(124,106,247,.08); border-radius:50px; display:inline-block;
+    }
+    .tl-era-label:first-child { margin-top:0; }
+
+    .tl-item { position:relative; margin-bottom:2.5rem; }
+    .tl-dot {
+      position:absolute; left:-3.45rem; top:.35rem;
+      width:14px; height:14px; border-radius:50%;
+      background:var(--accent); border:3px solid var(--bg);
+      box-shadow:0 0 0 2px var(--accent);
+    }
+    .tl-dot.green  { background:var(--green); box-shadow:0 0 0 2px var(--green); }
+    .tl-dot.faith  { background:var(--faith); box-shadow:0 0 0 2px var(--faith); }
+    .tl-dot.amber  { background:var(--amber); box-shadow:0 0 0 2px var(--amber); }
+    .tl-dot.pulse  { animation:dotpulse 2s infinite; }
+    @keyframes dotpulse { 0%,100%{box-shadow:0 0 0 2px var(--green)} 50%{box-shadow:0 0 0 5px rgba(34,197,94,.2)} }
+
+    .tl-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius-lg); padding:1.6rem; transition:border-color .2s; }
+    .tl-card.active-card { border-color:rgba(34,197,94,.35); background:linear-gradient(135deg,rgba(34,197,94,.04) 0%,var(--card) 60%); }
+    .tl-card.faith-card  { border-color:rgba(56,189,248,.2); }
+    .tl-card:hover { border-color:var(--accent); }
+    .tl-card.active-card:hover { border-color:rgba(34,197,94,.6); }
+
+    .tl-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:.8rem; flex-wrap:wrap; gap:.5rem; }
+    .tl-year { font-size:.75rem; font-weight:700; color:var(--accent2); }
+    .tl-badges { display:flex; gap:.4rem; flex-wrap:wrap; }
+    .tl-badge { font-size:.65rem; padding:.2rem .6rem; border-radius:4px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; }
+    .badge-active { background:rgba(34,197,94,.15); color:var(--green); }
+    .badge-milestone { background:rgba(124,106,247,.15); color:var(--accent2); }
+    .badge-cert { background:rgba(245,158,11,.12); color:var(--amber); }
+    .badge-faith { background:rgba(56,189,248,.12); color:var(--faith); }
+    .badge-live { background:rgba(34,197,94,.12); color:var(--green); }
+
+    .tl-title { font-size:1rem; font-weight:800; margin-bottom:.2rem; }
+    .tl-org { font-size:.78rem; color:var(--muted); margin-bottom:.8rem; }
+    .tl-body { font-size:.87rem; color:var(--muted); line-height:1.75; }
+    .tl-body strong { color:var(--text); }
+    .tl-tags { display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.9rem; }
+    .tl-tag { font-size:.7rem; background:var(--bg3); border:1px solid var(--border); padding:.2rem .55rem; border-radius:4px; color:var(--muted); }
+
+    /* builder identity milestone */
+    .builder-milestone {
+      background:linear-gradient(135deg,rgba(124,106,247,.1),rgba(56,189,248,.06));
+      border:1px solid rgba(124,106,247,.35); border-radius:var(--radius-lg); padding:1.6rem;
+    }
+    .bm-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:.8rem; margin-top:1rem; }
+    .bm-cell { background:var(--bg2); border-radius:8px; padding:.8rem; text-align:center; }
+    .bm-icon { font-size:1.3rem; margin-bottom:.3rem; }
+    .bm-label { font-size:.72rem; font-weight:700; }
+    .bm-cell.edtech .bm-label  { color:var(--green); }
+    .bm-cell.datatech .bm-label{ color:var(--accent2); }
+    .bm-cell.faith .bm-label   { color:var(--faith); }
+    .bm-sub { font-size:.65rem; color:var(--muted); margin-top:.2rem; }
+
+    /* capability bars */
+    .cap-section { background:var(--bg2); border-top:1px solid var(--border); padding:4rem 2rem; }
+    .cap-inner { max-width:1100px; margin:0 auto; }
+    .cap-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:2rem; }
+    .cap-item { margin-bottom:.5rem; }
+    .cap-label { display:flex; justify-content:space-between; font-size:.82rem; margin-bottom:.4rem; }
+    .cap-name { color:var(--text); font-weight:600; }
+    .cap-pct { color:var(--accent2); font-weight:700; }
+    .cap-bar { background:var(--bg3); border-radius:50px; height:6px; overflow:hidden; }
+    .cap-fill { height:100%; border-radius:50px; background:linear-gradient(90deg,var(--accent),var(--accent2)); }
+
+    /* road ahead */
+    .road-section { max-width:1100px; margin:0 auto; padding:3rem 2rem; }
+    .road-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1rem; margin-top:1.5rem; }
+    .road-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:1.3rem; }
+    .road-icon { font-size:1.4rem; margin-bottom:.6rem; }
+    .road-title { font-size:.9rem; font-weight:700; margin-bottom:.4rem; }
+    .road-desc { font-size:.8rem; color:var(--muted); line-height:1.6; }
+
+    .section-label { font-size:.75rem; font-weight:700; color:var(--accent2); letter-spacing:.1em; text-transform:uppercase; margin-bottom:.6rem; }
+    .section-title { font-size:clamp(1.5rem,3vw,2rem); font-weight:800; margin-bottom:.8rem; }
+    .section-sub { color:var(--muted); font-size:.92rem; }
+
+    .btn-primary { background:var(--accent); color:#fff; padding:.65rem 1.4rem; border-radius:8px; font-weight:700; font-size:.88rem; display:inline-block; transition:opacity .2s; }
+    .btn-primary:hover { opacity:.88; }
+    .btn-outline { border:1px solid var(--border); color:var(--text); padding:.65rem 1.4rem; border-radius:8px; font-weight:600; font-size:.88rem; display:inline-block; transition:border-color .2s; }
+    .btn-outline:hover { border-color:var(--accent2); }
+
+    footer { background:var(--bg2); border-top:1px solid var(--border); padding:2rem; text-align:center; }
+    .footer-logo { font-weight:800; color:var(--accent2); margin-bottom:.4rem; }
+    .footer-tagline { font-size:.78rem; color:var(--muted); margin-bottom:1rem; }
+    .footer-links { display:flex; justify-content:center; flex-wrap:wrap; gap:1.2rem; margin-bottom:.8rem; }
+    .footer-links a { font-size:.78rem; color:var(--muted); transition:color .2s; }
+    .footer-links a:hover { color:var(--accent2); }
+    .footer-bottom { font-size:.72rem; color:var(--muted); }
+
+    @media(max-width:860px){
+      .timeline-body { grid-template-columns:1fr; }
+      .timeline-sidebar { display:none; }
+      .nav-links { display:none; }
+      nav { padding:0 1rem; }
+      .cap-grid { grid-template-columns:1fr; }
+      .bm-grid { grid-template-columns:1fr; }
+    }
+    @media(max-width:600px){ .page-hero { padding:100px 1rem 3rem; } }
+  </style>
 </head>
 <body>
-<nav id="navbar">
-  <a href="index.html" class="nav-logo">Adewale <span>Adeagbo</span></a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="projects.html">Projects</a></li>
-    <li><a href="journey.html" class="active">Journey</a></li>
-    <li><a href="cv.html">CV</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
-  </ul>
-  <a href="https://drive.google.com/your-cv-link" target="_blank" class="nav-cta"><i class="fas fa-download"></i> Download CV</a>
-  <button class="nav-hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
-</nav>
-<div class="nav-mobile" id="nav-mobile">
-  <a href="index.html" onclick="closeMobileNav()">Home</a>
-  <a href="about.html" onclick="closeMobileNav()">About</a>
-  <a href="projects.html" onclick="closeMobileNav()">Projects</a>
-  <a href="journey.html" onclick="closeMobileNav()">Journey</a>
-  <a href="cv.html" onclick="closeMobileNav()">CV</a>
-  <a href="index.html#contact" onclick="closeMobileNav()">Contact</a>
-</div>
 
-<div class="page-hero">
-  <div class="container">
-    <div class="page-hero-label">The Road Here</div>
-    <div class="divider"></div>
-    <h1 class="page-hero-title">Learning Journey</h1>
-    <p class="page-hero-sub">Most portfolios only show the destination. This one shows the road — 15+ years teaching from Nursery to Secondary School, a degree earned as an adult, a 3MTT spark in 2025, and 12 live deployed projects since. Every milestone is real. The failures too.</p>
+  <nav>
+    <span class="nav-logo">cssadewale</span>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="journey.html" class="active">Journey</a>
+      <a href="cv.html">CV</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <a href="https://wa.me/2348100866322" class="nav-cta nav-links" target="_blank">WhatsApp</a>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <p class="page-label">The Road Here</p>
+      <h1 class="page-title">Learning <em>Journey</em></h1>
+      <p class="page-sub">Most portfolios only show the destination. This one shows the road — 15+ years teaching from Nursery to Secondary, a degree earned as an adult, a 3MTT spark in 2025, 12 live deployed projects, three builder identities, and a conviction that has never wavered. Every milestone is real. The failures too.</p>
+      <div class="jump-nav">
+        <a href="#era-active" class="jump-btn">Active Programmes 2026</a>
+        <a href="#era-data" class="jump-btn">Data Science Era 2025</a>
+        <a href="#era-cbt" class="jump-btn">CBT Pro Build 2024</a>
+        <a href="#era-degree" class="jump-btn">Degree & Identity 2023</a>
+        <a href="#era-hmg" class="jump-btn">HMG Founded 2015</a>
+        <a href="#era-first" class="jump-btn">First Classroom 2009</a>
+      </div>
+      <div class="stats-row">
+        <div class="stat-pill"><span class="stat-num">15+</span><span class="stat-lbl">Years teaching all levels</span></div>
+        <div class="stat-pill"><span class="stat-num">12</span><span class="stat-lbl">Live deployed projects</span></div>
+        <div class="stat-pill"><span class="stat-num">3</span><span class="stat-lbl">Active programmes now</span></div>
+        <div class="stat-pill"><span class="stat-num">3</span><span class="stat-lbl">Builder identities</span></div>
+      </div>
+    </div>
   </div>
-</div>
 
-<section>
-  <div class="container">
-    <div class="journey-layout">
+  <div class="timeline-body">
 
-      <!-- Sidebar -->
-      <div class="era-nav fade-up">
-        <div class="era-nav-title">Jump to era</div>
-        <ul class="era-list">
-          <li class="era-item active" onclick="scrollToEra('era-2026')"><span class="era-dot"></span><span class="era-label">Active Programmes</span><span class="era-year">2026</span></li>
-          <li class="era-item" onclick="scrollToEra('era-2025')"><span class="era-dot"></span><span class="era-label">Data Science Era</span><span class="era-year">2025</span></li>
-          <li class="era-item" onclick="scrollToEra('era-2024')"><span class="era-dot"></span><span class="era-label">CBT Pro &amp; Build</span><span class="era-year">2024</span></li>
-          <li class="era-item" onclick="scrollToEra('era-2023')"><span class="era-dot"></span><span class="era-label">Degree &amp; Launch</span><span class="era-year">2023</span></li>
-          <li class="era-item" onclick="scrollToEra('era-2015')"><span class="era-dot"></span><span class="era-label">HMG Founded</span><span class="era-year">2015</span></li>
-          <li class="era-item" onclick="scrollToEra('era-2009')"><span class="era-dot"></span><span class="era-label">First Classroom</span><span class="era-year">2009</span></li>
-        </ul>
-        <div class="sidebar-stats">
-          <div class="sidebar-stat"><div class="sidebar-stat-n">15+</div><div class="sidebar-stat-l">Years teaching all levels</div></div>
-          <div class="sidebar-stat"><div class="sidebar-stat-n">12</div><div class="sidebar-stat-l">Live deployed projects</div></div>
-          <div class="sidebar-stat"><div class="sidebar-stat-n">3</div><div class="sidebar-stat-l">Active programmes now</div></div>
+    <!-- SIDEBAR -->
+    <div class="timeline-sidebar">
+      <div class="ts-title">Jump to Era</div>
+      <div class="ts-era">
+        <a href="#era-active" class="ts-link active">🌺 Active Programmes · 2026</a>
+        <a href="#era-data" class="ts-link">📊 Data Science Era · 2025</a>
+        <a href="#era-cbt" class="ts-link">💻 CBT Pro Build · 2024</a>
+        <a href="#era-degree" class="ts-link">🎓 Degree & Identity · 2023</a>
+        <a href="#era-hmg" class="ts-link">🏢 HMG Founded · 2015</a>
+        <a href="#era-faith" class="ts-link">✝️ Faith Foundation</a>
+        <a href="#era-first" class="ts-link">🏫 First Classroom · 2009</a>
+      </div>
+    </div>
+
+    <!-- TIMELINE MAIN -->
+    <div class="timeline-main">
+
+      <!-- ── 2025–2026 ACTIVE ── -->
+      <div id="era-active" class="tl-era-label">2025–2026 — Active Programmes & Recognition</div>
+
+      <!-- Builder Identity Milestone -->
+      <div class="tl-item">
+        <div class="tl-dot green pulse"></div>
+        <div class="builder-milestone">
+          <div class="tl-top">
+            <span class="tl-year">2025–2026 · Now</span>
+            <div class="tl-badges"><span class="tl-badge badge-milestone">Identity Milestone</span></div>
+          </div>
+          <div class="tl-title">Three Builder Identities Crystallised</div>
+          <div class="tl-org">cssadewale · Personal Brand</div>
+          <p class="tl-body">The work across 15 years of teaching, 12 deployed projects, a gospel conviction, and deliberate AI leverage finally crystallised into a single, unified identity with three expressions. Not three separate careers — one AI-Augmented Solutions Developer, three domains.</p>
+          <div class="bm-grid">
+            <div class="bm-cell edtech"><div class="bm-icon">🏫</div><div class="bm-label">EdTech Builder</div><div class="bm-sub">Teacher × Builder · @hmgacademyhub</div></div>
+            <div class="bm-cell datatech"><div class="bm-icon">📊</div><div class="bm-label">DataTech Builder</div><div class="bm-sub">Data Scientist × Builder · @cssadewale</div></div>
+            <div class="bm-cell faith"><div class="bm-icon">✝️</div><div class="bm-label">FaithTech Builder</div><div class="bm-sub">Gospel × Builder · @hmgospel</div></div>
+          </div>
         </div>
       </div>
 
-      <!-- Timeline -->
-      <div>
-        <div class="timeline fade-up">
-
-          <!-- 2026 -->
-          <div class="era-group" id="era-2026">
-            <div class="era-group-label">2025&ndash;2026 &mdash; Three Active Programmes &amp; Industry Recognition</div>
-
-            <div class="timeline-item">
-              <div class="timeline-dot"><i class="fas fa-fire"></i></div>
-              <div class="timeline-card featured-card">
-                <div class="tcard-top"><span class="tcard-date">2025&ndash;2026 &middot; Currently Active</span><span class="tcard-tag tag-live">Active Now</span></div>
-                <div class="tcard-title">Three Simultaneous Active Learning Programmes</div>
-                <div class="tcard-org">DSN × 3MTT × Google.org &middot; WorldQuant University &middot; Kodecamp</div>
-                <div class="tcard-desc"><strong>DeepTech_Ready (DSN × 3MTT × Google.org)</strong> &mdash; DSML Track, Cohort 3. Data science and machine learning with Google's AI ecosystem in an applied Nigerian context.<br><br><strong>WorldQuant University Applied Data Science Lab</strong> &mdash; One of the world's most rigorous free data science programmes. Real datasets, real submission standards, international cohort.<br><br><strong>Kodecamp Cohort 6 &mdash; Machine Learning Core Track</strong> &mdash; Hands-on ML foundations, model building, and deployment practice. All three running simultaneously while still teaching in a secondary school classroom every week.</div>
-                <div class="tcard-skills"><span class="tcard-skill">Applied ML</span><span class="tcard-skill">Deep Learning Intro</span><span class="tcard-skill">Google AI Tools</span><span class="tcard-skill">Statistical Modelling</span><span class="tcard-skill">Python</span><span class="tcard-skill">Pandas</span></div>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-dot"><i class="fas fa-star"></i></div>
-              <div class="timeline-card">
-                <div class="tcard-top"><span class="tcard-date">April 2026</span><span class="tcard-tag tag-milestone">Recognition</span></div>
-                <div class="tcard-title">IBM SkillsBuild Hub Ambassador &mdash; Cohort 4</div>
-                <div class="tcard-org">IBM SkillsBuild</div>
-                <div class="tcard-desc">Selected as a community ambassador championing digital literacy, AI fluency, and tech access across Nigerian communities. <strong>Recognition that building and teaching in public, with honesty about the journey, matters beyond the classroom.</strong></div>
-                <div class="tcard-skills"><span class="tcard-skill">Community Leadership</span><span class="tcard-skill">AI Literacy</span><span class="tcard-skill">Digital Skills Advocacy</span></div>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-dot emerald"><i class="fas fa-cloud"></i></div>
-              <div class="timeline-card">
-                <div class="tcard-top"><span class="tcard-date">2026</span><span class="tcard-tag tag-cert">Certification</span></div>
-                <div class="tcard-title">DSN × Microsoft Elevate AI Developers Programme &mdash; AI-900</div>
-                <div class="tcard-org">Data Scientists Network × Microsoft Azure</div>
-                <div class="tcard-desc">Deep coverage of Azure AI fundamentals — machine learning concepts, computer vision, NLP, and conversational AI. <strong>Structured around applied understanding, not just exam passing.</strong> Preparing for the AI-900 certification.</div>
-                <div class="tcard-skills"><span class="tcard-skill">Azure AI</span><span class="tcard-skill">Computer Vision</span><span class="tcard-skill">NLP</span><span class="tcard-skill">Responsible AI</span><span class="tcard-skill">AI-900</span></div>
-              </div>
-            </div>
+      <div class="tl-item">
+        <div class="tl-dot green pulse"></div>
+        <div class="tl-card active-card">
+          <div class="tl-top">
+            <span class="tl-year">2025–2026 · Currently Active</span>
+            <div class="tl-badges"><span class="tl-badge badge-active">🌺 Active Now</span></div>
           </div>
-
-          <!-- 2025 -->
-          <div class="era-group" id="era-2025">
-            <div class="era-group-label">2025 &mdash; The Deployment Year</div>
-
-            <div class="timeline-item">
-              <div class="timeline-dot"><i class="fas fa-rocket"></i></div>
-              <div class="timeline-card featured-card">
-                <div class="tcard-top"><span class="tcard-date">2025</span><span class="tcard-tag tag-milestone">Major Milestone</span></div>
-                <div class="tcard-title">12 Projects Deployed &mdash; ML, NLP, EdTech, Analytics</div>
-                <div class="tcard-org">Independent &middot; HMG Technologies</div>
-                <div class="tcard-desc">From Jupyter notebooks to 12 live Streamlit apps across 7 industries: insurance claim prediction, bank churn, HR promotion, financial inclusion, fake news detection (NLP &mdash; first XGBoost project), delivery delay forecasting, employee burnout prediction, and four EdTech tools. <strong>All documented honestly &mdash; including the data leakage fix in SwiftChain and models that did not hit expected benchmarks.</strong> This is the portfolio of someone who was solving classroom problems in their head for 15 years and finally had the technical tools to build the solutions.</div>
-                <div class="tcard-skills"><span class="tcard-skill">Python</span><span class="tcard-skill">Scikit-learn</span><span class="tcard-skill">XGBoost</span><span class="tcard-skill">SHAP</span><span class="tcard-skill">SMOTE</span><span class="tcard-skill">Streamlit</span><span class="tcard-skill">NLP</span><span class="tcard-skill">TF-IDF</span></div>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-dot"><i class="fas fa-bolt"></i></div>
-              <div class="timeline-card featured-card">
-                <div class="tcard-top"><span class="tcard-date">2025 &middot; The Turning Point</span><span class="tcard-tag tag-cert">Certified Dec 2025</span></div>
-                <div class="tcard-title">3MTT Programme &mdash; Data Science Track</div>
-                <div class="tcard-org">Federal Government of Nigeria / 3MTT</div>
-                <div class="tcard-desc">The spark that lit everything on fire. 3MTT did not teach me from scratch &mdash; it gave a 15-year problem-solver a technical language. My inquisitiveness, the ability to break down complexity to its smallest parts, the persistence in the face of confusion &mdash; these were skills built over fifteen years of teaching. 3MTT gave them the right technical instruments. <strong>Within months, classroom problems I had been watching for 15 years had pathways to deployed solutions.</strong></div>
-                <div class="tcard-skills"><span class="tcard-skill">Data Science</span><span class="tcard-skill">Python</span><span class="tcard-skill">ML Foundations</span><span class="tcard-skill">EDA</span><span class="tcard-skill">Feature Engineering</span></div>
-              </div>
-            </div>
+          <div class="tl-title">Three Simultaneous Active Learning Programmes</div>
+          <div class="tl-org">DSN × 3MTT × Google.org · WorldQuant University · Kodecamp</div>
+          <p class="tl-body"><strong>DeepTech_Ready (DSN × 3MTT × Google.org)</strong> — DSML Track, Cohort 3. Data science and machine learning with Google's AI ecosystem.<br><br><strong>WorldQuant University Applied Data Science Lab</strong> — One of the world's most rigorous free data science programmes. Real datasets, international submission standards.<br><br><strong>Kodecamp Cohort 6 — ML Core Track</strong> — Hands-on ML foundations, model building, and deployment. All three running simultaneously while still teaching every week.</p>
+          <div class="tl-tags">
+            <span class="tl-tag">Applied ML</span><span class="tl-tag">Deep Learning Intro</span><span class="tl-tag">Google AI Tools</span>
+            <span class="tl-tag">Statistical Modelling</span><span class="tl-tag">Python</span><span class="tl-tag">Pandas</span>
           </div>
-
-          <!-- 2024 -->
-          <div class="era-group" id="era-2024">
-            <div class="era-group-label">2024 &mdash; The Proof of Method</div>
-
-            <div class="timeline-item">
-              <div class="timeline-dot"><i class="fas fa-globe"></i></div>
-              <div class="timeline-card">
-                <div class="tcard-top"><span class="tcard-date">2024 &ndash; Ongoing</span><span class="tcard-tag tag-live">Active</span></div>
-                <div class="tcard-title">WorldQuant University &mdash; Applied Data Science Lab</div>
-                <div class="tcard-org">WorldQuant University (WQU)</div>
-                <div class="tcard-desc">One of the world's most respected free data science programmes. Project-based, real datasets, international submission standards. <strong>Working through applied modules in regression, classification, time series, and NLP alongside a global cohort.</strong> WQU accepts serious learners and the work reflects that standard.</div>
-                <div class="tcard-skills"><span class="tcard-skill">Applied ML</span><span class="tcard-skill">Data Wrangling</span><span class="tcard-skill">Statistical Modelling</span><span class="tcard-skill">Python</span></div>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-dot"><i class="fas fa-mobile-alt"></i></div>
-              <div class="timeline-card featured-card">
-                <div class="tcard-top"><span class="tcard-date">2024 &middot; The Proof</span><span class="tcard-tag tag-live">Live Today</span></div>
-                <div class="tcard-title">CBT Pro &mdash; First Live Deployment with Real Students</div>
-                <div class="tcard-org">HMG Technologies</div>
-                <div class="tcard-desc">The moment the method was proven. A complete CBT exam platform &mdash; teacher portal, student exam engine, timed sessions, per-student randomisation, anti-cheat, auto-marking, certificates, 4-tab analytics, optional AI explanations &mdash; all built on an Android tablet using Acode editor. <strong>Not because I was a web developer. Because I had a clear problem, clear thinking, and AI as a collaborator.</strong> Real students sat a real Further Mathematics exam on it for the first time. That moment redefined what "AI-Augmented" means in practice.</div>
-                <div class="tcard-skills"><span class="tcard-skill">HTML5</span><span class="tcard-skill">CSS3</span><span class="tcard-skill">Vanilla JS</span><span class="tcard-skill">Supabase</span><span class="tcard-skill">Gemini API</span><span class="tcard-skill">AI-Augmented Dev</span></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 2023 -->
-          <div class="era-group" id="era-2023">
-            <div class="era-group-label">2023 &mdash; Degree &amp; Foundation</div>
-
-            <div class="timeline-item">
-              <div class="timeline-dot blue"><i class="fas fa-university"></i></div>
-              <div class="timeline-card">
-                <div class="tcard-top"><span class="tcard-date">2023</span><span class="tcard-tag tag-edu">Degree</span></div>
-                <div class="tcard-title">B.Sc.(Ed) Computer Science Education</div>
-                <div class="tcard-org">Lagos State University (LASU)</div>
-                <div class="tcard-desc">A degree earned as an adult because I believed technology could solve the classroom problems I was watching every day. It formalised the intersection of pedagogy and technology into a structured framework. <strong>The graduation was not the finish line &mdash; the practical capability arrived later with 3MTT and hands-on building.</strong> But the thinking had been shaped well before either.</div>
-                <div class="tcard-skills"><span class="tcard-skill">CS Education</span><span class="tcard-skill">Pedagogy</span><span class="tcard-skill">Curriculum Design</span><span class="tcard-skill">LASU</span></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 2015 -->
-          <div class="era-group" id="era-2015">
-            <div class="era-group-label">2015 &mdash; Building Something Bigger</div>
-
-            <div class="timeline-item">
-              <div class="timeline-dot"><i class="fas fa-building"></i></div>
-              <div class="timeline-card">
-                <div class="tcard-top"><span class="tcard-date">2015 &ndash; Present</span><span class="tcard-tag tag-work">Organisation</span></div>
-                <div class="tcard-title">Founded HMG Concepts &mdash; His Marvellous Grace Educational Consult</div>
-                <div class="tcard-org">HMG Concepts</div>
-                <div class="tcard-desc">From tutoring individual students to building a structured educational brand. <strong>Four subsidiaries</strong>: HMG Academy (virtual EdTech platform for all subjects and exams), HMG Technologies (CBT Pro and all digital tools &mdash; where technology meets education), HMG Media (YouTube, tutorials, public teaching beyond classroom walls), and HMG Concepts (the parent brand). The first time I truly understood what it means to build something bigger than yourself &mdash; and to name it honestly after the conviction that drives it.</div>
-                <div class="tcard-skills"><span class="tcard-skill">EdTech</span><span class="tcard-skill">Organisation Building</span><span class="tcard-skill">WAEC/NECO/UTME Registration</span><span class="tcard-skill">Virtual Teaching</span></div>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-dot"><i class="fas fa-music"></i></div>
-              <div class="timeline-card">
-                <div class="tcard-top"><span class="tcard-date">2013</span><span class="tcard-tag tag-cert">Certificate</span></div>
-                <div class="tcard-title">Piano &amp; Music Theory Certificate</div>
-                <div class="tcard-org">Rotop Music Academy</div>
-                <div class="tcard-desc">Before the code and the data, there was music. Piano and guitar are still part of who I am. <strong>Pattern recognition, structure, rhythm, and the discipline of practising something imperfect until it is right &mdash; these are data science skills too</strong>, once you know how to look at them that way. The best models I have built have a rhythm to them. So do the best lessons I have taught.</div>
-                <div class="tcard-skills"><span class="tcard-skill">Piano</span><span class="tcard-skill">Guitar</span><span class="tcard-skill">Music Theory</span><span class="tcard-skill">Pattern Recognition</span></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 2009 -->
-          <div class="era-group" id="era-2009">
-            <div class="era-group-label">2009 &mdash; Where Everything Began</div>
-
-            <div class="timeline-item">
-              <div class="timeline-dot"><i class="fas fa-chalkboard"></i></div>
-              <div class="timeline-card featured-card">
-                <div class="tcard-top"><span class="tcard-date">2009 &mdash; Present (Still Teaching)</span><span class="tcard-tag tag-work">15+ Years Active</span></div>
-                <div class="tcard-title">Classroom Teacher &mdash; Nursery Through Secondary School</div>
-                <div class="tcard-org">Multiple Nigerian Schools &middot; Lagos &amp; Ogun State</div>
-                <div class="tcard-desc"><strong>First classroom: Chrisville Schools, 2009.</strong> A JSS class. Chalk, a blackboard, and more questions from students than I had been trained to answer. Since then: His Marvellous Grace, Fredaks Group, Anchor Heights, Dave Model School, Lifeline, De Glorious College, Chrisville, Angel High School, God of Seed Academy, and others. I have taught at every level &mdash; <strong>Nursery, Primary, and Secondary</strong> (currently in secondary school, JSS1–SSS3). Mathematics, Further Mathematics, Physics, Chemistry, Computer Science. Thousands of students. <br><br>These classrooms trained me in the two most important skills any data scientist can have: <strong>asking the right questions</strong>, and <strong>genuinely caring whether your audience understands what you are showing them</strong>. Fifteen years later, I am still teaching. The classroom and the data science are not two separate lives. They have always been the same work, waiting for the right tools.</div>
-                <div class="tcard-skills"><span class="tcard-skill">Mathematics</span><span class="tcard-skill">Further Mathematics</span><span class="tcard-skill">Physics</span><span class="tcard-skill">Chemistry</span><span class="tcard-skill">Computer Science</span><span class="tcard-skill">JSS–SSS</span></div>
-              </div>
-            </div>
-          </div>
-
-        </div><!-- /timeline -->
-
-        <!-- Skill Growth Bars -->
-        <div class="growth-section fade-up">
-          <div class="section-label">Capability Growth</div>
-          <div class="divider"></div>
-          <h3 class="section-title" style="font-size:clamp(1.4rem,3vw,1.9rem)">Where I Am Now</h3>
-          <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:0">Self-assessed capability levels based on deployed projects and active learning — no inflated progress bars, no false modesty.</p>
-          <div class="growth-bars">
-            <div class="growth-row"><span class="growth-label">Python &amp; Data Science</span><div class="growth-track"><div class="growth-fill" style="width:88%;background:linear-gradient(90deg,var(--gold),var(--gold-light))"></div></div><span class="growth-pct">88%</span></div>
-            <div class="growth-row"><span class="growth-label">Machine Learning (Sklearn)</span><div class="growth-track"><div class="growth-fill" style="width:82%;background:linear-gradient(90deg,var(--gold),var(--gold-light))"></div></div><span class="growth-pct">82%</span></div>
-            <div class="growth-row"><span class="growth-label">Streamlit Deployment</span><div class="growth-track"><div class="growth-fill" style="width:90%;background:linear-gradient(90deg,var(--emerald),#34d399)"></div></div><span class="growth-pct">90%</span></div>
-            <div class="growth-row"><span class="growth-label">NLP &amp; Text Analytics</span><div class="growth-track"><div class="growth-fill" style="width:65%;background:linear-gradient(90deg,var(--royal-blue-light),#60a5fa)"></div></div><span class="growth-pct">65%</span></div>
-            <div class="growth-row"><span class="growth-label">Data Visualisation</span><div class="growth-track"><div class="growth-fill" style="width:78%;background:linear-gradient(90deg,var(--gold),var(--gold-light))"></div></div><span class="growth-pct">78%</span></div>
-            <div class="growth-row"><span class="growth-label">Web Dev (AI-Augmented)</span><div class="growth-track"><div class="growth-fill" style="width:72%;background:linear-gradient(90deg,var(--emerald),#34d399)"></div></div><span class="growth-pct">72%</span></div>
-            <div class="growth-row"><span class="growth-label">Deep Learning</span><div class="growth-track"><div class="growth-fill" style="width:25%;background:linear-gradient(90deg,#f97316,#fb923c)"></div></div><span class="growth-pct">25%</span></div>
-          </div>
-        </div>
-
-        <!-- What's Next -->
-        <div class="next-section fade-up">
-          <div class="section-label">What's Next</div>
-          <div class="divider"></div>
-          <h3 class="section-title" style="font-size:clamp(1.4rem,3vw,1.9rem)">The Road Ahead</h3>
-          <div class="next-grid">
-            <div class="next-card">
-              <div class="next-card-icon">🧠</div>
-              <div class="next-card-title">Deep Learning</div>
-              <div class="next-card-desc">Neural networks, convolutional models, and sequence modelling. The next frontier after classical ML mastery.</div>
-            </div>
-            <div class="next-card">
-              <div class="next-card-icon">☁️</div>
-              <div class="next-card-title">Azure AI-900 Certification</div>
-              <div class="next-card-desc">Formalising cloud AI knowledge through the Microsoft AI fundamentals exam.</div>
-            </div>
-            <div class="next-card">
-              <div class="next-card-icon">🏫</div>
-              <div class="next-card-title">CBT Pro Phase 6 &amp; 7</div>
-              <div class="next-card-desc">AI Insights for teachers (Phase 6) and Multi-teacher admin panel (Phase 7). The next CBT Pro milestones.</div>
-            </div>
-          </div>
-        </div>
-
-        <div style="text-align:center;margin-top:2.5rem">
-          <a href="projects.html" class="btn-primary"><i class="fas fa-rocket"></i> See All 12 Projects</a>
-          <a href="index.html#contact" class="btn-secondary" style="margin-left:1rem"><i class="fas fa-paper-plane"></i> Get In Touch</a>
-        </div>
-
-      </div><!-- /main timeline col -->
-    </div><!-- /layout -->
-  </div><!-- /container -->
-</section>
-
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div>
-        <div class="footer-brand-name">Adewale <span>Adeagbo</span></div>
-        <div class="footer-slogan">"Learning Deliberately. Building Authentically."</div>
-        <div class="footer-socials">
-          <a href="https://linkedin.com/in/adewalesamsonadeagbo" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-          <a href="https://github.com/cssadewale" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
-          <a href="https://x.com/cssadewale" target="_blank" class="social-icon"><i class="fab fa-x-twitter"></i></a>
-          <a href="https://youtube.com/@hmgconcepts" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
         </div>
       </div>
-      <div class="footer-col"><h4>Navigate</h4><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="projects.html">Projects</a></li><li><a href="journey.html">Journey</a></li><li><a href="cv.html">CV</a></li></ul></div>
-      <div class="footer-col"><h4>Contact</h4><ul class="footer-links"><li><a href="https://wa.me/2348100866322" target="_blank">WhatsApp &#8599;</a></li><li><a href="mailto:hmgconcepts@gmail.com">Email &#8599;</a></li><li><a href="https://cssadewale.github.io/cbt-system/teacher.html" target="_blank">CBT Pro &#8599;</a></li></ul></div>
-    </div>
-    <div class="footer-bottom">
-      <div class="footer-copy">&copy; 2026 Adewale Samson Adeagbo | HMG Concepts. All rights reserved.</div>
-      <div class="footer-built">Built with <span>HTML &middot; CSS &middot; JavaScript &middot; AI Collaboration</span></div>
+
+      <div class="tl-item">
+        <div class="tl-dot amber"></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <span class="tl-year">April 2026 · Recognition</span>
+            <div class="tl-badges"><span class="tl-badge badge-cert">Recognition</span></div>
+          </div>
+          <div class="tl-title">IBM SkillsBuild Hub Ambassador — Cohort 4</div>
+          <div class="tl-org">IBM SkillsBuild</div>
+          <p class="tl-body">Selected as a community ambassador championing digital literacy, AI fluency, and tech access across Nigerian communities. <strong>Recognition that building and teaching in public, with honesty about the journey, matters beyond the classroom.</strong></p>
+          <div class="tl-tags"><span class="tl-tag">Community Leadership</span><span class="tl-tag">AI Literacy</span><span class="tl-tag">Digital Skills Advocacy</span></div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot amber"></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <span class="tl-year">2026 · Certification</span>
+            <div class="tl-badges"><span class="tl-badge badge-cert">Certification</span></div>
+          </div>
+          <div class="tl-title">DSN × Microsoft Elevate AI Developers — AI-900</div>
+          <div class="tl-org">Data Scientists Network × Microsoft Azure</div>
+          <p class="tl-body">Deep coverage of Azure AI fundamentals — machine learning concepts, computer vision, NLP, and conversational AI. <strong>Structured around applied understanding, not just exam passing.</strong> Preparing for the AI-900 certification.</p>
+          <div class="tl-tags"><span class="tl-tag">Azure AI</span><span class="tl-tag">Computer Vision</span><span class="tl-tag">NLP</span><span class="tl-tag">Responsible AI</span></div>
+        </div>
+      </div>
+
+      <!-- ── 2025 DATA SCIENCE ── -->
+      <div id="era-data" class="tl-era-label">2025 — The Deployment Year</div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <span class="tl-year">2025 · Major Milestone</span>
+            <div class="tl-badges"><span class="tl-badge badge-milestone">12 Projects Deployed</span></div>
+          </div>
+          <div class="tl-title">12 Projects Deployed — ML, NLP, EdTech, Analytics</div>
+          <div class="tl-org">Independent · HMG Technologies · HMG Academy</div>
+          <p class="tl-body">From Jupyter notebooks to 12 live Streamlit apps across 7 industries: insurance claim prediction, bank churn, HR promotion, financial inclusion, fake news detection (NLP — first XGBoost project), delivery delay forecasting, employee burnout prediction, and four EdTech tools. <strong>All documented honestly — including the data leakage fix in SwiftChain and models that did not hit expected benchmarks.</strong></p>
+          <div class="tl-tags">
+            <span class="tl-tag">Python</span><span class="tl-tag">Scikit-learn</span><span class="tl-tag">XGBoost</span>
+            <span class="tl-tag">SHAP</span><span class="tl-tag">SMOTE</span><span class="tl-tag">Streamlit</span>
+            <span class="tl-tag">NLP</span><span class="tl-tag">TF-IDF</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot amber"></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <span class="tl-year">2025 · The Turning Point · Certified Dec 2025</span>
+            <div class="tl-badges"><span class="tl-badge badge-cert">Certified</span></div>
+          </div>
+          <div class="tl-title">3MTT Programme — Data Science Track</div>
+          <div class="tl-org">Federal Government of Nigeria / 3MTT</div>
+          <p class="tl-body">The spark that lit everything on fire. 3MTT did not teach me from scratch — it gave a <strong>15-year problem-solver a technical language</strong>. My inquisitiveness, the ability to break down complexity to its smallest parts, the persistence in the face of confusion — these were skills built over fifteen years of teaching. 3MTT gave them the right technical instruments. Within months, classroom problems I had been watching for 15 years had pathways to deployed solutions.</p>
+          <div class="tl-tags"><span class="tl-tag">Data Science</span><span class="tl-tag">Python</span><span class="tl-tag">ML Foundations</span><span class="tl-tag">EDA</span><span class="tl-tag">Feature Engineering</span></div>
+        </div>
+      </div>
+
+      <!-- ── 2024 CBT PRO ── -->
+      <div id="era-cbt" class="tl-era-label">2024 — The Proof of Method</div>
+
+      <div class="tl-item">
+        <div class="tl-dot green pulse"></div>
+        <div class="tl-card active-card">
+          <div class="tl-top">
+            <span class="tl-year">2024 – Ongoing · The Proof</span>
+            <div class="tl-badges"><span class="tl-badge badge-live">● Live Today</span></div>
+          </div>
+          <div class="tl-title">CBT Pro — First Live Deployment with Real Students</div>
+          <div class="tl-org">HMG Technologies · cssadewale.github.io/cbt-system</div>
+          <p class="tl-body">The moment the method was proven. A complete CBT exam platform — teacher portal, student exam engine, timed sessions, per-student randomisation, anti-cheat, auto-marking, certificates, 4-tab analytics, optional AI explanations — all built on an Android tablet using Acode editor. <strong>Not because I was a web developer. Because I had a clear problem, clear thinking, and AI as a collaborator.</strong> Real students sat a real Further Mathematics exam on it for the first time.</p>
+          <div class="tl-tags">
+            <span class="tl-tag">HTML5</span><span class="tl-tag">CSS3</span><span class="tl-tag">Vanilla JS</span>
+            <span class="tl-tag">Supabase</span><span class="tl-tag">Gemini API</span><span class="tl-tag">AI-Augmented Dev</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <span class="tl-year">2024 – Ongoing</span>
+            <div class="tl-badges"><span class="tl-badge badge-active">Active</span></div>
+          </div>
+          <div class="tl-title">WorldQuant University — Applied Data Science Lab</div>
+          <div class="tl-org">WorldQuant University (WQU)</div>
+          <p class="tl-body">One of the world's most respected free data science programmes. Project-based, real datasets, international submission standards. <strong>Working through applied modules in regression, classification, time series, and NLP alongside a global cohort.</strong></p>
+          <div class="tl-tags"><span class="tl-tag">Applied ML</span><span class="tl-tag">Data Wrangling</span><span class="tl-tag">Statistical Modelling</span><span class="tl-tag">Python</span></div>
+        </div>
+      </div>
+
+      <!-- ── 2023 DEGREE ── -->
+      <div id="era-degree" class="tl-era-label">2023 — Degree, Identity & the Name cssadewale</div>
+
+      <div class="tl-item">
+        <div class="tl-dot amber"></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <span class="tl-year">2023 · Degree</span>
+            <div class="tl-badges"><span class="tl-badge badge-cert">Degree</span></div>
+          </div>
+          <div class="tl-title">B.Sc.(Ed) Computer Science Education</div>
+          <div class="tl-org">Lagos State University (LASU)</div>
+          <p class="tl-body">A degree earned as an adult because I believed technology could solve the classroom problems I was watching every day. It formalised the intersection of pedagogy and technology into a structured framework. <strong>The graduation was not the finish line — the practical capability arrived later with 3MTT and hands-on building.</strong> But the thinking had been shaped well before either.</p>
+          <div class="tl-tags"><span class="tl-tag">CS Education</span><span class="tl-tag">Pedagogy</span><span class="tl-tag">Curriculum Design</span><span class="tl-tag">LASU</span></div>
+        </div>
+      </div>
+
+      <!-- ── 2015 HMG ── -->
+      <div id="era-hmg" class="tl-era-label">2015 — Building Something Bigger Than Yourself</div>
+
+      <div class="tl-item">
+        <div class="tl-dot green"></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <span class="tl-year">2015 – Present · Organisation</span>
+            <div class="tl-badges"><span class="tl-badge badge-milestone">Organisation Built</span></div>
+          </div>
+          <div class="tl-title">Founded HMG Concepts — His Marvellous Grace Educational Consult</div>
+          <div class="tl-org">HMG Concepts · Lagos / Ogun State, Nigeria</div>
+          <p class="tl-body">From tutoring individual students to building a structured educational brand. <strong>Four subsidiaries</strong>: HMG Academy (@hmgacademyhub — virtual school covering all subjects and exams), HMG Technologies (@hmgtechnologies — CBT Pro and all digital tools), HMG Gospel (@hmgospel — spreading the gospel through every digital means), and HMG Media (audio/visual brand promotion). The first time I truly understood what it means to build something bigger than yourself — and to name it honestly after the conviction that drives it.</p>
+          <div class="tl-tags"><span class="tl-tag">EdTech Organisation</span><span class="tl-tag">Virtual Teaching</span><span class="tl-tag">WAEC/NECO/UTME</span><span class="tl-tag">FaithTech</span><span class="tl-tag">HMG Gospel</span></div>
+        </div>
+      </div>
+
+      <!-- ── FAITH ── -->
+      <div id="era-faith" class="tl-era-label">Faith — The Foundation That Was Always There</div>
+
+      <div class="tl-item">
+        <div class="tl-dot faith"></div>
+        <div class="tl-card faith-card">
+          <div class="tl-top">
+            <span class="tl-year">Always · FaithTech Builder</span>
+            <div class="tl-badges"><span class="tl-badge badge-faith">✝️ FaithTech</span></div>
+          </div>
+          <div class="tl-title">HMG Gospel — Spreading the Gospel Through Every Digital Means</div>
+          <div class="tl-org">HMG Gospel · @hmgospel</div>
+          <p class="tl-body">The name His Marvellous Grace was never just branding. It reflects a genuine, lived conviction: that every breakthrough — in the classroom and in technology — has arrived as a result of grace I did not engineer on my own. <strong>HMG Gospel exists to spread the gospel of Christ through every digital platform available</strong> — dramavangelism, techvangelism, physical evangelism, podcasts, ebooks, digital outreach, Christian drama, and FaithTech tools built specifically for church and ministry settings. This is the FaithTech Builder identity made institutional.</p>
+          <div class="tl-tags"><span class="tl-tag">Dramavangelism</span><span class="tl-tag">Techvangelism</span><span class="tl-tag">Gospel Platforms</span><span class="tl-tag">Church Tools</span><span class="tl-tag">Podcasts</span><span class="tl-tag">Ebooks</span><span class="tl-tag">Digital Outreach</span></div>
+        </div>
+      </div>
+
+      <!-- ── 2013 MUSIC ── -->
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <span class="tl-year">2013 · Certificate</span>
+            <div class="tl-badges"><span class="tl-badge badge-cert">Certificate</span></div>
+          </div>
+          <div class="tl-title">Piano & Music Theory Certificate</div>
+          <div class="tl-org">Rotop Music Academy</div>
+          <p class="tl-body">Before the code and the data, there was music. Piano and guitar are still part of who I am. <strong>Pattern recognition, structure, rhythm, and the discipline of practising something imperfect until it is right — these are data science skills too</strong>, once you know how to look at them that way. The best models I have built have a rhythm to them. So do the best lessons I have taught.</p>
+          <div class="tl-tags"><span class="tl-tag">Piano</span><span class="tl-tag">Guitar</span><span class="tl-tag">Music Theory</span><span class="tl-tag">Pattern Recognition</span></div>
+        </div>
+      </div>
+
+      <!-- ── 2009 FIRST CLASSROOM ── -->
+      <div id="era-first" class="tl-era-label">2009 — Where Everything Began</div>
+
+      <div class="tl-item">
+        <div class="tl-dot green"></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <span class="tl-year">2009 – Present (Still Teaching) · 15+ Years Active</span>
+            <div class="tl-badges"><span class="tl-badge badge-active">Still Active</span></div>
+          </div>
+          <div class="tl-title">Classroom Teacher — Nursery Through Secondary School</div>
+          <div class="tl-org">Multiple Nigerian Schools · Lagos & Ogun State</div>
+          <p class="tl-body"><strong>First classroom: Chrisville Schools, 2009.</strong> A JSS class. Chalk, a blackboard, and more questions from students than I had been trained to answer. Since then: His Marvellous Grace, Fredaks Group, Anchor Heights, Dave Model School, Lifeline, De Glorious College, Chrisville, Angel High School, God of Seed Academy, and others. I have taught at every level — Nursery, Primary, and Secondary (currently in secondary school, JSS1–SSS3). Mathematics, Further Mathematics, Physics, Chemistry, Computer Science. Thousands of students.<br><br>These classrooms trained me in the two most important skills any data scientist can have: <strong>asking the right questions</strong>, and <strong>genuinely caring whether your audience understands what you are showing them</strong>. Fifteen years later, I am still teaching. The classroom and the data science are not two separate lives. They have always been the same work, waiting for the right tools.</p>
+          <div class="tl-tags">
+            <span class="tl-tag">Mathematics</span><span class="tl-tag">Further Mathematics</span><span class="tl-tag">Physics</span>
+            <span class="tl-tag">Chemistry</span><span class="tl-tag">Computer Science</span><span class="tl-tag">JSS–SSS</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
-</footer>
 
-<script>
-  window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',scrollY>50));
-  const hamburger=document.getElementById('hamburger'),mobileNav=document.getElementById('nav-mobile');
-  hamburger.addEventListener('click',function(e){e.stopPropagation();const o=mobileNav.classList.toggle('open');hamburger.classList.toggle('open',o);hamburger.setAttribute('aria-expanded',String(o));document.body.style.overflow=o?'hidden':'';});
-  document.addEventListener('click',e=>{if(mobileNav.classList.contains('open')&&!mobileNav.contains(e.target)&&!hamburger.contains(e.target))closeMobileNav();});
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMobileNav();});
-  function closeMobileNav(){mobileNav.classList.remove('open');hamburger.classList.remove('open');hamburger.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  <!-- CAPABILITY LEVELS -->
+  <div class="cap-section">
+    <div class="cap-inner">
+      <p class="section-label">Capability Growth</p>
+      <h2 class="section-title">Where I Am Now</h2>
+      <p class="section-sub" style="margin-bottom:2rem;">Self-assessed based on deployed projects and active learning — no inflated progress bars, no false modesty.</p>
+      <div class="cap-grid">
+        <div class="cap-item"><div class="cap-label"><span class="cap-name">Python & Data Science</span><span class="cap-pct">88%</span></div><div class="cap-bar"><div class="cap-fill" style="width:88%"></div></div></div>
+        <div class="cap-item"><div class="cap-label"><span class="cap-name">Machine Learning (Sklearn)</span><span class="cap-pct">82%</span></div><div class="cap-bar"><div class="cap-fill" style="width:82%"></div></div></div>
+        <div class="cap-item"><div class="cap-label"><span class="cap-name">Streamlit Deployment</span><span class="cap-pct">90%</span></div><div class="cap-bar"><div class="cap-fill" style="width:90%"></div></div></div>
+        <div class="cap-item"><div class="cap-label"><span class="cap-name">NLP & Text Analytics</span><span class="cap-pct">65%</span></div><div class="cap-bar"><div class="cap-fill" style="width:65%"></div></div></div>
+        <div class="cap-item"><div class="cap-label"><span class="cap-name">Data Visualisation</span><span class="cap-pct">78%</span></div><div class="cap-bar"><div class="cap-fill" style="width:78%"></div></div></div>
+        <div class="cap-item"><div class="cap-label"><span class="cap-name">Web Dev (AI-Augmented)</span><span class="cap-pct">72%</span></div><div class="cap-bar"><div class="cap-fill" style="width:72%"></div></div></div>
+        <div class="cap-item"><div class="cap-label"><span class="cap-name">Deep Learning</span><span class="cap-pct">25%</span></div><div class="cap-bar"><div class="cap-fill" style="width:25%"></div></div></div>
+        <div class="cap-item"><div class="cap-label"><span class="cap-name">FaithTech / Gospel Platforms</span><span class="cap-pct">Building</span></div><div class="cap-bar"><div class="cap-fill" style="width:30%; background:linear-gradient(90deg,var(--faith),rgba(56,189,248,.5))"></div></div></div>
+      </div>
+    </div>
+  </div>
 
-  function scrollToEra(id){
-    const el=document.getElementById(id);
-    if(el){el.scrollIntoView({behavior:'smooth',block:'start'});}
-    document.querySelectorAll('.era-item').forEach(i=>i.classList.remove('active'));
-    event.currentTarget.classList.add('active');
-  }
+  <!-- ROAD AHEAD -->
+  <div class="road-section">
+    <p class="section-label">What's Next</p>
+    <h2 class="section-title">The Road Ahead</h2>
+    <div class="road-grid">
+      <div class="road-card"><div class="road-icon">🧠</div><div class="road-title">Deep Learning</div><p class="road-desc">Neural networks, convolutional models, and sequence modelling. The next frontier after classical ML mastery.</p></div>
+      <div class="road-card"><div class="road-icon">☁️</div><div class="road-title">Azure AI-900 Certification</div><p class="road-desc">Formalising cloud AI knowledge through the Microsoft AI fundamentals exam.</p></div>
+      <div class="road-card"><div class="road-icon">🏫</div><div class="road-title">CBT Pro Phase 6 & 7</div><p class="road-desc">AI Insights for teachers (Phase 6) and Multi-teacher admin panel (Phase 7). The next CBT Pro milestones.</p></div>
+      <div class="road-card" style="border-color:rgba(56,189,248,.25);">
+        <div class="road-icon">✝️</div>
+        <div class="road-title" style="color:var(--faith);">HMG Gospel — First FaithTech Build</div>
+        <p class="road-desc">The first gospel-driven digital tool under @hmgospel. Dramavangelism platform, church resource hub, or evangelism tracking tool — in development.</p>
+      </div>
+      <div class="road-card"><div class="road-icon">💻</div><div class="road-title">HMG Technologies Website</div><p class="road-desc">The institutional home for AI-augmented tools for Nigerian businesses and organisations.</p></div>
+      <div class="road-card" style="border-color:rgba(56,189,248,.25);"><div class="road-icon">⛪</div><div class="road-title" style="color:var(--faith);">HMG Gospel Website</div><p class="road-desc">The digital home for HMG Gospel — evangelism, FaithTech, drama, podcasts, and the gospel conviction made visible.</p></div>
+    </div>
+    <div style="text-align:center; margin-top:2.5rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+      <a href="projects.html" class="btn-primary">See All 12 Projects</a>
+      <a href="index.html#contact" class="btn-outline">Get In Touch</a>
+    </div>
+  </div>
 
-  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:0.07});
-  document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+  <footer>
+    <div class="footer-logo">cssadewale</div>
+    <div class="footer-tagline">AI-Augmented Solutions Developer · EdTech Builder · DataTech Builder · FaithTech Builder</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="cv.html">CV</a>
+      <a href="https://github.com/cssadewale" target="_blank">GitHub</a>
+      <a href="https://youtube.com/@hmgconcepts" target="_blank">YouTube</a>
+    </div>
+    <div class="footer-bottom">© 2025–2026 Adewale Samson Adeagbo · HMG Concepts · All Rights Reserved</div>
+  </footer>
 
-  // Animate growth bars on scroll
-  const growthObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.growth-fill').forEach(fill=>fill.classList.add('animated'));growthObs.unobserve(e.target);}}),{threshold:0.3});
-  const growthSection=document.querySelector('.growth-section');
-  if(growthSection)growthObs.observe(growthSection);
-
-  // Highlight active era on scroll
-  const eras=['era-2026','era-2025','era-2024','era-2023','era-2015','era-2009'];
-  window.addEventListener('scroll',()=>{
-    let current='era-2026';
-    eras.forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<=200)current=id;});
-    document.querySelectorAll('.era-item').forEach((item,i)=>{
-      item.classList.toggle('active',item.getAttribute('onclick')&&item.getAttribute('onclick').includes(eras[i]===current?current:''));
-    });
-  });
-</script>
-<script src="portfolio-loader.js"></script>
 </body>
 </html>
