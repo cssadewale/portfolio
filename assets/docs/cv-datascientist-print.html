@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Adewale Samson Adeagbo — Data Scientist CV 2026</title>
+<style>
+/* ══════════════════════════════════════════════════════════════
+   PDF-OPTIMISED: Data Scientist / AI-Augmented Developer CV
+   Adewale Samson Adeagbo | June 2026
+   Designed for WeasyPrint / browser print-to-PDF
+   A4 paper, 1.8cm top/bottom, 1.5cm left/right margins
+══════════════════════════════════════════════════════════════ */
+@page {
+  size: A4;
+  margin: 1.8cm 1.5cm 1.5cm 1.5cm;
+  @bottom-center {
+    content: "Adewale Samson Adeagbo  ·  cssadewale.pages.dev  ·  +234 810 086 6322  ·  Page " counter(page) " of " counter(pages);
+    font-size: 7pt;
+    color: #9ca3af;
+    font-family: 'Segoe UI', Arial, sans-serif;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 9.5pt;
+  color: #1f2937;
+  line-height: 1.55;
+  background: #ffffff;
+}
+
+a { color: #b45309; text-decoration: none; }
+
+/* ── HEADER ─────────────────────────────────────────────────── */
+.header {
+  background: linear-gradient(135deg, #111827 0%, #1e3a5f 100%);
+  color: white;
+  padding: 18pt 20pt 15pt;
+  margin-bottom: 0;
+  border-radius: 4pt 4pt 0 0;
+  display: flex;
+  gap: 15pt;
+  align-items: flex-start;
+}
+.header-main { flex: 1; }
+.header-photo {
+  width: 72pt; height: 72pt; border-radius: 50%;
+  border: 2.5pt solid #f5b342;
+  overflow: hidden; flex-shrink: 0;
+  background: #374151;
+  display: flex; align-items: center; justify-content: center;
+}
+.header-photo img { width: 100%; height: 100%; object-fit: cover; }
+.header-photo-placeholder {
+  font-size: 28pt; text-align: center; color: #9ca3af;
+}
+
+.name  { font-size: 20pt; font-weight: 900; letter-spacing: -0.5pt; margin-bottom: 3pt; line-height: 1.1; }
+.title { font-size: 9pt; color: #f5b342; font-weight: 600; margin-bottom: 7pt; }
+
+.identity-pills { display: flex; gap: 5pt; flex-wrap: wrap; margin-bottom: 8pt; }
+.pill {
+  font-size: 6.5pt; font-weight: 700; padding: 2pt 6pt;
+  border-radius: 20pt; border: 1pt solid;
+  text-transform: uppercase; letter-spacing: 0.4pt;
+}
+.pill-e { border-color: rgba(74,222,128,.5); color: #4ade80; }
+.pill-d { border-color: rgba(165,180,252,.5); color: #a5b4fc; }
+.pill-f { border-color: rgba(125,211,252,.5); color: #7dd3fc; }
+
+.contact-row { display: flex; flex-wrap: wrap; gap: 3pt 15pt; }
+.ci { font-size: 7.5pt; color: #d1d5db; display: flex; align-items: center; gap: 3pt; }
+.ci a { color: #fcd34d; }
+
+/* ── TWO-COLUMN BODY ────────────────────────────────────────── */
+.body-wrap { display: flex; gap: 0; }
+.col-main { flex: 1; padding: 14pt 12pt 14pt 0; border-right: 1pt solid #e5e7eb; }
+.col-side { width: 130pt; flex-shrink: 0; padding: 14pt 0 14pt 11pt; }
+
+/* ── SECTION TITLES ─────────────────────────────────────────── */
+.sec { margin-bottom: 13pt; }
+.sec:last-child { margin-bottom: 0; }
+.sec-title {
+  font-size: 7pt; font-weight: 800; color: #b45309;
+  text-transform: uppercase; letter-spacing: 0.8pt;
+  border-bottom: 1.5pt solid #f5b342;
+  padding-bottom: 3pt; margin-bottom: 8pt;
+}
+
+/* ── PROFILE ────────────────────────────────────────────────── */
+.profile { font-size: 8.5pt; color: #374151; line-height: 1.6; }
+.profile strong { color: #111827; }
+
+/* ── EXPERIENCE / EDUCATION ENTRIES ─────────────────────────── */
+.entry { margin-bottom: 9pt; }
+.entry:last-child { margin-bottom: 0; }
+.entry-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5pt; gap: 6pt; }
+.entry-role { font-size: 8.5pt; font-weight: 800; color: #111827; flex: 1; }
+.entry-period {
+  font-size: 7pt; color: #92400e; font-weight: 700;
+  background: #fef3c7; padding: 1.5pt 5pt; border-radius: 3pt;
+  white-space: nowrap; flex-shrink: 0;
+}
+.entry-org { font-size: 7.5pt; color: #6b7280; font-style: italic; margin-bottom: 3.5pt; }
+
+.bullets { list-style: none; }
+.bullets li {
+  font-size: 8pt; color: #374151;
+  padding-left: 10pt; position: relative;
+  margin-bottom: 2pt; line-height: 1.5;
+}
+.bullets li::before {
+  content: '▸'; position: absolute; left: 0;
+  color: #f5b342; font-size: 7pt; top: 1pt;
+}
+.bullets li strong { color: #111827; }
+.bullets li a { color: #4338ca; }
+
+/* ── PROJECT ENTRIES ─────────────────────────────────────────── */
+.proj { margin-bottom: 9pt; padding-bottom: 9pt; border-bottom: 0.5pt dashed #e5e7eb; }
+.proj:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.proj-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5pt; gap: 5pt; }
+.proj-name { font-size: 8.5pt; font-weight: 800; color: #111827; flex: 1; }
+.proj-badge-live { font-size: 6pt; background: #dcfce7; color: #15803d; padding: 1.5pt 5pt; border-radius: 3pt; font-weight: 700; white-space: nowrap; }
+.proj-url { font-size: 7pt; color: #6b7280; margin-bottom: 3pt; }
+.proj-url a { color: #4338ca; }
+.metrics { display: flex; gap: 3pt; flex-wrap: wrap; margin-top: 3pt; }
+.metric {
+  font-size: 6.5pt; background: #f3f4f6; border: 0.5pt solid #e5e7eb;
+  padding: 1pt 4pt; border-radius: 2.5pt; color: #92400e; font-weight: 700;
+  font-family: 'Courier New', monospace;
+}
+
+/* ── SIDEBAR SECTIONS ────────────────────────────────────────── */
+.side-sec { margin-bottom: 10pt; }
+.side-sec:last-child { margin-bottom: 0; }
+.side-title {
+  font-size: 6.5pt; font-weight: 800; color: #92400e;
+  text-transform: uppercase; letter-spacing: 0.7pt;
+  border-bottom: 1pt solid #fcd34d; padding-bottom: 2.5pt; margin-bottom: 6pt;
+}
+.stags { display: flex; flex-wrap: wrap; gap: 2pt; }
+.stag {
+  font-size: 6.5pt; background: #f9fafb; border: 0.5pt solid #e5e7eb;
+  padding: 1.5pt 4pt; border-radius: 2.5pt; color: #374151;
+}
+.stag.h { background: #fef3c7; border-color: #fcd34d; color: #92400e; font-weight: 700; }
+.stag.d { background: #ede9fe; border-color: #c4b5fd; color: #5b21b6; }
+.stag.g { background: #dcfce7; border-color: #86efac; color: #15803d; }
+
+/* Sidebar cert / avail items */
+.sc { margin-bottom: 5pt; }
+.sc-name { font-size: 7.5pt; font-weight: 700; color: #111827; }
+.sc-org  { font-size: 6.5pt; color: #6b7280; }
+.sc-yr   { font-size: 6pt; color: #92400e; font-weight: 700; margin-top: 0.5pt; }
+.sc.active .sc-name { color: #15803d; }
+.sc.active .sc-yr::before { content: '🌺 '; }
+
+.avail-tag {
+  display: inline-block; font-size: 6.5pt;
+  background: #fef3c7; border: 0.5pt solid #fcd34d; color: #92400e;
+  padding: 1.5pt 4.5pt; border-radius: 3pt; font-weight: 600;
+  margin: 1.5pt 1.5pt 0 0;
+}
+
+.ref-box {
+  background: #f9fafb; border: 0.5pt solid #e5e7eb;
+  border-radius: 4pt; padding: 6pt; font-size: 7pt; color: #374151;
+}
+.ref-box strong { color: #111827; }
+
+/* ── FOOTER STRIP ────────────────────────────────────────────── */
+.doc-footer {
+  background: #111827; color: #6b7280; font-size: 6.5pt;
+  padding: 5pt 15pt; text-align: center; border-radius: 0 0 4pt 4pt;
+}
+
+/* ── PAGE BREAK ──────────────────────────────────────────────── */
+.page-break { page-break-before: always; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-main">
+    <div class="name">Adewale Samson Adeagbo</div>
+    <div class="title">Data Scientist &nbsp;·&nbsp; Machine Learning Engineer &nbsp;·&nbsp; AI-Augmented Solutions Developer</div>
+    <div class="identity-pills">
+      <span class="pill pill-e">🏫 EdTech Builder</span>
+      <span class="pill pill-d">📊 DataTech Builder</span>
+      <span class="pill pill-f">✝️ FaithTech Builder</span>
+    </div>
+    <div class="contact-row">
+      <span class="ci">📍 Lagos / Ogun State, Nigeria</span>
+      <span class="ci">💬 <a href="https://wa.me/2348100866322">+234 810 086 6322 (WhatsApp)</a></span>
+      <span class="ci">📞 +234 809 448 1488</span>
+      <span class="ci">✉️ <a href="mailto:adeagboadewalesamson@gmail.com">adeagboadewalesamson@gmail.com</a></span>
+      <span class="ci">🌐 <a href="https://cssadewale.pages.dev">cssadewale.pages.dev</a></span>
+      <span class="ci">🐙 <a href="https://github.com/cssadewale">github.com/cssadewale</a></span>
+      <span class="ci">💼 <a href="https://linkedin.com/in/adewalesamsonadeagbo">linkedin.com/in/adewalesamsonadeagbo</a></span>
+    </div>
+  </div>
+  <div class="header-photo">
+    <!-- Photo loads from repo if profile.jpg exists -->
+    <img src="../images/profile.jpg" alt="Adewale Samson Adeagbo"
+         onerror="this.parentElement.innerHTML='<div class=\'header-photo-placeholder\'>A</div>'"/>
+  </div>
+</div>
+
+<!-- TWO-COLUMN BODY -->
+<div class="body-wrap">
+
+  <!-- MAIN COLUMN -->
+  <div class="col-main">
+
+    <!-- Profile -->
+    <div class="sec">
+      <div class="sec-title">Professional Profile</div>
+      <p class="profile">
+        <strong>AI-Augmented Solutions Developer and Data Scientist</strong> with a portfolio of 34 deployed projects
+        and a professional foundation built across 15+ years in Nigerian secondary school classrooms. I operate
+        across three builder identities: <strong>EdTech Builder</strong> (16 EdTech projects — full CBT exam system,
+        11 LMS platforms, school admin tools), <strong>DataTech Builder</strong> (7 end-to-end ML pipelines across
+        7 industries, 11 interactive data tool simulators), and <strong>FaithTech Builder</strong> (gospel-driven
+        digital tools under HMG Gospel).<br/>
+        My teaching background is my professional edge — I explain complex models clearly, translate technical
+        outputs into decisions stakeholders can act on, and build solutions that work for real people in real
+        conditions. Currently active in three simultaneous advanced programmes while still teaching weekly.
+      </p>
+    </div>
+
+    <!-- Projects -->
+    <div class="sec">
+      <div class="sec-title">Deployed Projects — 34 Live Projects</div>
+
+      <div class="proj">
+        <div class="proj-top">
+          <span class="proj-name">CBT Pro — Free Nigerian School Exam Platform (Flagship EdTech)</span>
+          <span class="proj-badge-live">● LIVE</span>
+        </div>
+        <div class="proj-url">HMG Technologies / HMG Academy &nbsp;·&nbsp; <a href="https://cbtsystem-hmgacademy.vercel.app/">cbtsystem-hmgacademy.vercel.app</a></div>
+        <ul class="bullets">
+          <li>Full-stack CBT platform built on <strong>Android tablet with ₦0 budget</strong> — no laptop, no web dev background, zero cost to schools</li>
+          <li>7-column CSV upload, timed exams, per-student question randomisation, anti-cheat tab detection, auto-marking, result certificates with WhatsApp share, 4-tab teacher analytics dashboard</li>
+          <li>Stack: <strong>HTML5 · CSS3 · Vanilla JavaScript · Supabase (PostgreSQL + Auth + Row-Level Security) · Vercel</strong></li>
+          <li>Ecosystem: CBT Question Bank Manager · Student Study Plan Generator · SchoolDocForge · TimetableCraft</li>
+        </ul>
+      </div>
+
+      <div class="proj">
+        <div class="proj-top">
+          <span class="proj-name">TruthLens — Fake News Detector &nbsp;(NLP · 3MTT Capstone 2)</span>
+          <span class="proj-badge-live">● LIVE</span>
+        </div>
+        <div class="proj-url"><a href="https://cssadewale-fake-news-detector.streamlit.app/">cssadewale-fake-news-detector.streamlit.app</a> &nbsp;·&nbsp; <a href="https://github.com/cssadewale/fake-news-detector">github.com/cssadewale/fake-news-detector</a></div>
+        <ul class="bullets">
+          <li>Full NLP pipeline: text cleaning → tokenisation → lemmatisation → TF-IDF (20,000 features) + VADER sentiment → XGBoost</li>
+          <li>12,999 real news articles · <strong>AUC 0.9393 · Accuracy 86.75%</strong> — highest AUC in portfolio · Formally assessed 3MTT Capstone Project</li>
+        </ul>
+        <div class="metrics"><span class="metric">AUC 0.9393</span><span class="metric">Acc 86.75%</span><span class="metric">12,999 articles</span><span class="metric">XGBoost + TF-IDF</span></div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-top">
+          <span class="proj-name">NeuroWell — Employee Burnout Rate Predictor &nbsp;(Regression)</span>
+          <span class="proj-badge-live">● LIVE</span>
+        </div>
+        <div class="proj-url"><a href="https://cssadewale-burnout-prediction.streamlit.app/">cssadewale-burnout-prediction.streamlit.app</a> &nbsp;·&nbsp; <a href="https://github.com/cssadewale/burnout-prediction">GitHub</a></div>
+        <ul class="bullets">
+          <li>Gradient Boosting · 108 GridSearchCV configurations · 22,750 employee records · joblib model serialisation</li>
+          <li><strong>R² 0.855 · RMSE 0.072 · MAE 0.053</strong> · Mental fatigue (r=0.878) accounts for 85.9% of model importance</li>
+        </ul>
+        <div class="metrics"><span class="metric">R² 0.855</span><span class="metric">RMSE 0.072</span><span class="metric">22,750 records</span></div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-top">
+          <span class="proj-name">Additional ML Models — All Live on Streamlit</span>
+          <span class="proj-badge-live">● LIVE</span>
+        </div>
+        <ul class="bullets">
+          <li><strong>Bank Customer Churn</strong> (Binary Classification) — Gradient Boosting · 10,000 records · <strong>F1 0.609 · AUC 0.868</strong> · <a href="https://cssadewale-bank-customer-churn-prediction.streamlit.app/">Live ↗</a></li>
+          <li><strong>Insurance Claim Prediction</strong> — Random Forest + SMOTE + SHAP + FastAPI · 7,014 records · CV F1 ~0.79 · 6 business recommendations · <a href="https://cssadewale-insurance-claim-prediction.streamlit.app/">Live ↗</a></li>
+          <li><strong>Algorithmic Staff Promotion — Yakub Trading Group</strong> (HR Analytics) — Random Forest + SHAP · 38,312 records · <strong>AUC 0.891</strong> · SHAP fairness analysis · <a href="https://cssadewale-staff-promotion-prediction.streamlit.app/">Live ↗</a></li>
+          <li><strong>Income Level Prediction</strong> (Financial Inclusion) — 5-model comparison + SMOTE · 48,842 UCI Census records · <a href="https://cssadewale-income-level-prediction.streamlit.app/">Live ↗</a></li>
+          <li><strong>SwiftChain Delivery Delay</strong> (Logistics · Multi-class) — 15,549 records · 41 variables · <em>Transparently documents data leakage discovery and fix</em> · <a href="https://cssadewale-swiftchain-delivery-prediction.streamlit.app/">Live ↗</a></li>
+        </ul>
+      </div>
+
+      <div class="proj" style="border-bottom:none;">
+        <div class="proj-top">
+          <span class="proj-name">HMG Academy LMS (11 Platforms) &amp; Data Tool Simulators (11 Tools)</span>
+          <span class="proj-badge-live">● ALL LIVE</span>
+        </div>
+        <ul class="bullets">
+          <li><strong>LMS Platforms:</strong> SQL Learn · Streamlit Learn · Excel Learn · Data Science Learn · Data Analysis Learn · PyDataFlow · VizLearn · ML Lab · Junior Class · Senior Class · QueryPilot — all at hmgacademy subdomain on Vercel</li>
+          <li><strong>Simulators:</strong> MS Excel · PgAdmin · MS SQL Server · MySQL Workbench · VS Code · Azure Data Studio · DuckDB · Power BI · Tableau · Azure · ChatLens (@hmgtechnologies) — browser-based, zero installation</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Experience -->
+    <div class="sec">
+      <div class="sec-title">Professional Experience</div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <span class="entry-role">Visioner / Director &amp; Data Lead · HMG Concepts (His Marvellous Grace Educational Consult)</span>
+          <span class="entry-period">2015 – Present</span>
+        </div>
+        <div class="entry-org">Lagos, Nigeria &nbsp;·&nbsp; cssadewale.pages.dev &nbsp;·&nbsp; hmgconcepts.pages.dev</div>
+        <ul class="bullets">
+          <li>Founded and direct a four-subsidiary organisation: HMG Academy (virtual school), HMG Technologies (DataTech tools), HMG Gospel (FaithTech), HMG Media (content)</li>
+          <li>Apply data-driven methods to track student performance; manage WAEC/NECO/GCE/UTME registration — <strong>100% data accuracy record</strong></li>
+          <li>Built and deployed CBT Pro — production-grade exam platform used by real students at zero cost to schools</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <span class="entry-role">Mathematics &amp; Further Mathematics Tutor</span>
+          <span class="entry-period">2023 – Present</span>
+        </div>
+        <div class="entry-org">God of Seed Academy · Ogun State, Nigeria</div>
+        <ul class="bullets">
+          <li>Apply data-informed teaching to identify knowledge gaps and improve WAEC/NECO pass rates (SS1–SS3)</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <span class="entry-role">Freelance Mathematics &amp; Science Tutor</span>
+          <span class="entry-period">2022 – Present</span>
+        </div>
+        <div class="entry-org">Tuteria · Prepclass · Gate Academy · Remote &amp; Onsite</div>
+        <ul class="bullets">
+          <li>Personalised data-driven lesson plans for IGCSE, WAEC, NECO, UTME, and BECE examination preparation across Nigeria and internationally</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <span class="entry-role">Science &amp; Mathematics Teacher</span>
+          <span class="entry-period">2019 – 2022</span>
+        </div>
+        <div class="entry-org">Fredaks Group of Schools · Lagos, Nigeria</div>
+        <ul class="bullets">
+          <li>Taught Mathematics, Further Mathematics, Physics, Chemistry, and Computer Science across JSS1–SSS3; Student Counsellor</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <span class="entry-role">Head Teacher / Principal &amp; Administrator</span>
+          <span class="entry-period">2015 – 2019</span>
+        </div>
+        <div class="entry-org">High Favour School · Ogun State, Nigeria</div>
+        <ul class="bullets">
+          <li>Led all academic and administrative staff as Principal; taught Science and Computer Studies; managed student welfare and examination registration</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="sec">
+      <div class="sec-title">Education</div>
+      <div class="entry">
+        <div class="entry-top">
+          <span class="entry-role">B.Sc.(Ed) in Computer Science Education</span>
+          <span class="entry-period">Graduated 2023</span>
+        </div>
+        <div class="entry-org">Lagos State University (LASU), Nigeria · Returned to university as an adult to build the technical foundation to solve classroom problems with technology.</div>
+      </div>
+      <div class="entry">
+        <div class="entry-top">
+          <span class="entry-role">3MTT Data Science Programme — The Technical Turning Point</span>
+          <span class="entry-period">Certified December 2025</span>
+        </div>
+        <div class="entry-org">Federal Government of Nigeria (3 Million Technical Talent) · Capstone 2: TruthLens Fake News Detector (AUC 0.9393)</div>
+      </div>
+    </div>
+
+  </div><!-- end col-main -->
+
+  <!-- SIDEBAR -->
+  <div class="col-side">
+
+    <div class="side-sec">
+      <div class="side-title">Core ML &amp; Data Science</div>
+      <div class="stags">
+        <span class="stag h">Python</span><span class="stag h">Pandas</span><span class="stag h">NumPy</span>
+        <span class="stag h">Scikit-learn</span><span class="stag h">XGBoost</span><span class="stag h">SHAP</span>
+        <span class="stag h">SMOTE</span><span class="stag h">GridSearchCV</span><span class="stag h">TF-IDF</span>
+        <span class="stag h">NLTK</span><span class="stag h">FastAPI</span><span class="stag h">joblib</span>
+        <span class="stag">Streamlit</span><span class="stag">Matplotlib</span><span class="stag">Seaborn</span>
+        <span class="stag">Hugging Face</span>
+      </div>
+    </div>
+
+    <div class="side-sec">
+      <div class="side-title">Data Analysis &amp; BI</div>
+      <div class="stags">
+        <span class="stag d">SQL</span><span class="stag d">Power BI</span><span class="stag d">Tableau</span>
+        <span class="stag">Excel (Advanced)</span><span class="stag">Google Sheets</span>
+        <span class="stag">PgAdmin</span><span class="stag">MySQL</span>
+        <span class="stag">MS SQL Server</span><span class="stag">DuckDB</span>
+        <span class="stag">Azure Data Studio</span>
+      </div>
+    </div>
+
+    <div class="side-sec">
+      <div class="side-title">Deployment &amp; Dev</div>
+      <div class="stags">
+        <span class="stag">Git &amp; GitHub</span><span class="stag">Vercel</span>
+        <span class="stag">Cloudflare Pages</span><span class="stag">GitHub Pages</span>
+        <span class="stag">Supabase + RLS</span><span class="stag">HTML5/CSS3/JS</span>
+        <span class="stag">Prompt Engineering</span>
+      </div>
+    </div>
+
+    <div class="side-sec">
+      <div class="side-title">Active Programmes 🌺</div>
+      <div class="sc active">
+        <div class="sc-name">DeepTech_Ready — DSML Track, Cohort 3</div>
+        <div class="sc-org">DSN × 3MTT × Google.org</div>
+        <div class="sc-yr">Currently Active · 2026</div>
+      </div>
+      <div class="sc active">
+        <div class="sc-name">Applied Data Science Lab</div>
+        <div class="sc-org">WorldQuant University</div>
+        <div class="sc-yr">Ongoing</div>
+      </div>
+      <div class="sc active">
+        <div class="sc-name">ML Core Track — Cohort 6</div>
+        <div class="sc-org">Kodecamp</div>
+        <div class="sc-yr">Ongoing</div>
+      </div>
+      <div class="sc">
+        <div class="sc-name">SkillsBuild Hub Ambassador — Cohort 4</div>
+        <div class="sc-org">IBM SkillsBuild</div>
+        <div class="sc-yr">Apr–Jun 2026</div>
+      </div>
+      <div class="sc">
+        <div class="sc-name">Elevate AI Developers — AI-900</div>
+        <div class="sc-org">DSN × Microsoft</div>
+        <div class="sc-yr">2026</div>
+      </div>
+    </div>
+
+    <div class="side-sec">
+      <div class="side-title">Key Certifications</div>
+      <div class="sc"><div class="sc-name">Data Science Programme</div><div class="sc-org">3MTT Nigeria</div><div class="sc-yr">December 2025</div></div>
+      <div class="sc"><div class="sc-name">Python Data Fundamentals + 7 courses</div><div class="sc-org">DataCamp</div><div class="sc-yr">2024–2025</div></div>
+      <div class="sc"><div class="sc-name">Generative AI in Data Analysis</div><div class="sc-org">Open Visualization Academy</div><div class="sc-yr">2025</div></div>
+      <div class="sc"><div class="sc-name">AI Fluency Track</div><div class="sc-org">Digital Skills Nigeria / Microsoft</div><div class="sc-yr">2025</div></div>
+      <div class="sc"><div class="sc-name">Data Analysis Certification</div><div class="sc-org">Digital Skillup Africa</div><div class="sc-yr">Nov 2025</div></div>
+      <div class="sc"><div class="sc-name">AI Fundamentals &amp; Copilot Suite</div><div class="sc-org">Microsoft / LinkedIn Learning</div><div class="sc-yr">2024</div></div>
+      <div class="sc"><div class="sc-name">B.Sc.(Ed) Computer Science Education</div><div class="sc-org">Lagos State University</div><div class="sc-yr">2023</div></div>
+    </div>
+
+    <div class="side-sec">
+      <div class="side-title">Open To</div>
+      <div>
+        <span class="avail-tag">Remote Data Science Roles</span>
+        <span class="avail-tag">ML Engineer Roles</span>
+        <span class="avail-tag">Data Analyst Roles</span>
+        <span class="avail-tag">EdTech Collaborations</span>
+        <span class="avail-tag">ML Consulting</span>
+        <span class="avail-tag">FaithTech Projects</span>
+        <span class="avail-tag">AI Solutions Dev</span>
+      </div>
+    </div>
+
+    <div class="side-sec">
+      <div class="side-title">Languages &amp; Interests</div>
+      <p style="font-size:7pt;color:#374151;line-height:1.55;">
+        <strong>Languages:</strong> English (Professional) · Yoruba (Native)<br/>
+        <strong>Interests:</strong> Piano &amp; Guitar · Data Research · Social Edutainment · Reading · Faith &amp; Evangelism
+      </p>
+    </div>
+
+    <div class="side-sec">
+      <div class="side-title">References</div>
+      <div class="ref-box">
+        <strong>Mary Aimiuwu</strong><br/>
+        Proprietress, High Favour School<br/>
+        +234 802 495 0363<br/>
+        <em>Additional refs on request.</em>
+      </div>
+    </div>
+
+  </div><!-- end col-side -->
+</div><!-- end body-wrap -->
+
+<div class="doc-footer">
+  Adewale Samson Adeagbo &nbsp;·&nbsp; cssadewale.pages.dev &nbsp;·&nbsp; adeagboadewalesamson@gmail.com &nbsp;·&nbsp; +234 810 086 6322 &nbsp;·&nbsp; June 2026
+</div>
+
+</body>
+</html>
