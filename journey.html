@@ -3,500 +3,386 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Learning Journey | Adewale Samson Adeagbo — From 2009 Classroom to 12 Deployed Projects</title>
-  <meta name="description" content="The full learning journey of Adewale Samson Adeagbo — from first classroom in 2009 to 12 deployed ML & EdTech projects, 3 active programmes, and a three-builder identity. Lagos, Nigeria." />
+  <title>Journey | Adewale Samson Adeagbo — From 2009 Classroom to 34 Projects</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg:#0a0a0f; --bg2:#111118; --bg3:#16161f; --border:#1e1e2e;
-      --accent:#7c6af7; --accent2:#a78bfa; --green:#22c55e; --amber:#f59e0b;
-      --faith:#38bdf8; --text:#e2e2f0; --muted:#888899; --card:#13131c;
-      --radius:12px; --radius-lg:20px; --ff:'Segoe UI',system-ui,sans-serif;
+    .journey-wrap { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 220px 1fr; gap: 3rem; padding: 4rem 2rem; }
+    .journey-sidebar { position: sticky; top: 80px; align-self: start; }
+    .js-title { font-size: .7rem; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 1rem; }
+    .js-links { display: flex; flex-direction: column; gap: .3rem; }
+    .js-link { font-size: .8rem; color: var(--text2); padding: .4rem .8rem; border-radius: 7px; border-left: 2px solid transparent; transition: all .2s; }
+    .js-link:hover, .js-link.active { color: var(--gold); border-left-color: var(--gold); background: var(--gold-glow); }
+
+    /* Jump quick stats */
+    .journey-stats { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; margin-bottom: 2rem; }
+    .jstat { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: .8rem; text-align: center; }
+
+    /* Timeline */
+    .tl-main { border-left: 2px solid var(--border2); padding-left: 2.5rem; }
+    .era-label {
+      font-size: .7rem; font-weight: 700; color: var(--gold); text-transform: uppercase;
+      letter-spacing: .1em; margin: 3rem 0 1.5rem; padding: .3rem 1rem;
+      background: var(--gold-glow); border: 1px solid rgba(245,179,66,.2);
+      border-radius: 50px; display: inline-block;
     }
-    html { scroll-behavior: smooth; }
-    body { background:var(--bg); color:var(--text); font-family:var(--ff); line-height:1.7; overflow-x:hidden; }
-    a { color:inherit; text-decoration:none; }
+    .era-label:first-child { margin-top: 0; }
+    .tl-item { position: relative; margin-bottom: 2rem; }
+    .tl-dot { position: absolute; left: -2.9rem; top: .5rem; width: 14px; height: 14px; border-radius: 50%; background: var(--gold); border: 3px solid var(--bg); box-shadow: 0 0 0 2px var(--gold); }
+    .tl-dot.g { background: var(--edtech); box-shadow: 0 0 0 2px var(--edtech); }
+    .tl-dot.b { background: var(--faith); box-shadow: 0 0 0 2px var(--faith); }
+    .tl-dot.p { background: var(--datatech); box-shadow: 0 0 0 2px var(--datatech); }
+    .tl-dot.pulse-g { animation: dpg 2s infinite; }
+    @keyframes dpg { 0%,100%{box-shadow:0 0 0 2px var(--edtech)} 50%{box-shadow:0 0 0 6px rgba(34,197,94,.15)} }
 
-    nav {
-      position:fixed; top:0; left:0; right:0; z-index:100;
-      background:rgba(10,10,15,.92); backdrop-filter:blur(12px);
-      border-bottom:1px solid var(--border); padding:0 2rem;
-      display:flex; align-items:center; justify-content:space-between; height:60px;
+    .tl-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.6rem; transition: border-color .2s; }
+    .tl-card.active-c { border-color: rgba(34,197,94,.35); background: linear-gradient(135deg, rgba(34,197,94,.04) 0%, var(--card) 60%); }
+    .tl-card.faith-c  { border-color: rgba(56,189,248,.25); }
+    .tl-card.identity-c { border-color: rgba(245,179,66,.3); background: linear-gradient(135deg, rgba(245,179,66,.04) 0%, var(--card) 60%); }
+    .tl-card:hover { border-color: rgba(245,179,66,.3); }
+    .tl-card.active-c:hover { border-color: rgba(34,197,94,.55); }
+    .tl-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: .8rem; flex-wrap: wrap; gap: .5rem; }
+    .tl-year { font-size: .73rem; font-weight: 700; color: var(--gold); }
+    .tl-badges { display: flex; gap: .4rem; flex-wrap: wrap; }
+    .tl-title { font-size: 1rem; font-weight: 800; margin-bottom: .2rem; }
+    .tl-org { font-size: .77rem; color: var(--muted); margin-bottom: .8rem; }
+    .tl-body { font-size: .86rem; color: var(--text2); line-height: 1.8; }
+    .tl-body strong { color: var(--text); }
+    .tl-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .9rem; }
+
+    /* Identity milestone */
+    .identity-milestone { background: linear-gradient(135deg, var(--card), rgba(245,179,66,.04)); border: 1px solid rgba(245,179,66,.3); border-radius: var(--radius-xl); padding: 1.8rem; }
+    .im-title { font-size: 1.1rem; font-weight: 800; color: var(--gold); margin-bottom: .4rem; }
+    .im-sub { font-size: .78rem; color: var(--text2); margin-bottom: 1.2rem; }
+    .im-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .8rem; margin-top: 1rem; }
+    .im-cell { background: var(--bg2); border-radius: 10px; padding: 1rem; text-align: center; border: 1px solid var(--border); }
+    .im-icon { font-size: 1.3rem; margin-bottom: .4rem; }
+    .im-label { font-size: .73rem; font-weight: 800; }
+    .im-cell.e .im-label { color: var(--edtech); }
+    .im-cell.d .im-label { color: var(--datatech); }
+    .im-cell.f .im-label { color: var(--faith); }
+    .im-sub-lbl { font-size: .62rem; color: var(--muted); margin-top: .2rem; font-family: var(--ff-mono); }
+
+    /* Capability */
+    .cap-section { background: var(--bg2); padding: 4rem 2rem; border-top: 1px solid var(--border); }
+    .cap-inner { max-width: 1280px; margin: 0 auto; }
+    .cap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+    .cap-item { margin-bottom: .3rem; }
+    .cap-label { display: flex; justify-content: space-between; font-size: .83rem; margin-bottom: .5rem; }
+    .cap-name { color: var(--text); font-weight: 600; }
+    .cap-pct { color: var(--gold); font-weight: 800; font-family: var(--ff-mono); }
+
+    /* Road ahead */
+    .road-section { max-width: 1280px; margin: 0 auto; padding: 4rem 2rem; }
+    .road-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(240px,1fr)); gap: 1rem; margin-top: 2rem; }
+    .road-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.3rem; transition: border-color .2s; }
+    .road-card:hover { border-color: rgba(245,179,66,.3); }
+    .road-icon { font-size: 1.4rem; margin-bottom: .6rem; }
+    .road-title { font-size: .88rem; font-weight: 700; margin-bottom: .4rem; }
+    .road-desc { font-size: .8rem; color: var(--text2); line-height: 1.6; }
+
+    @media(max-width:900px){
+      .journey-wrap { grid-template-columns: 1fr; padding: 2rem 1rem; }
+      .journey-sidebar { display: none; }
+      .im-grid { grid-template-columns: 1fr; }
+      .cap-grid { grid-template-columns: 1fr; }
     }
-    .nav-logo { font-weight:700; font-size:1rem; color:var(--accent2); }
-    .nav-links { display:flex; gap:1.4rem; flex-wrap:wrap; }
-    .nav-links a { font-size:.83rem; color:var(--muted); transition:color .2s; }
-    .nav-links a:hover, .nav-links a.active { color:var(--text); }
-    .nav-cta { background:var(--accent); color:#fff; padding:.38rem 1rem; border-radius:6px; font-size:.82rem; font-weight:600; }
-
-    .page-hero { padding:120px 2rem 4rem; background:var(--bg2); border-bottom:1px solid var(--border); }
-    .page-hero-inner { max-width:1100px; margin:0 auto; }
-    .page-label { font-size:.75rem; font-weight:700; color:var(--accent2); letter-spacing:.1em; text-transform:uppercase; margin-bottom:.6rem; }
-    .page-title { font-size:clamp(2rem,5vw,3rem); font-weight:800; margin-bottom:1rem; }
-    .page-title em { font-style:normal; color:var(--accent2); }
-    .page-sub { font-size:1rem; color:var(--muted); max-width:650px; line-height:1.75; margin-bottom:2rem; }
-
-    /* jump nav */
-    .jump-nav { display:flex; gap:.6rem; flex-wrap:wrap; }
-    .jump-btn { font-size:.75rem; padding:.32rem .85rem; border-radius:50px; border:1px solid var(--border); color:var(--muted); background:transparent; transition:all .2s; text-decoration:none; }
-    .jump-btn:hover { border-color:var(--accent2); color:var(--accent2); }
-
-    /* stats */
-    .stats-row { display:flex; gap:1.5rem; flex-wrap:wrap; margin-top:2rem; }
-    .stat-pill { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:.5rem 1.1rem; display:flex; align-items:center; gap:.6rem; }
-    .stat-num { font-size:1.4rem; font-weight:900; color:var(--accent2); }
-    .stat-lbl { font-size:.73rem; color:var(--muted); }
-
-    /* timeline */
-    .timeline-body { max-width:1100px; margin:0 auto; padding:4rem 2rem; display:grid; grid-template-columns:240px 1fr; gap:0; }
-    .timeline-sidebar { position:sticky; top:80px; align-self:start; }
-    .ts-title { font-size:.72rem; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; margin-bottom:1rem; }
-    .ts-era { display:flex; flex-direction:column; gap:.4rem; }
-    .ts-link { font-size:.8rem; color:var(--muted); padding:.35rem .8rem; border-radius:6px; transition:background .2s, color .2s; border-left:2px solid transparent; }
-    .ts-link:hover { color:var(--accent2); background:rgba(124,106,247,.07); border-color:var(--accent2); }
-    .ts-link.active { color:var(--accent2); border-color:var(--accent2); background:rgba(124,106,247,.1); font-weight:600; }
-
-    /* timeline items */
-    .timeline-main { border-left:2px solid var(--border); padding-left:3rem; position:relative; }
-    .tl-era-label {
-      font-size:.72rem; font-weight:700; color:var(--accent2); text-transform:uppercase;
-      letter-spacing:.1em; margin-bottom:1.5rem; margin-top:3rem; padding:.3rem 1rem;
-      background:rgba(124,106,247,.08); border-radius:50px; display:inline-block;
-    }
-    .tl-era-label:first-child { margin-top:0; }
-
-    .tl-item { position:relative; margin-bottom:2.5rem; }
-    .tl-dot {
-      position:absolute; left:-3.45rem; top:.35rem;
-      width:14px; height:14px; border-radius:50%;
-      background:var(--accent); border:3px solid var(--bg);
-      box-shadow:0 0 0 2px var(--accent);
-    }
-    .tl-dot.green  { background:var(--green); box-shadow:0 0 0 2px var(--green); }
-    .tl-dot.faith  { background:var(--faith); box-shadow:0 0 0 2px var(--faith); }
-    .tl-dot.amber  { background:var(--amber); box-shadow:0 0 0 2px var(--amber); }
-    .tl-dot.pulse  { animation:dotpulse 2s infinite; }
-    @keyframes dotpulse { 0%,100%{box-shadow:0 0 0 2px var(--green)} 50%{box-shadow:0 0 0 5px rgba(34,197,94,.2)} }
-
-    .tl-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius-lg); padding:1.6rem; transition:border-color .2s; }
-    .tl-card.active-card { border-color:rgba(34,197,94,.35); background:linear-gradient(135deg,rgba(34,197,94,.04) 0%,var(--card) 60%); }
-    .tl-card.faith-card  { border-color:rgba(56,189,248,.2); }
-    .tl-card:hover { border-color:var(--accent); }
-    .tl-card.active-card:hover { border-color:rgba(34,197,94,.6); }
-
-    .tl-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:.8rem; flex-wrap:wrap; gap:.5rem; }
-    .tl-year { font-size:.75rem; font-weight:700; color:var(--accent2); }
-    .tl-badges { display:flex; gap:.4rem; flex-wrap:wrap; }
-    .tl-badge { font-size:.65rem; padding:.2rem .6rem; border-radius:4px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; }
-    .badge-active { background:rgba(34,197,94,.15); color:var(--green); }
-    .badge-milestone { background:rgba(124,106,247,.15); color:var(--accent2); }
-    .badge-cert { background:rgba(245,158,11,.12); color:var(--amber); }
-    .badge-faith { background:rgba(56,189,248,.12); color:var(--faith); }
-    .badge-live { background:rgba(34,197,94,.12); color:var(--green); }
-
-    .tl-title { font-size:1rem; font-weight:800; margin-bottom:.2rem; }
-    .tl-org { font-size:.78rem; color:var(--muted); margin-bottom:.8rem; }
-    .tl-body { font-size:.87rem; color:var(--muted); line-height:1.75; }
-    .tl-body strong { color:var(--text); }
-    .tl-tags { display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.9rem; }
-    .tl-tag { font-size:.7rem; background:var(--bg3); border:1px solid var(--border); padding:.2rem .55rem; border-radius:4px; color:var(--muted); }
-
-    /* builder identity milestone */
-    .builder-milestone {
-      background:linear-gradient(135deg,rgba(124,106,247,.1),rgba(56,189,248,.06));
-      border:1px solid rgba(124,106,247,.35); border-radius:var(--radius-lg); padding:1.6rem;
-    }
-    .bm-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:.8rem; margin-top:1rem; }
-    .bm-cell { background:var(--bg2); border-radius:8px; padding:.8rem; text-align:center; }
-    .bm-icon { font-size:1.3rem; margin-bottom:.3rem; }
-    .bm-label { font-size:.72rem; font-weight:700; }
-    .bm-cell.edtech .bm-label  { color:var(--green); }
-    .bm-cell.datatech .bm-label{ color:var(--accent2); }
-    .bm-cell.faith .bm-label   { color:var(--faith); }
-    .bm-sub { font-size:.65rem; color:var(--muted); margin-top:.2rem; }
-
-    /* capability bars */
-    .cap-section { background:var(--bg2); border-top:1px solid var(--border); padding:4rem 2rem; }
-    .cap-inner { max-width:1100px; margin:0 auto; }
-    .cap-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:2rem; }
-    .cap-item { margin-bottom:.5rem; }
-    .cap-label { display:flex; justify-content:space-between; font-size:.82rem; margin-bottom:.4rem; }
-    .cap-name { color:var(--text); font-weight:600; }
-    .cap-pct { color:var(--accent2); font-weight:700; }
-    .cap-bar { background:var(--bg3); border-radius:50px; height:6px; overflow:hidden; }
-    .cap-fill { height:100%; border-radius:50px; background:linear-gradient(90deg,var(--accent),var(--accent2)); }
-
-    /* road ahead */
-    .road-section { max-width:1100px; margin:0 auto; padding:3rem 2rem; }
-    .road-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1rem; margin-top:1.5rem; }
-    .road-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:1.3rem; }
-    .road-icon { font-size:1.4rem; margin-bottom:.6rem; }
-    .road-title { font-size:.9rem; font-weight:700; margin-bottom:.4rem; }
-    .road-desc { font-size:.8rem; color:var(--muted); line-height:1.6; }
-
-    .section-label { font-size:.75rem; font-weight:700; color:var(--accent2); letter-spacing:.1em; text-transform:uppercase; margin-bottom:.6rem; }
-    .section-title { font-size:clamp(1.5rem,3vw,2rem); font-weight:800; margin-bottom:.8rem; }
-    .section-sub { color:var(--muted); font-size:.92rem; }
-
-    .btn-primary { background:var(--accent); color:#fff; padding:.65rem 1.4rem; border-radius:8px; font-weight:700; font-size:.88rem; display:inline-block; transition:opacity .2s; }
-    .btn-primary:hover { opacity:.88; }
-    .btn-outline { border:1px solid var(--border); color:var(--text); padding:.65rem 1.4rem; border-radius:8px; font-weight:600; font-size:.88rem; display:inline-block; transition:border-color .2s; }
-    .btn-outline:hover { border-color:var(--accent2); }
-
-    footer { background:var(--bg2); border-top:1px solid var(--border); padding:2rem; text-align:center; }
-    .footer-logo { font-weight:800; color:var(--accent2); margin-bottom:.4rem; }
-    .footer-tagline { font-size:.78rem; color:var(--muted); margin-bottom:1rem; }
-    .footer-links { display:flex; justify-content:center; flex-wrap:wrap; gap:1.2rem; margin-bottom:.8rem; }
-    .footer-links a { font-size:.78rem; color:var(--muted); transition:color .2s; }
-    .footer-links a:hover { color:var(--accent2); }
-    .footer-bottom { font-size:.72rem; color:var(--muted); }
-
-    @media(max-width:860px){
-      .timeline-body { grid-template-columns:1fr; }
-      .timeline-sidebar { display:none; }
-      .nav-links { display:none; }
-      nav { padding:0 1rem; }
-      .cap-grid { grid-template-columns:1fr; }
-      .bm-grid { grid-template-columns:1fr; }
-    }
-    @media(max-width:600px){ .page-hero { padding:100px 1rem 3rem; } }
   </style>
 </head>
 <body>
 
-  <nav>
-    <span class="nav-logo">cssadewale</span>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">cssadewale <span>· AI-Augmented Solutions Developer</span></a>
     <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="projects.html">Projects</a>
-      <a href="journey.html" class="active">Journey</a>
-      <a href="cv.html">CV</a>
+      <a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a>
+      <a href="journey.html" class="active">Journey</a><a href="cv.html">CV</a>
       <a href="index.html#contact">Contact</a>
+      <a href="https://wa.me/2348100866322" class="nav-cta" target="_blank">💬 WhatsApp</a>
     </div>
-    <a href="https://wa.me/2348100866322" class="nav-cta nav-links" target="_blank">WhatsApp</a>
-  </nav>
+    <div class="nav-burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a>
+  <a href="journey.html" class="active">Journey</a><a href="cv.html">CV</a><a href="index.html#contact">Contact</a>
+</div>
 
-  <div class="page-hero">
-    <div class="page-hero-inner">
-      <p class="page-label">The Road Here</p>
-      <h1 class="page-title">Learning <em>Journey</em></h1>
-      <p class="page-sub">Most portfolios only show the destination. This one shows the road — 15+ years teaching from Nursery to Secondary, a degree earned as an adult, a 3MTT spark in 2025, 12 live deployed projects, three builder identities, and a conviction that has never wavered. Every milestone is real. The failures too.</p>
-      <div class="jump-nav">
-        <a href="#era-active" class="jump-btn">Active Programmes 2026</a>
-        <a href="#era-data" class="jump-btn">Data Science Era 2025</a>
-        <a href="#era-cbt" class="jump-btn">CBT Pro Build 2024</a>
-        <a href="#era-degree" class="jump-btn">Degree & Identity 2023</a>
-        <a href="#era-hmg" class="jump-btn">HMG Founded 2015</a>
-        <a href="#era-first" class="jump-btn">First Classroom 2009</a>
-      </div>
-      <div class="stats-row">
-        <div class="stat-pill"><span class="stat-num">15+</span><span class="stat-lbl">Years teaching all levels</span></div>
-        <div class="stat-pill"><span class="stat-num">12</span><span class="stat-lbl">Live deployed projects</span></div>
-        <div class="stat-pill"><span class="stat-num">3</span><span class="stat-lbl">Active programmes now</span></div>
-        <div class="stat-pill"><span class="stat-num">3</span><span class="stat-lbl">Builder identities</span></div>
-      </div>
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-breadcrumb"><a href="index.html">Home</a> → <span>Journey</span></div>
+    <div class="section-label">The Road Here</div>
+    <h1 class="section-title">Learning <em>Journey</em></h1>
+    <p class="section-sub" style="margin-bottom:2rem;">Most portfolios only show the destination. This one shows the road — 15+ years teaching, a degree earned as an adult, a 3MTT spark in 2025, 34 live projects, three builder identities, and a conviction that has never wavered. Every milestone is real. The failures too.</p>
+    <div style="display:flex;gap:.6rem;flex-wrap:wrap;">
+      <a href="#era-active" class="btn btn-ghost btn-sm">🌺 Active 2026</a>
+      <a href="#era-2025" class="btn btn-ghost btn-sm">📊 2025 Data</a>
+      <a href="#era-2024" class="btn btn-ghost btn-sm">💻 2024 CBT</a>
+      <a href="#era-2023" class="btn btn-ghost btn-sm">🎓 2023 Degree</a>
+      <a href="#era-2015" class="btn btn-ghost btn-sm">🏢 2015 HMG</a>
+      <a href="#era-faith" class="btn btn-ghost btn-sm">✝️ Faith</a>
+      <a href="#era-2009" class="btn btn-ghost btn-sm">🏫 2009 First Class</a>
+    </div>
+  </div>
+</div>
+
+<div class="journey-wrap">
+
+  <!-- SIDEBAR -->
+  <div class="journey-sidebar">
+    <div class="journey-stats">
+      <div class="jstat"><span class="stat-num" style="font-size:1.5rem;">15+</span><div class="stat-lbl">Years Teaching</div></div>
+      <div class="jstat"><span class="stat-num" style="font-size:1.5rem;">34</span><div class="stat-lbl">Live Projects</div></div>
+      <div class="jstat"><span class="stat-num" style="font-size:1.5rem;">3</span><div class="stat-lbl">Active Programmes</div></div>
+      <div class="jstat"><span class="stat-num" style="font-size:1.5rem;">3</span><div class="stat-lbl">Builder Identities</div></div>
+    </div>
+    <div class="js-title">Jump to Era</div>
+    <div class="js-links">
+      <a href="#era-active" class="js-link active">🌺 Active Programmes · 2026</a>
+      <a href="#era-2025" class="js-link">📊 Data Science Era · 2025</a>
+      <a href="#era-2024" class="js-link">💻 CBT Pro Build · 2024</a>
+      <a href="#era-2023" class="js-link">🎓 Degree & Identity · 2023</a>
+      <a href="#era-2015" class="js-link">🏢 HMG Founded · 2015</a>
+      <a href="#era-faith" class="js-link">✝️ Faith Foundation</a>
+      <a href="#era-2013" class="js-link">🎵 Music · 2013</a>
+      <a href="#era-2009" class="js-link">🏫 First Classroom · 2009</a>
     </div>
   </div>
 
-  <div class="timeline-body">
+  <!-- TIMELINE -->
+  <div class="tl-main">
 
-    <!-- SIDEBAR -->
-    <div class="timeline-sidebar">
-      <div class="ts-title">Jump to Era</div>
-      <div class="ts-era">
-        <a href="#era-active" class="ts-link active">🌺 Active Programmes · 2026</a>
-        <a href="#era-data" class="ts-link">📊 Data Science Era · 2025</a>
-        <a href="#era-cbt" class="ts-link">💻 CBT Pro Build · 2024</a>
-        <a href="#era-degree" class="ts-link">🎓 Degree & Identity · 2023</a>
-        <a href="#era-hmg" class="ts-link">🏢 HMG Founded · 2015</a>
-        <a href="#era-faith" class="ts-link">✝️ Faith Foundation</a>
-        <a href="#era-first" class="ts-link">🏫 First Classroom · 2009</a>
+    <!-- Identity Milestone (TOP) -->
+    <div class="tl-item" style="margin-bottom:2.5rem;">
+      <div class="tl-dot pulse-g"></div>
+      <div class="identity-milestone">
+        <div class="im-title">🎯 Three Builder Identities Crystallised</div>
+        <div class="im-sub">2025–2026 · cssadewale Personal Brand · The defining strategic moment</div>
+        <p style="font-size:.86rem;color:var(--text2);line-height:1.8;margin-bottom:.5rem;">The work across 15 years of teaching, 34 deployed projects, a gospel conviction, and deliberate AI leverage crystallised into one unified identity with three expressions. Not three separate careers — one AI-Augmented Solutions Developer, three domains.</p>
+        <div class="im-grid">
+          <div class="im-cell e"><div class="im-icon">🏫</div><div class="im-label">EdTech Builder</div><div class="im-sub-lbl">Teacher × Builder → @hmgacademyhub</div></div>
+          <div class="im-cell d"><div class="im-icon">📊</div><div class="im-label">DataTech Builder</div><div class="im-sub-lbl">Data Sci × Builder → @cssadewale</div></div>
+          <div class="im-cell f"><div class="im-icon">✝️</div><div class="im-label">FaithTech Builder</div><div class="im-sub-lbl">Gospel × Builder → @hmgospel</div></div>
+        </div>
       </div>
     </div>
 
-    <!-- TIMELINE MAIN -->
-    <div class="timeline-main">
+    <!-- ── 2025-2026 ACTIVE ── -->
+    <div id="era-active" class="era-label">2025–2026 — Active Programmes & Recognition</div>
 
-      <!-- ── 2025–2026 ACTIVE ── -->
-      <div id="era-active" class="tl-era-label">2025–2026 — Active Programmes & Recognition</div>
-
-      <!-- Builder Identity Milestone -->
-      <div class="tl-item">
-        <div class="tl-dot green pulse"></div>
-        <div class="builder-milestone">
-          <div class="tl-top">
-            <span class="tl-year">2025–2026 · Now</span>
-            <div class="tl-badges"><span class="tl-badge badge-milestone">Identity Milestone</span></div>
-          </div>
-          <div class="tl-title">Three Builder Identities Crystallised</div>
-          <div class="tl-org">cssadewale · Personal Brand</div>
-          <p class="tl-body">The work across 15 years of teaching, 12 deployed projects, a gospel conviction, and deliberate AI leverage finally crystallised into a single, unified identity with three expressions. Not three separate careers — one AI-Augmented Solutions Developer, three domains.</p>
-          <div class="bm-grid">
-            <div class="bm-cell edtech"><div class="bm-icon">🏫</div><div class="bm-label">EdTech Builder</div><div class="bm-sub">Teacher × Builder · @hmgacademyhub</div></div>
-            <div class="bm-cell datatech"><div class="bm-icon">📊</div><div class="bm-label">DataTech Builder</div><div class="bm-sub">Data Scientist × Builder · @cssadewale</div></div>
-            <div class="bm-cell faith"><div class="bm-icon">✝️</div><div class="bm-label">FaithTech Builder</div><div class="bm-sub">Gospel × Builder · @hmgospel</div></div>
-          </div>
-        </div>
+    <div class="tl-item">
+      <div class="tl-dot g pulse-g"></div>
+      <div class="tl-card active-c">
+        <div class="tl-top"><span class="tl-year">2025–2026 · Currently Active</span><div class="tl-badges"><span class="badge badge-live"><span class="live-dot"></span> Active Now</span></div></div>
+        <div class="tl-title">Three Simultaneous Active Learning Programmes</div>
+        <div class="tl-org">DSN × 3MTT × Google.org · WorldQuant University · Kodecamp</div>
+        <p class="tl-body"><strong>DeepTech_Ready (DSN × 3MTT × Google.org)</strong> — DSML Track, Cohort 3. Applied ML and Google AI ecosystem in Nigerian context.<br><br><strong>WorldQuant University Applied Data Science Lab</strong> — One of the world's most rigorous free data science programmes. Real datasets, international submission standards.<br><br><strong>Kodecamp Cohort 6 — ML Core Track</strong> — Hands-on model building and deployment. All three running simultaneously while still teaching weekly in secondary school.</p>
+        <div class="tl-tags"><span class="tag tag-edtech">Applied ML</span><span class="tag">Deep Learning Intro</span><span class="tag tag-gold">Google AI</span><span class="tag">Statistical Modelling</span></div>
       </div>
+    </div>
 
-      <div class="tl-item">
-        <div class="tl-dot green pulse"></div>
-        <div class="tl-card active-card">
-          <div class="tl-top">
-            <span class="tl-year">2025–2026 · Currently Active</span>
-            <div class="tl-badges"><span class="tl-badge badge-active">🌺 Active Now</span></div>
-          </div>
-          <div class="tl-title">Three Simultaneous Active Learning Programmes</div>
-          <div class="tl-org">DSN × 3MTT × Google.org · WorldQuant University · Kodecamp</div>
-          <p class="tl-body"><strong>DeepTech_Ready (DSN × 3MTT × Google.org)</strong> — DSML Track, Cohort 3. Data science and machine learning with Google's AI ecosystem.<br><br><strong>WorldQuant University Applied Data Science Lab</strong> — One of the world's most rigorous free data science programmes. Real datasets, international submission standards.<br><br><strong>Kodecamp Cohort 6 — ML Core Track</strong> — Hands-on ML foundations, model building, and deployment. All three running simultaneously while still teaching every week.</p>
-          <div class="tl-tags">
-            <span class="tl-tag">Applied ML</span><span class="tl-tag">Deep Learning Intro</span><span class="tl-tag">Google AI Tools</span>
-            <span class="tl-tag">Statistical Modelling</span><span class="tl-tag">Python</span><span class="tl-tag">Pandas</span>
-          </div>
-        </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="tl-top"><span class="tl-year">April 2026 · Recognition</span><div class="tl-badges"><span class="badge badge-gold">Recognition</span></div></div>
+        <div class="tl-title">IBM SkillsBuild Hub Ambassador — Cohort 4</div>
+        <div class="tl-org">IBM SkillsBuild · April–June 2026</div>
+        <p class="tl-body">Selected to champion digital literacy, AI fluency, and tech access across Nigerian communities. <strong>Recognition that building and teaching in public — with honesty about the journey — matters beyond the classroom.</strong></p>
+        <div class="tl-tags"><span class="tag tag-gold">IBM</span><span class="tag">Community Leadership</span><span class="tag">AI Literacy</span><span class="tag">Digital Skills</span></div>
       </div>
+    </div>
 
-      <div class="tl-item">
-        <div class="tl-dot amber"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <span class="tl-year">April 2026 · Recognition</span>
-            <div class="tl-badges"><span class="tl-badge badge-cert">Recognition</span></div>
-          </div>
-          <div class="tl-title">IBM SkillsBuild Hub Ambassador — Cohort 4</div>
-          <div class="tl-org">IBM SkillsBuild</div>
-          <p class="tl-body">Selected as a community ambassador championing digital literacy, AI fluency, and tech access across Nigerian communities. <strong>Recognition that building and teaching in public, with honesty about the journey, matters beyond the classroom.</strong></p>
-          <div class="tl-tags"><span class="tl-tag">Community Leadership</span><span class="tl-tag">AI Literacy</span><span class="tl-tag">Digital Skills Advocacy</span></div>
-        </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="tl-top"><span class="tl-year">2026 · In Progress</span><div class="tl-badges"><span class="badge badge-gold">Certification</span></div></div>
+        <div class="tl-title">DSN × Microsoft Elevate — AI Developers Programme (AI-900)</div>
+        <div class="tl-org">Data Scientists Network × Microsoft Azure</div>
+        <p class="tl-body">Azure AI fundamentals — machine learning, computer vision, NLP, and conversational AI. <strong>Structured around applied understanding, not just exam passing.</strong> Targeting AI-900 certification.</p>
+        <div class="tl-tags"><span class="tag">Azure AI</span><span class="tag">AI-900</span><span class="tag">Computer Vision</span><span class="tag">NLP</span></div>
       </div>
+    </div>
 
-      <div class="tl-item">
-        <div class="tl-dot amber"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <span class="tl-year">2026 · Certification</span>
-            <div class="tl-badges"><span class="tl-badge badge-cert">Certification</span></div>
-          </div>
-          <div class="tl-title">DSN × Microsoft Elevate AI Developers — AI-900</div>
-          <div class="tl-org">Data Scientists Network × Microsoft Azure</div>
-          <p class="tl-body">Deep coverage of Azure AI fundamentals — machine learning concepts, computer vision, NLP, and conversational AI. <strong>Structured around applied understanding, not just exam passing.</strong> Preparing for the AI-900 certification.</p>
-          <div class="tl-tags"><span class="tl-tag">Azure AI</span><span class="tl-tag">Computer Vision</span><span class="tl-tag">NLP</span><span class="tl-tag">Responsible AI</span></div>
-        </div>
+    <!-- ── 2025 ── -->
+    <div id="era-2025" class="era-label">2025 — The Deployment Year</div>
+
+    <div class="tl-item">
+      <div class="tl-dot p"></div>
+      <div class="tl-card">
+        <div class="tl-top"><span class="tl-year">2025 · Major Milestone</span><div class="tl-badges"><span class="badge badge-datatech">34 Projects</span></div></div>
+        <div class="tl-title">34 Projects Deployed — ML, NLP, EdTech, Simulators, LMS</div>
+        <div class="tl-org">@cssadewale · @hmgacademyhub · @hmgtechnologies</div>
+        <p class="tl-body">From Jupyter notebooks to live Streamlit apps, Vercel-hosted platforms, and full LMS systems across 7 industries. 7 ML models, 11 data tool simulators, 5 academic tools, 11 LMS platforms — <strong>all documented honestly, including the data leakage fix in SwiftChain and models that underperformed.</strong></p>
+        <div class="tl-tags"><span class="tag tag-datatech">Python</span><span class="tag tag-datatech">Scikit-learn</span><span class="tag tag-datatech">XGBoost</span><span class="tag tag-datatech">SHAP</span><span class="tag tag-datatech">FastAPI</span><span class="tag">Streamlit</span><span class="tag">Vercel</span></div>
       </div>
+    </div>
 
-      <!-- ── 2025 DATA SCIENCE ── -->
-      <div id="era-data" class="tl-era-label">2025 — The Deployment Year</div>
-
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <span class="tl-year">2025 · Major Milestone</span>
-            <div class="tl-badges"><span class="tl-badge badge-milestone">12 Projects Deployed</span></div>
-          </div>
-          <div class="tl-title">12 Projects Deployed — ML, NLP, EdTech, Analytics</div>
-          <div class="tl-org">Independent · HMG Technologies · HMG Academy</div>
-          <p class="tl-body">From Jupyter notebooks to 12 live Streamlit apps across 7 industries: insurance claim prediction, bank churn, HR promotion, financial inclusion, fake news detection (NLP — first XGBoost project), delivery delay forecasting, employee burnout prediction, and four EdTech tools. <strong>All documented honestly — including the data leakage fix in SwiftChain and models that did not hit expected benchmarks.</strong></p>
-          <div class="tl-tags">
-            <span class="tl-tag">Python</span><span class="tl-tag">Scikit-learn</span><span class="tl-tag">XGBoost</span>
-            <span class="tl-tag">SHAP</span><span class="tl-tag">SMOTE</span><span class="tl-tag">Streamlit</span>
-            <span class="tl-tag">NLP</span><span class="tl-tag">TF-IDF</span>
-          </div>
-        </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="tl-top"><span class="tl-year">2025 · The Turning Point · Certified Dec 2025</span><div class="tl-badges"><span class="badge badge-gold">Certified</span></div></div>
+        <div class="tl-title">3MTT Programme — Data Science Track</div>
+        <div class="tl-org">Federal Government of Nigeria / 3MTT</div>
+        <p class="tl-body">The spark that lit everything. 3MTT did not teach me from scratch — it gave a <strong>15-year problem-solver a technical language.</strong> My inquisitiveness, the ability to break down complexity, the persistence in the face of confusion — these were skills built over fifteen years of teaching. 3MTT gave them the right technical instruments. Capstone 2: TruthLens Fake News Detector (AUC 0.9393).</p>
+        <div class="tl-tags"><span class="tag">Data Science</span><span class="tag">Python</span><span class="tag">ML Foundations</span><span class="tag">EDA</span></div>
       </div>
+    </div>
 
-      <div class="tl-item">
-        <div class="tl-dot amber"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <span class="tl-year">2025 · The Turning Point · Certified Dec 2025</span>
-            <div class="tl-badges"><span class="tl-badge badge-cert">Certified</span></div>
-          </div>
-          <div class="tl-title">3MTT Programme — Data Science Track</div>
-          <div class="tl-org">Federal Government of Nigeria / 3MTT</div>
-          <p class="tl-body">The spark that lit everything on fire. 3MTT did not teach me from scratch — it gave a <strong>15-year problem-solver a technical language</strong>. My inquisitiveness, the ability to break down complexity to its smallest parts, the persistence in the face of confusion — these were skills built over fifteen years of teaching. 3MTT gave them the right technical instruments. Within months, classroom problems I had been watching for 15 years had pathways to deployed solutions.</p>
-          <div class="tl-tags"><span class="tl-tag">Data Science</span><span class="tl-tag">Python</span><span class="tl-tag">ML Foundations</span><span class="tl-tag">EDA</span><span class="tl-tag">Feature Engineering</span></div>
-        </div>
+    <!-- ── 2024 ── -->
+    <div id="era-2024" class="era-label">2024 — The Proof of Method</div>
+
+    <div class="tl-item">
+      <div class="tl-dot g pulse-g"></div>
+      <div class="tl-card active-c">
+        <div class="tl-top"><span class="tl-year">2024 – Ongoing · LIVE</span><div class="tl-badges"><span class="badge badge-live"><span class="live-dot"></span> Live Today</span></div></div>
+        <div class="tl-title">CBT Pro — First Live Deployment with Real Students</div>
+        <div class="tl-org">HMG Technologies / HMG Academy · cbtsystem-hmgacademy.vercel.app</div>
+        <p class="tl-body">The moment the method was proven. Teacher portal, student exam engine, timed sessions, randomisation, anti-cheat, auto-marking, certificates, 4-tab analytics, optional AI explanations — <strong>all built on an Android tablet using Acode editor with zero budget.</strong> Real students. Real Further Mathematics exam. That moment redefined what "AI-Augmented" means in practice.</p>
+        <div class="tl-tags"><span class="tag tag-edtech">HTML5</span><span class="tag tag-edtech">Supabase</span><span class="tag tag-gold">Gemini API</span><span class="tag">Vanilla JS</span><span class="tag">Vercel</span></div>
       </div>
+    </div>
 
-      <!-- ── 2024 CBT PRO ── -->
-      <div id="era-cbt" class="tl-era-label">2024 — The Proof of Method</div>
-
-      <div class="tl-item">
-        <div class="tl-dot green pulse"></div>
-        <div class="tl-card active-card">
-          <div class="tl-top">
-            <span class="tl-year">2024 – Ongoing · The Proof</span>
-            <div class="tl-badges"><span class="tl-badge badge-live">● Live Today</span></div>
-          </div>
-          <div class="tl-title">CBT Pro — First Live Deployment with Real Students</div>
-          <div class="tl-org">HMG Technologies · cssadewale.github.io/cbt-system</div>
-          <p class="tl-body">The moment the method was proven. A complete CBT exam platform — teacher portal, student exam engine, timed sessions, per-student randomisation, anti-cheat, auto-marking, certificates, 4-tab analytics, optional AI explanations — all built on an Android tablet using Acode editor. <strong>Not because I was a web developer. Because I had a clear problem, clear thinking, and AI as a collaborator.</strong> Real students sat a real Further Mathematics exam on it for the first time.</p>
-          <div class="tl-tags">
-            <span class="tl-tag">HTML5</span><span class="tl-tag">CSS3</span><span class="tl-tag">Vanilla JS</span>
-            <span class="tl-tag">Supabase</span><span class="tl-tag">Gemini API</span><span class="tl-tag">AI-Augmented Dev</span>
-          </div>
-        </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="tl-top"><span class="tl-year">2024 – Ongoing</span><div class="tl-badges"><span class="badge badge-live"><span class="live-dot"></span> Active</span></div></div>
+        <div class="tl-title">WorldQuant University — Applied Data Science Lab</div>
+        <div class="tl-org">WorldQuant University (WQU)</div>
+        <p class="tl-body">One of the world's most respected free data science programmes. Project-based, real datasets, international submission standards. <strong>Applied modules in regression, classification, time series, and NLP alongside a global cohort.</strong></p>
+        <div class="tl-tags"><span class="tag">Applied ML</span><span class="tag">Data Wrangling</span><span class="tag">Statistical Modelling</span></div>
       </div>
+    </div>
 
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <span class="tl-year">2024 – Ongoing</span>
-            <div class="tl-badges"><span class="tl-badge badge-active">Active</span></div>
-          </div>
-          <div class="tl-title">WorldQuant University — Applied Data Science Lab</div>
-          <div class="tl-org">WorldQuant University (WQU)</div>
-          <p class="tl-body">One of the world's most respected free data science programmes. Project-based, real datasets, international submission standards. <strong>Working through applied modules in regression, classification, time series, and NLP alongside a global cohort.</strong></p>
-          <div class="tl-tags"><span class="tl-tag">Applied ML</span><span class="tl-tag">Data Wrangling</span><span class="tl-tag">Statistical Modelling</span><span class="tl-tag">Python</span></div>
-        </div>
+    <!-- ── 2023 ── -->
+    <div id="era-2023" class="era-label">2023 — Degree & the cssadewale Brand</div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="tl-top"><span class="tl-year">2023 · Degree</span><div class="tl-badges"><span class="badge badge-gold">Degree</span></div></div>
+        <div class="tl-title">B.Sc.(Ed) Computer Science Education</div>
+        <div class="tl-org">Lagos State University (LASU)</div>
+        <p class="tl-body">A degree earned as an adult because I believed technology could solve the classroom problems I was watching every day. It formalised the intersection of pedagogy and technology. <strong>The graduation was not the finish line — the practical capability arrived later with 3MTT and hands-on building.</strong> But the thinking had been shaped well before either.</p>
+        <div class="tl-tags"><span class="tag">CS Education</span><span class="tag">Pedagogy</span><span class="tag">Curriculum Design</span><span class="tag">LASU</span></div>
       </div>
+    </div>
 
-      <!-- ── 2023 DEGREE ── -->
-      <div id="era-degree" class="tl-era-label">2023 — Degree, Identity & the Name cssadewale</div>
+    <!-- ── 2015 ── -->
+    <div id="era-2015" class="era-label">2015 — Building Something Bigger Than Yourself</div>
 
-      <div class="tl-item">
-        <div class="tl-dot amber"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <span class="tl-year">2023 · Degree</span>
-            <div class="tl-badges"><span class="tl-badge badge-cert">Degree</span></div>
-          </div>
-          <div class="tl-title">B.Sc.(Ed) Computer Science Education</div>
-          <div class="tl-org">Lagos State University (LASU)</div>
-          <p class="tl-body">A degree earned as an adult because I believed technology could solve the classroom problems I was watching every day. It formalised the intersection of pedagogy and technology into a structured framework. <strong>The graduation was not the finish line — the practical capability arrived later with 3MTT and hands-on building.</strong> But the thinking had been shaped well before either.</p>
-          <div class="tl-tags"><span class="tl-tag">CS Education</span><span class="tl-tag">Pedagogy</span><span class="tl-tag">Curriculum Design</span><span class="tl-tag">LASU</span></div>
-        </div>
+    <div class="tl-item">
+      <div class="tl-dot g"></div>
+      <div class="tl-card">
+        <div class="tl-top"><span class="tl-year">2015 – Present · Organisation</span><div class="tl-badges"><span class="badge badge-gold">Founded</span></div></div>
+        <div class="tl-title">Founded HMG Concepts — His Marvellous Grace Educational Consult</div>
+        <div class="tl-org">HMG Concepts · Lagos / Ogun State, Nigeria</div>
+        <p class="tl-body">From tutoring individual students to building a structured brand with <strong>four subsidiaries</strong>: HMG Academy (@hmgacademyhub — virtual school), HMG Technologies (@hmgtechnologies — AI-augmented tools for businesses), HMG Gospel (@hmgospel — spreading the gospel through every digital means), and HMG Media (audio/visual brand promotion). The first time I truly understood what it means to build something bigger than yourself — and to name it honestly after the conviction that drives it.</p>
+        <div class="tl-tags"><span class="tag tag-edtech">HMG Academy</span><span class="tag tag-datatech">HMG Technologies</span><span class="tag tag-faith">HMG Gospel</span><span class="tag">HMG Media</span></div>
       </div>
+    </div>
 
-      <!-- ── 2015 HMG ── -->
-      <div id="era-hmg" class="tl-era-label">2015 — Building Something Bigger Than Yourself</div>
+    <!-- ── FAITH ── -->
+    <div id="era-faith" class="era-label">Faith — The Foundation That Was Always There</div>
 
-      <div class="tl-item">
-        <div class="tl-dot green"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <span class="tl-year">2015 – Present · Organisation</span>
-            <div class="tl-badges"><span class="tl-badge badge-milestone">Organisation Built</span></div>
-          </div>
-          <div class="tl-title">Founded HMG Concepts — His Marvellous Grace Educational Consult</div>
-          <div class="tl-org">HMG Concepts · Lagos / Ogun State, Nigeria</div>
-          <p class="tl-body">From tutoring individual students to building a structured educational brand. <strong>Four subsidiaries</strong>: HMG Academy (@hmgacademyhub — virtual school covering all subjects and exams), HMG Technologies (@hmgtechnologies — CBT Pro and all digital tools), HMG Gospel (@hmgospel — spreading the gospel through every digital means), and HMG Media (audio/visual brand promotion). The first time I truly understood what it means to build something bigger than yourself — and to name it honestly after the conviction that drives it.</p>
-          <div class="tl-tags"><span class="tl-tag">EdTech Organisation</span><span class="tl-tag">Virtual Teaching</span><span class="tl-tag">WAEC/NECO/UTME</span><span class="tl-tag">FaithTech</span><span class="tl-tag">HMG Gospel</span></div>
-        </div>
+    <div class="tl-item">
+      <div class="tl-dot b"></div>
+      <div class="tl-card faith-c">
+        <div class="tl-top"><span class="tl-year">Always · FaithTech Builder</span><div class="tl-badges"><span class="badge badge-faith">✝️ FaithTech</span></div></div>
+        <div class="tl-title">HMG Gospel — Every Platform is a Pulpit</div>
+        <div class="tl-org">HMG Gospel · @hmgospel · In Development</div>
+        <p class="tl-body">The name His Marvellous Grace was never just branding. It reflects a genuine, lived conviction: every breakthrough has arrived as a result of grace I did not engineer on my own. <strong>HMG Gospel exists to spread the gospel of Christ through every digital platform available</strong> — dramavangelism, techvangelism, physical evangelism, podcasts, ebooks, digital outreach, Christian drama, and FaithTech tools built for church and ministry settings. This is the FaithTech Builder identity made institutional.</p>
+        <div class="tl-tags"><span class="tag tag-faith">Dramavangelism</span><span class="tag tag-faith">Techvangelism</span><span class="tag tag-faith">Gospel Platforms</span><span class="tag tag-faith">Church Tools</span><span class="tag tag-faith">Podcasts</span><span class="tag tag-faith">Ebooks</span></div>
       </div>
+    </div>
 
-      <!-- ── FAITH ── -->
-      <div id="era-faith" class="tl-era-label">Faith — The Foundation That Was Always There</div>
+    <!-- ── 2013 MUSIC ── -->
+    <div id="era-2013" class="era-label">2013 — Before the Data, There Was Music</div>
 
-      <div class="tl-item">
-        <div class="tl-dot faith"></div>
-        <div class="tl-card faith-card">
-          <div class="tl-top">
-            <span class="tl-year">Always · FaithTech Builder</span>
-            <div class="tl-badges"><span class="tl-badge badge-faith">✝️ FaithTech</span></div>
-          </div>
-          <div class="tl-title">HMG Gospel — Spreading the Gospel Through Every Digital Means</div>
-          <div class="tl-org">HMG Gospel · @hmgospel</div>
-          <p class="tl-body">The name His Marvellous Grace was never just branding. It reflects a genuine, lived conviction: that every breakthrough — in the classroom and in technology — has arrived as a result of grace I did not engineer on my own. <strong>HMG Gospel exists to spread the gospel of Christ through every digital platform available</strong> — dramavangelism, techvangelism, physical evangelism, podcasts, ebooks, digital outreach, Christian drama, and FaithTech tools built specifically for church and ministry settings. This is the FaithTech Builder identity made institutional.</p>
-          <div class="tl-tags"><span class="tl-tag">Dramavangelism</span><span class="tl-tag">Techvangelism</span><span class="tl-tag">Gospel Platforms</span><span class="tl-tag">Church Tools</span><span class="tl-tag">Podcasts</span><span class="tl-tag">Ebooks</span><span class="tl-tag">Digital Outreach</span></div>
-        </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="tl-top"><span class="tl-year">2013 · Certificate</span><div class="tl-badges"><span class="badge badge-gold">Certificate</span></div></div>
+        <div class="tl-title">Piano & Music Theory Certificate</div>
+        <div class="tl-org">Rotop Music Academy</div>
+        <p class="tl-body">Piano and guitar are still part of who I am. <strong>Pattern recognition, structure, rhythm, and the discipline of practising something imperfect until it is right — these are data science skills too,</strong> once you know how to look at them that way. The best models I have built have a rhythm to them. So do the best lessons I have taught.</p>
+        <div class="tl-tags"><span class="tag">Piano</span><span class="tag">Guitar</span><span class="tag">Music Theory</span><span class="tag">Pattern Recognition</span></div>
       </div>
+    </div>
 
-      <!-- ── 2013 MUSIC ── -->
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <span class="tl-year">2013 · Certificate</span>
-            <div class="tl-badges"><span class="tl-badge badge-cert">Certificate</span></div>
-          </div>
-          <div class="tl-title">Piano & Music Theory Certificate</div>
-          <div class="tl-org">Rotop Music Academy</div>
-          <p class="tl-body">Before the code and the data, there was music. Piano and guitar are still part of who I am. <strong>Pattern recognition, structure, rhythm, and the discipline of practising something imperfect until it is right — these are data science skills too</strong>, once you know how to look at them that way. The best models I have built have a rhythm to them. So do the best lessons I have taught.</p>
-          <div class="tl-tags"><span class="tl-tag">Piano</span><span class="tl-tag">Guitar</span><span class="tl-tag">Music Theory</span><span class="tl-tag">Pattern Recognition</span></div>
-        </div>
+    <!-- ── 2009 ── -->
+    <div id="era-2009" class="era-label">2009 — Where Everything Began</div>
+
+    <div class="tl-item">
+      <div class="tl-dot g pulse-g"></div>
+      <div class="tl-card active-c">
+        <div class="tl-top"><span class="tl-year">2009 – Present · 15+ Years Active</span><div class="tl-badges"><span class="badge badge-live"><span class="live-dot"></span> Still Teaching</span></div></div>
+        <div class="tl-title">Classroom Teacher — Nursery Through Secondary School</div>
+        <div class="tl-org">Multiple Nigerian Schools · Lagos & Ogun State · Currently: God of Seed Academy</div>
+        <p class="tl-body"><strong>First classroom: Chrisville Schools, 2009.</strong> A JSS class. Chalk, a blackboard, and more questions than answers. Since then: His Marvellous Grace, Fredaks Group, Anchor Heights, Dave Model School, Lifeline, De Glorious College, EnnyCharles, Chrisville, Roas Model, Angel High School, God of Seed Academy, and others.<br><br>These classrooms trained me in the two most important skills any data scientist can have: <strong>asking the right questions</strong>, and <strong>genuinely caring whether your audience understands what you are showing them.</strong> Fifteen years later, I am still teaching. The classroom and the data science are not two separate lives. They have always been the same work, waiting for the right tools.</p>
+        <div class="tl-tags"><span class="tag tag-edtech">Mathematics</span><span class="tag tag-edtech">Further Mathematics</span><span class="tag tag-edtech">Physics</span><span class="tag tag-edtech">Chemistry</span><span class="tag tag-edtech">Computer Science</span><span class="tag">JSS–SSS</span></div>
       </div>
+    </div>
 
-      <!-- ── 2009 FIRST CLASSROOM ── -->
-      <div id="era-first" class="tl-era-label">2009 — Where Everything Began</div>
+  </div><!-- end tl-main -->
+</div><!-- end journey-wrap -->
 
-      <div class="tl-item">
-        <div class="tl-dot green"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <span class="tl-year">2009 – Present (Still Teaching) · 15+ Years Active</span>
-            <div class="tl-badges"><span class="tl-badge badge-active">Still Active</span></div>
-          </div>
-          <div class="tl-title">Classroom Teacher — Nursery Through Secondary School</div>
-          <div class="tl-org">Multiple Nigerian Schools · Lagos & Ogun State</div>
-          <p class="tl-body"><strong>First classroom: Chrisville Schools, 2009.</strong> A JSS class. Chalk, a blackboard, and more questions from students than I had been trained to answer. Since then: His Marvellous Grace, Fredaks Group, Anchor Heights, Dave Model School, Lifeline, De Glorious College, Chrisville, Angel High School, God of Seed Academy, and others. I have taught at every level — Nursery, Primary, and Secondary (currently in secondary school, JSS1–SSS3). Mathematics, Further Mathematics, Physics, Chemistry, Computer Science. Thousands of students.<br><br>These classrooms trained me in the two most important skills any data scientist can have: <strong>asking the right questions</strong>, and <strong>genuinely caring whether your audience understands what you are showing them</strong>. Fifteen years later, I am still teaching. The classroom and the data science are not two separate lives. They have always been the same work, waiting for the right tools.</p>
-          <div class="tl-tags">
-            <span class="tl-tag">Mathematics</span><span class="tl-tag">Further Mathematics</span><span class="tl-tag">Physics</span>
-            <span class="tl-tag">Chemistry</span><span class="tl-tag">Computer Science</span><span class="tl-tag">JSS–SSS</span>
-          </div>
-        </div>
-      </div>
-
+<!-- CAPABILITY LEVELS -->
+<div class="cap-section">
+  <div class="cap-inner">
+    <div class="section-label">Capability Growth</div>
+    <h2 class="section-title">Where <em>I Am Now</em></h2>
+    <p class="section-sub">Self-assessed based on deployed projects and active learning. No inflated bars. No false modesty.</p>
+    <div class="cap-grid">
+      <div class="cap-item"><div class="cap-label"><span class="cap-name">Python & Data Science</span><span class="cap-pct">88%</span></div><div class="progress-bar"><div class="progress-fill" style="width:88%"></div></div></div>
+      <div class="cap-item"><div class="cap-label"><span class="cap-name">Machine Learning (Scikit-learn)</span><span class="cap-pct">82%</span></div><div class="progress-bar"><div class="progress-fill" style="width:82%"></div></div></div>
+      <div class="cap-item"><div class="cap-label"><span class="cap-name">Streamlit Deployment</span><span class="cap-pct">90%</span></div><div class="progress-bar"><div class="progress-fill" style="width:90%"></div></div></div>
+      <div class="cap-item"><div class="cap-label"><span class="cap-name">NLP & Text Analytics</span><span class="cap-pct">65%</span></div><div class="progress-bar"><div class="progress-fill" style="width:65%"></div></div></div>
+      <div class="cap-item"><div class="cap-label"><span class="cap-name">Data Visualisation</span><span class="cap-pct">78%</span></div><div class="progress-bar"><div class="progress-fill" style="width:78%"></div></div></div>
+      <div class="cap-item"><div class="cap-label"><span class="cap-name">Web Dev (AI-Augmented)</span><span class="cap-pct">75%</span></div><div class="progress-bar"><div class="progress-fill" style="width:75%"></div></div></div>
+      <div class="cap-item"><div class="cap-label"><span class="cap-name">SQL & Database Management</span><span class="cap-pct">72%</span></div><div class="progress-bar"><div class="progress-fill" style="width:72%"></div></div></div>
+      <div class="cap-item"><div class="cap-label"><span class="cap-name">Deep Learning</span><span class="cap-pct">25%</span></div><div class="progress-bar"><div class="progress-fill" style="width:25%"></div></div></div>
+      <div class="cap-item"><div class="cap-label"><span class="cap-name">FaithTech / Gospel Platforms</span><span class="cap-pct">Building</span></div><div class="progress-bar"><div class="progress-fill" style="width:30%;background:linear-gradient(90deg,var(--faith),rgba(56,189,248,.5))"></div></div></div>
+      <div class="cap-item"><div class="cap-label"><span class="cap-name">Power BI / Tableau</span><span class="cap-pct">70%</span></div><div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div></div>
     </div>
   </div>
+</div>
 
-  <!-- CAPABILITY LEVELS -->
-  <div class="cap-section">
-    <div class="cap-inner">
-      <p class="section-label">Capability Growth</p>
-      <h2 class="section-title">Where I Am Now</h2>
-      <p class="section-sub" style="margin-bottom:2rem;">Self-assessed based on deployed projects and active learning — no inflated progress bars, no false modesty.</p>
-      <div class="cap-grid">
-        <div class="cap-item"><div class="cap-label"><span class="cap-name">Python & Data Science</span><span class="cap-pct">88%</span></div><div class="cap-bar"><div class="cap-fill" style="width:88%"></div></div></div>
-        <div class="cap-item"><div class="cap-label"><span class="cap-name">Machine Learning (Sklearn)</span><span class="cap-pct">82%</span></div><div class="cap-bar"><div class="cap-fill" style="width:82%"></div></div></div>
-        <div class="cap-item"><div class="cap-label"><span class="cap-name">Streamlit Deployment</span><span class="cap-pct">90%</span></div><div class="cap-bar"><div class="cap-fill" style="width:90%"></div></div></div>
-        <div class="cap-item"><div class="cap-label"><span class="cap-name">NLP & Text Analytics</span><span class="cap-pct">65%</span></div><div class="cap-bar"><div class="cap-fill" style="width:65%"></div></div></div>
-        <div class="cap-item"><div class="cap-label"><span class="cap-name">Data Visualisation</span><span class="cap-pct">78%</span></div><div class="cap-bar"><div class="cap-fill" style="width:78%"></div></div></div>
-        <div class="cap-item"><div class="cap-label"><span class="cap-name">Web Dev (AI-Augmented)</span><span class="cap-pct">72%</span></div><div class="cap-bar"><div class="cap-fill" style="width:72%"></div></div></div>
-        <div class="cap-item"><div class="cap-label"><span class="cap-name">Deep Learning</span><span class="cap-pct">25%</span></div><div class="cap-bar"><div class="cap-fill" style="width:25%"></div></div></div>
-        <div class="cap-item"><div class="cap-label"><span class="cap-name">FaithTech / Gospel Platforms</span><span class="cap-pct">Building</span></div><div class="cap-bar"><div class="cap-fill" style="width:30%; background:linear-gradient(90deg,var(--faith),rgba(56,189,248,.5))"></div></div></div>
-      </div>
+<!-- ROAD AHEAD -->
+<div class="road-section">
+  <div class="section-label">What's Next</div>
+  <h2 class="section-title">The Road <em>Ahead</em></h2>
+  <div class="road-grid">
+    <div class="road-card"><div class="road-icon">🧠</div><div class="road-title">Deep Learning</div><p class="road-desc">Neural networks, CNNs, and sequence modelling. The next frontier after classical ML mastery.</p></div>
+    <div class="road-card"><div class="road-icon">☁️</div><div class="road-title">Azure AI-900 Certification</div><p class="road-desc">Formalising cloud AI knowledge through the Microsoft AI fundamentals exam via DSN × Microsoft Elevate.</p></div>
+    <div class="road-card"><div class="road-icon">🏫</div><div class="road-title">CBT Pro — Phase 6 & 7</div><p class="road-desc">AI Insights for teachers (Phase 6) and Multi-teacher admin panel (Phase 7). The next CBT milestones.</p></div>
+    <div class="road-card" style="border-color:rgba(56,189,248,.25);"><div class="road-icon">✝️</div><div class="road-title" style="color:var(--faith);">HMG Gospel — First FaithTech Build</div><p class="road-desc">First gospel-driven digital tool under @hmgospel — dramavangelism platform or church resource hub.</p></div>
+    <div class="road-card"><div class="road-icon">💻</div><div class="road-title">HMG Technologies Website</div><p class="road-desc">The institutional home for AI-augmented tools for Nigerian businesses and organisations.</p></div>
+    <div class="road-card" style="border-color:rgba(56,189,248,.25);"><div class="road-icon">⛪</div><div class="road-title" style="color:var(--faith);">HMG Gospel Website</div><p class="road-desc">The digital home for HMG Gospel — evangelism, FaithTech, drama, podcasts, and gospel conviction made visible.</p></div>
+  </div>
+  <div style="text-align:center;margin-top:2.5rem;display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;">
+    <a href="projects.html" class="btn btn-gold">See All 34 Projects</a>
+    <a href="index.html#contact" class="btn btn-outline">Get In Touch</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div><div class="footer-brand-name">cssadewale</div><p class="footer-brand-sub">AI-Augmented Solutions Developer · EdTech Builder · DataTech Builder · FaithTech Builder.</p><div class="footer-socials"><a href="https://linkedin.com/in/adewalesamsonadeagbo" class="footer-social" target="_blank">💼</a><a href="https://github.com/cssadewale" class="footer-social" target="_blank">🐙</a><a href="https://youtube.com/@hmgconcepts" class="footer-social" target="_blank">📺</a><a href="https://wa.me/2348100866322" class="footer-social" target="_blank">💬</a></div></div>
+      <div><div class="footer-col-title">Navigation</div><div class="footer-links-list"><a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="journey.html">Journey</a><a href="cv.html">CV</a><a href="index.html#contact">Contact</a></div></div>
+      <div><div class="footer-col-title">HMG Concepts</div><div class="footer-links-list"><a href="https://hmgconcepts.pages.dev" target="_blank">HMG Academy ↗</a><a href="#">HMG Technologies</a><a href="#">HMG Gospel</a><a href="https://youtube.com/@hmgconcepts" target="_blank">HMG Media ↗</a></div></div>
+      <div><div class="footer-col-title">GitHub Orgs</div><div class="footer-links-list"><a href="https://github.com/cssadewale" target="_blank">@cssadewale ↗</a><a href="https://github.com/hmgacademyhub" target="_blank">@hmgacademyhub ↗</a><a href="https://github.com/hmgtechnologies" target="_blank">@hmgtechnologies ↗</a><a href="https://github.com/hmgospel" target="_blank">@hmgospel ↗</a></div></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-text">© 2025–2026 Adewale Samson Adeagbo · HMG Concepts · All Rights Reserved</div>
+      <div class="footer-bottom-tagline">Built with AI leverage, grounded in data, taught from the classroom.</div>
     </div>
   </div>
+</footer>
 
-  <!-- ROAD AHEAD -->
-  <div class="road-section">
-    <p class="section-label">What's Next</p>
-    <h2 class="section-title">The Road Ahead</h2>
-    <div class="road-grid">
-      <div class="road-card"><div class="road-icon">🧠</div><div class="road-title">Deep Learning</div><p class="road-desc">Neural networks, convolutional models, and sequence modelling. The next frontier after classical ML mastery.</p></div>
-      <div class="road-card"><div class="road-icon">☁️</div><div class="road-title">Azure AI-900 Certification</div><p class="road-desc">Formalising cloud AI knowledge through the Microsoft AI fundamentals exam.</p></div>
-      <div class="road-card"><div class="road-icon">🏫</div><div class="road-title">CBT Pro Phase 6 & 7</div><p class="road-desc">AI Insights for teachers (Phase 6) and Multi-teacher admin panel (Phase 7). The next CBT Pro milestones.</p></div>
-      <div class="road-card" style="border-color:rgba(56,189,248,.25);">
-        <div class="road-icon">✝️</div>
-        <div class="road-title" style="color:var(--faith);">HMG Gospel — First FaithTech Build</div>
-        <p class="road-desc">The first gospel-driven digital tool under @hmgospel. Dramavangelism platform, church resource hub, or evangelism tracking tool — in development.</p>
-      </div>
-      <div class="road-card"><div class="road-icon">💻</div><div class="road-title">HMG Technologies Website</div><p class="road-desc">The institutional home for AI-augmented tools for Nigerian businesses and organisations.</p></div>
-      <div class="road-card" style="border-color:rgba(56,189,248,.25);"><div class="road-icon">⛪</div><div class="road-title" style="color:var(--faith);">HMG Gospel Website</div><p class="road-desc">The digital home for HMG Gospel — evangelism, FaithTech, drama, podcasts, and the gospel conviction made visible.</p></div>
-    </div>
-    <div style="text-align:center; margin-top:2.5rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
-      <a href="projects.html" class="btn-primary">See All 12 Projects</a>
-      <a href="index.html#contact" class="btn-outline">Get In Touch</a>
-    </div>
-  </div>
-
-  <footer>
-    <div class="footer-logo">cssadewale</div>
-    <div class="footer-tagline">AI-Augmented Solutions Developer · EdTech Builder · DataTech Builder · FaithTech Builder</div>
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="projects.html">Projects</a>
-      <a href="cv.html">CV</a>
-      <a href="https://github.com/cssadewale" target="_blank">GitHub</a>
-      <a href="https://youtube.com/@hmgconcepts" target="_blank">YouTube</a>
-    </div>
-    <div class="footer-bottom">© 2025–2026 Adewale Samson Adeagbo · HMG Concepts · All Rights Reserved</div>
-  </footer>
-
+<script>
+  function toggleMenu() { document.getElementById('nav-mobile').classList.toggle('open'); }
+</script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>

@@ -3,527 +3,648 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CV / Resume | Adewale Samson Adeagbo — AI-Augmented Solutions Developer & STEM Educator Nigeria</title>
-  <meta name="description" content="CV of Adewale Samson Adeagbo — AI-Augmented Solutions Developer, Data Scientist, EdTech Builder, and 15+ year STEM Educator. Lagos, Nigeria." />
+  <title>CV | Adewale Samson Adeagbo — Data Scientist · AI-Augmented Solutions Developer · STEM Educator</title>
+  <meta name="description" content="Professional CV of Adewale Samson Adeagbo — Data Scientist, AI-Augmented Solutions Developer, and 15+ year STEM Educator. Two CVs: Data Science and Educator tracks." />
+  <link rel="canonical" href="https://cssadewale.pages.dev/cv.html" />
+  <link rel="stylesheet" href="assets/css/style.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg:#0a0a0f; --bg2:#111118; --bg3:#16161f; --border:#1e1e2e;
-      --accent:#7c6af7; --accent2:#a78bfa; --green:#22c55e; --amber:#f59e0b;
-      --faith:#38bdf8; --text:#e2e2f0; --muted:#888899; --card:#13131c;
-      --radius:12px; --radius-lg:20px; --ff:'Segoe UI',system-ui,sans-serif;
+    /* ══ CV PAGE STYLES ══════════════════════════════════════════════════ */
+
+    /* Tab switcher buttons */
+    .cv-switcher { display: flex; gap: .6rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .cv-sw-btn {
+      padding: .6rem 1.5rem; border-radius: 9px; font-size: .86rem; font-weight: 700;
+      border: 1px solid var(--border); background: transparent; color: var(--text2);
+      cursor: pointer; transition: all var(--tr); font-family: var(--ff);
     }
-    html { scroll-behavior: smooth; }
-    body { background:var(--bg); color:var(--text); font-family:var(--ff); line-height:1.7; overflow-x:hidden; }
-    a { color:inherit; text-decoration:none; }
+    .cv-sw-btn.active { background: linear-gradient(135deg, var(--gold), #e8960a); color: var(--bg); border-color: transparent; }
+    .cv-sw-btn:hover:not(.active) { border-color: var(--gold); color: var(--gold); }
 
-    nav {
-      position:fixed; top:0; left:0; right:0; z-index:100;
-      background:rgba(10,10,15,.92); backdrop-filter:blur(12px);
-      border-bottom:1px solid var(--border); padding:0 2rem;
-      display:flex; align-items:center; justify-content:space-between; height:60px;
+    /* Panel visibility */
+    .cv-panel { display: none; }
+    .cv-panel.active { display: block; animation: fadeInUp .3s ease; }
+
+    /* CV card wrapper */
+    .cv-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-xl); overflow: hidden; }
+
+    /* CV header */
+    .cv-hdr {
+      padding: 2rem; border-bottom: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(245,179,66,.06) 0%, transparent 60%);
+      display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; align-items: start;
     }
-    .nav-logo { font-weight:700; font-size:1rem; color:var(--accent2); }
-    .nav-links { display:flex; gap:1.4rem; flex-wrap:wrap; }
-    .nav-links a { font-size:.83rem; color:var(--muted); transition:color .2s; }
-    .nav-links a:hover, .nav-links a.active { color:var(--text); }
-    .nav-cta { background:var(--accent); color:#fff; padding:.38rem 1rem; border-radius:6px; font-size:.82rem; font-weight:600; }
+    .cv-name  { font-size: 1.5rem; font-weight: 900; margin-bottom: .3rem; }
+    .cv-title { font-size: .88rem; color: var(--gold); font-weight: 600; margin-bottom: .8rem; }
+    .cv-pills { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .cv-pill  { font-size: .66rem; font-weight: 700; padding: .2rem .65rem; border-radius: 50px; border: 1px solid; }
+    .cvp-e { border-color: rgba(34,197,94,.35);   color: var(--edtech);   background: var(--edtech-bg); }
+    .cvp-d { border-color: rgba(129,140,248,.35);  color: var(--datatech); background: var(--datatech-bg); }
+    .cvp-f { border-color: rgba(56,189,248,.35);   color: var(--faith);    background: var(--faith-bg); }
+    .cv-dl-btns { display: flex; gap: .6rem; flex-wrap: wrap; }
+    .cv-dl { font-size: .78rem; font-weight: 700; padding: .4rem 1rem; border-radius: 7px; transition: all var(--tr); display: inline-flex; align-items: center; gap: .35rem; }
+    .cv-dl-gold { background: linear-gradient(135deg, var(--gold), #e8960a); color: var(--bg); }
+    .cv-dl-ghost { border: 1px solid var(--border); color: var(--text2); }
+    .cv-dl-ghost:hover { border-color: var(--gold); color: var(--gold); }
+    .cv-contact-col { display: flex; flex-direction: column; gap: .35rem; text-align: right; }
+    .cv-contact-col a, .cv-contact-col span { font-size: .76rem; color: var(--text2); transition: color var(--tr); }
+    .cv-contact-col a:hover { color: var(--gold); }
 
-    .page-hero { padding:120px 2rem 4rem; background:var(--bg2); border-bottom:1px solid var(--border); text-align:center; }
-    .page-label { font-size:.75rem; font-weight:700; color:var(--accent2); letter-spacing:.1em; text-transform:uppercase; margin-bottom:.6rem; }
-    .page-title { font-size:clamp(1.8rem,4vw,2.6rem); font-weight:800; margin-bottom:.8rem; }
-    .page-sub { font-size:.95rem; color:var(--muted); max-width:620px; margin:0 auto 2rem; line-height:1.75; }
-
-    /* cv selector tabs */
-    .cv-tabs { display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; }
-    .cv-tab {
-      padding:.6rem 1.6rem; border-radius:8px; font-size:.88rem; font-weight:700;
-      border:1px solid var(--border); color:var(--muted); cursor:pointer; background:transparent;
-      transition:all .2s; font-family:var(--ff);
+    /* CV sections */
+    .cv-sec { padding: 1.6rem 2rem; border-bottom: 1px solid var(--border); }
+    .cv-sec:last-child { border-bottom: none; }
+    .cv-sec-title {
+      font-size: .67rem; font-weight: 800; color: var(--gold);
+      text-transform: uppercase; letter-spacing: .13em; margin-bottom: 1.1rem;
+      display: flex; align-items: center; gap: .5rem;
     }
-    .cv-tab.active { background:var(--accent); color:#fff; border-color:var(--accent); }
-    .cv-tab:hover:not(.active) { border-color:var(--accent2); color:var(--accent2); }
+    .cv-sec-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-    .cv-body { max-width:900px; margin:0 auto; padding:3rem 2rem; }
-    .cv-panel { display:none; }
-    .cv-panel.active { display:block; }
+    /* Profile block */
+    .cv-profile { font-size: .87rem; color: var(--text2); line-height: 1.85; }
+    .cv-profile strong { color: var(--text); }
 
-    /* cv card */
-    .cv-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; }
-    .cv-header { padding:2rem; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem; }
-    .cv-name { font-size:1.5rem; font-weight:900; margin-bottom:.3rem; }
-    .cv-role { font-size:.88rem; color:var(--accent2); font-weight:600; margin-bottom:.8rem; }
+    /* Tag cloud */
+    .cv-tag-cloud { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .cv-tag { font-size: .7rem; background: var(--bg4); border: 1px solid var(--border); padding: .2rem .62rem; border-radius: 4px; color: var(--text2); }
+    .cv-tag.hl { color: var(--gold);    border-color: rgba(245,179,66,.3); background: var(--gold-glow); }
+    .cv-tag.el { color: var(--edtech);  border-color: rgba(34,197,94,.3);  background: var(--edtech-bg); }
+    .cv-tag.dl { color: var(--datatech);border-color: rgba(129,140,248,.3);background: var(--datatech-bg); }
 
-    /* builder trio */
-    .cv-trio { display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:.8rem; }
-    .cv-pill { font-size:.7rem; font-weight:700; padding:.25rem .7rem; border-radius:50px; border:1px solid; }
-    .cv-pill.edtech  { border-color:rgba(34,197,94,.3);  color:var(--green);  background:rgba(34,197,94,.08); }
-    .cv-pill.datatech{ border-color:rgba(124,106,247,.35); color:var(--accent2); background:rgba(124,106,247,.08); }
-    .cv-pill.faith   { border-color:rgba(56,189,248,.3);  color:var(--faith);  background:rgba(56,189,248,.08); }
+    /* 2-col skill grid */
+    .cv-skills-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .cv-skill-group { }
+    .cv-skill-label { font-size: .7rem; color: var(--text2); font-weight: 700; margin-bottom: .5rem; text-transform: uppercase; letter-spacing: .06em; }
 
-    .cv-contact-row { display:flex; flex-direction:column; gap:.35rem; align-items:flex-end; }
-    .cv-contact-row a { font-size:.78rem; color:var(--muted); transition:color .2s; }
-    .cv-contact-row a:hover { color:var(--accent2); }
+    /* Project entries */
+    .cv-proj { margin-bottom: 1.6rem; padding-bottom: 1.6rem; border-bottom: 1px solid var(--border); }
+    .cv-proj:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .cv-proj-hdr { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: .25rem; flex-wrap: wrap; gap: .4rem; }
+    .cv-proj-name { font-size: .94rem; font-weight: 800; }
+    .cv-proj-meta { font-size: .7rem; color: var(--gold); font-weight: 700; white-space: nowrap; }
+    .cv-proj-url  { font-size: .72rem; color: var(--muted); margin-bottom: .5rem; }
+    .cv-proj-url a{ color: var(--datatech); }
+    .cv-bullets { list-style: none; }
+    .cv-bullets li { font-size: .82rem; color: var(--text2); padding-left: 1.25rem; position: relative; margin-bottom: .3rem; line-height: 1.6; }
+    .cv-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+    .cv-bullets li strong { color: var(--text); }
 
-    .cv-dl-btns { display:flex; gap:.6rem; margin-top:1rem; flex-wrap:wrap; }
-    .cv-dl-btn { font-size:.78rem; padding:.38rem 1rem; border-radius:6px; font-weight:700; }
-    .dl-primary { background:var(--accent); color:#fff; }
-    .dl-secondary { border:1px solid var(--border); color:var(--muted); }
+    /* Experience entries */
+    .cv-exp { margin-bottom: 1.5rem; }
+    .cv-exp-hdr { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .4rem; margin-bottom: .25rem; }
+    .cv-exp-role { font-size: .92rem; font-weight: 800; }
+    .cv-exp-period { font-size: .72rem; color: var(--gold); font-weight: 700; white-space: nowrap; }
+    .cv-exp-org { font-size: .78rem; color: var(--text2); margin-bottom: .5rem; font-style: italic; }
 
-    /* cv sections */
-    .cv-section { padding:1.8rem 2rem; border-bottom:1px solid var(--border); }
-    .cv-section:last-child { border-bottom:none; }
-    .cv-sec-title { font-size:.72rem; font-weight:700; color:var(--accent2); text-transform:uppercase; letter-spacing:.1em; margin-bottom:1.2rem; }
+    /* Cert list */
+    .cv-certs { display: flex; flex-wrap: wrap; gap: .45rem; }
+    .cv-cert { font-size: .72rem; background: var(--bg4); border: 1px solid var(--border); padding: .26rem .72rem; border-radius: 5px; color: var(--text2); }
+    .cv-cert.active { background: rgba(34,197,94,.08); border-color: rgba(34,197,94,.3); color: var(--edtech); }
 
-    /* stack tags */
-    .cv-stack { display:flex; flex-wrap:wrap; gap:.4rem; }
-    .cv-tag { font-size:.72rem; background:var(--bg3); border:1px solid var(--border); padding:.22rem .6rem; border-radius:4px; color:var(--muted); }
-    .cv-tag.highlight { color:var(--accent2); border-color:rgba(124,106,247,.3); background:rgba(124,106,247,.08); }
-    .cv-tag.green-tag { color:var(--green); border-color:rgba(34,197,94,.3); background:rgba(34,197,94,.08); }
-    .cv-tag.faith-tag { color:var(--faith); border-color:rgba(56,189,248,.3); background:rgba(56,189,248,.08); }
+    /* Availability tags */
+    .cv-avail { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .cv-avail-tag { font-size: .73rem; background: var(--gold-glow); border: 1px solid rgba(245,179,66,.25); color: var(--gold); padding: .28rem .75rem; border-radius: 5px; font-weight: 600; }
 
-    /* profile text */
-    .cv-profile-text { font-size:.88rem; color:var(--muted); line-height:1.8; }
-    .cv-profile-text strong { color:var(--text); }
+    /* Teaching table */
+    .cv-teach-table { width: 100%; border-collapse: collapse; font-size: .8rem; margin: .5rem 0; }
+    .cv-teach-table th { background: var(--bg4); color: var(--gold); padding: .6rem .9rem; text-align: left; font-size: .67rem; text-transform: uppercase; letter-spacing: .07em; border-bottom: 1px solid var(--border); }
+    .cv-teach-table td { padding: .6rem .9rem; border-bottom: 1px solid var(--border); color: var(--text2); vertical-align: top; }
+    .cv-teach-table td:first-child { color: var(--text); font-weight: 600; white-space: nowrap; }
+    .cv-teach-table tr:last-child td { border-bottom: none; }
+    .cv-teach-table tr:hover td { background: rgba(245,179,66,.02); }
+    .cv-table-wrap { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
 
-    /* project entries */
-    .cv-proj { margin-bottom:1.6rem; padding-bottom:1.6rem; border-bottom:1px solid var(--border); }
-    .cv-proj:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
-    .cv-proj-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:.3rem; flex-wrap:wrap; gap:.4rem; }
-    .cv-proj-name { font-size:.95rem; font-weight:800; }
-    .cv-proj-meta { font-size:.72rem; color:var(--accent2); font-weight:600; }
-    .cv-proj-url { font-size:.73rem; color:var(--muted); margin-bottom:.5rem; }
-    .cv-proj-url a { color:var(--accent2); }
-    .cv-proj-bullets { list-style:none; }
-    .cv-proj-bullets li { font-size:.82rem; color:var(--muted); padding-left:1rem; position:relative; margin-bottom:.3rem; line-height:1.6; }
-    .cv-proj-bullets li::before { content:'→'; position:absolute; left:0; color:var(--accent2); }
-    .cv-proj-bullets li strong { color:var(--text); }
+    /* Ref box */
+    .cv-ref { background: rgba(245,179,66,.03); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.2rem; font-size: .84rem; color: var(--text2); }
+    .cv-ref strong { color: var(--text); }
 
-    /* experience entries */
-    .cv-exp { margin-bottom:1.6rem; }
-    .cv-exp-top { display:flex; justify-content:space-between; flex-wrap:wrap; gap:.4rem; margin-bottom:.3rem; }
-    .cv-exp-role { font-size:.93rem; font-weight:800; }
-    .cv-exp-period { font-size:.75rem; color:var(--accent2); font-weight:600; }
-    .cv-exp-org { font-size:.8rem; color:var(--muted); margin-bottom:.5rem; }
-    .cv-exp-bullets { list-style:none; }
-    .cv-exp-bullets li { font-size:.82rem; color:var(--muted); padding-left:1rem; position:relative; margin-bottom:.3rem; line-height:1.6; }
-    .cv-exp-bullets li::before { content:'→'; position:absolute; left:0; color:var(--accent2); }
-    .cv-exp-bullets li strong { color:var(--text); }
+    /* Print button */
+    .print-btn {
+      position: fixed; bottom: 5rem; right: 1.5rem; z-index: 799;
+      background: var(--bg4); border: 1px solid var(--border); color: var(--text2);
+      padding: .5rem .9rem; border-radius: 8px; font-size: .78rem; cursor: pointer;
+      transition: all var(--tr); display: flex; align-items: center; gap: .4rem;
+    }
+    .print-btn:hover { border-color: var(--gold); color: var(--gold); }
 
-    /* avail tags */
-    .cv-avail { display:flex; flex-wrap:wrap; gap:.5rem; }
-    .cv-avail-tag { font-size:.75rem; background:rgba(124,106,247,.1); border:1px solid rgba(124,106,247,.25); color:var(--accent2); padding:.28rem .75rem; border-radius:5px; font-weight:600; }
-
-    footer { background:var(--bg2); border-top:1px solid var(--border); padding:2rem; text-align:center; }
-    .footer-logo { font-weight:800; color:var(--accent2); margin-bottom:.4rem; }
-    .footer-tagline { font-size:.78rem; color:var(--muted); margin-bottom:1rem; }
-    .footer-links { display:flex; justify-content:center; flex-wrap:wrap; gap:1.2rem; margin-bottom:.8rem; }
-    .footer-links a { font-size:.78rem; color:var(--muted); transition:color .2s; }
-    .footer-links a:hover { color:var(--accent2); }
-    .footer-bottom { font-size:.72rem; color:var(--muted); }
-
-    @media(max-width:900px) { .nav-links{display:none;} nav{padding:0 1rem;} }
-    @media(max-width:600px) { .cv-header{flex-direction:column;} .cv-contact-row{align-items:flex-start;} .page-hero{padding:100px 1rem 2rem;} .cv-body{padding:2rem 1rem;} }
+    @media(max-width:700px){
+      .cv-hdr { grid-template-columns: 1fr; }
+      .cv-contact-col { text-align: left; }
+      .cv-sec { padding: 1.3rem 1rem; }
+      .cv-skills-2col { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
 
-  <nav>
-    <span class="nav-logo">cssadewale</span>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">cssadewale <span>· AI-Augmented Solutions Developer</span></a>
     <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="projects.html">Projects</a>
-      <a href="journey.html">Journey</a>
-      <a href="cv.html" class="active">CV</a>
-      <a href="index.html#contact">Contact</a>
+      <a href="index.html">Home</a><a href="about.html">About</a>
+      <a href="projects.html">Projects</a><a href="journey.html">Journey</a>
+      <a href="cv.html">CV</a><a href="index.html#contact">Contact</a>
+      <a href="https://wa.me/2348100866322" class="nav-cta" target="_blank" rel="noopener">💬 WhatsApp</a>
     </div>
-    <a href="https://wa.me/2348100866322" class="nav-cta nav-links" target="_blank">WhatsApp</a>
-  </nav>
+    <button class="nav-burger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="index.html">Home</a><a href="about.html">About</a>
+  <a href="projects.html">Projects</a><a href="journey.html">Journey</a>
+  <a href="cv.html" class="active">CV</a><a href="index.html#contact">Contact</a>
+</div>
 
-  <div class="page-hero">
-    <p class="page-label">Two CVs. One Person. Three Builder Identities.</p>
-    <h1 class="page-title">Adewale Samson Adeagbo</h1>
-    <p class="page-sub">I carry two professional CVs — an AI-Augmented Solutions Developer with 12 deployed projects, and a 15+ year STEM Educator with a proven track record in Nigerian classrooms. Both are fully documented here. Choose the CV that fits your context.</p>
-    <div class="cv-tabs">
-      <button class="cv-tab active" onclick="showCV('ds')">📊 Data Scientist CV</button>
-      <button class="cv-tab" onclick="showCV('edu')">🏫 Educator CV</button>
+<!-- Print/Download button -->
+<button class="print-btn" onclick="window.print()" title="Print this CV">🖨️ Print</button>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> → <span>CV</span></div>
+    <div class="section-label">Two CVs. One Person. Three Builder Identities.</div>
+    <h1 class="section-title">Adewale Samson <em>Adeagbo</em></h1>
+    <p class="section-sub" style="margin-bottom:2rem;">
+      I carry two professional CVs — an AI-Augmented Solutions Developer with 34 deployed projects across EdTech, DataTech, and FaithTech domains; and a 15+ year STEM Educator with a deep classroom track record. Choose the CV that fits your context. Both are printable.
+    </p>
+    <p style="font-size:.8rem;color:var(--muted);">
+      💡 <strong>For standalone printable CVs</strong> — see
+      <a href="assets/docs/cv-datascientist.html" style="color:var(--gold);" target="_blank">Data Science CV</a> &nbsp;|&nbsp;
+      <a href="assets/docs/cv-educator.html" style="color:var(--gold);" target="_blank">Educator CV</a>
+    </p>
+  </div>
+</div>
+
+<div style="max-width:960px;margin:0 auto;padding:3rem 2rem;">
+
+  <!-- PDF Download Banner -->
+  <div style="background:linear-gradient(135deg,rgba(245,179,66,.08),rgba(245,179,66,.04));border:1px solid rgba(245,179,66,.25);border-radius:var(--radius-xl);padding:1.5rem 2rem;margin-bottom:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+    <div>
+      <div style="font-size:.72rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.35rem;">📥 Instant Download Available</div>
+      <div style="font-size:.88rem;color:var(--text2);">Both CVs are available as professionally formatted PDFs — ready to email to recruiters or attach to applications.</div>
+    </div>
+    <div style="display:flex;gap:.8rem;flex-wrap:wrap;">
+      <a href="assets/docs/Adewale_Adeagbo_DataScientist_CV_2026.pdf"
+         download="Adewale_Adeagbo_DataScientist_CV_2026.pdf"
+         style="background:linear-gradient(135deg,var(--gold),#e8960a);color:var(--bg);font-weight:800;font-size:.84rem;padding:.65rem 1.4rem;border-radius:9px;display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;">
+        ⬇ Data Scientist CV (PDF)
+      </a>
+      <a href="assets/docs/Adewale_Adeagbo_Educator_CV_2026.pdf"
+         download="Adewale_Adeagbo_Educator_CV_2026.pdf"
+         style="background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.35);color:var(--edtech);font-weight:800;font-size:.84rem;padding:.65rem 1.4rem;border-radius:9px;display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;">
+        ⬇ Educator CV (PDF)
+      </a>
+      <a href="assets/docs/cv-datascientist.html" target="_blank"
+         style="border:1px solid var(--border);color:var(--text2);font-weight:600;font-size:.82rem;padding:.65rem 1.2rem;border-radius:9px;display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;">
+        🖨️ Print Version
+      </a>
     </div>
   </div>
 
-  <div class="cv-body">
-
-    <!-- ══ DATA SCIENTIST CV ══ -->
-    <div id="cv-ds" class="cv-panel active">
-      <div class="cv-card">
-
-        <div class="cv-header">
-          <div>
-            <div class="cv-name">Adewale Samson Adeagbo</div>
-            <div class="cv-role">AI-Augmented Solutions Developer · Data Scientist · STEM Educator (15+ Years)</div>
-            <div class="cv-trio">
-              <span class="cv-pill edtech">🏫 EdTech Builder</span>
-              <span class="cv-pill datatech">📊 DataTech Builder</span>
-              <span class="cv-pill faith">✝️ FaithTech Builder</span>
-            </div>
-            <div class="cv-dl-btns">
-              <a href="https://drive.google.com/your-ds-cv-link" class="cv-dl-btn dl-primary">Download PDF</a>
-              <a href="https://linkedin.com/in/adewalesamsonadeagbo" class="cv-dl-btn dl-secondary" target="_blank">LinkedIn</a>
-            </div>
-          </div>
-          <div class="cv-contact-row">
-            <a href="#">Lagos / Ogun State, Nigeria</a>
-            <a href="https://wa.me/2348100866322">+234 810 086 6322</a>
-            <a href="/cdn-cgi/l/email-protection#ed85808a8e82838e889d999ead8a808c8481c38e8280"><span class="__cf_email__" data-cfemail="3951545e5a56575a5c494d4a795e54585055175a5654">[email&#160;protected]</span></a>
-            <a href="https://linkedin.com/in/adewalesamsonadeagbo" target="_blank">adewalesamsonadeagbo</a>
-            <a href="https://github.com/cssadewale" target="_blank">github.com/cssadewale</a>
-            <a href="https://youtube.com/@hmgconcepts" target="_blank">@hmgconcepts</a>
-          </div>
-        </div>
-
-        <!-- Stack -->
-        <div class="cv-section">
-          <div class="cv-sec-title">Data Science Stack</div>
-          <div class="cv-stack">
-            <span class="cv-tag highlight">Python</span><span class="cv-tag highlight">Pandas</span><span class="cv-tag highlight">NumPy</span>
-            <span class="cv-tag highlight">Scikit-learn</span><span class="cv-tag highlight">XGBoost</span><span class="cv-tag highlight">SHAP</span>
-            <span class="cv-tag highlight">SMOTE</span><span class="cv-tag highlight">GridSearchCV</span><span class="cv-tag highlight">TF-IDF</span>
-            <span class="cv-tag highlight">NLTK</span><span class="cv-tag highlight">Streamlit</span><span class="cv-tag">SQL</span>
-            <span class="cv-tag">Power BI</span><span class="cv-tag">Tableau</span><span class="cv-tag">Git / GitHub</span>
-            <span class="cv-tag">Supabase</span><span class="cv-tag">Cloudflare Pages</span><span class="cv-tag">Google Colab</span>
-            <span class="cv-tag">Jupyter</span><span class="cv-tag">Matplotlib</span><span class="cv-tag">Seaborn</span>
-          </div>
-        </div>
-
-        <div class="cv-section">
-          <div class="cv-sec-title">AI-Augmented Stack</div>
-          <div class="cv-stack">
-            <span class="cv-tag highlight">Claude AI</span><span class="cv-tag highlight">ChatGPT</span><span class="cv-tag highlight">Gemini API</span>
-            <span class="cv-tag">Prompt Engineering</span><span class="cv-tag">AI Orchestration</span>
-            <span class="cv-tag">Formspree</span><span class="cv-tag">GitHub Pages</span>
-          </div>
-        </div>
-
-        <!-- Profile -->
-        <div class="cv-section">
-          <div class="cv-sec-title">Professional Profile</div>
-          <p class="cv-profile-text"><strong>AI-Augmented Solutions Developer and Data Scientist</strong> with a foundation built across 15+ years in Nigerian secondary school classrooms. My teaching career did not just precede my data science journey — it shaped the way I approach every problem: with clarity, patience, and a commitment to solutions that work for real people in real conditions.<br><br>I am an <strong>AI-Augmented Solutions Developer</strong> operating across three builder identities: <strong>EdTech Builder</strong> (tools that solve problems in education — CBT Pro, student analytics, virtual school infrastructure), <strong>DataTech Builder</strong> (12 deployed ML and data projects across 7 industries), and <strong>FaithTech Builder</strong> (gospel-driven digital tools and platforms under HMG Gospel).<br><br>My formal tech journey began with the <strong>3MTT Data Science Programme in 2025</strong> — the turning point that transformed years of classroom observations into deployable technical solutions. I now build end-to-end ML solutions, EdTech platforms, and data analytics tools — not by learning every tool first, but by thinking through problems clearly and leveraging AI to build in any environment the problem requires.</p>
-        </div>
-
-        <!-- Projects -->
-        <div class="cv-section">
-          <div class="cv-sec-title">Deployed Projects</div>
-
-          <div class="cv-proj">
-            <div class="cv-proj-top">
-              <span class="cv-proj-name">CBT Pro — Free Exam Platform for Nigerian Schools</span>
-              <span class="cv-proj-meta">2024 – Present · LIVE</span>
-            </div>
-            <div class="cv-proj-url">HMG Technologies · <a href="https://cssadewale.github.io/cbt-system" target="_blank">cssadewale.github.io/cbt-system</a></div>
-            <ul class="cv-proj-bullets">
-              <li>Full-stack web exam platform built on <strong>Android tablet</strong> — no laptop, zero budget, zero cost to schools</li>
-              <li>CSV question upload, timed exams, anti-cheat tab detection, teacher analytics dashboard, result certificates, WhatsApp sharing</li>
-              <li>Stack: <strong>HTML/CSS/Vanilla JavaScript · Supabase (PostgreSQL + Auth + RLS) · GitHub Pages · Gemini API</strong></li>
-              <li>Actively used by real students — demonstrates production-grade EdTech under real constraints</li>
-            </ul>
-            <div class="cv-stack" style="margin-top:.6rem;">
-              <span class="cv-tag green-tag">HTML5</span><span class="cv-tag green-tag">Vanilla JS</span><span class="cv-tag green-tag">Supabase</span><span class="cv-tag green-tag">Gemini API</span>
-            </div>
-          </div>
-
-          <div class="cv-proj">
-            <div class="cv-proj-top">
-              <span class="cv-proj-name">Machine Learning Portfolio — 8 Deployed Models</span>
-              <span class="cv-proj-meta">2024–2025 · All Live</span>
-            </div>
-            <ul class="cv-proj-bullets">
-              <li><strong>TruthLens Fake News Detector</strong> (NLP · 3MTT Capstone) — XGBoost + TF-IDF on 12,999 articles · <strong>AUC: 0.9393 · Acc: 86.75%</strong> — highest AUC in portfolio</li>
-              <li><strong>NeuroWell Burnout Predictor</strong> (Regression) — Gradient Boosting · 22,750 records · <strong>R²: 0.855 · RMSE: 0.072</strong></li>
-              <li><strong>Bank Customer Churn</strong> (Binary Classification) — Gradient Boosting · 10,000 records · <strong>F1: 0.609 · AUC: 0.868</strong></li>
-              <li><strong>Insurance Claim Prediction</strong> — Random Forest + SMOTE + SHAP · 7,014 records</li>
-              <li><strong>Yakub Staff Promotion</strong> (HR Analytics) — Random Forest · 38,312 records · AUC: 0.891</li>
-              <li><strong>Income Level Prediction</strong> — 5-model comparison + SMOTE · 48,842 UCI Census records</li>
-              <li><strong>SwiftChain Delivery Delay</strong> (Logistics) — Multiclass · 15,549 orders · Transparently documents data leakage fix</li>
-            </ul>
-          </div>
-
-          <div class="cv-proj">
-            <div class="cv-proj-top">
-              <span class="cv-proj-name">EdTech Analytics Tools — 4 Live Tools</span>
-              <span class="cv-proj-meta">2025 · Live</span>
-            </div>
-            <ul class="cv-proj-bullets">
-              <li><strong>Student At-Risk Predictor</strong> — Random Forest + SHAP · Synthetic Nigerian data · Single + CSV batch mode</li>
-              <li><strong>Student Performance Tracker v3</strong> — 4-tab Streamlit + Plotly dashboard for classroom analytics</li>
-              <li><strong>Student Study Plan Generator</strong> — Rule-based AI · Personalised WAEC/NECO revision schedules</li>
-              <li><strong>CBT Question Bank Manager</strong> — Streamlit + SQLite · CBT Pro companion tool</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Education -->
-        <div class="cv-section">
-          <div class="cv-sec-title">Education</div>
-          <div class="cv-exp">
-            <div class="cv-exp-top"><span class="cv-exp-role">B.Sc.(Ed) Computer Science Education</span><span class="cv-exp-period">2023</span></div>
-            <div class="cv-exp-org">Lagos State University (LASU)</div>
-            <p style="font-size:.82rem;color:var(--muted);">Returned to university as an adult to build the technical foundation to solve classroom problems with technology.</p>
-          </div>
-          <div class="cv-exp">
-            <div class="cv-exp-top"><span class="cv-exp-role">Applied Data Science Lab</span><span class="cv-exp-period">2024 – Ongoing</span></div>
-            <div class="cv-exp-org">WorldQuant University (WQU)</div>
-          </div>
-          <div class="cv-exp">
-            <div class="cv-exp-top"><span class="cv-exp-role">DSN × Google DeepTech_Ready — DSML Track, Cohort 3</span><span class="cv-exp-period">2026 · Active</span></div>
-            <div class="cv-exp-org">Data Scientists Network × Google</div>
-          </div>
-          <div class="cv-exp">
-            <div class="cv-exp-top"><span class="cv-exp-role">3MTT Data Science Programme — The Turning Point</span><span class="cv-exp-period">2025</span></div>
-            <div class="cv-exp-org">Federal Government of Nigeria / 3MTT</div>
-          </div>
-        </div>
-
-        <!-- Certifications -->
-        <div class="cv-section">
-          <div class="cv-sec-title">Certifications</div>
-          <div class="cv-stack">
-            <span class="cv-tag highlight">IBM SkillsBuild Hub Ambassador · Cohort 4 (2026)</span>
-            <span class="cv-tag">Python Data Fundamentals — DataCamp (2025)</span>
-            <span class="cv-tag">AI Fluency — Digital Skills Nigeria (2025)</span>
-            <span class="cv-tag">Generative AI in Data Analysis — OVA (2025)</span>
-            <span class="cv-tag">Career Readiness — CareerEX / Access Bank (2025)</span>
-            <span class="cv-tag">AI Fundamentals — IBM SkillsBuild (2025)</span>
-            <span class="cv-tag">Technology for Africa — Digital Skillup Africa (2025)</span>
-            <span class="cv-tag">Azure AI-900 Prep — DSN × Microsoft (2026)</span>
-          </div>
-        </div>
-
-        <!-- Availability -->
-        <div class="cv-section">
-          <div class="cv-sec-title">Availability</div>
-          <div class="cv-avail">
-            <span class="cv-avail-tag">Remote Data Science Roles</span>
-            <span class="cv-avail-tag">EdTech Collaborations</span>
-            <span class="cv-avail-tag">ML Consulting</span>
-            <span class="cv-avail-tag">School Tech Partnerships</span>
-            <span class="cv-avail-tag">Data Science Training</span>
-            <span class="cv-avail-tag">AI Solutions Development</span>
-            <span class="cv-avail-tag">FaithTech Projects</span>
-          </div>
-          <p style="font-size:.8rem;color:var(--muted);margin-top:1rem;">Open to full-time, contract, and freelance engagements. Available for collaboration across education, insurance, logistics, HR, banking, and healthcare domains. Contact via WhatsApp for fastest response.</p>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- ══ EDUCATOR CV ══ -->
-    <div id="cv-edu" class="cv-panel">
-      <div class="cv-card">
-
-        <div class="cv-header">
-          <div>
-            <div class="cv-name">Adewale Samson Adeagbo</div>
-            <div class="cv-role">Experienced Secondary School Educator · EdTech Innovator · School Administrator</div>
-            <div class="cv-trio">
-              <span class="cv-pill edtech">🏫 EdTech Builder</span>
-              <span class="cv-pill faith">✝️ FaithTech Builder</span>
-            </div>
-            <div class="cv-dl-btns">
-              <a href="https://drive.google.com/your-educator-cv-link" class="cv-dl-btn dl-primary">Download PDF</a>
-              <a href="https://linkedin.com/in/adewalesamsonadeagbo" class="cv-dl-btn dl-secondary" target="_blank">LinkedIn</a>
-            </div>
-          </div>
-          <div class="cv-contact-row">
-            <a href="#">Lagos / Ogun State, Nigeria</a>
-            <a href="https://wa.me/2348100866322">+234 810 086 6322</a>
-            <a href="/cdn-cgi/l/email-protection#e981809a84889b9f8c8585869c9a8e9b888a8ca98e84888085c78a8684"><span class="__cf_email__" data-cfemail="076f6e746a667571626b6b687274607566646247606a666e6b2964686a">[email&#160;protected]</span></a>
-            <a href="https://linkedin.com/in/adewalesamsonadeagbo" target="_blank">adewalesamsonadeagbo</a>
-            <a href="https://cssadewale.github.io/cbt-system" target="_blank">CBT Pro Platform</a>
-          </div>
-        </div>
-
-        <!-- Teaching subjects -->
-        <div class="cv-section">
-          <div class="cv-sec-title">Teaching Subjects</div>
-          <div class="cv-stack">
-            <span class="cv-tag green-tag">Mathematics</span><span class="cv-tag green-tag">Further Mathematics</span>
-            <span class="cv-tag green-tag">Physics</span><span class="cv-tag green-tag">Chemistry</span>
-            <span class="cv-tag">Computer Science</span><span class="cv-tag">Basic Science</span>
-          </div>
-        </div>
-
-        <div class="cv-section">
-          <div class="cv-sec-title">Examinations Supported</div>
-          <div class="cv-stack">
-            <span class="cv-tag">WAEC</span><span class="cv-tag">NECO</span><span class="cv-tag">GCE</span><span class="cv-tag">BECE</span>
-            <span class="cv-tag">UTME</span><span class="cv-tag">Post-UTME</span><span class="cv-tag">IGCSE</span>
-            <span class="cv-tag">IELTS</span><span class="cv-tag">JUPEB</span><span class="cv-tag">SAT</span>
-          </div>
-        </div>
-
-        <div class="cv-section">
-          <div class="cv-sec-title">EdTech Skills</div>
-          <div class="cv-stack">
-            <span class="cv-tag highlight">CBT Pro (Built It)</span><span class="cv-tag">Zoom</span><span class="cv-tag">Google Classroom</span>
-            <span class="cv-tag">MS Teams</span><span class="cv-tag">WAEC Registration</span><span class="cv-tag">CBT Lab Setup</span>
-            <span class="cv-tag">Student Counselling</span><span class="cv-tag">Curriculum Design</span>
-          </div>
-        </div>
-
-        <!-- Profile -->
-        <div class="cv-section">
-          <div class="cv-sec-title">Professional Profile</div>
-          <p class="cv-profile-text"><strong>Experienced Secondary School Educator, School Administrator, and EdTech Innovator</strong> with over 15 years of continuous teaching experience across Lagos and Ogun State, Nigeria. Specialist in Mathematics, Further Mathematics, Physics, and Chemistry from JSS1 to SSS3 level.<br><br>Beyond classroom teaching, I have served as <strong>Head Teacher and Principal</strong>, registered thousands of students for national examinations, set up CBT laboratories in schools, and — as Founder of <strong>HMG Academy</strong> — built a virtual school that delivers lessons across all subjects and supports students for both Nigerian and international examinations. I combine deep subject expertise with genuine digital literacy and a commitment to learning that never stopped.<br><br>As a <strong>FaithTech Builder</strong> under HMG Gospel, I also leverage digital platforms to spread the gospel and serve church and faith communities with purpose-built tools.</p>
-        </div>
-
-        <!-- Teaching Experience -->
-        <div class="cv-section">
-          <div class="cv-sec-title">Teaching Experience</div>
-
-          <div class="cv-exp">
-            <div class="cv-exp-top"><span class="cv-exp-role">Mathematics, Physics & Chemistry Teacher</span><span class="cv-exp-period">2023 – Present</span></div>
-            <div class="cv-exp-org">God of Seed Academy · Lagos, Nigeria</div>
-            <ul class="cv-exp-bullets">
-              <li>Teaching Mathematics, Physics, and Chemistry across JSS and SSS levels</li>
-              <li>Implementing digital teaching tools including CBT Pro for classroom assessments</li>
-            </ul>
-          </div>
-
-          <div class="cv-exp">
-            <div class="cv-exp-top"><span class="cv-exp-role">Mathematics & Chemistry Teacher</span><span class="cv-exp-period">2023 – 2025</span></div>
-            <div class="cv-exp-org">Dave Model School · Lagos, Nigeria</div>
-            <ul class="cv-exp-bullets">
-              <li>Delivered Mathematics, Further Mathematics, and Chemistry at SSS level</li>
-              <li>Prepared students specifically for WAEC and NECO examinations</li>
-            </ul>
-          </div>
-
-          <div class="cv-exp">
-            <div class="cv-exp-top"><span class="cv-exp-role">Science & Mathematics Teacher</span><span class="cv-exp-period">2019 – 2022</span></div>
-            <div class="cv-exp-org">Fredaks Group of Schools · Lagos, Nigeria</div>
-            <ul class="cv-exp-bullets">
-              <li>Full complement of science subjects — Mathematics, Further Mathematics, Physics, Chemistry — across JSS1 to SSS3</li>
-              <li>Consistently prepared students for WAEC, NECO, and UTME examinations</li>
-            </ul>
-          </div>
-
-          <div class="cv-exp">
-            <div class="cv-exp-top"><span class="cv-exp-role">Head Teacher / Principal & Science Tutor</span><span class="cv-exp-period">2015 – 2019</span></div>
-            <div class="cv-exp-org">High Favour School · Lagos, Nigeria</div>
-            <ul class="cv-exp-bullets">
-              <li>Led school administration as Head Teacher / Principal — curriculum planning, staff coordination, student welfare</li>
-              <li>Maintained teaching duties in Mathematics and Sciences alongside administrative responsibilities</li>
-              <li>Managed national examination registration (WAEC, NECO, BECE) for the school</li>
-            </ul>
-          </div>
-
-          <div class="cv-exp">
-            <div class="cv-exp-top"><span class="cv-exp-role">Science Teacher</span><span class="cv-exp-period">2010 – 2013</span></div>
-            <div class="cv-exp-org">Marie Group of Schools · Lagos, Nigeria</div>
-            <ul class="cv-exp-bullets">
-              <li>Mathematics, Physics, and Chemistry at SSS level</li>
-              <li>Student counselling and academic progress monitoring</li>
-            </ul>
-          </div>
-
-          <div class="cv-exp">
-            <div class="cv-exp-top"><span class="cv-exp-role">First Classroom — Mathematics & Science Teacher</span><span class="cv-exp-period">2009 – 2010</span></div>
-            <div class="cv-exp-org">Chrisville Schools · Lagos, Nigeria</div>
-            <ul class="cv-exp-bullets"><li>Beginning of a 15+ year classroom career in Nigerian secondary education</li></ul>
-          </div>
-
-          <p style="font-size:.78rem;color:var(--muted);margin-top:.5rem;">Also tutors on: <strong>Tuteria · Prepclass · Gate Academy · Dolessons</strong></p>
-        </div>
-
-        <!-- HMG Academy -->
-        <div class="cv-section">
-          <div class="cv-sec-title">Founder & Director — HMG Academy</div>
-          <div class="cv-exp">
-            <div class="cv-exp-top"><span class="cv-exp-role">Founder, Director & Lead Educator</span><span class="cv-exp-period">2015 – Present</span></div>
-            <div class="cv-exp-org">HMG Academy (subsidiary of HMG Concepts) · Virtual / Nigeria · <a href="https://hmgconcepts.pages.dev" style="color:var(--accent2);">hmgconcepts.pages.dev</a></div>
-            <ul class="cv-exp-bullets">
-              <li>Founded and leads a <strong>strictly virtual EdTech school</strong> — fully online delivery via Zoom and Google Meet</li>
-              <li>HMG Academy offers lessons across <strong>all subjects</strong> through a team of seasoned experienced teachers</li>
-              <li>Supports students for: <strong>WAEC · NECO · GCE · BECE · UTME · Post-UTME · IGCSE · IELTS · JUPEB · SAT</strong></li>
-              <li>Built and deployed <strong>CBT Pro</strong> — a free, live exam platform — for use by the academy and schools across Nigeria</li>
-              <li>Organises academic seminars, webinars, inter-school quiz and debate competitions, and career counselling</li>
-              <li>Manages national examination registration for students: WAEC, NECO, GCE, UTME</li>
-              <li>Sets up CBT laboratories in schools — advising on hardware, software, and exam administration workflows</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Education -->
-        <div class="cv-section">
-          <div class="cv-sec-title">Education</div>
-          <div class="cv-exp">
-            <div class="cv-exp-top"><span class="cv-exp-role">B.Sc.(Ed) Computer Science Education</span><span class="cv-exp-period">2023</span></div>
-            <div class="cv-exp-org">Lagos State University (LASU)</div>
-          </div>
-          <div class="cv-exp">
-            <div class="cv-exp-top"><span class="cv-exp-role">3MTT Data Science Programme</span><span class="cv-exp-period">2025</span></div>
-            <div class="cv-exp-org">Federal Government of Nigeria</div>
-          </div>
-          <div class="cv-exp">
-            <div class="cv-exp-top"><span class="cv-exp-role">Piano & Rudiments of Music</span><span class="cv-exp-period">2013</span></div>
-            <div class="cv-exp-org">Rotop Music Academy</div>
-          </div>
-        </div>
-
-        <!-- Professional Dev -->
-        <div class="cv-section">
-          <div class="cv-sec-title">Professional Development</div>
-          <div class="cv-stack">
-            <span class="cv-tag">IBM SkillsBuild Ambassador — Cohort 4 (2026)</span>
-            <span class="cv-tag">Digital Teacher Academy (2020)</span>
-            <span class="cv-tag">Jobberman Soft Skills (2021 & 2025)</span>
-            <span class="cv-tag">Afritech Academy — Digital Marketing (2025)</span>
-            <span class="cv-tag">Diploma in System Data Management (2014)</span>
-            <span class="cv-tag">DSN × Google DeepTech_Ready (2026)</span>
-          </div>
-        </div>
-
-        <!-- Availability -->
-        <div class="cv-section">
-          <div class="cv-sec-title">Open to Opportunities</div>
-          <div class="cv-avail">
-            <span class="cv-avail-tag">Virtual Teaching Roles</span>
-            <span class="cv-avail-tag">School Tech Partnerships</span>
-            <span class="cv-avail-tag">CBT Lab Setup Consulting</span>
-            <span class="cv-avail-tag">Exam Registration Services</span>
-            <span class="cv-avail-tag">Academic Seminar Organisation</span>
-            <span class="cv-avail-tag">Curriculum Development</span>
-            <span class="cv-avail-tag" style="color:var(--faith);border-color:rgba(56,189,248,.3);background:rgba(56,189,248,.08);">FaithTech / HMG Gospel Projects</span>
-          </div>
-          <p style="font-size:.8rem;color:var(--muted);margin-top:1rem;">Contact via WhatsApp for fastest response: <strong>+234 810 086 6322</strong></p>
-        </div>
-
-      </div>
-    </div>
-
+  <!-- Tab switcher -->
+  <div class="cv-switcher">
+    <button class="cv-sw-btn active" data-cv-tab="ds">📊 Data Scientist / AI-Augmented Developer CV</button>
+    <button class="cv-sw-btn" data-cv-tab="edu">🏫 Educator &amp; Administrator CV</button>
   </div>
 
-  <footer>
-    <div class="footer-logo">cssadewale</div>
-    <div class="footer-tagline">AI-Augmented Solutions Developer · EdTech Builder · DataTech Builder · FaithTech Builder</div>
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="projects.html">Projects</a>
-      <a href="journey.html">Journey</a>
-      <a href="https://hmgconcepts.pages.dev" target="_blank">HMG Concepts</a>
-      <a href="https://github.com/cssadewale" target="_blank">GitHub</a>
-    </div>
-    <div class="footer-bottom">© 2025–2026 Adewale Samson Adeagbo · HMG Concepts · All Rights Reserved</div>
-  </footer>
+  <!-- ══ DATA SCIENTIST CV ═══════════════════════════════════════════════ -->
+  <div id="cv-ds" class="cv-panel active">
+    <div class="cv-card">
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    function showCV(type) {
-      document.querySelectorAll('.cv-panel').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.cv-tab').forEach(t => t.classList.remove('active'));
-      document.getElementById('cv-' + type).classList.add('active');
-      event.target.classList.add('active');
-    }
-  </script>
+      <!-- Header -->
+      <div class="cv-hdr">
+        <div>
+          <div class="cv-name">Adewale Samson Adeagbo</div>
+          <div class="cv-title">Data Scientist · AI-Augmented Solutions Developer · Machine Learning Engineer</div>
+          <div class="cv-pills">
+            <span class="cv-pill cvp-e">🏫 EdTech Builder</span>
+            <span class="cv-pill cvp-d">📊 DataTech Builder</span>
+            <span class="cv-pill cvp-f">✝️ FaithTech Builder</span>
+          </div>
+          <div class="cv-dl-btns">
+            <a href="assets/docs/Adewale_Adeagbo_DataScientist_CV_2026.pdf" class="cv-dl cv-dl-gold" download="Adewale_Adeagbo_DataScientist_CV_2026.pdf">⬇ Download PDF</a>
+            <a href="https://linkedin.com/in/adewalesamsonadeagbo" class="cv-dl cv-dl-ghost" target="_blank" rel="noopener">💼 LinkedIn</a>
+          </div>
+        </div>
+        <div class="cv-contact-col">
+          <span>Lagos / Ogun State, Nigeria</span>
+          <a href="https://wa.me/2348100866322">+234 810 086 6322</a>
+          <a href="tel:+2348094481488">+234 809 448 1488</a>
+          <a href="mailto:adeagboadewalesamson@gmail.com">adeagboadewalesamson@gmail.com</a>
+          <a href="https://cssadewale.pages.dev" target="_blank">cssadewale.pages.dev</a>
+          <a href="https://github.com/cssadewale" target="_blank">github.com/cssadewale</a>
+          <a href="https://linkedin.com/in/adewalesamsonadeagbo" target="_blank">linkedin.com/in/adewalesamsonadeagbo</a>
+        </div>
+      </div>
+
+      <!-- Professional Summary -->
+      <div class="cv-sec">
+        <div class="cv-sec-title">Professional Summary</div>
+        <p class="cv-profile">
+          <strong>AI-Augmented Solutions Developer and Data Scientist</strong> with a foundation built across 15+ years in Nigerian secondary school classrooms. I operate across three builder identities: as an <strong>EdTech Builder</strong> (16 EdTech projects including a full CBT exam system, 11 LMS platforms, and school admin tools), as a <strong>DataTech Builder</strong> (7 end-to-end ML pipelines deployed across 7 industries, 11 interactive data tool simulators), and as a <strong>FaithTech Builder</strong> (gospel-driven digital tools under HMG Gospel).<br><br>
+          My teaching background is not a side note — it is my edge. I explain complex models clearly, translate technical outputs into decisions stakeholders can act on, and build solutions that work for real people in real conditions. My formal tech journey began with the <strong>3MTT Data Science Programme in 2025</strong>. I am currently active in three simultaneous advanced programmes: DeepTech_Ready (DSN × 3MTT × Google.org, DSML Track, Cohort 3), WorldQuant University Applied Data Science Lab, and Kodecamp ML Core Track.
+        </p>
+      </div>
+
+      <!-- Technical Skills -->
+      <div class="cv-sec">
+        <div class="cv-sec-title">Core Technical Skills</div>
+        <div class="cv-skills-2col">
+          <div class="cv-skill-group">
+            <div class="cv-skill-label">Data Science &amp; Machine Learning</div>
+            <div class="cv-tag-cloud">
+              <span class="cv-tag hl">Python</span><span class="cv-tag hl">Pandas</span><span class="cv-tag hl">NumPy</span>
+              <span class="cv-tag hl">Scikit-learn</span><span class="cv-tag hl">XGBoost</span><span class="cv-tag hl">SHAP</span>
+              <span class="cv-tag hl">SMOTE</span><span class="cv-tag hl">GridSearchCV</span><span class="cv-tag hl">TF-IDF</span>
+              <span class="cv-tag hl">NLTK</span><span class="cv-tag hl">FastAPI</span><span class="cv-tag hl">joblib</span>
+              <span class="cv-tag">Streamlit</span><span class="cv-tag">Matplotlib</span><span class="cv-tag">Seaborn</span>
+              <span class="cv-tag">Hugging Face</span>
+            </div>
+          </div>
+          <div class="cv-skill-group">
+            <div class="cv-skill-label">Data Analysis, BI &amp; Deployment</div>
+            <div class="cv-tag-cloud">
+              <span class="cv-tag">SQL</span><span class="cv-tag">Power BI</span><span class="cv-tag">Tableau</span>
+              <span class="cv-tag">Excel (Advanced)</span><span class="cv-tag">Google Sheets</span>
+              <span class="cv-tag">Git &amp; GitHub</span><span class="cv-tag">Vercel</span>
+              <span class="cv-tag">Cloudflare Pages</span><span class="cv-tag">GitHub Pages</span>
+              <span class="cv-tag">Supabase + RLS</span><span class="cv-tag">SQLite</span>
+              <span class="cv-tag">HTML5/CSS3/JS</span><span class="cv-tag">Prompt Engineering</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portfolio Projects -->
+      <div class="cv-sec">
+        <div class="cv-sec-title">Deployed Projects — 34 Live Projects</div>
+
+        <div class="cv-proj">
+          <div class="cv-proj-hdr">
+            <span class="cv-proj-name">CBT Pro — Free Exam Platform for Nigerian Schools (Flagship)</span>
+            <span class="cv-proj-meta">2024 – Present · LIVE</span>
+          </div>
+          <div class="cv-proj-url">HMG Technologies / HMG Academy · <a href="https://cbtsystem-hmgacademy.vercel.app/" target="_blank">cbtsystem-hmgacademy.vercel.app</a></div>
+          <ul class="cv-bullets">
+            <li>Full-stack CBT platform built on <strong>Android tablet with zero budget</strong> — no laptop, no web dev background, zero cost to schools</li>
+            <li>Features: 7-column CSV upload, timed exams, per-student randomisation, anti-cheat tab detection, auto-marking, result certificates with WhatsApp share, 4-tab analytics (Overview / Question Analysis / Student Comparison / Trends)</li>
+            <li>Stack: <strong>HTML5 · CSS3 · Vanilla JavaScript · Supabase (PostgreSQL + Auth + Row-Level Security) · Vercel</strong></li>
+            <li>Actively used by real secondary school students — production-grade EdTech under real Nigerian constraints</li>
+            <li>Accompanied by: CBT Question Bank Manager · Student Study Plan Generator · SchoolDocForge · TimetableCraft</li>
+          </ul>
+          <div class="cv-tag-cloud" style="margin-top:.5rem;">
+            <span class="cv-tag el">HTML5</span><span class="cv-tag el">Vanilla JS</span><span class="cv-tag el">Supabase</span><span class="cv-tag">Vercel</span>
+          </div>
+        </div>
+
+        <div class="cv-proj">
+          <div class="cv-proj-hdr">
+            <span class="cv-proj-name">Machine Learning Portfolio — 7 Deployed End-to-End Models</span>
+            <span class="cv-proj-meta">2024–2025 · All Live</span>
+          </div>
+          <ul class="cv-bullets">
+            <li><strong>TruthLens Fake News Detector</strong> (NLP · 3MTT Capstone 2) — XGBoost + TF-IDF (20K features) + VADER sentiment · 12,999 articles · <strong>AUC 0.9393 · Accuracy 86.75%</strong> — highest AUC in portfolio · <a href="https://cssadewale-fake-news-detector.streamlit.app/" target="_blank" style="color:var(--datatech);">Live ↗</a> · <a href="https://github.com/cssadewale/fake-news-detector" target="_blank" style="color:var(--muted);">GitHub</a></li>
+            <li><strong>NeuroWell Burnout Rate Predictor</strong> (Regression) — Gradient Boosting · 108 GridSearchCV configurations · 22,750 records · <strong>R² 0.855 · RMSE 0.072 · MAE 0.053</strong> · Mental fatigue (r=0.878) drives 85.9% of model importance · <a href="https://cssadewale-burnout-prediction.streamlit.app/" target="_blank" style="color:var(--datatech);">Live ↗</a></li>
+            <li><strong>Bank Customer Churn Prediction</strong> (Binary Classification) — Gradient Boosting · 10,000 bank records · <strong>F1 0.609 · AUC 0.868</strong> · Quantified retention recommendations · <a href="https://cssadewale-bank-customer-churn-prediction.streamlit.app/" target="_blank" style="color:var(--datatech);">Live ↗</a></li>
+            <li><strong>Insurance Claim Prediction</strong> — Random Forest + SMOTE + GridSearchCV + SHAP + FastAPI · 7,014 records · CV F1 ~0.79 · 6 business risk recommendations · <a href="https://cssadewale-insurance-claim-prediction.streamlit.app/" target="_blank" style="color:var(--datatech);">Live ↗</a></li>
+            <li><strong>Algorithmic Staff Promotion — Yakub Trading Group</strong> (HR Analytics) — Random Forest + GridSearchCV + SHAP · 38,312 records · <strong>ROC-AUC 0.891</strong> · Fairness analysis via SHAP · <a href="https://cssadewale-staff-promotion-prediction.streamlit.app/" target="_blank" style="color:var(--datatech);">Live ↗</a></li>
+            <li><strong>Income Level Prediction</strong> (Financial Inclusion) — 5-model comparison + SMOTE · 48,842 UCI Census records · Addresses underbanked population credit scoring · <a href="https://cssadewale-income-level-prediction.streamlit.app/" target="_blank" style="color:var(--datatech);">Live ↗</a></li>
+            <li><strong>SwiftChain Delivery Delay Prediction</strong> (Logistics · Multi-class) — Gradient Boosting · 15,549 records · 41 variables · <em>Transparently documents data leakage discovery and fix</em> — because honest engineering matters · <a href="https://cssadewale-swiftchain-delivery-prediction.streamlit.app/" target="_blank" style="color:var(--datatech);">Live ↗</a></li>
+          </ul>
+        </div>
+
+        <div class="cv-proj">
+          <div class="cv-proj-hdr">
+            <span class="cv-proj-name">HMG Academy LMS — 11 Learning Platforms</span>
+            <span class="cv-proj-meta">2025 · All Live · @hmgacademyhub</span>
+          </div>
+          <ul class="cv-bullets">
+            <li>SQL Learn · Streamlit Learn · Excel Learn · Data Science Learn · Data Analysis Learn · PyDataFlow (Python for DS) · VizLearn (Data Viz in Python) · ML Lab · Junior Class · Senior Class · QueryPilot</li>
+            <li>Complete LMS ecosystem — data science curriculum + Nigerian JSS/SSS secondary school curriculum — all browser-based, zero installation required</li>
+          </ul>
+        </div>
+
+        <div class="cv-proj">
+          <div class="cv-proj-hdr">
+            <span class="cv-proj-name">Data Tool Simulators — 11 Interactive Learning Tools</span>
+            <span class="cv-proj-meta">2025 · All Live · @cssadewale / @hmgtechnologies</span>
+          </div>
+          <ul class="cv-bullets">
+            <li>MS Excel · PgAdmin · MS SQL Server · MySQL Workbench · VS Code · Azure Data Studio · DuckDB · Power BI · Tableau · Azure · ChatLens (@hmgtechnologies)</li>
+            <li>Browser-based simulations of professional data tools — enabling learners to practise without local installation or paid licences</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Experience -->
+      <div class="cv-sec">
+        <div class="cv-sec-title">Professional Experience</div>
+        <div class="cv-exp">
+          <div class="cv-exp-hdr"><span class="cv-exp-role">Visioner / Director &amp; Data Lead · HMG Concepts (His Marvellous Grace Educational Consult)</span><span class="cv-exp-period">2015 – Present</span></div>
+          <div class="cv-exp-org">Lagos, Nigeria · hmgconcepts.pages.dev</div>
+          <ul class="cv-bullets">
+            <li>Founded and direct a fully virtual educational institution with four subsidiaries: HMG Academy, HMG Technologies, HMG Gospel, HMG Media</li>
+            <li>Apply data-driven methods to track student performance, identify learning gaps, and guide strategic educational decisions</li>
+            <li>Manage national examination registrations (WAEC, NECO, GCE, UTME) — <strong>100% data accuracy record</strong> maintained</li>
+            <li>Built and deployed CBT Pro — free, production-grade exam platform used by real students at zero cost to schools</li>
+          </ul>
+        </div>
+        <div class="cv-exp">
+          <div class="cv-exp-hdr"><span class="cv-exp-role">Mathematics &amp; Further Mathematics Tutor</span><span class="cv-exp-period">2023 – Present</span></div>
+          <div class="cv-exp-org">God of Seed Academy · Ogun State, Nigeria</div>
+          <ul class="cv-bullets">
+            <li>Apply data-informed teaching to identify student knowledge gaps and improve WAEC/NECO pass rates (SS1–SS3)</li>
+          </ul>
+        </div>
+        <div class="cv-exp">
+          <div class="cv-exp-hdr"><span class="cv-exp-role">Freelance Mathematics &amp; Science Tutor</span><span class="cv-exp-period">2022 – Present</span></div>
+          <div class="cv-exp-org">Tuteria · Prepclass · Gate Academy · Remote &amp; Onsite</div>
+          <ul class="cv-bullets">
+            <li>Personalised data-driven lesson plans for IGCSE, WAEC, NECO, UTME, and BECE examination preparation</li>
+          </ul>
+        </div>
+        <div class="cv-exp">
+          <div class="cv-exp-hdr"><span class="cv-exp-role">Science &amp; Mathematics Teacher</span><span class="cv-exp-period">2019 – 2022</span></div>
+          <div class="cv-exp-org">Fredaks Group of Schools · Lagos, Nigeria</div>
+          <ul class="cv-bullets">
+            <li>Taught Mathematics, Further Mathematics, Physics, Chemistry, and Computer Science across JSS1–SSS3</li>
+          </ul>
+        </div>
+        <div class="cv-exp">
+          <div class="cv-exp-hdr"><span class="cv-exp-role">Head Teacher / Principal &amp; Administrator</span><span class="cv-exp-period">2015 – 2019</span></div>
+          <div class="cv-exp-org">High Favour School · Ogun State, Nigeria</div>
+          <ul class="cv-bullets">
+            <li>Led all academic and administrative staff as Principal; taught Science subjects and Computer Studies; managed student welfare and examination registration</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="cv-sec">
+        <div class="cv-sec-title">Education</div>
+        <div class="cv-exp">
+          <div class="cv-exp-hdr"><span class="cv-exp-role">B.Sc.(Ed) in Computer Science Education</span><span class="cv-exp-period">Graduated 2023</span></div>
+          <div class="cv-exp-org">Lagos State University (LASU), Nigeria · Returned to university as an adult to build the technical foundation to solve classroom problems with technology.</div>
+        </div>
+        <div class="cv-exp">
+          <div class="cv-exp-hdr"><span class="cv-exp-role">3MTT Data Science Programme — The Technical Turning Point</span><span class="cv-exp-period">Certified December 2025</span></div>
+          <div class="cv-exp-org">Federal Government of Nigeria · Capstone 2: TruthLens Fake News Detector (AUC 0.9393)</div>
+        </div>
+      </div>
+
+      <!-- Certifications -->
+      <div class="cv-sec">
+        <div class="cv-sec-title">Certifications &amp; Active Programmes</div>
+        <div class="cv-certs" style="margin-bottom:.8rem;">
+          <span class="cv-cert active">🌺 DeepTech_Ready — DSN × 3MTT × Google.org (2026 · Active)</span>
+          <span class="cv-cert active">🌺 WorldQuant University — Applied Data Science Lab (Ongoing)</span>
+          <span class="cv-cert active">🌺 Kodecamp — ML Core Track, Cohort 6 (Ongoing)</span>
+          <span class="cv-cert">IBM SkillsBuild Hub Ambassador — Cohort 4 (Apr–Jun 2026)</span>
+          <span class="cv-cert">DSN × Microsoft Elevate — AI-900 Prep (2026)</span>
+        </div>
+        <div class="cv-certs">
+          <span class="cv-cert">3MTT Data Science (Dec 2025)</span>
+          <span class="cv-cert">DataCamp — Python + 7 courses (2024–2025)</span>
+          <span class="cv-cert">Generative AI in Data Analysis — OVA (2025)</span>
+          <span class="cv-cert">AI Fluency Track — Digital Skills Nigeria (2025)</span>
+          <span class="cv-cert">Data Analysis — Digital Skillup Africa (Nov 2025)</span>
+          <span class="cv-cert">Data Science — Youthrive/Access Bank (Jul 2025)</span>
+          <span class="cv-cert">AI Fundamentals — Microsoft/LinkedIn (2024)</span>
+          <span class="cv-cert">Excel with Copilot — Microsoft (2024)</span>
+          <span class="cv-cert">Copilot in PowerPoint — Microsoft (2024)</span>
+          <span class="cv-cert">Gen AI Skills (Ethics) — LinkedIn (2024)</span>
+          <span class="cv-cert">Digital Marketing — Afritech Academy (2025)</span>
+          <span class="cv-cert">Soft Skills — Jobberman (2021 &amp; 2025)</span>
+        </div>
+      </div>
+
+      <!-- Availability -->
+      <div class="cv-sec">
+        <div class="cv-sec-title">Availability &amp; Open To</div>
+        <div class="cv-avail">
+          <span class="cv-avail-tag">Remote Data Science Roles</span>
+          <span class="cv-avail-tag">ML Engineer Roles</span>
+          <span class="cv-avail-tag">Data Analyst Roles</span>
+          <span class="cv-avail-tag">EdTech Collaborations</span>
+          <span class="cv-avail-tag">ML Consulting</span>
+          <span class="cv-avail-tag">School Tech Partnerships</span>
+          <span class="cv-avail-tag">FaithTech Projects</span>
+          <span class="cv-avail-tag">AI Solutions Development</span>
+        </div>
+        <p style="font-size:.8rem;color:var(--text2);margin-top:.8rem;">Open to full-time, contract, and freelance engagements. Available across education, insurance, logistics, HR, banking, and healthcare domains. <strong>WhatsApp for fastest response: +234 810 086 6322</strong></p>
+      </div>
+
+      <!-- References -->
+      <div class="cv-sec">
+        <div class="cv-sec-title">References</div>
+        <div class="cv-ref"><strong>Mary Aimiuwu</strong> — Proprietress, High Favour School · <strong>+234 802 495 0363</strong><br>Additional references available on request.</div>
+      </div>
+
+    </div>
+  </div><!-- end cv-ds -->
+
+  <!-- ══ EDUCATOR CV ═════════════════════════════════════════════════════ -->
+  <div id="cv-edu" class="cv-panel">
+    <div class="cv-card">
+
+      <!-- Header -->
+      <div class="cv-hdr">
+        <div>
+          <div class="cv-name">Adewale Samson Adeagbo</div>
+          <div class="cv-title">STEM Educator · Education Leader · EdTech Innovator · Data-Informed Teacher</div>
+          <div class="cv-pills">
+            <span class="cv-pill cvp-e">🏫 EdTech Builder</span>
+            <span class="cv-pill cvp-f">✝️ FaithTech Builder</span>
+          </div>
+          <div class="cv-dl-btns">
+            <a href="assets/docs/Adewale_Adeagbo_Educator_CV_2026.pdf" class="cv-dl cv-dl-gold" download="Adewale_Adeagbo_Educator_CV_2026.pdf">⬇ Download PDF</a>
+            <a href="https://linkedin.com/in/adewalesamsonadeagbo" class="cv-dl cv-dl-ghost" target="_blank" rel="noopener">💼 LinkedIn</a>
+          </div>
+        </div>
+        <div class="cv-contact-col">
+          <span>Lagos / Ogun State, Nigeria</span>
+          <a href="https://wa.me/2348100866322">+234 810 086 6322</a>
+          <a href="tel:+2348094481488">+234 809 448 1488</a>
+          <a href="mailto:adeagboadewalesamson@gmail.com">adeagboadewalesamson@gmail.com</a>
+          <a href="https://cssadewale.pages.dev" target="_blank">cssadewale.pages.dev</a>
+          <a href="https://cbtsystem-hmgacademy.vercel.app/" target="_blank">CBT Pro Platform</a>
+        </div>
+      </div>
+
+      <!-- Teaching Philosophy -->
+      <div class="cv-sec">
+        <div class="cv-sec-title">Teaching Philosophy</div>
+        <p class="cv-profile">
+          <em style="color:var(--gold);">"Learning Deliberately. Teaching Authentically."</em><br><br>
+          I believe every student who is struggling has a <strong>gap — not a deficiency</strong>. My job is to find that gap, close it, and make the subject make sense. I do not teach to a class. I teach to individuals who happen to be in the same room. Over 15 years, I have taught Mathematics, Further Mathematics, Physics, Chemistry, and Computer Science across nursery, primary, and secondary levels in Lagos and Ogun State.<br><br>
+          I bring data science and technology into how I teach — tracking performance analytically, identifying knowledge gaps with precision, and personalising learning pathways. I hold a B.Sc.(Ed) in Computer Science Education from Lagos State University (2023), and I believe that the future of education belongs to teachers who are not afraid to learn new things. That belief is not theoretical. It is how I live.
+        </p>
+      </div>
+
+      <!-- Core Competencies -->
+      <div class="cv-sec">
+        <div class="cv-sec-title">Core Competencies</div>
+        <div class="cv-skills-2col">
+          <div class="cv-skill-group">
+            <div class="cv-skill-label">Teaching Subjects (JSS1–SSS3)</div>
+            <div class="cv-tag-cloud">
+              <span class="cv-tag el">Mathematics</span><span class="cv-tag el">Further Mathematics</span>
+              <span class="cv-tag el">Physics</span><span class="cv-tag el">Chemistry</span>
+              <span class="cv-tag">Computer Science</span><span class="cv-tag">Basic Science &amp; Technology</span><span class="cv-tag">Music</span>
+            </div>
+          </div>
+          <div class="cv-skill-group">
+            <div class="cv-skill-label">Examinations Supported</div>
+            <div class="cv-tag-cloud">
+              <span class="cv-tag">WAEC</span><span class="cv-tag">NECO</span><span class="cv-tag">GCE</span>
+              <span class="cv-tag">BECE</span><span class="cv-tag">UTME</span><span class="cv-tag">Post-UTME</span>
+              <span class="cv-tag">IGCSE</span><span class="cv-tag">IELTS</span><span class="cv-tag">JUPEB</span><span class="cv-tag">SAT</span>
+            </div>
+          </div>
+          <div class="cv-skill-group" style="margin-top:.8rem;">
+            <div class="cv-skill-label">EdTech &amp; Digital Teaching</div>
+            <div class="cv-tag-cloud">
+              <span class="cv-tag el">CBT Pro (I Built It)</span><span class="cv-tag el">CBT Lab Setup</span>
+              <span class="cv-tag">Zoom</span><span class="cv-tag">Google Classroom</span><span class="cv-tag">MS Teams</span>
+              <span class="cv-tag">WAEC / NECO Registration</span><span class="cv-tag">Data-Driven Teaching</span>
+            </div>
+          </div>
+          <div class="cv-skill-group" style="margin-top:.8rem;">
+            <div class="cv-skill-label">Leadership &amp; Administration</div>
+            <div class="cv-tag-cloud">
+              <span class="cv-tag">Curriculum Design</span><span class="cv-tag">Staff Supervision</span>
+              <span class="cv-tag">Academic Leadership</span><span class="cv-tag">Student Counselling</span>
+              <span class="cv-tag">Exam Seminar Organisation</span><span class="cv-tag">Edutainment Events</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Teaching Experience -->
+      <div class="cv-sec">
+        <div class="cv-sec-title">Teaching Experience — Complete Record (2009–Present)</div>
+        <div class="cv-table-wrap">
+          <table class="cv-teach-table">
+            <thead><tr><th>Period</th><th>Role</th><th>School / Platform</th><th>Subjects</th><th>Level</th></tr></thead>
+            <tbody>
+              <tr><td>2023–Present</td><td>Maths &amp; Science Teacher</td><td>God of Seed Academy · Ogun</td><td>Mathematics, Further Maths, Physics, Chemistry</td><td>JSS–SSS</td></tr>
+              <tr><td>2023–Present</td><td>Freelance Tutor</td><td>Tuteria · Prepclass · Gate Academy</td><td>Maths, Further Maths, Physics, Chemistry</td><td>All Levels</td></tr>
+              <tr><td>2023–2025</td><td>Science Tutor</td><td>Dave Model School · Ogun</td><td>Mathematics, Further Maths, Chemistry</td><td>SSS1–SSS3</td></tr>
+              <tr><td>2022–2024</td><td>Science Tutor</td><td>Roas Model School · Ogun</td><td>Mathematics, Chemistry, Physics</td><td>SSS</td></tr>
+              <tr><td>2022–2024</td><td>Admin &amp; Coordinator</td><td>Adebest School · Ogun</td><td>Administration</td><td>All</td></tr>
+              <tr><td>2022–2023</td><td>Science Tutor</td><td>Lifeline School · De Glorious College · EnnyCharles · Chrisville</td><td>Physics, Chemistry, Maths, Basic Tech</td><td>JSS–SSS</td></tr>
+              <tr><td>2021</td><td>Computer Instructor</td><td>Angel High School · Ogun</td><td>Computer Studies</td><td>JSS–SSS</td></tr>
+              <tr><td>2019–2022</td><td>Science Teacher &amp; Counsellor</td><td>Fredaks Group of Schools · Lagos</td><td>Maths, Further Maths, Physics, Chemistry, CS</td><td>JSS1–SSS3</td></tr>
+              <tr><td>2019–2020</td><td>Science &amp; CS Tutor</td><td>Anchor Heights School · Ogun</td><td>Physics, Further Maths, Computer</td><td>Secondary</td></tr>
+              <tr><td>2015–2019</td><td>Head Teacher / Principal</td><td>High Favour School · Ogun</td><td>Maths, Science, Administration</td><td>All Levels</td></tr>
+              <tr><td>2015–2016</td><td>Computer &amp; Music Tutor</td><td>Big Apple School · Ogun</td><td>Computer, Music</td><td>Primary</td></tr>
+              <tr><td>2014–2015</td><td>Music Tutor</td><td>Always Excellent Academy · Ogun</td><td>Piano, Music Theory</td><td>All</td></tr>
+              <tr><td>2014–2015</td><td>Head Teacher &amp; Science Teacher</td><td>Success Heights College · Ogun</td><td>Science, Administration</td><td>All</td></tr>
+              <tr><td>2013–2014</td><td>Class Teacher &amp; Science Teacher</td><td>Tokafid Group of School · Ogun</td><td>Mathematics, Science</td><td>Primary–Sec</td></tr>
+              <tr><td>2010–2013</td><td>Class Teacher</td><td>Marie Group of School · Ogun</td><td>Mathematics, Science</td><td>Primary–Sec</td></tr>
+              <tr><td>2009–2010</td><td>First Classroom</td><td>Chrisville Model School · Ogun</td><td>Mathematics, Basic Science</td><td>JSS</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- HMG Academy -->
+      <div class="cv-sec">
+        <div class="cv-sec-title">Founder &amp; Director — HMG Academy</div>
+        <div class="cv-exp">
+          <div class="cv-exp-hdr"><span class="cv-exp-role">Founder, Director &amp; Lead Educator</span><span class="cv-exp-period">2015 – Present</span></div>
+          <div class="cv-exp-org">HMG Academy (subsidiary of HMG Concepts) · Strictly Virtual · Nigeria · hmgconcepts.pages.dev</div>
+          <ul class="cv-bullets">
+            <li>Founded and lead a fully virtual educational institution with a dedicated team of subject-specialist teachers covering all subjects from nursery through secondary level</li>
+            <li>Design institutional structures, oversee teaching quality, and maintain consistently high academic standards across all virtual classes</li>
+            <li>Manage national examination registrations (WAEC, NECO, GCE, UTME) with <strong>100% data accuracy</strong> across all candidate records</li>
+            <li>Built and deployed <strong>CBT Pro</strong> — a free, production-grade exam platform actively used by real students at zero cost to schools</li>
+            <li>Organise academic seminars, webinars, inter-school quiz and debate competitions, and student career counselling programmes</li>
+            <li>Set up CBT laboratories in schools — advising on hardware, software configuration, and exam administration workflows</li>
+            <li>Supports students for: <strong>WAEC · NECO · GCE · BECE · UTME · Post-UTME · IGCSE · IELTS · JUPEB · SAT</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="cv-sec">
+        <div class="cv-sec-title">Education &amp; Formal Training</div>
+        <div class="cv-exp">
+          <div class="cv-exp-hdr"><span class="cv-exp-role">B.Sc.(Ed) in Computer Science Education</span><span class="cv-exp-period">Graduated 2023</span></div>
+          <div class="cv-exp-org">Lagos State University (LASU), Nigeria · Degree integrates CS with Education theory — equipping me to teach technology, use technology to teach, and understand how people learn.</div>
+        </div>
+        <div class="cv-exp">
+          <div class="cv-exp-hdr"><span class="cv-exp-role">3MTT Data Science Programme</span><span class="cv-exp-period">Certified December 2025</span></div>
+          <div class="cv-exp-org">Federal Government of Nigeria · The programme that unlocked the technical capability to build the EdTech tools I had always envisioned.</div>
+        </div>
+        <div class="cv-exp">
+          <div class="cv-exp-hdr"><span class="cv-exp-role">Piano Music &amp; Rudiments of Music</span><span class="cv-exp-period">2013</span></div>
+          <div class="cv-exp-org">Rotop Music Academy · Also a practising guitarist. Music tutoring was part of early career (2014–2016).</div>
+        </div>
+        <div class="cv-exp">
+          <div class="cv-exp-hdr"><span class="cv-exp-role">Secondary School Certificate (SSCE)</span><span class="cv-exp-period">2010</span></div>
+          <div class="cv-exp-org">Bammy College, Nigeria</div>
+        </div>
+      </div>
+
+      <!-- Professional Development -->
+      <div class="cv-sec">
+        <div class="cv-sec-title">Professional Development &amp; Certifications</div>
+        <div class="cv-certs">
+          <span class="cv-cert active">🌺 IBM SkillsBuild Hub Ambassador — Cohort 4 (2026)</span>
+          <span class="cv-cert active">🌺 DSN × Google DeepTech_Ready — DSML, Cohort 3 (2026)</span>
+          <span class="cv-cert">Professional Advancement Training for Educators — Digital Teacher Academy (2020)</span>
+          <span class="cv-cert">Digital Training for Teachers — GES Educational Consult (2020)</span>
+          <span class="cv-cert">Soft Skills for Career Success — Jobberman (2021 &amp; 2025)</span>
+          <span class="cv-cert">Digital Marketing — Afritech Academy (Feb 2025)</span>
+          <span class="cv-cert">AI Fundamentals &amp; Generative AI — Microsoft / OVA (2024–2025)</span>
+          <span class="cv-cert">Excel with Copilot — Microsoft (2024)</span>
+          <span class="cv-cert">Diploma in System Data Management — Quality Computer Training Center (2014)</span>
+          <span class="cv-cert">Diploma in Desktop Publishing — Quality Computer Training Center (2014)</span>
+          <span class="cv-cert">Diploma in Computer Engineering — Quality Computer Training Center (2014)</span>
+        </div>
+      </div>
+
+      <!-- Availability -->
+      <div class="cv-sec">
+        <div class="cv-sec-title">Open to Opportunities</div>
+        <div class="cv-avail">
+          <span class="cv-avail-tag">Virtual Teaching Roles</span>
+          <span class="cv-avail-tag">School Tech Partnerships</span>
+          <span class="cv-avail-tag">CBT Lab Setup Consulting</span>
+          <span class="cv-avail-tag">Exam Registration Services</span>
+          <span class="cv-avail-tag">Academic Seminar Organisation</span>
+          <span class="cv-avail-tag">Curriculum Development</span>
+          <span class="cv-avail-tag" style="color:var(--faith);border-color:rgba(56,189,248,.3);background:var(--faith-bg);">FaithTech / HMG Gospel Projects</span>
+        </div>
+        <p style="font-size:.8rem;color:var(--text2);margin-top:.8rem;"><strong>WhatsApp: +234 810 086 6322</strong> · Email: adeagboadewalesamson@gmail.com</p>
+      </div>
+
+      <!-- References -->
+      <div class="cv-sec">
+        <div class="cv-sec-title">References</div>
+        <div class="cv-ref"><strong>Mary Aimiuwu</strong> — Proprietress, High Favour School · <strong>+234 802 495 0363</strong><br>Additional references available on request.</div>
+      </div>
+
+    </div>
+  </div><!-- end cv-edu -->
+
+</div><!-- end body wrapper -->
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div><div class="footer-brand-name">cssadewale</div><p class="footer-brand-sub">AI-Augmented Solutions Developer · EdTech Builder · DataTech Builder · FaithTech Builder.</p><div class="footer-socials"><a href="https://linkedin.com/in/adewalesamsonadeagbo" class="footer-social" target="_blank" rel="noopener">💼</a><a href="https://github.com/cssadewale" class="footer-social" target="_blank" rel="noopener">🐙</a><a href="https://youtube.com/@hmgconcepts" class="footer-social" target="_blank" rel="noopener">📺</a><a href="https://wa.me/2348100866322" class="footer-social" target="_blank" rel="noopener">💬</a></div></div>
+      <div><div class="footer-col-title">Navigation</div><div class="footer-links-list"><a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="journey.html">Journey</a><a href="cv.html">CV</a><a href="index.html#contact">Contact</a></div></div>
+      <div><div class="footer-col-title">HMG Concepts</div><div class="footer-links-list"><a href="https://hmgconcepts.pages.dev" target="_blank" rel="noopener">HMG Academy ↗</a><a href="#">HMG Technologies</a><a href="#">HMG Gospel</a><a href="https://youtube.com/@hmgconcepts" target="_blank" rel="noopener">HMG Media ↗</a></div></div>
+      <div><div class="footer-col-title">GitHub Orgs</div><div class="footer-links-list"><a href="https://github.com/cssadewale" target="_blank" rel="noopener">@cssadewale ↗</a><a href="https://github.com/hmgacademyhub" target="_blank" rel="noopener">@hmgacademyhub ↗</a><a href="https://github.com/hmgtechnologies" target="_blank" rel="noopener">@hmgtechnologies ↗</a><a href="https://github.com/hmgospel" target="_blank" rel="noopener">@hmgospel ↗</a></div></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-text">© 2025–2026 Adewale Samson Adeagbo · HMG Concepts · All Rights Reserved</div>
+      <div class="footer-bottom-tagline">Built with AI leverage, grounded in data, taught from the classroom.</div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
 </body>
 </html>

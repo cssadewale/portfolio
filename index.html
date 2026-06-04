@@ -3,931 +3,976 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ═══ SEO META TAGS ═══════════════════════════════════════════════════
+       These tags tell search engines and social media platforms who you are.
+       ─────────────────────────────────────────────────────────────────── -->
   <title>Adewale Samson Adeagbo | AI-Augmented Solutions Developer · Data Scientist · STEM Educator — Lagos, Nigeria</title>
-  <meta name="description" content="Adewale Samson Adeagbo — AI-Augmented Solutions Developer, DataTech Builder, EdTech Builder, FaithTech Builder. 15+ years teaching, 12 deployed ML & EdTech projects. Lagos, Nigeria." />
+  <meta name="description" content="Adewale Samson Adeagbo — AI-Augmented Solutions Developer, EdTech Builder, DataTech Builder, FaithTech Builder. 15+ years teaching, 34 deployed projects across EdTech, ML, and DataTech domains. Lagos, Nigeria." />
+  <meta name="keywords" content="Adewale Adeagbo, Data Scientist Nigeria, EdTech Builder, AI Augmented Developer, STEM Educator Lagos, CBT Pro, HMG Concepts, Machine Learning Nigeria, cssadewale" />
+  <meta name="author" content="Adewale Samson Adeagbo" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph (Facebook, LinkedIn previews) -->
+  <meta property="og:title"       content="Adewale Samson Adeagbo | AI-Augmented Solutions Developer" />
+  <meta property="og:description" content="EdTech Builder · DataTech Builder · FaithTech Builder. 15+ years teaching. 34 live projects." />
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://cssadewale.pages.dev" />
+  <meta property="og:image"       content="https://cssadewale.pages.dev/assets/images/profile.jpg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:site"        content="@cssadewale" />
+  <meta name="twitter:title"       content="Adewale Samson Adeagbo | AI-Augmented Solutions Developer" />
+  <meta name="twitter:description" content="EdTech · DataTech · FaithTech Builder. Lagos, Nigeria." />
+  <meta name="twitter:image"       content="https://cssadewale.pages.dev/assets/images/profile.jpg" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://cssadewale.pages.dev/" />
+
+  <!-- Favicon placeholder -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- Page-specific styles -->
   <style>
-    /* ── ROOT & RESET ─────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg:        #0a0a0f;
-      --bg2:       #111118;
-      --bg3:       #16161f;
-      --border:    #1e1e2e;
-      --accent:    #7c6af7;
-      --accent2:   #a78bfa;
-      --green:     #22c55e;
-      --amber:     #f59e0b;
-      --rose:      #f43f5e;
-      --faith:     #38bdf8;
-      --text:      #e2e2f0;
-      --muted:     #888899;
-      --card:      #13131c;
-      --radius:    12px;
-      --radius-lg: 20px;
-      --ff:        'Segoe UI', system-ui, sans-serif;
-    }
-    html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); font-family: var(--ff); line-height: 1.7; overflow-x: hidden; }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-
-    /* ── NAV ──────────────────────────────────────────────────── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(10,10,15,0.92); backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      padding: 0 2rem;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 60px;
-    }
-    .nav-logo { font-weight: 700; font-size: 1rem; color: var(--accent2); letter-spacing: .02em; }
-    .nav-links { display: flex; gap: 1.6rem; flex-wrap: wrap; }
-    .nav-links a { font-size: .85rem; color: var(--muted); transition: color .2s; }
-    .nav-links a:hover { color: var(--text); }
-    .nav-cta {
-      background: var(--accent); color: #fff; padding: .38rem 1rem;
-      border-radius: 6px; font-size: .82rem; font-weight: 600;
-      transition: opacity .2s;
-    }
-    .nav-cta:hover { opacity: .85; }
-
-    /* ── HERO ─────────────────────────────────────────────────── */
+    /* ══ HERO ═══════════════════════════════════════════════════════════════
+       Full-viewport hero section with gradient background and grid overlay.
+    ═══════════════════════════════════════════════════════════════════════ */
     .hero {
       min-height: 100vh; display: flex; align-items: center;
-      padding: 80px 2rem 4rem;
-      position: relative; overflow: hidden;
+      padding: 80px 2rem 4rem; position: relative; overflow: hidden;
     }
+    /* Radial gradient glows */
     .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 70% 60% at 60% 40%, rgba(124,106,247,.12) 0%, transparent 70%),
-                  radial-gradient(ellipse 40% 40% at 20% 80%, rgba(56,189,248,.06) 0%, transparent 70%);
-      pointer-events: none;
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 70% 70% at 65% 40%, rgba(245,179,66,.07) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(56,189,248,.05) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 90% 90%, rgba(34,197,94,.04) 0%, transparent 60%);
     }
-    .hero-inner { max-width: 1100px; margin: 0 auto; width: 100%; display: flex; gap: 4rem; align-items: center; }
-    .hero-text { flex: 1; }
+    /* Subtle dot-grid background */
+    .hero::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(245,179,66,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(245,179,66,.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+    }
+    .hero-inner {
+      max-width: 1280px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 400px; gap: 4rem; align-items: center;
+      position: relative; z-index: 1;
+    }
+
+    /* ── Hero Text ── */
     .hero-badge {
-      display: inline-flex; align-items: center; gap: .5rem;
-      background: rgba(34,197,94,.1); border: 1px solid rgba(34,197,94,.25);
-      color: var(--green); font-size: .78rem; font-weight: 600;
-      padding: .3rem .9rem; border-radius: 100px; margin-bottom: 1.4rem;
-      letter-spacing: .04em; text-transform: uppercase;
+      display: inline-flex; align-items: center; gap: .6rem;
+      background: rgba(245,179,66,.08); border: 1px solid rgba(245,179,66,.25);
+      color: var(--gold); font-size: .71rem; font-weight: 700;
+      padding: .32rem 1rem; border-radius: 50px; margin-bottom: 1.4rem;
+      letter-spacing: .06em; text-transform: uppercase;
     }
-    .hero-badge span { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
-    .hero h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 800; line-height: 1.15; margin-bottom: 1rem; }
-    .hero h1 em { font-style: normal; color: var(--accent2); }
-    .hero-sub { font-size: 1.05rem; color: var(--muted); max-width: 560px; margin-bottom: 1.8rem; line-height: 1.75; }
+    .hero h1 { font-size: clamp(2.4rem, 5.5vw, 4rem); font-weight: 900; line-height: 1.1; margin-bottom: 1.2rem; letter-spacing: -.02em; }
+    .name-last {
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero-roles {
+      font-size: .94rem; color: var(--text2); font-weight: 500;
+      margin-bottom: 1.6rem; display: flex; align-items: center; gap: .6rem; flex-wrap: wrap;
+    }
+    .role-sep { color: var(--muted); }
     .hero-quote {
-      border-left: 3px solid var(--accent); padding: .9rem 1.2rem;
-      background: rgba(124,106,247,.06); border-radius: 0 8px 8px 0;
-      font-size: .92rem; color: var(--text); font-style: italic;
-      margin-bottom: 2rem; max-width: 560px;
+      border-left: 3px solid var(--gold); padding: .9rem 1.3rem;
+      background: rgba(245,179,66,.05); border-radius: 0 10px 10px 0;
+      font-size: .9rem; color: var(--text); font-style: italic;
+      margin-bottom: 2rem; max-width: 540px; line-height: 1.72;
     }
+    .hero-builders { display: flex; gap: .65rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .hero-btns     { display: flex; gap: .8rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .hero-socials  { display: flex; gap: .55rem; flex-wrap: wrap; }
+    .hero-soc-link {
+      font-size: .74rem; color: var(--text2); border: 1px solid var(--border);
+      padding: .32rem .85rem; border-radius: 6px; transition: all var(--tr);
+    }
+    .hero-soc-link:hover { border-color: var(--gold); color: var(--gold); }
 
-    /* ── THREE BUILDER IDENTITIES ─────────────────────────────── */
-    .builder-trio { display: flex; gap: .75rem; flex-wrap: wrap; margin-bottom: 2rem; }
-    .builder-pill {
-      display: flex; align-items: center; gap: .5rem;
-      padding: .55rem 1.1rem; border-radius: 50px; font-size: .82rem; font-weight: 700;
-      border: 1px solid; letter-spacing: .02em;
-    }
-    .pill-edtech  { background: rgba(34,197,94,.08);  border-color: rgba(34,197,94,.3);  color: var(--green); }
-    .pill-datatech{ background: rgba(124,106,247,.1); border-color: rgba(124,106,247,.35);color: var(--accent2); }
-    .pill-faith   { background: rgba(56,189,248,.08); border-color: rgba(56,189,248,.3);  color: var(--faith); }
-    .builder-pill .pill-icon { font-size: 1rem; }
-
-    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
-    .btn-primary {
-      background: var(--accent); color: #fff; padding: .7rem 1.6rem;
-      border-radius: 8px; font-weight: 700; font-size: .9rem;
-      transition: opacity .2s, transform .15s;
-    }
-    .btn-primary:hover { opacity: .88; transform: translateY(-1px); }
-    .btn-outline {
-      border: 1px solid var(--border); color: var(--text);
-      padding: .7rem 1.6rem; border-radius: 8px; font-weight: 600; font-size: .9rem;
-      background: transparent; transition: border-color .2s, background .2s;
-    }
-    .btn-outline:hover { border-color: var(--accent2); background: rgba(124,106,247,.07); }
-
-    .hero-socials { display: flex; gap: 1.2rem; flex-wrap: wrap; }
-    .hero-socials a {
-      font-size: .8rem; color: var(--muted); border: 1px solid var(--border);
-      padding: .35rem .85rem; border-radius: 6px; transition: color .2s, border-color .2s;
-    }
-    .hero-socials a:hover { color: var(--accent2); border-color: var(--accent2); }
-
-    /* hero visual card */
-    .hero-visual { flex: 0 0 340px; }
+    /* ── Hero Profile Card ── */
     .hero-card {
-      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg);
-      padding: 1.8rem; position: relative; overflow: hidden;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius-xl); padding: 2rem; position: relative; overflow: hidden;
     }
     .hero-card::before {
       content: ''; position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(124,106,247,.08) 0%, transparent 60%);
+      background: linear-gradient(135deg, rgba(245,179,66,.07) 0%, transparent 60%);
       pointer-events: none;
     }
-    .hc-photo {
-      width: 88px; height: 88px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--faith));
+
+    /* Profile photo slot */
+    .photo-slot { position: relative; margin-bottom: 1.3rem; display: inline-block; }
+    .photo-ring {
+      width: 100px; height: 100px; border-radius: 50%;
+      border: 3px solid var(--gold); overflow: hidden;
+      background: linear-gradient(135deg, var(--bg3), var(--bg4));
       display: flex; align-items: center; justify-content: center;
-      font-size: 2rem; margin-bottom: 1rem;
     }
-    .hc-name { font-weight: 700; font-size: 1rem; margin-bottom: .15rem; }
-    .hc-role { font-size: .78rem; color: var(--accent2); font-weight: 600; margin-bottom: 1rem; }
-    .hc-stats { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; margin-bottom: 1.2rem; }
-    .hc-stat { background: var(--bg3); border-radius: 8px; padding: .6rem .75rem; text-align: center; }
-    .hc-stat-num { font-size: 1.3rem; font-weight: 800; color: var(--accent2); display: block; line-height: 1; }
-    .hc-stat-lbl { font-size: .68rem; color: var(--muted); margin-top: .2rem; }
-    .hc-live {
+    .photo-ring img[data-photo-img] { width: 100%; height: 100%; object-fit: cover; display: none; }
+    .photo-ring [data-photo-placeholder] { font-size: 2.5rem; }
+    .photo-edit-btn {
+      position: absolute; bottom: 0; right: 0;
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--gold); border: 2px solid var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .7rem; cursor: pointer; color: var(--bg);
+      transition: transform var(--tr);
+    }
+    .photo-edit-btn:hover { transform: scale(1.12); }
+    .photo-edit-btn:focus { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+    .card-name { font-size: 1rem; font-weight: 800; margin-bottom: .15rem; }
+    .card-role { font-size: .74rem; color: var(--gold); font-weight: 600; margin-bottom: 1.2rem; }
+    .card-stats { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; margin-bottom: 1.2rem; }
+    .cs-item { background: var(--bg3); border: 1px solid var(--border); border-radius: 9px; padding: .6rem .8rem; text-align: center; }
+    .cs-num { font-size: 1.3rem; font-weight: 900; color: var(--gold); display: block; line-height: 1; }
+    .cs-lbl { font-size: .61rem; color: var(--text2); margin-top: .15rem; }
+    .card-live {
+      display: flex; align-items: center; gap: .55rem;
+      background: rgba(34,197,94,.07); border: 1px solid rgba(34,197,94,.2);
+      border-radius: 8px; padding: .55rem .9rem; font-size: .74rem; color: var(--edtech); margin-bottom: 1rem;
+    }
+    .card-links { display: flex; flex-direction: column; gap: .4rem; }
+    .card-link {
+      font-size: .74rem; color: var(--text2); border: 1px solid var(--border);
+      padding: .35rem .85rem; border-radius: 7px; transition: all var(--tr);
       display: flex; align-items: center; gap: .5rem;
-      background: rgba(34,197,94,.08); border: 1px solid rgba(34,197,94,.2);
-      border-radius: 8px; padding: .5rem .8rem; font-size: .75rem; color: var(--green);
     }
-    .hc-live::before { content:''; width:7px;height:7px;border-radius:50%;background:var(--green); animation:pulse 2s infinite; }
+    .card-link:hover { color: var(--gold); border-color: rgba(245,179,66,.35); background: var(--gold-glow); }
 
-    /* ── SECTION COMMONS ──────────────────────────────────────── */
-    section { padding: 5rem 2rem; }
-    .section-inner { max-width: 1100px; margin: 0 auto; }
-    .section-label { font-size: .75rem; font-weight: 700; color: var(--accent2); letter-spacing: .1em; text-transform: uppercase; margin-bottom: .6rem; }
-    .section-title { font-size: clamp(1.6rem,3.5vw,2.4rem); font-weight: 800; margin-bottom: .8rem; }
-    .section-sub { color: var(--muted); max-width: 600px; font-size: .95rem; margin-bottom: 3rem; }
-    .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+    /* ── PHOTO MODAL ── */
+    .photo-modal {
+      display: none; position: fixed; inset: 0; z-index: 2000;
+      background: rgba(0,0,0,.72); backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      align-items: center; justify-content: center;
+    }
+    .photo-modal.open { display: flex; animation: fadeIn .2s ease; }
+    .photo-modal-inner {
+      background: var(--card2); border: 1px solid var(--border2);
+      border-radius: var(--radius-xl); padding: 2rem; width: 90%; max-width: 440px;
+      position: relative; animation: fadeInUp .25s ease;
+    }
+    .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+    .modal-title { font-size: 1rem; font-weight: 800; color: var(--gold); }
+    .modal-close { background: none; border: none; color: var(--text2); font-size: 1.2rem; cursor: pointer; padding: .2rem .4rem; border-radius: 4px; transition: color var(--tr); }
+    .modal-close:hover { color: var(--rose); }
+    .modal-section { margin-bottom: 1.3rem; }
+    .modal-section-lbl { font-size: .72rem; color: var(--text2); font-weight: 700; text-transform: uppercase; letter-spacing: .07em; margin-bottom: .55rem; }
+    .modal-url-row { display: flex; gap: .5rem; }
+    .modal-url-row input { flex: 1; background: var(--bg3); border: 1px solid var(--border); color: var(--text); border-radius: 8px; padding: .55rem .85rem; font-size: .82rem; font-family: var(--ff); outline: none; transition: border-color var(--tr); }
+    .modal-url-row input:focus { border-color: var(--gold); }
+    .modal-apply-btn { padding: .55rem 1rem; border-radius: 8px; background: var(--gold); color: var(--bg); font-weight: 700; font-size: .78rem; border: none; cursor: pointer; white-space: nowrap; }
+    .modal-hint { font-size: .68rem; color: var(--muted); margin-top: .4rem; line-height: 1.5; }
+    .modal-divider { text-align: center; color: var(--muted); font-size: .74rem; margin: .8rem 0; position: relative; }
+    .modal-divider::before, .modal-divider::after { content: ''; position: absolute; top: 50%; width: 42%; height: 1px; background: var(--border); }
+    .modal-divider::before { left: 0; }
+    .modal-divider::after  { right: 0; }
+    .modal-file-btn { width: 100%; padding: .65rem; border-radius: 8px; border: 1px dashed var(--border2); background: transparent; color: var(--text2); font-size: .82rem; cursor: pointer; font-family: var(--ff); transition: all var(--tr); }
+    .modal-file-btn:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-glow); }
+    .modal-repo-note {
+      background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; margin-top: 1rem;
+    }
+    .modal-repo-note p { font-size: .76rem; color: var(--text2); line-height: 1.6; }
+    .modal-repo-note code { background: var(--bg4); padding: .1rem .4rem; border-radius: 3px; font-family: var(--ff-mono); font-size: .72rem; color: var(--gold); }
 
-    /* ── IDENTITY SECTION ─────────────────────────────────────── */
-    #identity { background: var(--bg2); }
-    .identity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 1.5rem; }
-    .identity-card {
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--bg2); border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border); padding: 2rem;
+    }
+    .stats-bar-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(6,1fr); gap: 1rem; }
+    .sbi { text-align: center; padding: .5rem; }
+
+    /* ── IDENTITY CARDS ── */
+    .identity-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    .id-card {
       background: var(--card); border: 1px solid var(--border);
-      border-radius: var(--radius-lg); padding: 2rem;
-      position: relative; overflow: hidden; transition: transform .2s, border-color .2s;
+      border-radius: var(--radius-xl); padding: 2rem;
+      position: relative; overflow: hidden; transition: transform var(--tr), border-color var(--tr);
     }
-    .identity-card:hover { transform: translateY(-3px); }
-    .identity-card.edtech:hover  { border-color: rgba(34,197,94,.4); }
-    .identity-card.datatech:hover{ border-color: rgba(124,106,247,.4); }
-    .identity-card.faith:hover   { border-color: rgba(56,189,248,.4); }
-    .ic-top { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.2rem; }
-    .ic-icon {
-      width: 52px; height: 52px; border-radius: 12px; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+    .id-card:hover { transform: translateY(-4px); }
+    .id-card.edtech:hover  { border-color: rgba(34,197,94,.5); }
+    .id-card.datatech:hover{ border-color: rgba(129,140,248,.5); }
+    .id-card.faith:hover   { border-color: rgba(56,189,248,.5); }
+    .id-glow {
+      position: absolute; top: -40px; right: -40px;
+      width: 120px; height: 120px; border-radius: 50%;
+      opacity: .28; filter: blur(40px); pointer-events: none;
     }
-    .edtech  .ic-icon { background: rgba(34,197,94,.12); }
-    .datatech .ic-icon{ background: rgba(124,106,247,.12); }
-    .faith   .ic-icon { background: rgba(56,189,248,.12); }
-    .ic-title { font-size: 1.05rem; font-weight: 800; }
-    .ic-sub   { font-size: .78rem; color: var(--muted); }
-    .edtech  .ic-title { color: var(--green); }
-    .datatech .ic-title{ color: var(--accent2); }
-    .faith   .ic-title { color: var(--faith); }
-    .ic-desc { font-size: .88rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.2rem; }
-    .ic-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
-    .ic-tag {
-      font-size: .7rem; padding: .25rem .65rem; border-radius: 4px;
-      font-weight: 600; background: var(--bg3); color: var(--muted);
-    }
-    .edtech  .ic-tag { color: var(--green); background: rgba(34,197,94,.08); }
-    .datatech .ic-tag{ color: var(--accent2); background: rgba(124,106,247,.08); }
-    .faith   .ic-tag { color: var(--faith); background: rgba(56,189,248,.08); }
+    .edtech  .id-glow { background: var(--edtech); }
+    .datatech .id-glow{ background: var(--datatech); }
+    .faith   .id-glow { background: var(--faith); }
+    .id-icon { width: 54px; height: 54px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin-bottom: 1.2rem; }
+    .edtech  .id-icon { background: var(--edtech-bg); }
+    .datatech .id-icon{ background: var(--datatech-bg); }
+    .faith   .id-icon { background: var(--faith-bg); }
+    .id-title { font-size: 1.05rem; font-weight: 800; margin-bottom: .2rem; }
+    .edtech  .id-title { color: var(--edtech); }
+    .datatech .id-title{ color: var(--datatech); }
+    .faith   .id-title { color: var(--faith); }
+    .id-eq { font-size: .7rem; color: var(--muted); font-family: var(--ff-mono); margin-bottom: .9rem; }
+    .id-desc { font-size: .84rem; color: var(--text2); line-height: 1.75; margin-bottom: 1.2rem; }
+    .id-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
 
-    /* ── HMG CONCEPTS SECTION ─────────────────────────────────── */
-    #hmg { background: var(--bg); }
-    .hmg-tagline {
-      text-align: center; font-size: .95rem; color: var(--muted);
-      font-style: italic; margin-bottom: 3rem; max-width: 600px; margin-left:auto; margin-right:auto;
-    }
-    .hmg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 1.2rem; }
-    .hmg-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.6rem;
-      transition: transform .2s, border-color .2s;
-    }
-    .hmg-card:hover { transform: translateY(-3px); border-color: var(--accent); }
+    /* ── HMG SECTION ── */
+    .hmg-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.2rem; }
+    .hmg-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.6rem; transition: transform var(--tr), border-color var(--tr); }
+    .hmg-card:hover { transform: translateY(-3px); border-color: rgba(245,179,66,.35); }
     .hmg-icon { font-size: 1.8rem; margin-bottom: .8rem; }
-    .hmg-name { font-size: 1rem; font-weight: 800; margin-bottom: .3rem; color: var(--accent2); }
-    .hmg-status { display: inline-block; font-size: .68rem; padding: .2rem .6rem; border-radius: 4px; font-weight: 700; margin-bottom: .8rem; }
-    .status-live  { background: rgba(34,197,94,.15); color: var(--green); }
-    .status-soon  { background: rgba(245,158,11,.12); color: var(--amber); }
-    .hmg-desc { font-size: .84rem; color: var(--muted); line-height: 1.65; margin-bottom: .8rem; }
-    .hmg-github { font-size: .75rem; color: var(--muted); display: flex; align-items: center; gap: .4rem; margin-bottom: .5rem; }
-    .hmg-github code { background: var(--bg3); padding: .15rem .5rem; border-radius: 4px; color: var(--accent2); }
-    .hmg-link { font-size: .78rem; color: var(--accent2); font-weight: 600; }
+    .hmg-name { font-size: .95rem; font-weight: 800; color: var(--gold); margin-bottom: .3rem; }
+    .hmg-gh   { font-size: .7rem; color: var(--muted); font-family: var(--ff-mono); margin: .5rem 0; }
+    .hmg-gh code { background: var(--bg4); padding: .1rem .4rem; border-radius: 4px; color: var(--text2); }
+    .hmg-desc { font-size: .8rem; color: var(--text2); line-height: 1.65; margin: .5rem 0 .8rem; }
+    .hmg-link { font-size: .75rem; color: var(--gold); font-weight: 600; }
     .hmg-link:hover { text-decoration: underline; }
 
-    /* ── SKILLS ───────────────────────────────────────────────── */
-    #skills { background: var(--bg2); }
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 1.5rem; }
-    .skill-cat {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.6rem;
-    }
-    .skill-cat-title { font-size: .85rem; font-weight: 700; color: var(--accent2); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: .06em; }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: .45rem; }
-    .skill-tag {
-      background: var(--bg3); color: var(--muted); font-size: .75rem;
-      padding: .3rem .7rem; border-radius: 5px; border: 1px solid var(--border);
-    }
+    /* ── PROJECT PREVIEW GRID ── */
+    .proj-preview { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.3rem; margin-bottom: 2.5rem; }
 
-    /* ── PROJECTS PREVIEW ─────────────────────────────────────── */
-    #projects { background: var(--bg); }
-    .proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px,1fr)); gap: 1.4rem; margin-bottom: 2.5rem; }
-    .proj-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: var(--radius-lg); padding: 1.8rem; display: flex; flex-direction: column;
-      transition: transform .2s, border-color .2s;
+    /* ── CATEGORY COUNT TILES ── */
+    .cat-tiles { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; }
+    .cat-tile {
+      border-radius: var(--radius-lg); padding: 1.2rem; text-align: center;
+      transition: all var(--tr); display: block; text-decoration: none;
     }
-    .proj-card:hover { transform: translateY(-3px); border-color: var(--accent); }
-    .proj-card.flagship { border-color: rgba(34,197,94,.3); background: linear-gradient(135deg, rgba(34,197,94,.04) 0%, var(--card) 50%); }
-    .proj-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
-    .proj-badge {
-      font-size: .68rem; font-weight: 700; padding: .25rem .65rem; border-radius: 4px;
-      text-transform: uppercase; letter-spacing: .05em;
-    }
-    .badge-live   { background: rgba(34,197,94,.15); color: var(--green); }
-    .badge-edtech { background: rgba(34,197,94,.12); color: var(--green); }
-    .badge-ml     { background: rgba(124,106,247,.12); color: var(--accent2); }
-    .badge-nlp    { background: rgba(245,158,11,.12); color: var(--amber); }
-    .proj-cat { font-size: .72rem; color: var(--muted); }
-    .proj-name { font-size: 1.05rem; font-weight: 800; margin-bottom: .6rem; }
-    .proj-desc { font-size: .85rem; color: var(--muted); flex: 1; margin-bottom: 1.2rem; line-height: 1.65; }
-    .proj-metrics { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 1rem; }
-    .proj-metric { font-size: .7rem; background: var(--bg3); border-radius: 4px; padding: .2rem .5rem; color: var(--accent2); font-weight: 600; }
-    .proj-stack { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
-    .proj-tech { font-size: .7rem; background: var(--bg3); padding: .2rem .55rem; border-radius: 4px; color: var(--muted); }
-    .proj-links { display: flex; gap: .75rem; margin-top: auto; }
-    .proj-link { font-size: .78rem; color: var(--accent2); font-weight: 600; padding: .35rem .85rem; border: 1px solid rgba(124,106,247,.3); border-radius: 6px; transition: background .2s; }
-    .proj-link:hover { background: rgba(124,106,247,.1); }
-    .view-all-wrap { text-align: center; }
+    .cat-num { font-size: 1.8rem; font-weight: 900; }
+    .cat-lbl { font-size: .72rem; color: var(--text2); margin-top: .35rem; line-height: 1.4; }
 
-    /* ── YOUTUBE SECTION ──────────────────────────────────────── */
-    #youtube { background: var(--bg2); }
-    .yt-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 1.2rem; margin-bottom: 2rem; }
-    .yt-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.4rem;
-      transition: transform .2s, border-color .2s;
-    }
-    .yt-card:hover { transform: translateY(-3px); border-color: #ef4444; }
-    .yt-thumb {
-      background: var(--bg3); border-radius: 8px; height: 100px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 2.2rem; margin-bottom: 1rem; color: #ef4444;
-    }
-    .yt-label { font-size: .68rem; color: #ef4444; font-weight: 700; margin-bottom: .4rem; text-transform: uppercase; letter-spacing: .06em; }
-    .yt-title { font-size: .88rem; font-weight: 700; margin-bottom: .4rem; line-height: 1.45; }
-    .yt-sub { font-size: .76rem; color: var(--muted); }
+    /* ── SKILLS GRID ── */
+    .skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.3rem; }
+    .skill-cat { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; }
+    .skill-cat-title { font-size: .71rem; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: .09em; margin-bottom: 1rem; display: flex; align-items: center; gap: .5rem; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
 
-    /* ── CERTIFICATIONS ───────────────────────────────────────── */
-    #certifications { background: var(--bg); }
-    .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 1rem; }
-    .cert-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.3rem;
-      display: flex; gap: 1rem; align-items: flex-start;
-      transition: border-color .2s;
-    }
-    .cert-card.active { border-color: rgba(34,197,94,.3); }
-    .cert-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: .1rem; }
-    .cert-name { font-size: .88rem; font-weight: 700; margin-bottom: .2rem; }
-    .cert-org  { font-size: .75rem; color: var(--muted); margin-bottom: .3rem; }
-    .cert-year { font-size: .7rem; font-weight: 600; }
-    .cert-year.active-now { color: var(--green); }
-    .cert-year.done { color: var(--muted); }
+    /* ── CERTIFICATIONS ── */
+    .cert-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; }
+    .cert-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.2rem; display: flex; gap: 1rem; align-items: flex-start; transition: border-color var(--tr); }
+    .cert-card.active-cert { border-color: rgba(34,197,94,.3); }
+    .cert-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .cert-name { font-size: .86rem; font-weight: 700; margin-bottom: .2rem; }
+    .cert-org  { font-size: .74rem; color: var(--text2); margin-bottom: .3rem; }
+    .cert-yr   { font-size: .67rem; font-weight: 700; }
+    .cert-yr.active-yr { color: var(--edtech); }
+    .cert-yr.done-yr   { color: var(--muted); }
 
-    /* ── TESTIMONIALS ─────────────────────────────────────────── */
-    #testimonials { background: var(--bg2); }
-    .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 1.3rem; }
-    .testi-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.6rem;
-    }
-    .testi-text { font-size: .88rem; color: var(--text); font-style: italic; line-height: 1.75; margin-bottom: 1.1rem; }
-    .testi-text::before { content: '\201C'; color: var(--accent2); font-size: 1.4rem; line-height: 0; vertical-align: -.3em; margin-right: .1em; }
-    .testi-author { display: flex; align-items: center; gap: .75rem; }
-    .testi-av {
-      width: 38px; height: 38px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--faith));
-      display: flex; align-items: center; justify-content: center;
-      font-size: .78rem; font-weight: 800; color: #fff; flex-shrink: 0;
-    }
+    /* ── TESTIMONIALS ── */
+    .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.3rem; }
+    .testi-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.6rem; }
+    .testi-stars { color: var(--gold); font-size: .9rem; margin-bottom: .8rem; letter-spacing: .1em; }
+    .testi-text { font-size: .86rem; color: var(--text2); font-style: italic; line-height: 1.75; margin-bottom: 1.1rem; }
+    .testi-author { display: flex; align-items: center; gap: .8rem; }
+    .testi-av { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), #e8960a); display: flex; align-items: center; justify-content: center; font-size: .74rem; font-weight: 800; color: var(--bg); flex-shrink: 0; }
     .testi-name { font-size: .82rem; font-weight: 700; }
-    .testi-role { font-size: .72rem; color: var(--muted); }
+    .testi-role { font-size: .71rem; color: var(--muted); }
 
-    /* ── CONTACT ──────────────────────────────────────────────── */
-    #contact { background: var(--bg); }
+    /* ── CONTACT ── */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-    @media(max-width:700px){ .contact-grid{grid-template-columns:1fr;} }
-    .contact-info h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 1.2rem; }
-    .contact-item { display: flex; gap: 1rem; margin-bottom: 1.2rem; align-items: flex-start; }
-    .ci-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: .1rem; }
-    .ci-label { font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: .2rem; }
-    .ci-val { font-size: .88rem; font-weight: 600; color: var(--accent2); }
-    .open-to { background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.3rem; margin-top: 1.5rem; }
-    .open-to-title { font-size: .8rem; font-weight: 700; color: var(--accent2); margin-bottom: .8rem; text-transform: uppercase; letter-spacing: .06em; }
-    .open-to-tags { display: flex; flex-wrap: wrap; gap: .5rem; }
-    .open-tag { font-size: .74rem; background: rgba(124,106,247,.1); border: 1px solid rgba(124,106,247,.25); color: var(--accent2); padding: .28rem .7rem; border-radius: 5px; }
-    .contact-form { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem; }
-    .form-group { margin-bottom: 1.2rem; }
-    .form-group label { display: block; font-size: .78rem; color: var(--muted); margin-bottom: .4rem; font-weight: 600; }
-    .form-group input, .form-group select, .form-group textarea {
-      width: 100%; background: var(--bg3); border: 1px solid var(--border);
-      color: var(--text); border-radius: 8px; padding: .7rem 1rem; font-size: .88rem;
-      font-family: var(--ff); outline: none; transition: border-color .2s;
-    }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent); }
-    .form-group textarea { resize: vertical; min-height: 110px; }
-    .form-submit {
-      width: 100%; background: var(--accent); color: #fff;
-      border: none; border-radius: 8px; padding: .85rem;
-      font-size: .92rem; font-weight: 700; cursor: pointer;
-      transition: opacity .2s;
-    }
-    .form-submit:hover { opacity: .88; }
+    .contact-info-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 1.5rem; }
+    .contact-item { display: flex; gap: 1rem; margin-bottom: 1.4rem; align-items: flex-start; }
+    .ci-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--bg4); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .ci-label { font-size: .67rem; color: var(--muted); text-transform: uppercase; letter-spacing: .07em; margin-bottom: .2rem; font-weight: 600; }
+    .ci-val   { font-size: .88rem; font-weight: 600; color: var(--gold); }
+    .ci-val a { color: inherit; }
+    .open-to { background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.4rem; margin-top: 1.5rem; }
+    .open-to-title { font-size: .7rem; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: .09em; margin-bottom: .9rem; }
+    .open-tags { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .open-tag { font-size: .72rem; background: var(--gold-glow); border: 1px solid rgba(245,179,66,.25); color: var(--gold); padding: .28rem .75rem; border-radius: 5px; font-weight: 600; }
+    .contact-form-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 2rem; }
+    .form-title { font-size: 1rem; font-weight: 800; margin-bottom: 1.5rem; }
+    #form-message { display: none; font-size: .82rem; padding: .6rem; border-radius: 6px; margin-top: .8rem; }
 
-    /* ── FOOTER ───────────────────────────────────────────────── */
-    footer {
-      background: var(--bg2); border-top: 1px solid var(--border);
-      padding: 2.5rem 2rem; text-align: center;
+    /* ── RESPONSIVE ── */
+    @media(max-width:1100px){
+      .hero-inner    { grid-template-columns: 1fr; }
+      .hero-card     { display: none; }
+      .identity-grid { grid-template-columns: 1fr; }
+      .hmg-grid      { grid-template-columns: 1fr 1fr; }
+      .proj-preview  { grid-template-columns: 1fr 1fr; }
+      .skills-grid   { grid-template-columns: 1fr 1fr; }
+      .stats-bar-inner{ grid-template-columns: repeat(3,1fr); }
+      .cert-grid     { grid-template-columns: 1fr; }
+      .testi-grid    { grid-template-columns: 1fr; }
+      .contact-grid  { grid-template-columns: 1fr; }
+      .cat-tiles     { grid-template-columns: repeat(2,1fr); }
     }
-    .footer-inner { max-width: 1100px; margin: 0 auto; }
-    .footer-logo { font-weight: 800; font-size: 1rem; color: var(--accent2); margin-bottom: .5rem; }
-    .footer-tagline { font-size: .8rem; color: var(--muted); margin-bottom: 1.5rem; }
-    .footer-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 1.2rem; }
-    .footer-links a { font-size: .8rem; color: var(--muted); transition: color .2s; }
-    .footer-links a:hover { color: var(--accent2); }
-    .footer-bottom { font-size: .74rem; color: var(--muted); }
-
-    /* ── RESPONSIVE ───────────────────────────────────────────── */
-    @media(max-width:900px){
-      .hero-inner { flex-direction: column; gap: 2.5rem; }
-      .hero-visual { flex: unset; width: 100%; max-width: 380px; }
-      .nav-links { display: none; }
+    @media(max-width:640px){
+      .hmg-grid    { grid-template-columns: 1fr; }
+      .proj-preview{ grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .stats-bar-inner{ grid-template-columns: repeat(2,1fr); }
+      .cat-tiles   { grid-template-columns: repeat(2,1fr); }
     }
-    @media(max-width:600px){
-      nav { padding: 0 1rem; }
-      section { padding: 3.5rem 1rem; }
-      .hero { padding: 80px 1rem 3rem; }
-    }
-
-    /* ── STATS BAR ────────────────────────────────────────────── */
-    .stats-bar {
-      background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-      padding: 1.8rem 2rem;
-    }
-    .stats-bar-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 1.5rem; }
-    .stat-item { text-align: center; }
-    .stat-num { font-size: 2rem; font-weight: 900; color: var(--accent2); display: block; line-height: 1; }
-    .stat-lbl { font-size: .74rem; color: var(--muted); margin-top: .3rem; }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <span class="nav-logo">cssadewale</span>
+<!-- ══ NAVIGATION ═══════════════════════════════════════════════════════════
+     Fixed top navigation bar with glass-morphism backdrop.
+     Desktop: full link list | Mobile: hamburger menu
+════════════════════════════════════════════════════════════════════════════ -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="cssadewale — Home">
+      cssadewale <span>· AI-Augmented Solutions Developer</span>
+    </a>
     <div class="nav-links">
+      <a href="index.html">Home</a>
       <a href="about.html">About</a>
-      <a href="#identity">Identity</a>
-      <a href="#skills">Skills</a>
       <a href="projects.html">Projects</a>
       <a href="journey.html">Journey</a>
-      <a href="#youtube">YouTube</a>
-      <a href="#certifications">Certs</a>
       <a href="cv.html">CV</a>
-      <a href="#contact">Contact</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="https://wa.me/2348100866322" class="nav-cta" target="_blank" rel="noopener">💬 WhatsApp</a>
     </div>
-    <a href="https://wa.me/2348100866322" class="nav-cta nav-links">WhatsApp</a>
-  </nav>
+    <button class="nav-burger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-text">
-        <div class="hero-badge"><span></span> Open to Opportunities · Lagos, Nigeria</div>
+<!-- Mobile drawer -->
+<div class="nav-mobile" id="nav-mobile" aria-hidden="true">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="projects.html">Projects</a>
+  <a href="journey.html">Journey</a>
+  <a href="cv.html">CV</a>
+  <a href="index.html#contact">Contact</a>
+  <a href="https://wa.me/2348100866322" target="_blank" rel="noopener">💬 WhatsApp</a>
+</div>
 
-        <h1>Adewale<br>Samson <em>Adeagbo</em></h1>
+<!-- ══ HERO ══════════════════════════════════════════════════════════════════
+     Full-viewport hero with name, roles, builder identities, CTAs, socials,
+     and a floating profile card (hidden on mobile for clean UX).
+════════════════════════════════════════════════════════════════════════════ -->
+<section class="hero" id="home" aria-labelledby="hero-heading">
+  <div class="hero-inner">
 
-        <p class="hero-sub">
-          <strong>AI-Augmented Solutions Developer.</strong> I find real problems — in classrooms, in data, in communities, in faith — and I build things that solve them. AI is my tool. Data is my lens. Teaching is my method.
-        </p>
+    <!-- Left: Text Content -->
+    <div class="hero-text animate-on-scroll">
+      <div class="hero-badge">
+        <span class="live-dot"></span> Open to Opportunities · Lagos, Nigeria
+      </div>
 
-        <blockquote class="hero-quote">
-          "Real problems. Real solutions. Built with AI, grounded in data, taught from the classroom."
-        </blockquote>
+      <h1 id="hero-heading">
+        <span>Adewale Samson</span><br>
+        <span class="name-last">Adeagbo</span>
+      </h1>
 
-        <!-- THREE BUILDER IDENTITIES -->
-        <div class="builder-trio">
-          <div class="builder-pill pill-edtech">
-            <span class="pill-icon">🏫</span> EdTech Builder
+      <div class="hero-roles" aria-label="Professional titles">
+        <span>AI-Augmented Solutions Developer</span>
+        <span class="role-sep">·</span>
+        <span>Data Scientist</span>
+        <span class="role-sep">·</span>
+        <span>STEM Educator</span>
+      </div>
+
+      <blockquote class="hero-quote">
+        "Real problems. Real solutions. Built with AI, grounded in data, taught from the classroom."
+      </blockquote>
+
+      <!-- Three Builder Identity Pills -->
+      <div class="hero-builders" aria-label="Builder identities">
+        <span class="builder-pill pill-edtech">🏫 EdTech Builder</span>
+        <span class="builder-pill pill-datatech">📊 DataTech Builder</span>
+        <span class="builder-pill pill-faith">✝️ FaithTech Builder</span>
+      </div>
+
+      <!-- Primary Call-to-Action Buttons -->
+      <div class="hero-btns">
+        <a href="projects.html" class="btn btn-gold">View My Projects</a>
+        <a href="about.html"    class="btn btn-outline">My Story</a>
+        <a href="cv.html"       class="btn btn-ghost">View CV</a>
+      </div>
+
+      <!-- Social Links -->
+      <div class="hero-socials" aria-label="Social profiles">
+        <a href="https://linkedin.com/in/adewalesamsonadeagbo" class="hero-soc-link" target="_blank" rel="noopener">💼 LinkedIn</a>
+        <a href="https://github.com/cssadewale"                class="hero-soc-link" target="_blank" rel="noopener">🐙 GitHub</a>
+        <a href="https://youtube.com/@hmgconcepts"             class="hero-soc-link" target="_blank" rel="noopener">📺 YouTube</a>
+        <a href="https://x.com/cssadewale"                     class="hero-soc-link" target="_blank" rel="noopener">🐦 X</a>
+        <a href="https://instagram.com/cssadewale"             class="hero-soc-link" target="_blank" rel="noopener">📸 Instagram</a>
+      </div>
+    </div>
+
+    <!-- Right: Floating Profile Card -->
+    <div class="hero-card animate-on-scroll" data-delay="150">
+
+      <!-- Profile photo area — wraps a data-photo-slot for the JS photo manager -->
+      <div data-photo-slot>
+        <div class="photo-slot">
+          <div class="photo-ring">
+            <span data-photo-placeholder>🧑🏾‍💻</span>
+            <img data-photo-img src="" alt="Adewale Samson Adeagbo — profile photo" />
           </div>
-          <div class="builder-pill pill-datatech">
-            <span class="pill-icon">📊</span> DataTech Builder
-          </div>
-          <div class="builder-pill pill-faith">
-            <span class="pill-icon">✝️</span> FaithTech Builder
-          </div>
-        </div>
-
-        <div class="hero-btns">
-          <a href="projects.html" class="btn-primary">View My Projects</a>
-          <a href="about.html" class="btn-outline">My Story</a>
-          <a href="cv.html" class="btn-outline">View CV</a>
-        </div>
-
-        <div class="hero-socials">
-          <a href="https://linkedin.com/in/adewalesamsonadeagbo" target="_blank">LinkedIn</a>
-          <a href="https://github.com/cssadewale" target="_blank">GitHub</a>
-          <a href="https://x.com/cssadewale" target="_blank">X</a>
-          <a href="https://youtube.com/@hmgconcepts" target="_blank">YouTube</a>
-          <a href="https://instagram.com/cssadewale" target="_blank">Instagram</a>
+          <!-- Edit button — triggers photo upload modal -->
+          <button class="photo-edit-btn" data-open-photo-modal
+                  aria-label="Update profile photo" title="Update profile photo">✏️</button>
         </div>
       </div>
 
-      <!-- HERO CARD -->
-      <div class="hero-visual">
-        <div class="hero-card">
-          <div class="hc-photo">🧑🏾‍💻</div>
-          <div class="hc-name">Adewale Samson Adeagbo</div>
-          <div class="hc-role">AI-Augmented Solutions Developer</div>
-          <div class="hc-stats">
-            <div class="hc-stat"><span class="hc-stat-num">15+</span><div class="hc-stat-lbl">Years Teaching</div></div>
-            <div class="hc-stat"><span class="hc-stat-num">12</span><div class="hc-stat-lbl">Projects Live</div></div>
-            <div class="hc-stat"><span class="hc-stat-num">7</span><div class="hc-stat-lbl">Industries</div></div>
-            <div class="hc-stat"><span class="hc-stat-num">₦0</span><div class="hc-stat-lbl">CBT Pro Budget</div></div>
-          </div>
-          <div class="hc-live">CBT Pro — Live with Real Students Today</div>
-        </div>
+      <div class="card-name">Adewale Samson Adeagbo</div>
+      <div class="card-role">AI-Augmented Solutions Developer</div>
+
+      <!-- Quick-glance stats -->
+      <div class="card-stats">
+        <div class="cs-item"><span class="cs-num" data-count="15" data-suffix="+">15+</span><div class="cs-lbl">Years Teaching</div></div>
+        <div class="cs-item"><span class="cs-num" data-count="34">34</span><div class="cs-lbl">Projects Live</div></div>
+        <div class="cs-item"><span class="cs-num" data-count="7">7</span><div class="cs-lbl">Industries</div></div>
+        <div class="cs-item"><span class="cs-num">₦0</span><div class="cs-lbl">CBT Budget</div></div>
+      </div>
+
+      <div class="card-live">
+        <span class="live-dot"></span> CBT Pro — Live with Real Students Today
+      </div>
+
+      <div class="card-links">
+        <a href="projects.html" class="card-link">📁 View All 34 Projects</a>
+        <a href="cv.html" class="card-link">📄 View CV Online</a>
+        <a href="assets/docs/Adewale_Adeagbo_DataScientist_CV_2026.pdf" class="card-link" download="Adewale_Adeagbo_DataScientist_CV_2026.pdf">⬇ Download Data Science CV (PDF)</a>
+        <a href="assets/docs/Adewale_Adeagbo_Educator_CV_2026.pdf" class="card-link" download="Adewale_Adeagbo_Educator_CV_2026.pdf">⬇ Download Educator CV (PDF)</a>
+        <a href="https://github.com/cssadewale" class="card-link" target="_blank" rel="noopener">🐙 GitHub @cssadewale</a>
+        <a href="https://hmgconcepts.pages.dev" class="card-link" target="_blank" rel="noopener">🏢 HMG Concepts</a>
       </div>
     </div>
-  </section>
 
-  <!-- STATS BAR -->
-  <div class="stats-bar">
-    <div class="stats-bar-inner">
-      <div class="stat-item"><span class="stat-num">15+</span><div class="stat-lbl">Years Teaching All Levels</div></div>
-      <div class="stat-item"><span class="stat-num">12</span><div class="stat-lbl">Live Projects Deployed</div></div>
-      <div class="stat-item"><span class="stat-num">7</span><div class="stat-lbl">Industries Served</div></div>
-      <div class="stat-item"><span class="stat-num">500+</span><div class="stat-lbl">Students Reached</div></div>
-      <div class="stat-item"><span class="stat-num">3</span><div class="stat-lbl">Active Programmes Now</div></div>
-      <div class="stat-item"><span class="stat-num">4</span><div class="stat-lbl">HMG Subsidiaries</div></div>
+  </div>
+</section>
+
+<!-- ══ PHOTO UPDATE MODAL ════════════════════════════════════════════════════
+     Appears when user clicks the ✏️ button on the profile photo.
+     Three upload methods: URL/Drive link, file upload, or GitHub repo.
+════════════════════════════════════════════════════════════════════════════ -->
+<div class="photo-modal" id="photo-modal" role="dialog" aria-modal="true" aria-labelledby="photo-modal-title">
+  <div class="photo-modal-inner">
+    <div class="modal-header">
+      <span class="modal-title" id="photo-modal-title">📸 Update Profile Photo</span>
+      <button class="modal-close" data-close-photo-modal aria-label="Close modal">✕</button>
+    </div>
+
+    <!-- Method 1: URL or Google Drive -->
+    <div class="modal-section">
+      <div class="modal-section-lbl">📎 Paste Image URL or Google Drive Link</div>
+      <div class="modal-url-row">
+        <input type="text" id="photo-url-input" placeholder="https://drive.google.com/... or direct image URL" aria-label="Image URL" />
+        <button class="modal-apply-btn" id="photo-url-apply">Apply</button>
+      </div>
+      <div class="modal-hint">
+        Google Drive: Share file → "Anyone with the link" → Copy → paste here.<br>
+        The site automatically converts Drive share links to direct image URLs.
+      </div>
+    </div>
+
+    <div class="modal-divider">or</div>
+
+    <!-- Method 2: Device file upload -->
+    <div class="modal-section">
+      <div class="modal-section-lbl">📁 Upload from Device</div>
+      <button class="modal-file-btn" id="photo-file-trigger">Click to choose a photo from your device</button>
+      <input type="file" id="photo-file-input" accept="image/*" style="display:none;" aria-hidden="true" />
+      <div class="modal-hint">Saved in your browser (localStorage). Works on this device only.</div>
+    </div>
+
+    <!-- Method 3: GitHub repo (best for production) -->
+    <div class="modal-repo-note">
+      <div class="modal-section-lbl" style="margin-bottom:.5rem;">🐙 Best Option: Upload to GitHub Repo</div>
+      <p>Add your photo file to the repo as <code>assets/images/profile.jpg</code> and push to GitHub.
+         The site will automatically detect it and show it to <strong>all visitors</strong> — not just you.
+         See <code>assets/images/README.md</code> for step-by-step instructions.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ STATS BAR ═════════════════════════════════════════════════════════════
+     A horizontal row of key statistics between hero and main content.
+════════════════════════════════════════════════════════════════════════════ -->
+<div class="stats-bar" aria-label="Key statistics">
+  <div class="stats-bar-inner">
+    <div class="sbi animate-on-scroll"><div class="stat-num" data-count="15" data-suffix="+">15+</div><div class="stat-lbl">Years Teaching All Levels</div></div>
+    <div class="sbi animate-on-scroll" data-delay="80"><div class="stat-num" data-count="34">34</div><div class="stat-lbl">Live Projects Deployed</div></div>
+    <div class="sbi animate-on-scroll" data-delay="160"><div class="stat-num" data-count="7">7</div><div class="stat-lbl">Industries Served</div></div>
+    <div class="sbi animate-on-scroll" data-delay="240"><div class="stat-num" data-count="500" data-suffix="+">500+</div><div class="stat-lbl">Students Reached</div></div>
+    <div class="sbi animate-on-scroll" data-delay="320"><div class="stat-num" data-count="3">3</div><div class="stat-lbl">Active Programmes</div></div>
+    <div class="sbi animate-on-scroll" data-delay="400"><div class="stat-num" data-count="4">4</div><div class="stat-lbl">HMG Subsidiaries</div></div>
+  </div>
+</div>
+
+<!-- ══ IDENTITY SECTION ══════════════════════════════════════════════════════
+     Explains the three builder identities with their equations and descriptions.
+════════════════════════════════════════════════════════════════════════════ -->
+<section id="identity" style="background:var(--bg2);" aria-labelledby="identity-heading">
+  <div class="section-inner">
+    <div class="section-label">Who I Am</div>
+    <h2 class="section-title" id="identity-heading">One Identity. <em>Three Builder Modes.</em></h2>
+    <p class="section-sub" style="margin-bottom:3rem;">I am an AI-Augmented Solutions Developer. Depending on the problem in front of me, I operate in one of three builder modes — each grounded in the same foundation: clear thinking, AI as a lever, and 15 years of watching what real people actually need.</p>
+
+    <div class="identity-grid">
+      <!-- EdTech Builder -->
+      <div class="id-card edtech animate-on-scroll">
+        <div class="id-glow"></div>
+        <div class="id-icon">🏫</div>
+        <div class="id-title">EdTech Builder</div>
+        <div class="id-eq">Educator Skills + AI-Augmented Dev = EdTech Builder</div>
+        <p class="id-desc">15 years in Nigerian classrooms gave me a direct line to every broken system in education. CBT Pro, LMS platforms, student analytics tools, school admin systems — built not because I learned web development, but because I saw the problem clearly and knew what the solution must do. All EdTech projects live at <strong>@hmgacademyhub</strong>.</p>
+        <div class="id-tags">
+          <span class="tag tag-edtech">CBT Pro</span>
+          <span class="tag tag-edtech">LMS (11 platforms)</span>
+          <span class="tag tag-edtech">Student Analytics</span>
+          <span class="tag tag-edtech">HMG Academy</span>
+          <span class="tag tag-edtech">WAEC/JAMB Prep</span>
+        </div>
+      </div>
+
+      <!-- DataTech Builder -->
+      <div class="id-card datatech animate-on-scroll" data-delay="100">
+        <div class="id-glow"></div>
+        <div class="id-icon">📊</div>
+        <div class="id-title">DataTech Builder</div>
+        <div class="id-eq">Data Science Skills + AI-Augmented Dev = DataTech Builder</div>
+        <p class="id-desc">7 end-to-end ML models deployed across 7 industries. 11 interactive data tool simulators. Full pipelines from EDA to live Streamlit apps and FastAPI endpoints. Every model documented honestly — including the data leakage fix and underperforming models. Lives at <strong>@cssadewale</strong> &amp; <strong>@hmgtechnologies</strong>.</p>
+        <div class="id-tags">
+          <span class="tag tag-datatech">Python / ML</span>
+          <span class="tag tag-datatech">SHAP / Explainability</span>
+          <span class="tag tag-datatech">NLP / XGBoost</span>
+          <span class="tag tag-datatech">FastAPI</span>
+          <span class="tag tag-datatech">Power BI</span>
+          <span class="tag tag-datatech">HMG Technologies</span>
+        </div>
+      </div>
+
+      <!-- FaithTech Builder -->
+      <div class="id-card faith animate-on-scroll" data-delay="200">
+        <div class="id-glow"></div>
+        <div class="id-icon">✝️</div>
+        <div class="id-title">FaithTech Builder</div>
+        <div class="id-eq">Gospel Conviction + AI-Augmented Dev = FaithTech Builder</div>
+        <p class="id-desc">Every platform is a pulpit. Every tool is a testimony. HMG Gospel exists to spread the gospel of Christ through every digital means — dramavangelism, techvangelism, podcasts, ebooks, church tools, and digital outreach. Building for the Kingdom with the same intentionality applied to every other domain. Lives at <strong>@hmgospel</strong>.</p>
+        <div class="id-tags">
+          <span class="tag tag-faith">Dramavangelism</span>
+          <span class="tag tag-faith">Techvangelism</span>
+          <span class="tag tag-faith">Gospel Platforms</span>
+          <span class="tag tag-faith">HMG Gospel</span>
+          <span class="tag tag-faith">Church Tools</span>
+        </div>
+      </div>
     </div>
   </div>
+</section>
 
-  <!-- IDENTITY SECTION (NEW) -->
-  <section id="identity">
-    <div class="section-inner">
-      <p class="section-label">Who I Am</p>
-      <h2 class="section-title">One Identity. Three Builder Modes.</h2>
-      <p class="section-sub">I am an AI-Augmented Solutions Developer. Depending on the problem in front of me, I operate in one of three builder modes — each grounded in the same foundation: clear thinking, AI as a tool, and 15 years of watching what real people actually need.</p>
-
-      <div class="identity-grid">
-
-        <!-- EDTECH BUILDER -->
-        <div class="identity-card edtech">
-          <div class="ic-top">
-            <div class="ic-icon">🏫</div>
-            <div>
-              <div class="ic-title">EdTech Builder</div>
-              <div class="ic-sub">Teacher × Builder</div>
-            </div>
-          </div>
-          <p class="ic-desc">15 years in Nigerian classrooms gave me a direct line to the problems that need solving in education. CBT Pro, Student At-Risk Predictor, Student Performance Tracker — built not because I learned web development, but because I saw the problem clearly and knew how to solve it. Lives at <strong>@hmgacademyhub</strong>.</p>
-          <div class="ic-tags">
-            <span class="ic-tag">CBT Pro</span>
-            <span class="ic-tag">Student Analytics</span>
-            <span class="ic-tag">HMG Academy</span>
-            <span class="ic-tag">WAEC / JAMB Prep</span>
-            <span class="ic-tag">Virtual School</span>
-          </div>
-        </div>
-
-        <!-- DATATECH BUILDER -->
-        <div class="identity-card datatech">
-          <div class="ic-top">
-            <div class="ic-icon">📊</div>
-            <div>
-              <div class="ic-title">DataTech Builder</div>
-              <div class="ic-sub">Data Scientist × Builder</div>
-            </div>
-          </div>
-          <p class="ic-desc">Machine learning, NLP, data analytics — deployed across 7 industries. 12 live projects. Every model grounded in a real problem, documented honestly — including the failures. This is the identity that earns data science roles and solves business problems. Lives at <strong>@cssadewale</strong> &amp; <strong>@hmgtechnologies</strong>.</p>
-          <div class="ic-tags">
-            <span class="ic-tag">Python / ML</span>
-            <span class="ic-tag">SHAP / Explainability</span>
-            <span class="ic-tag">NLP</span>
-            <span class="ic-tag">Streamlit</span>
-            <span class="ic-tag">Power BI</span>
-            <span class="ic-tag">HMG Technologies</span>
-          </div>
-        </div>
-
-        <!-- FAITHTECH BUILDER -->
-        <div class="identity-card faith">
-          <div class="ic-top">
-            <div class="ic-icon">✝️</div>
-            <div>
-              <div class="ic-title">FaithTech Builder</div>
-              <div class="ic-sub">Gospel × Builder</div>
-            </div>
-          </div>
-          <p class="ic-desc">Every platform is a pulpit. Every tool is a testimony. HMG Gospel exists to spread the gospel through every digital means available — evangelism platforms, drama tools, podcast infrastructure, ebooks, and digital outreach. Building for the Kingdom with the same intentionality applied to every other domain. Lives at <strong>@hmgospel</strong>.</p>
-          <div class="ic-tags">
-            <span class="ic-tag">Dramavangelism</span>
-            <span class="ic-tag">Techvangelism</span>
-            <span class="ic-tag">Gospel Platforms</span>
-            <span class="ic-tag">HMG Gospel</span>
-            <span class="ic-tag">Digital Outreach</span>
-          </div>
-        </div>
-
+<!-- ══ HMG CONCEPTS ══════════════════════════════════════════════════════════
+     The four-subsidiary brand architecture.
+════════════════════════════════════════════════════════════════════════════ -->
+<section id="hmg" style="background:var(--bg);" aria-labelledby="hmg-heading">
+  <div class="section-inner">
+    <div style="text-align:center;margin-bottom:3rem;">
+      <div class="section-label" style="justify-content:center;">The Organisation</div>
+      <h2 class="section-title" id="hmg-heading">HMG <em>Concepts</em></h2>
+      <p style="font-size:1rem;color:var(--text2);font-style:italic;margin-top:.3rem;">"Building solutions that matter — for learning, for life, for faith, and for data."</p>
+    </div>
+    <div class="hmg-grid">
+      <div class="hmg-card animate-on-scroll">
+        <div class="hmg-icon">🎓</div>
+        <div class="hmg-name">HMG Academy</div>
+        <span class="badge badge-live"><span class="live-dot"></span> Website Live</span>
+        <p class="hmg-desc">Strictly virtual school — all subjects, all levels. WAEC, NECO, GCE, UTME, IGCSE, IELTS, JUPEB, SAT. Full LMS, CBT system, exam registration, counselling, CBT lab setup.</p>
+        <div class="hmg-gh">GitHub: <code>@hmgacademyhub</code></div>
+        <a href="https://hmgconcepts.pages.dev" class="hmg-link" target="_blank" rel="noopener">Visit Website →</a>
+      </div>
+      <div class="hmg-card animate-on-scroll" data-delay="80">
+        <div class="hmg-icon">💻</div>
+        <div class="hmg-name">HMG Technologies</div>
+        <span class="badge badge-soon">⏳ Website Pending</span>
+        <p class="hmg-desc">AI-augmented tools for Nigerian businesses and organisations. Productivity apps, automation, data dashboards, lightweight web solutions for real problems.</p>
+        <div class="hmg-gh">GitHub: <code>@hmgtechnologies</code></div>
+        <span class="hmg-link" style="color:var(--muted);">Coming Soon</span>
+      </div>
+      <div class="hmg-card animate-on-scroll" data-delay="160">
+        <div class="hmg-icon">✝️</div>
+        <div class="hmg-name">HMG Gospel</div>
+        <span class="badge badge-soon">⏳ Website Pending</span>
+        <p class="hmg-desc">Spreading the gospel through every digital means. Dramavangelism, techvangelism, physical evangelism, podcasts, ebooks, digital outreach, FaithTech tools.</p>
+        <div class="hmg-gh">GitHub: <code>@hmgospel</code></div>
+        <span class="hmg-link" style="color:var(--muted);">Coming Soon</span>
+      </div>
+      <div class="hmg-card animate-on-scroll" data-delay="240">
+        <div class="hmg-icon">📢</div>
+        <div class="hmg-name">HMG Media</div>
+        <span class="badge badge-soon">⏳ Website Pending</span>
+        <p class="hmg-desc">Audio, visual, and audiovisual content production. Brand promotion and visibility for all HMG subsidiaries and external clients. Content with purpose.</p>
+        <div class="hmg-gh">YouTube: <code>@hmgconcepts</code></div>
+        <a href="https://youtube.com/@hmgconcepts" class="hmg-link" target="_blank" rel="noopener">YouTube Channel →</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <hr class="divider">
+<!-- ══ PROJECTS PREVIEW ══════════════════════════════════════════════════════
+     A 3-card preview + 4 category count tiles linking to full projects page.
+════════════════════════════════════════════════════════════════════════════ -->
+<section id="projects-preview" style="background:var(--bg2);" aria-labelledby="proj-heading">
+  <div class="section-inner">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;">
+      <div>
+        <div class="section-label">What I Have Built</div>
+        <h2 class="section-title" id="proj-heading">34 Projects. <em>Real Problems.</em></h2>
+        <p class="section-sub">Across EdTech, DataTech, and FaithTech domains. Every one is live, documented honestly, and built to solve something real.</p>
+      </div>
+      <a href="projects.html" class="btn btn-outline">View All 34 Projects →</a>
+    </div>
 
-  <!-- HMG CONCEPTS SECTION (UPDATED) -->
-  <section id="hmg">
-    <div class="section-inner">
-      <p class="section-label">The Organisation</p>
-      <h2 class="section-title">HMG Concepts</h2>
-      <p class="hmg-tagline">"Building solutions that matter — for learning, for life, for faith, and for data."</p>
-
-      <div class="hmg-grid">
-
-        <div class="hmg-card">
-          <div class="hmg-icon">🎓</div>
-          <div class="hmg-name">HMG Academy</div>
-          <span class="hmg-status status-live">✅ Website Live</span>
-          <p class="hmg-desc">A strictly virtual school — expert-led lessons covering all subjects and levels. Primary, JSS, SSS, WAEC, NECO, JAMB prep. Exam registration support, student counselling, CBT lab setup.</p>
-          <div class="hmg-github">GitHub: <code>@hmgacademyhub</code></div>
-          <a href="https://hmgconcepts.pages.dev" class="hmg-link" target="_blank">Visit Website →</a>
+    <div class="proj-preview">
+      <div class="proj-card flagship animate-on-scroll">
+        <div class="proj-card-top">
+          <span class="badge badge-live"><span class="live-dot"></span> Live — Classrooms Today</span>
+          <span class="proj-cat-label">EdTech · Full-Stack</span>
         </div>
-
-        <div class="hmg-card">
-          <div class="hmg-icon">💻</div>
-          <div class="hmg-name">HMG Technologies</div>
-          <span class="hmg-status status-soon">⏳ Website Pending</span>
-          <p class="hmg-desc">AI-augmented tools for Nigerian businesses and organisations. Productivity apps, automation tools, data dashboards, and lightweight web apps solving specific real-world problems.</p>
-          <div class="hmg-github">GitHub: <code>@hmgtechnologies</code></div>
-          <span class="hmg-link">Coming Soon</span>
+        <div class="proj-name">CBT Pro (CBT.ng)</div>
+        <p class="proj-desc">Full CBT platform built on an Android tablet with ₦0 budget. CSV upload, timed exams, per-student randomisation, anti-cheat, auto-marking, 4-tab analytics. Real students. Real exams. No compromise.</p>
+        <div class="proj-stack"><span class="tag tag-edtech">HTML5</span><span class="tag tag-edtech">Supabase + RLS</span><span class="tag tag-edtech">Vanilla JS</span><span class="tag">Vercel</span></div>
+        <div class="proj-links">
+          <a href="https://cbtsystem-hmgacademy.vercel.app/" class="proj-link primary" target="_blank" rel="noopener">↗ Live Platform</a>
+          <a href="projects.html" class="proj-link">Full Details</a>
         </div>
+      </div>
 
-        <div class="hmg-card">
-          <div class="hmg-icon">✝️</div>
-          <div class="hmg-name">HMG Gospel</div>
-          <span class="hmg-status status-soon">⏳ Website Pending</span>
-          <p class="hmg-desc">Spreading the gospel through every digital means available. Evangelism platforms, dramavangelism, techvangelism, podcasts, ebooks, digital outreach, and FaithTech tools.</p>
-          <div class="hmg-github">GitHub: <code>@hmgospel</code></div>
-          <span class="hmg-link">Coming Soon</span>
+      <div class="proj-card animate-on-scroll" data-delay="100">
+        <div class="proj-card-top">
+          <span class="badge badge-datatech">Live · NLP</span>
+          <span class="proj-cat-label">DataTech · 3MTT Capstone</span>
         </div>
-
-        <div class="hmg-card">
-          <div class="hmg-icon">📢</div>
-          <div class="hmg-name">HMG Media</div>
-          <span class="hmg-status status-soon">⏳ Website Pending</span>
-          <p class="hmg-desc">Audio, visual, and audiovisual content production. Brand promotion and visibility for HMG Concepts and all subsidiaries. Content with purpose. Presence with impact.</p>
-          <div class="hmg-github">GitHub: Not needed</div>
-          <a href="https://youtube.com/@hmgconcepts" class="hmg-link" target="_blank">YouTube Channel →</a>
+        <div class="proj-name">TruthLens — Fake News Detector</div>
+        <p class="proj-desc">XGBoost + TF-IDF on 12,999 real news articles. AUC 0.9393 — highest in portfolio. Full NLP pipeline: cleaning → tokenisation → TF-IDF (20K features) → VADER sentiment → XGBoost.</p>
+        <div class="proj-metrics"><span class="proj-metric">Acc 86.75%</span><span class="proj-metric">AUC 0.9393</span><span class="proj-metric">12,999 articles</span></div>
+        <div class="proj-stack"><span class="tag tag-datatech">XGBoost</span><span class="tag tag-datatech">TF-IDF</span><span class="tag">NLP</span><span class="tag">Streamlit</span></div>
+        <div class="proj-links">
+          <a href="https://cssadewale-fake-news-detector.streamlit.app/" class="proj-link primary" target="_blank" rel="noopener">↗ Live App</a>
+          <a href="https://github.com/cssadewale/fake-news-detector" class="proj-link" target="_blank" rel="noopener">GitHub</a>
         </div>
+      </div>
 
+      <div class="proj-card animate-on-scroll" data-delay="200">
+        <div class="proj-card-top">
+          <span class="badge badge-datatech">Live · Tool</span>
+          <span class="proj-cat-label">DataTech · Simulator</span>
+        </div>
+        <div class="proj-name">Power BI Simulator</div>
+        <p class="proj-desc">Interactive browser-based simulation of the Power BI environment — enabling learners to practise data visualisation and dashboard building without a local installation or licence.</p>
+        <div class="proj-stack"><span class="tag tag-datatech">DataTech Builder</span><span class="tag">Vercel</span><span class="tag">Interactive</span></div>
+        <div class="proj-links">
+          <a href="https://cssadewale-powerbi-stimulator.vercel.app/" class="proj-link primary" target="_blank" rel="noopener">↗ Live Tool</a>
+          <a href="https://github.com/cssadewale/powerbi-stimulator" class="proj-link" target="_blank" rel="noopener">GitHub</a>
+        </div>
       </div>
     </div>
-  </section>
 
-  <hr class="divider">
+    <!-- Category tile counters -->
+    <div class="cat-tiles">
+      <a href="projects.html#edtech-tools" class="cat-tile" style="background:var(--edtech-bg);border:1px solid rgba(34,197,94,.2);" onmouseover="this.style.borderColor='rgba(34,197,94,.5)'" onmouseout="this.style.borderColor='rgba(34,197,94,.2)'">
+        <div class="cat-num" style="color:var(--edtech);">16</div>
+        <div class="cat-lbl">🏫 EdTech Tools &amp; LMS Platforms</div>
+      </a>
+      <a href="projects.html#ml-models" class="cat-tile" style="background:var(--datatech-bg);border:1px solid rgba(129,140,248,.2);" onmouseover="this.style.borderColor='rgba(129,140,248,.5)'" onmouseout="this.style.borderColor='rgba(129,140,248,.2)'">
+        <div class="cat-num" style="color:var(--datatech);">7</div>
+        <div class="cat-lbl">📊 ML / Data Science Models</div>
+      </a>
+      <a href="projects.html#simulators" class="cat-tile" style="background:var(--datatech-bg);border:1px solid rgba(129,140,248,.2);" onmouseover="this.style.borderColor='rgba(129,140,248,.5)'" onmouseout="this.style.borderColor='rgba(129,140,248,.2)'">
+        <div class="cat-num" style="color:var(--datatech);">11</div>
+        <div class="cat-lbl">🛠️ DataTech Simulators</div>
+      </a>
+      <a href="projects.html#faithtech" class="cat-tile" style="background:var(--faith-bg);border:1px solid rgba(56,189,248,.2);" onmouseover="this.style.borderColor='rgba(56,189,248,.5)'" onmouseout="this.style.borderColor='rgba(56,189,248,.2)'">
+        <div class="cat-num" style="color:var(--faith);">✝️</div>
+        <div class="cat-lbl">✝️ FaithTech Projects</div>
+      </a>
+    </div>
+  </div>
+</section>
 
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="section-inner">
-      <p class="section-label">What I Work With</p>
-      <h2 class="section-title">Skills & Tools</h2>
-      <p class="section-sub">No progress bars. Just the real tools I pick up with purpose, master deliberately, and use to ship things that work. My maths teacher brain is the best feature engineer I own.</p>
-      <div class="skills-grid">
-        <div class="skill-cat">
-          <div class="skill-cat-title">Data Science & ML</div>
-          <div class="skill-tags">
-            <span class="skill-tag">Python</span><span class="skill-tag">Pandas</span><span class="skill-tag">NumPy</span>
-            <span class="skill-tag">Scikit-learn</span><span class="skill-tag">XGBoost</span><span class="skill-tag">Gradient Boosting</span>
-            <span class="skill-tag">Random Forest</span><span class="skill-tag">SHAP</span><span class="skill-tag">SMOTE</span>
-            <span class="skill-tag">TF-IDF / NLP</span><span class="skill-tag">Joblib</span><span class="skill-tag">Streamlit</span>
-            <span class="skill-tag">Matplotlib</span><span class="skill-tag">Seaborn</span>
-          </div>
-        </div>
-        <div class="skill-cat">
-          <div class="skill-cat-title">Data Analysis & BI</div>
-          <div class="skill-tags">
-            <span class="skill-tag">SQL</span><span class="skill-tag">Power BI</span><span class="skill-tag">Tableau</span>
-            <span class="skill-tag">Excel (Advanced)</span><span class="skill-tag">Google Sheets</span>
-            <span class="skill-tag">EDA</span><span class="skill-tag">Statistical Summaries</span>
-            <span class="skill-tag">Univariate & Bivariate Analysis</span>
-          </div>
-        </div>
-        <div class="skill-cat">
-          <div class="skill-cat-title">Web & EdTech Dev</div>
-          <div class="skill-tags">
-            <span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span><span class="skill-tag">Vanilla JavaScript</span>
-            <span class="skill-tag">Supabase</span><span class="skill-tag">Row-Level Security</span>
-            <span class="skill-tag">GitHub Pages</span><span class="skill-tag">Cloudflare Pages</span>
-            <span class="skill-tag">SQLite</span><span class="skill-tag">Acode (Mobile IDE)</span>
-          </div>
-        </div>
-        <div class="skill-cat">
-          <div class="skill-cat-title">AI Tools & Dev Workflow</div>
-          <div class="skill-tags">
-            <span class="skill-tag">Git & GitHub</span><span class="skill-tag">Jupyter Notebook</span>
-            <span class="skill-tag">Google Colab</span><span class="skill-tag">VS Code</span>
-            <span class="skill-tag">Gemini API</span><span class="skill-tag">Claude (Anthropic)</span>
-            <span class="skill-tag">ChatGPT</span><span class="skill-tag">Formspree</span>
-            <span class="skill-tag">Prompt Engineering</span>
-          </div>
-        </div>
-      </div>
-
-      <div style="margin-top:2rem; background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:1.4rem;">
-        <div class="skill-cat-title" style="margin-bottom:.8rem;">🌺 Currently Enrolled — Three Active Programmes</div>
+<!-- ══ SKILLS ═════════════════════════════════════════════════════════════════
+     Six skill category cards covering all technical and teaching skills.
+════════════════════════════════════════════════════════════════════════════ -->
+<section id="skills" style="background:var(--bg);" aria-labelledby="skills-heading">
+  <div class="section-inner">
+    <div class="section-label">What I Work With</div>
+    <h2 class="section-title" id="skills-heading">Skills <em>&amp; Tools</em></h2>
+    <p class="section-sub" style="margin-bottom:3rem;">No inflated progress bars. Just the real tools I pick up with purpose, master deliberately, and use to ship things that work. My maths teacher brain is the best feature engineer I own.</p>
+    <div class="skills-grid">
+      <div class="skill-cat animate-on-scroll">
+        <div class="skill-cat-title">📊 Data Science &amp; ML</div>
         <div class="skill-tags">
-          <span class="skill-tag" style="color:var(--green);background:rgba(34,197,94,.1);">🌺 DeepTech_Ready — DSN × 3MTT × Google.org (DSML, Cohort 3)</span>
-          <span class="skill-tag" style="color:var(--green);background:rgba(34,197,94,.1);">🌺 WorldQuant University — Applied Data Science Lab</span>
-          <span class="skill-tag" style="color:var(--green);background:rgba(34,197,94,.1);">🌺 Kodecamp Cohort 6 — ML Core Track</span>
+          <span class="tag tag-datatech">Python</span><span class="tag tag-datatech">Pandas</span><span class="tag tag-datatech">NumPy</span>
+          <span class="tag tag-datatech">Scikit-learn</span><span class="tag tag-datatech">XGBoost</span><span class="tag tag-datatech">SHAP</span>
+          <span class="tag tag-datatech">SMOTE</span><span class="tag tag-datatech">GridSearchCV</span><span class="tag tag-datatech">TF-IDF</span>
+          <span class="tag tag-datatech">NLTK</span><span class="tag tag-datatech">FastAPI</span><span class="tag tag-datatech">joblib</span>
+          <span class="tag">Matplotlib</span><span class="tag">Seaborn</span><span class="tag">Streamlit</span>
+        </div>
+      </div>
+      <div class="skill-cat animate-on-scroll" data-delay="80">
+        <div class="skill-cat-title">📈 Data Analysis &amp; BI</div>
+        <div class="skill-tags">
+          <span class="tag tag-datatech">SQL</span><span class="tag tag-datatech">Power BI</span><span class="tag tag-datatech">Tableau</span>
+          <span class="tag tag-datatech">Excel (Advanced)</span><span class="tag tag-datatech">Google Sheets</span>
+          <span class="tag">EDA</span><span class="tag">PgAdmin</span><span class="tag">MySQL</span>
+          <span class="tag">MS SQL Server</span><span class="tag">DuckDB</span><span class="tag">Azure Data Studio</span>
+        </div>
+      </div>
+      <div class="skill-cat animate-on-scroll" data-delay="160">
+        <div class="skill-cat-title">🏫 EdTech &amp; Web Dev</div>
+        <div class="skill-tags">
+          <span class="tag tag-edtech">HTML5</span><span class="tag tag-edtech">CSS3</span><span class="tag tag-edtech">Vanilla JS</span>
+          <span class="tag tag-edtech">Supabase + RLS</span><span class="tag tag-edtech">CBT System Design</span>
+          <span class="tag">GitHub Pages</span><span class="tag">Cloudflare Pages</span><span class="tag">Vercel</span>
+          <span class="tag">SQLite</span><span class="tag">Acode Mobile IDE</span>
+        </div>
+      </div>
+      <div class="skill-cat animate-on-scroll">
+        <div class="skill-cat-title">🤖 AI &amp; Dev Tools</div>
+        <div class="skill-tags">
+          <span class="tag tag-gold">Prompt Engineering</span><span class="tag tag-gold">AI Orchestration</span>
+          <span class="tag tag-gold">AI-Augmented Dev</span>
+          <span class="tag">Git &amp; GitHub</span><span class="tag">Jupyter Notebook</span><span class="tag">Google Colab</span>
+          <span class="tag">VS Code</span><span class="tag">Hugging Face</span><span class="tag">Formspree</span>
+        </div>
+      </div>
+      <div class="skill-cat animate-on-scroll" data-delay="80">
+        <div class="skill-cat-title">🎓 Teaching &amp; EdTech</div>
+        <div class="skill-tags">
+          <span class="tag tag-edtech">Mathematics</span><span class="tag tag-edtech">Further Mathematics</span>
+          <span class="tag tag-edtech">Physics</span><span class="tag tag-edtech">Chemistry</span>
+          <span class="tag">Zoom</span><span class="tag">Google Classroom</span><span class="tag">MS Teams</span>
+          <span class="tag">Curriculum Design</span><span class="tag">Student Counselling</span>
+          <span class="tag">WAEC/NECO/UTME Reg</span><span class="tag">CBT Lab Setup</span>
+        </div>
+      </div>
+      <div class="skill-cat animate-on-scroll" data-delay="160">
+        <div class="skill-cat-title">🌺 Active Learning</div>
+        <div class="skill-tags">
+          <span class="tag tag-edtech">🌺 DeepTech_Ready — DSN × 3MTT × Google.org</span>
+          <span class="tag tag-edtech">🌺 WorldQuant University — Applied Data Science Lab</span>
+          <span class="tag tag-edtech">🌺 Kodecamp Cohort 6 — ML Core Track</span>
+          <span class="tag tag-gold">IBM SkillsBuild Ambassador — Cohort 4</span>
+          <span class="tag">DSN × Microsoft — Azure AI-900</span>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- PROJECTS PREVIEW -->
-  <section id="projects">
-    <div class="section-inner">
-      <p class="section-label">What I Have Built</p>
-      <h2 class="section-title">12 Projects. Real Problems. Real Data.</h2>
-      <p class="section-sub">Every project started with a real problem, not a Kaggle competition. Every one is live, documented honestly, and built to be understood — not just to impress.</p>
+<!-- ══ CERTIFICATIONS ═════════════════════════════════════════════════════════
+════════════════════════════════════════════════════════════════════════════ -->
+<section id="certifications" style="background:var(--bg2);" aria-labelledby="certs-heading">
+  <div class="section-inner">
+    <div class="section-label">Verified Learning</div>
+    <h2 class="section-title" id="certs-heading">Certifications <em>&amp; Programmes</em></h2>
+    <p class="section-sub" style="margin-bottom:3rem;">Every programme was completed — not just enrolled in. Each represents a deliberate choice to build a specific capability, not to collect badges for a CV that does not match reality.</p>
+    <div class="cert-grid">
+      <div class="cert-card active-cert animate-on-scroll"><div class="cert-icon">🌺</div><div><div class="cert-name">DeepTech_Ready — DSML Track, Cohort 3</div><div class="cert-org">DSN × 3MTT × Google.org</div><div class="cert-yr active-yr">🌺 Currently Active · 2026</div></div></div>
+      <div class="cert-card active-cert animate-on-scroll" data-delay="60"><div class="cert-icon">🌺</div><div><div class="cert-name">Applied Data Science Lab</div><div class="cert-org">WorldQuant University</div><div class="cert-yr active-yr">🌺 Currently Active</div></div></div>
+      <div class="cert-card active-cert animate-on-scroll" data-delay="120"><div class="cert-icon">🌺</div><div><div class="cert-name">ML Core Track — Cohort 6</div><div class="cert-org">Kodecamp</div><div class="cert-yr active-yr">🌺 Currently Active</div></div></div>
+      <div class="cert-card animate-on-scroll" data-delay="180"><div class="cert-icon">🏅</div><div><div class="cert-name">SkillsBuild Hub Ambassador — Cohort 4</div><div class="cert-org">IBM SkillsBuild</div><div class="cert-yr done-yr">April–June 2026</div></div></div>
+      <div class="cert-card animate-on-scroll"><div class="cert-icon">☁️</div><div><div class="cert-name">Elevate AI Developers — Azure AI-900</div><div class="cert-org">DSN × Microsoft</div><div class="cert-yr done-yr">2026</div></div></div>
+      <div class="cert-card animate-on-scroll" data-delay="60"><div class="cert-icon">🎓</div><div><div class="cert-name">Data Science Track — The Catalyst</div><div class="cert-org">3MTT Federal Programme</div><div class="cert-yr done-yr">December 2025</div></div></div>
+      <div class="cert-card animate-on-scroll" data-delay="120"><div class="cert-icon">📊</div><div><div class="cert-name">Python Data Fundamentals + 7 courses</div><div class="cert-org">DataCamp</div><div class="cert-yr done-yr">2024–2025</div></div></div>
+      <div class="cert-card animate-on-scroll" data-delay="180"><div class="cert-icon">🤖</div><div><div class="cert-name">Generative AI in Data Analysis</div><div class="cert-org">Open Visualization Academy</div><div class="cert-yr done-yr">2025</div></div></div>
+      <div class="cert-card animate-on-scroll"><div class="cert-icon">📈</div><div><div class="cert-name">Data Analysis Certification</div><div class="cert-org">Digital Skillup Africa</div><div class="cert-yr done-yr">November 2025</div></div></div>
+      <div class="cert-card animate-on-scroll" data-delay="60"><div class="cert-icon">🎓</div><div><div class="cert-name">B.Sc.(Ed) Computer Science Education</div><div class="cert-org">Lagos State University (LASU)</div><div class="cert-yr done-yr">2023</div></div></div>
+    </div>
+    <div style="text-align:center;margin-top:2rem;">
+      <a href="journey.html" class="btn btn-outline">View Full Journey &amp; All Certifications →</a>
+    </div>
+  </div>
+</section>
 
-      <div class="proj-grid">
-
-        <div class="proj-card flagship">
-          <div class="proj-top">
-            <span class="proj-badge badge-live">● LIVE — Classrooms Today</span>
-            <span class="proj-cat">EdTech · Full-Stack</span>
-          </div>
-          <div class="proj-name">CBT Pro (CBT.ng)</div>
-          <p class="proj-desc">Full CBT platform: CSV upload, timed exams, per-student randomisation, anti-cheat, auto-marking, result certificates, 4-tab teacher analytics, Gemini AI explanations. Built on an Android tablet with ₦0 budget.</p>
-          <div class="proj-stack">
-            <span class="proj-tech">HTML5</span><span class="proj-tech">CSS3</span><span class="proj-tech">Vanilla JS</span>
-            <span class="proj-tech">Supabase</span><span class="proj-tech">Gemini API</span><span class="proj-tech">GitHub Pages</span>
-          </div>
-          <div class="proj-links">
-            <a href="https://cssadewale.github.io/cbt-system/teacher.html" class="proj-link" target="_blank">Teacher Portal</a>
-            <a href="https://cssadewale.github.io/cbt-system/student.html" class="proj-link" target="_blank">Student Login</a>
-            <a href="https://github.com/cssadewale/cbt-system" class="proj-link" target="_blank">GitHub</a>
-          </div>
-        </div>
-
-        <div class="proj-card">
-          <div class="proj-top">
-            <span class="proj-badge badge-ml">Live</span>
-            <span class="proj-cat">Binary Classification · Insurance</span>
-          </div>
-          <div class="proj-name">Insurance Claim Prediction</div>
-          <p class="proj-desc">Predict fraudulent or high-cost claims before processing. SHAP explains every prediction. Stops revenue loss at the source before it happens.</p>
-          <div class="proj-metrics">
-            <span class="proj-metric">Random Forest</span><span class="proj-metric">SMOTE</span><span class="proj-metric">7,014 records</span>
-          </div>
-          <div class="proj-stack"><span class="proj-tech">Python</span><span class="proj-tech">Scikit-learn</span><span class="proj-tech">SHAP</span><span class="proj-tech">Streamlit</span></div>
-          <div class="proj-links">
-            <a href="https://adewale-insurance-claim-prediction.streamlit.app/" class="proj-link" target="_blank">Live App</a>
-            <a href="https://github.com/cssadewale/insurance-claim-prediction" class="proj-link" target="_blank">GitHub</a>
-          </div>
-        </div>
-
-        <div class="proj-card">
-          <div class="proj-top">
-            <span class="proj-badge badge-nlp">Live · NLP</span>
-            <span class="proj-cat">Text Classification · 3MTT Capstone</span>
-          </div>
-          <div class="proj-name">TruthLens — Fake News Detector</div>
-          <p class="proj-desc">Automatically detect misinformation in news articles. First NLP and XGBoost project. AUC = 0.9393 — highest in the portfolio.</p>
-          <div class="proj-metrics">
-            <span class="proj-metric">Acc 86.75%</span><span class="proj-metric">AUC 0.9393</span><span class="proj-metric">12,999 articles</span>
-          </div>
-          <div class="proj-stack"><span class="proj-tech">Python</span><span class="proj-tech">XGBoost</span><span class="proj-tech">TF-IDF</span><span class="proj-tech">Streamlit</span></div>
-          <div class="proj-links">
-            <a href="https://adewale-fake-news-detector.streamlit.app/" class="proj-link" target="_blank">Live App</a>
-            <a href="https://github.com/cssadewale/fake-news-detector" class="proj-link" target="_blank">GitHub</a>
-          </div>
-        </div>
-
-        <div class="proj-card">
-          <div class="proj-top">
-            <span class="proj-badge badge-edtech">Live · EdTech</span>
-            <span class="proj-cat">Early Intervention · ML</span>
-          </div>
-          <div class="proj-name">Student At-Risk Predictor</div>
-          <p class="proj-desc">Identify students likely to fail before exam season so a teacher can intervene in week 4, not after results come out. SHAP + CSV batch mode.</p>
-          <div class="proj-metrics">
-            <span class="proj-metric">Random Forest</span><span class="proj-metric">SHAP</span><span class="proj-metric">Nigerian Data</span>
-          </div>
-          <div class="proj-stack"><span class="proj-tech">Python</span><span class="proj-tech">Scikit-learn</span><span class="proj-tech">SHAP</span><span class="proj-tech">Streamlit</span></div>
-          <div class="proj-links">
-            <a href="https://student-at-risk-predictor.streamlit.app/" class="proj-link" target="_blank">Live App</a>
-            <a href="https://github.com/cssadewale/student-at-risk-predictor" class="proj-link" target="_blank">GitHub</a>
-          </div>
-        </div>
-
-        <div class="proj-card">
-          <div class="proj-top">
-            <span class="proj-badge badge-ml">Live</span>
-            <span class="proj-cat">Regression · Workplace Wellbeing</span>
-          </div>
-          <div class="proj-name">NeuroWell — Burnout Rate Predictor</div>
-          <p class="proj-desc">Predict employee burnout rate before productivity and health collapse — giving organisations an early-warning signal, not a lagging consequence.</p>
-          <div class="proj-metrics">
-            <span class="proj-metric">R² 0.855</span><span class="proj-metric">RMSE 0.072</span><span class="proj-metric">22,750 records</span>
-          </div>
-          <div class="proj-stack"><span class="proj-tech">Python</span><span class="proj-tech">Gradient Boosting</span><span class="proj-tech">Streamlit</span></div>
-          <div class="proj-links">
-            <a href="https://adewale-burnout-prediction.streamlit.app/" class="proj-link" target="_blank">Live App</a>
-            <a href="https://github.com/cssadewale/burnout-prediction" class="proj-link" target="_blank">GitHub</a>
-          </div>
-        </div>
-
-        <div class="proj-card">
-          <div class="proj-top">
-            <span class="proj-badge badge-edtech">Live · EdTech</span>
-            <span class="proj-cat">Analytics Dashboard</span>
-          </div>
-          <div class="proj-name">Student Performance Tracker v3</div>
-          <p class="proj-desc">4 interactive tabs for teachers: Class Overview, Student Profiles, At-Risk Thresholds, Topic & Question Analysis. No guesswork — just the truth about who is struggling.</p>
-          <div class="proj-metrics">
-            <span class="proj-metric">Streamlit</span><span class="proj-metric">Plotly</span><span class="proj-metric">4 Tabs</span>
-          </div>
-          <div class="proj-stack"><span class="proj-tech">Python</span><span class="proj-tech">Pandas</span><span class="proj-tech">Plotly</span><span class="proj-tech">Streamlit</span></div>
-          <div class="proj-links">
-            <a href="https://adewale-student-performance-tracker.streamlit.app/" class="proj-link" target="_blank">Live App</a>
-            <a href="https://github.com/cssadewale/student-performance-tracker" class="proj-link" target="_blank">GitHub</a>
-          </div>
-        </div>
-
+<!-- ══ TESTIMONIALS ═══════════════════════════════════════════════════════════
+════════════════════════════════════════════════════════════════════════════ -->
+<section id="testimonials" style="background:var(--bg);" aria-labelledby="testi-heading">
+  <div class="section-inner">
+    <div class="section-label">What People Say</div>
+    <h2 class="section-title" id="testi-heading">From Students, Teachers <em>&amp; Collaborators</em></h2>
+    <p class="section-sub" style="margin-bottom:3rem;">Over 15 years in Nigerian classrooms, and a growing circle of data and tech colleagues.</p>
+    <div class="testi-grid">
+      <div class="testi-card animate-on-scroll">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">Mr Adewale does not just teach you how to solve the problem — he teaches you how to think. My Further Mathematics result went from D7 to B2 in one term. That does not happen by accident. He actually cares whether you understand.</p>
+        <div class="testi-author"><div class="testi-av">TF</div><div><div class="testi-name">Tolu F.</div><div class="testi-role">SSS3 Student · Lagos Secondary School</div></div></div>
       </div>
-
-      <div class="view-all-wrap">
-        <a href="projects.html" class="btn-primary">View All 12 Projects — Full Detail & Documentation</a>
+      <div class="testi-card animate-on-scroll" data-delay="100">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">I have seen many free exam tools for Nigerian schools. Most are broken or stop working when it matters. CBT Pro is genuinely different. My students completed their mock exams without a single technical issue. That alone is remarkable.</p>
+        <div class="testi-author"><div class="testi-av">AO</div><div><div class="testi-name">Adeyemi O.</div><div class="testi-role">STEM Teacher · Lagos Secondary School</div></div></div>
+      </div>
+      <div class="testi-card animate-on-scroll" data-delay="200">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">What stands out in Adewale's portfolio is not the project count — it is the honesty. He documents the data leakage fix, the models that didn't work, the real metrics. That is exactly what a serious, trustworthy data scientist looks like.</p>
+        <div class="testi-author"><div class="testi-av">KN</div><div><div class="testi-name">Kunle N.</div><div class="testi-role">Data Science Peer · 3MTT Programme</div></div></div>
       </div>
     </div>
-  </section>
-
-  <!-- YOUTUBE -->
-  <section id="youtube">
-    <div class="section-inner">
-      <p class="section-label">Watch Me Build & Teach</p>
-      <h2 class="section-title">YouTube — HMG Concepts</h2>
-      <p class="section-sub">The classroom, extended beyond school walls. Data science projects built from scratch. EdTech builds in public. WAEC/JAMB prep. All free. All clear. All honest.</p>
-      <div class="yt-grid">
-        <div class="yt-card">
-          <div class="yt-thumb">▶</div>
-          <div class="yt-label">EdTech Build Walkthrough</div>
-          <div class="yt-title">How I Built a Full CBT Exam Platform on an Android Tablet — No Laptop, No Budget, No Web Dev Background</div>
-          <div class="yt-sub">HMG Concepts · EdTech</div>
-        </div>
-        <div class="yt-card">
-          <div class="yt-thumb">▶</div>
-          <div class="yt-label">Data Science Project</div>
-          <div class="yt-title">TruthLens Fake News Detector — Full NLP + XGBoost Walkthrough: Raw Data to Live Streamlit App</div>
-          <div class="yt-sub">HMG Concepts · 3MTT Capstone 2</div>
-        </div>
-        <div class="yt-card">
-          <div class="yt-thumb">▶</div>
-          <div class="yt-label">WAEC / JAMB Exam Prep</div>
-          <div class="yt-title">Further Mathematics — Arithmetic Progressions: The Pattern Method That Actually Sticks</div>
-          <div class="yt-sub">HMG Concepts · Exam Prep</div>
-        </div>
-      </div>
-      <div style="text-align:center; margin-top:1.5rem;">
-        <a href="https://youtube.com/@hmgconcepts" class="btn-primary" target="_blank">Subscribe Free — @hmgconcepts</a>
-      </div>
+    <div style="text-align:center;margin-top:2rem;">
+      <a href="https://wa.me/2348100866322" class="btn btn-outline" target="_blank" rel="noopener">Share Your Experience on WhatsApp →</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CERTIFICATIONS -->
-  <section id="certifications">
-    <div class="section-inner">
-      <p class="section-label">Verified Learning</p>
-      <h2 class="section-title">Certifications & Programmes</h2>
-      <p class="section-sub">Every programme here was completed — not just enrolled in. Each represents a deliberate choice to build a specific capability.</p>
-      <div class="cert-grid">
-        <div class="cert-card active"><div class="cert-icon">🌺</div><div><div class="cert-name">DeepTech_Ready — DSML Track, Cohort 3</div><div class="cert-org">DSN × 3MTT × Google.org</div><div class="cert-year active-now">🌺 Currently Active</div></div></div>
-        <div class="cert-card active"><div class="cert-icon">🌺</div><div><div class="cert-name">Applied Data Science Lab</div><div class="cert-org">WorldQuant University</div><div class="cert-year active-now">🌺 Currently Active</div></div></div>
-        <div class="cert-card active"><div class="cert-icon">🌺</div><div><div class="cert-name">Cohort 6 — ML Core Track</div><div class="cert-org">Kodecamp</div><div class="cert-year active-now">🌺 Currently Active</div></div></div>
-        <div class="cert-card"><div class="cert-icon">🏅</div><div><div class="cert-name">SkillsBuild Hub Ambassador — Cohort 4</div><div class="cert-org">IBM SkillsBuild</div><div class="cert-year done">April–June 2026</div></div></div>
-        <div class="cert-card"><div class="cert-icon">☁️</div><div><div class="cert-name">Elevate AI Developers — Azure AI-900 Prep</div><div class="cert-org">DSN × Microsoft</div><div class="cert-year done">2026</div></div></div>
-        <div class="cert-card"><div class="cert-icon">🎓</div><div><div class="cert-name">Data Science Track — The Catalyst</div><div class="cert-org">3MTT Federal Programme</div><div class="cert-year done">December 2025</div></div></div>
-        <div class="cert-card"><div class="cert-icon">📊</div><div><div class="cert-name">Data Analysis Certification</div><div class="cert-org">Digital Skillup Africa</div><div class="cert-year done">November 2025</div></div></div>
-        <div class="cert-card"><div class="cert-icon">🏦</div><div><div class="cert-name">Data Science — Digital Economy Track</div><div class="cert-org">Youthrive / CareerEX · Access Bank</div><div class="cert-year done">July 2025</div></div></div>
-        <div class="cert-card"><div class="cert-icon">🤖</div><div><div class="cert-name">AI Fundamentals · Gen AI · Copilot</div><div class="cert-org">IBM / Digital Skills Nigeria</div><div class="cert-year done">2025</div></div></div>
-        <div class="cert-card"><div class="cert-icon">🎓</div><div><div class="cert-name">B.Sc.(Ed) Computer Science Education</div><div class="cert-org">Lagos State University</div><div class="cert-year done">2023</div></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section id="testimonials">
-    <div class="section-inner">
-      <p class="section-label">What People Say</p>
-      <h2 class="section-title">From Students, Teachers & Collaborators</h2>
-      <p class="section-sub">Over 15 years across Nigerian classrooms, and a growing circle of data and tech colleagues.</p>
-      <div class="testi-grid">
-        <div class="testi-card">
-          <p class="testi-text">Mr Adewale does not just teach you how to solve the problem — he teaches you how to think. My Further Mathematics result went from D7 to B2 in one term. That does not happen by accident. He actually cares whether you understand.</p>
-          <div class="testi-author"><div class="testi-av">TF</div><div><div class="testi-name">Tolu F.</div><div class="testi-role">SSS3 Student · Lagos Secondary School</div></div></div>
+<!-- ══ CONTACT ════════════════════════════════════════════════════════════════
+     Contact info + working Formspree form with inline feedback.
+════════════════════════════════════════════════════════════════════════════ -->
+<section id="contact" style="background:var(--bg2);" aria-labelledby="contact-heading">
+  <div class="section-inner">
+    <div class="section-label">Get in Touch</div>
+    <h2 class="section-title" id="contact-heading">Let Us Build <em>Something Together</em></h2>
+    <p class="section-sub" style="margin-bottom:3rem;">Recruiter, school, data-driven company, parent seeking a STEM tutor, faith organisation, or collaborator with a shared vision — I want to hear from you.</p>
+    <div class="contact-grid">
+      <div class="animate-on-scroll">
+        <div class="contact-info-title">Reach Me Directly</div>
+        <div class="contact-item">
+          <div class="ci-icon">💬</div>
+          <div><div class="ci-label">WhatsApp — Fastest Response</div><div class="ci-val"><a href="https://wa.me/2348100866322">+234 810 086 6322</a></div></div>
         </div>
-        <div class="testi-card">
-          <p class="testi-text">I have seen many free exam tools for Nigerian schools. Most are broken or stop working when it matters. CBT Pro is genuinely different. My students completed their mock exams without a single technical issue. That alone is remarkable.</p>
-          <div class="testi-author"><div class="testi-av">AO</div><div><div class="testi-name">Adeyemi O.</div><div class="testi-role">STEM Teacher · Lagos Secondary School</div></div></div>
+        <div class="contact-item">
+          <div class="ci-icon">📞</div>
+          <div><div class="ci-label">Phone</div><div class="ci-val"><a href="tel:+2348094481488">+234 809 448 1488</a></div></div>
         </div>
-        <div class="testi-card">
-          <p class="testi-text">What stands out in Adewale's portfolio is not the project count — it is the honesty. He documents the data leakage fix, the models that didn't work, the real metrics. That is exactly what a serious, trustworthy data scientist looks like.</p>
-          <div class="testi-author"><div class="testi-av">KN</div><div><div class="testi-name">Kunle N.</div><div class="testi-role">Data Science Peer · 3MTT Programme</div></div></div>
+        <div class="contact-item">
+          <div class="ci-icon">✉️</div>
+          <div><div class="ci-label">Email</div><div class="ci-val"><a href="mailto:adeagboadewalesamson@gmail.com">adeagboadewalesamson@gmail.com</a></div></div>
         </div>
-      </div>
-      <div style="text-align:center;margin-top:2rem;">
-        <a href="https://wa.me/2348100866322" class="btn-outline" target="_blank">Share Your Experience on WhatsApp →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="section-inner">
-      <p class="section-label">Get in Touch</p>
-      <h2 class="section-title">Let Us Build Something Together</h2>
-      <p class="section-sub">Recruiter, school administrator, company with a data problem, parent seeking a STEM tutor, or a collaborator with a shared vision — I want to hear from you.</p>
-      <div class="contact-grid">
-        <div class="contact-info">
-          <h3>Reach Me Directly</h3>
-          <div class="contact-item"><div class="ci-icon">💬</div><div><div class="ci-label">WhatsApp — Fastest Response</div><div class="ci-val"><a href="https://wa.me/2348100866322">+234 810 086 6322</a></div></div></div>
-          <div class="contact-item"><div class="ci-icon">✉️</div><div><div class="ci-label">Email</div><div class="ci-val"><a href="/cdn-cgi/l/email-protection#acc4c1cbcfc3c2cfc9dcd8dfeccbc1cdc5c082cfc3c1"><span class="__cf_email__" data-cfemail="81e9ece6e2eeefe2e4f1f5f2c1e6ece0e8edafe2eeec">[email&#160;protected]</span></a></div></div></div>
-          <div class="contact-item"><div class="ci-icon">💼</div><div><div class="ci-label">LinkedIn</div><div class="ci-val"><a href="https://linkedin.com/in/adewalesamsonadeagbo" target="_blank">adewalesamsonadeagbo</a></div></div></div>
-          <div class="contact-item"><div class="ci-icon">🐙</div><div><div class="ci-label">GitHub</div><div class="ci-val"><a href="https://github.com/cssadewale" target="_blank">github.com/cssadewale</a></div></div></div>
-          <div class="contact-item"><div class="ci-icon">📍</div><div><div class="ci-label">Location</div><div class="ci-val">Lagos / Ogun State, Nigeria · Remote Global</div></div></div>
-          <div class="open-to">
-            <div class="open-to-title">I Am Actively Open To</div>
-            <div class="open-to-tags">
-              <span class="open-tag">Data Science Roles</span>
-              <span class="open-tag">ML / Data Analyst Roles</span>
-              <span class="open-tag">EdTech Collaborations</span>
-              <span class="open-tag">CBT Pro Partnerships</span>
-              <span class="open-tag">STEM Tutoring</span>
-              <span class="open-tag">FaithTech Projects</span>
-              <span class="open-tag">AI Solutions Dev</span>
-              <span class="open-tag">Remote Opportunities</span>
-            </div>
+        <div class="contact-item">
+          <div class="ci-icon">💼</div>
+          <div><div class="ci-label">LinkedIn</div><div class="ci-val"><a href="https://linkedin.com/in/adewalesamsonadeagbo" target="_blank" rel="noopener">adewalesamsonadeagbo</a></div></div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🐙</div>
+          <div><div class="ci-label">GitHub</div><div class="ci-val"><a href="https://github.com/cssadewale" target="_blank" rel="noopener">github.com/cssadewale</a></div></div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div><div class="ci-label">Location</div><div class="ci-val" style="color:var(--text2);">Lagos / Ogun State, Nigeria · Open to Remote</div></div>
+        </div>
+        <div class="open-to">
+          <div class="open-to-title">I Am Actively Open To</div>
+          <div class="open-tags">
+            <span class="open-tag">Data Science Roles</span>
+            <span class="open-tag">ML Engineer Roles</span>
+            <span class="open-tag">Data Analyst Roles</span>
+            <span class="open-tag">EdTech Collaborations</span>
+            <span class="open-tag">CBT Pro Partnerships</span>
+            <span class="open-tag">STEM Tutoring</span>
+            <span class="open-tag">FaithTech Projects</span>
+            <span class="open-tag">School Partnerships</span>
+            <span class="open-tag">AI Solutions Dev</span>
+            <span class="open-tag">Remote Opportunities</span>
           </div>
         </div>
-        <div class="contact-form">
-          <form action="https://formspree.io/f/your-form-id" method="POST">
-            <div class="form-group"><label>Your Name</label><input type="text" name="name" placeholder="Full name" required></div>
-            <div class="form-group"><label>Email Address</label><input type="email" name="email" placeholder="your@email.com" required></div>
-            <div class="form-group">
-              <label>What is this about?</label>
-              <select name="subject">
-                <option value="">Select a subject…</option>
-                <option>Job / Internship Opportunity</option>
-                <option>Data Science Collaboration</option>
-                <option>School or EdTech Partnership</option>
-                <option>CBT Pro Enquiry</option>
-                <option>FaithTech / HMG Gospel</option>
-                <option>Academic Tutoring (STEM)</option>
-                <option>General Enquiry</option>
-              </select>
-            </div>
-            <div class="form-group"><label>Your Message</label><textarea name="message" placeholder="Tell me about your project, need, or opportunity…"></textarea></div>
-            <button type="submit" class="form-submit">Send Message</button>
-          </form>
+      </div>
+
+      <div class="contact-form-card animate-on-scroll" data-delay="100">
+        <div class="form-title">Send a Message</div>
+        <!-- ACTION: Replace "your-form-id" with your real Formspree form ID -->
+        <form id="contact-form" action="https://formspree.io/f/your-form-id" method="POST" novalidate>
+          <div class="form-group"><label class="form-label" for="cf-name">Your Name *</label><input id="cf-name" type="text" name="name" class="form-input" placeholder="Full name" required /></div>
+          <div class="form-group"><label class="form-label" for="cf-email">Email Address *</label><input id="cf-email" type="email" name="email" class="form-input" placeholder="your@email.com" required /></div>
+          <div class="form-group"><label class="form-label" for="cf-phone">Phone / WhatsApp</label><input id="cf-phone" type="tel" name="phone" class="form-input" placeholder="+234 xxx xxx xxxx" /></div>
+          <div class="form-group">
+            <label class="form-label" for="cf-role">I am a…</label>
+            <select id="cf-role" name="role" class="form-select">
+              <option value="">Select your role</option>
+              <option>Recruiter / Employer</option>
+              <option>School / Institution</option>
+              <option>Parent / Guardian</option>
+              <option>Student</option>
+              <option>EdTech Partner</option>
+              <option>Faith Organisation</option>
+              <option>Data Science Collaborator</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cf-subject">Subject</label>
+            <select id="cf-subject" name="subject" class="form-select">
+              <option value="">Select a subject</option>
+              <option>Job / Internship Opportunity</option>
+              <option>Data Science Collaboration</option>
+              <option>School or EdTech Partnership</option>
+              <option>CBT Pro Enquiry</option>
+              <option>FaithTech / HMG Gospel</option>
+              <option>Academic Tutoring (STEM)</option>
+              <option>General Enquiry</option>
+            </select>
+          </div>
+          <div class="form-group"><label class="form-label" for="cf-message">Your Message *</label><textarea id="cf-message" name="message" class="form-textarea" placeholder="Tell me about your project, need, or opportunity…" required></textarea></div>
+          <button type="submit" class="form-submit">Send Message →</button>
+          <div id="form-message" role="alert"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══════════════════════════════════════════════════════════════ -->
+<footer class="footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">cssadewale</div>
+        <p class="footer-brand-sub">AI-Augmented Solutions Developer · EdTech Builder · DataTech Builder · FaithTech Builder. Lagos, Nigeria.</p>
+        <div class="footer-socials">
+          <a href="https://linkedin.com/in/adewalesamsonadeagbo" class="footer-social" target="_blank" rel="noopener" aria-label="LinkedIn">💼</a>
+          <a href="https://github.com/cssadewale"                class="footer-social" target="_blank" rel="noopener" aria-label="GitHub">🐙</a>
+          <a href="https://youtube.com/@hmgconcepts"             class="footer-social" target="_blank" rel="noopener" aria-label="YouTube">📺</a>
+          <a href="https://x.com/cssadewale"                     class="footer-social" target="_blank" rel="noopener" aria-label="X / Twitter">🐦</a>
+          <a href="https://instagram.com/cssadewale"             class="footer-social" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
+          <a href="https://wa.me/2348100866322"                  class="footer-social" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <div class="footer-links-list">
+          <a href="index.html">Home</a><a href="about.html">About</a>
+          <a href="projects.html">Projects</a><a href="journey.html">Journey</a>
+          <a href="cv.html">CV</a><a href="index.html#contact">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">HMG Concepts</div>
+        <div class="footer-links-list">
+          <a href="https://hmgconcepts.pages.dev" target="_blank" rel="noopener">HMG Academy ↗</a>
+          <a href="#">HMG Technologies</a>
+          <a href="#">HMG Gospel</a>
+          <a href="https://youtube.com/@hmgconcepts" target="_blank" rel="noopener">HMG Media ↗</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">GitHub Orgs</div>
+        <div class="footer-links-list">
+          <a href="https://github.com/cssadewale"    target="_blank" rel="noopener">@cssadewale ↗</a>
+          <a href="https://github.com/hmgacademyhub" target="_blank" rel="noopener">@hmgacademyhub ↗</a>
+          <a href="https://github.com/hmgtechnologies" target="_blank" rel="noopener">@hmgtechnologies ↗</a>
+          <a href="https://github.com/hmgospel"      target="_blank" rel="noopener">@hmgospel ↗</a>
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-logo">cssadewale</div>
-      <div class="footer-tagline">AI-Augmented Solutions Developer · EdTech Builder · DataTech Builder · FaithTech Builder</div>
-      <div class="footer-links">
-        <a href="about.html">About</a>
-        <a href="projects.html">Projects</a>
-        <a href="journey.html">Journey</a>
-        <a href="cv.html">CV</a>
-        <a href="https://hmgconcepts.pages.dev" target="_blank">HMG Concepts</a>
-        <a href="https://linkedin.com/in/adewalesamsonadeagbo" target="_blank">LinkedIn</a>
-        <a href="https://github.com/cssadewale" target="_blank">GitHub</a>
-        <a href="https://youtube.com/@hmgconcepts" target="_blank">YouTube</a>
-        <a href="https://x.com/cssadewale" target="_blank">X</a>
-      </div>
-      <div class="footer-bottom">© 2025–2026 Adewale Samson Adeagbo · HMG Concepts · All Rights Reserved<br>
-      Built with AI leverage, grounded in data, taught from the classroom.</div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-text">© 2025–2026 Adewale Samson Adeagbo · HMG Concepts · All Rights Reserved</div>
+      <div class="footer-bottom-tagline">Built with AI leverage, grounded in data, taught from the classroom.</div>
     </div>
-  </footer>
+  </div>
+</footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+<!-- Main JavaScript -->
+<script src="assets/js/main.js"></script>
+</body>
 </html>
